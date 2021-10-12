@@ -1,0 +1,117 @@
+.page {
+    width: 1280px;/*max-width*/
+    margin: auto;
+    display: flex;
+    flex-direction:column; /* столбец */
+    align-items: center;/* располагаем блоки по центру */
+    font-family: "Istok Web";/*"Inter"*/
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+    background-color: #2A2C2F;
+    color: #ffffff;
+    /*border:3px solid #d81435; /* красный рамка */
+  }
+  
+.header {
+    width: 880px;
+    height: 74px;
+    margin-top: 28px;
+    display: flex;
+    flex-direction: row; /* строка */
+    justify-content: space-between; /* расположить равномерно */
+    background-color: #2A2C2F;
+    /*border:2px solid #d81435; /* красная рамка */
+    border-bottom:#545454;/*серая полоса*/
+} 
+
+
+.header__logo {
+    width: 142px;
+    height: 33px;
+    background: url('./images/logo.png') no-repeat;   
+    background-size: cover;
+  }
+
+
+  .profile {
+    display: flex;
+    width: 880px;
+    /*flex-direction:column; /* столбец */
+    align-items: center;/* располагаем блоки по центру */
+    margin-top: 56px;
+    border:2px solid #d81435; /* красная рамка */
+  }
+
+  .profile__info {
+    width: 336px;
+    height: 92px;
+    position: relative;
+    display: flex;
+    flex-direction:column; /* столбец */
+    align-items: flex-start;/* располагаем блоки */
+    margin-left: 16px;
+    border:2px solid #d81435; /* красный рамка */
+}
+
+  .profile__info-title {
+    /*font-family: "Istok Web";/*"Inter"*/
+    position: relative;
+    display: flex;
+    /*width: 720px;*/
+    font-size: 42px;
+    line-height: 48px;
+    font-weight: 500;
+    font-style:normal;
+    text-align: start;
+    margin-top: 0; /*без отступов */
+    margin-bottom: 0;
+    z-index: 1; /* накрывает для всех кто меньше */
+    border:2px solid #d81435; /* красная рамка */
+  }
+  
+.profile__info-subtitle {
+    /*width: 640px;*/
+    /*height: 75px;/*75px текст отступает от верха блока*/
+    font-size: 18px;
+    line-height: 22px;
+    font-weight:500;
+    font-style:normal;
+    text-align:start;
+    z-index: 1; /* накрывает для всех кто меньше */
+    margin-top: 16px; /*без отступов */
+    margin-bottom: 0;
+    border:2px solid #d81435; /* красная рамка */
+  }
+
+  .profile__avatar {
+    /*display: flex;*/
+    width: 168px;/*984*/
+    height: 168px;/*615*/
+    margin-top: 0; /*без отступов */
+    margin-bottom: 0;
+    padding: 0;
+    border-radius: 50%;
+    z-index: 1; /* накрывает для всех кто меньше */
+    /*border:2px solid #d81435; /* красная рамка */
+  }
+
+  .footer {
+    width: 880px;
+    display: flex;
+    /*justify-content: space-between; /*от краев равномерно */
+  }  
+
+  .footer__copyright {
+    font-size: 18px;
+    line-height: 22px;
+    margin-top: 67px;
+    margin-bottom: 60px;
+    padding: 0;
+    font-weight: 400;
+    font-style:normal;
+    color: #545454;
+  }
