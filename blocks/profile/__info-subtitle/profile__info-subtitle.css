@@ -9,7 +9,7 @@
     z-index: 1; /* накрывает для всех кто меньше */
     margin-top: 16px; /* отступ */
     margin-bottom: 0;
-    border:2px solid #d81435; /* красная рамка */
+    /*border:2px solid #d81435; /* красная рамка */
   }
 
   @media screen and (max-width: 750px) {

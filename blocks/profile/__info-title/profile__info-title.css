@@ -11,7 +11,7 @@
     margin-top: 0; /*без отступов */
     margin-bottom: 0;
     z-index: 1; /* накрывает для всех кто меньше */
-    border:2px solid #d81435; /* красная рамка */
+    /*border:2px solid #d81435; /* красная рамка */
 }
 
 @media screen and (max-width: 750px) {

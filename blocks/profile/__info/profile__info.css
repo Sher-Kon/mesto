@@ -6,7 +6,7 @@
     flex-direction:column; /* столбец */
     align-items: flex-start;/* располагаем блоки */
     margin-left: 16px;
-    border:2px solid blue; /* красный рамка */
+    /*border:2px solid blue; /* красный рамка */
 }
 
 @media screen and (max-width: 750px) {
