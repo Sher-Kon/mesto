@@ -3,11 +3,10 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>
-        <Mesto>
-    </title>
+    <title>Mesto</title>
+    <link rel="stylesheet" href="pages/index.css">
     <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="./fonts.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
@@ -15,47 +14,49 @@
         <header class="header">
             <div class="header__logo"> </div>
         </header>
-        <section class="profile">
-            <img src="./images/custo.png" class="profile__avatar" alt="фото Кусто">
-            <div class=profile__info>
-                <h1 class="profile__info-title">Жак-Ив Кусто</h1>
-                <p class="profile__info-subtitle">Исследователь океана</p>
-            </div>
-        </section>
-        <section class="elements">
-            <div class="element">
-                <img src="./images/karachaevsk.png" class="element__img" alt="собор в горах">
-                <p class="element__txt">Карачаевск</p>
-                <img src="./images/hard_waite.png" class="element__hard" alt="гора Эльбрус">
-            </div>
-            <div class="element">
-                <img src="./images/elbrus.png" class="element__img" alt="гора Эльбрус">
-                <p class="element__txt">Гора Эльбрус</p>
-                <img src="./images/hard_waite.png" class="element__hard" alt="гора Эльбрус">
-            </div>
-            <div class="element">
-                <img src="./images/dombay.png" class="element__img" alt="гора Домбай">
-                <p class="element__txt">Домбай</p>
-                <img src="./images/hard_waite.png" class="element__hard" alt="гора Эльбрус">
-            </div>
-            <div class="element">
-                <img src="./images/elbrus.png" class="element__img" alt="гора Эльбрус">
-                <p class="element__txt">Гора Эльбрус</p>
-                <img src="./images/hard_waite.png" class="element__hard" alt="гора Эльбрус">
-            </div>
-            <div class="element">
-                <img src="./images/dombay.png" class="element__img" alt="гора Домбай">
-                <p class="element__txt">Домбай</p>
-                <img src="./images/hard_waite.png" class="element__hard" alt="гора Эльбрус">
-            </div>
-            <div class="element">
-                <img src="./images/karachaevsk.png" class="element__img" alt="собор в горах">
-                <p class="element__txt">Карачаево-Ч...</p>
-                <img src="./images/hard_waite.png" class="element__hard" alt="гора Эльбрус">
-            </div>
-        </section>
-
-
+        <main class="content">
+            <section class="profile">
+                <img src="./images/custo.png" class="profile__avatar" alt="фото Кусто">
+                <div class=profile__info>
+                    <h1 class="profile__info-title">Жак-Ив Кусто</h1>
+                    <button class="profile__info-edit-btn"></button>
+                    <p class="profile__info-subtitle">Исследователь океана</p>
+                </div>
+                <button class="profile__add-btn"></button>
+            </section>
+            <section class="elements">
+                <div class="element">
+                    <img src="./images/karachaevsk.png" class="element__img" alt="собор в горах">
+                    <p class="element__txt">Карачаевск</p>
+                    <img src="./images/hard_waite.png" class="element__heart" alt="гора Эльбрус">
+                </div>
+                <div class="element">
+                    <img src="./images/elbrus.png" class="element__img" alt="гора Эльбрус">
+                    <p class="element__txt">Гора Эльбрус</p>
+                    <img src="./images/hard_waite.png" class="element__heart" alt="гора Эльбрус">
+                </div>
+                <div class="element">
+                    <img src="./images/dombay.png" class="element__img" alt="гора Домбай">
+                    <p class="element__txt">Домбай</p>
+                    <img src="./images/hard_waite.png" class="element__heart" alt="гора Эльбрус">
+                </div>
+                <div class="element">
+                    <img src="./images/elbrus.png" class="element__img" alt="гора Эльбрус">
+                    <p class="element__txt">Гора Эльбрус</p>
+                    <img src="./images/hard_waite.png" class="element__heart" alt="гора Эльбрус">
+                </div>
+                <div class="element">
+                    <img src="./images/dombay.png" class="element__img" alt="гора Домбай">
+                    <p class="element__txt">Домбай</p>
+                    <img src="./images/hard_waite.png" class="element__heart" alt="гора Эльбрус">
+                </div>
+                <div class="element">
+                    <img src="./images/karachaevsk.png" class="element__img" alt="собор в горах">
+                    <p class="element__txt">Карачаево-Ч...</p>
+                    <img src="./images/hard_waite.png" class="element__heart" alt="гора Эльбрус">
+                </div>
+            </section>
+        </main>
         <section class="footer">
             <p class="footer__copyright">© 2020 Mesto Russia</p>
         </section>

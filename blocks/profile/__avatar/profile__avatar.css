@@ -1,0 +1,11 @@
+.profile__avatar {
+    /*display: flex;*/
+    width: 168px;/*984*/
+    height: 168px;/*615*/
+    margin-top: 0; /*без отступов */
+    margin-bottom: 0;
+    padding: 0;
+    border-radius: 50%;
+    z-index: 1; /* накрывает для всех кто меньше */
+    /*border:2px solid #d81435; /* красная рамка */
+  }

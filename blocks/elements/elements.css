@@ -1,0 +1,32 @@
+.elements {
+    /*max-width: 100%; /*95%-1184*/
+    /*margin-top: 51px;/*51px*/
+    /*margin-bottom: 98px; /*98*/
+    width: 880px;
+    margin-left: 0;
+    margin-bottom: 78px;/*98=78+20*/
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:space-between;
+    /*justify-content:space-evenly; /*от краев равномерно */
+    /*display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 16px; /* calc((100% - 1180px) / 3);/*16px;*/
+    border:2px solid #d81435; /* красная рамка */
+  }
+
+  @media screen and (max-width: 960px) {
+    .elements {
+        width: 640px;
+    }
+  }
+  
+  @media screen and (max-width: 750px) {
+    .elements {
+        width: 282px;
+        flex-direction:column; /* столбец */
+    }
+  }
+  

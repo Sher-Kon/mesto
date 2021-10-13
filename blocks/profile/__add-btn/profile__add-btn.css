@@ -1,0 +1,29 @@
+.profile__add-btn {
+    position: absolute;/**/
+    top: 52px;/**/
+    right: 5px;/**/
+    width: 150px;
+    height: 50px;
+    background: url('../../../images/add_knob.png') no-repeat;
+    background-size: cover;
+    padding: 0;
+    border:white;
+    border: 3px;
+    /*font-size: 0.8em;*/
+    /*background-color: #ffdb4d;/**/
+    border-radius: 2px;/**/
+    cursor: pointer;
+}
+
+@media screen and (max-width: 750px) {
+    .profile__add-btn {
+        position: absolute;/**/
+        top: 270px;/**/
+        right: 0;
+        /*align-self: flex-end;*/
+        width: 282px;
+        height: 50px;
+        background: url('../../../images/add_long_knob.png') no-repeat;
+        background-size: cover;
+    }
+  }

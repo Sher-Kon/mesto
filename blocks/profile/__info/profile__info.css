@@ -1,0 +1,17 @@
+.profile__info {
+    width: 336px;
+    height: 92px;
+    position: relative;
+    display: flex;
+    flex-direction:column; /* столбец */
+    align-items: flex-start;/* располагаем блоки */
+    margin-left: 16px;
+    border:2px solid #d81435; /* красный рамка */
+}
+
+@media screen and (max-width: 750px) {
+    .profile__info {
+        width: 282px;
+        margin-left: 0;
+    }
+  }
