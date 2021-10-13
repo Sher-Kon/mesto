@@ -8,3 +8,8 @@
     /*background: url('./images/hard_waite.png') no-repeat;/**/
     background-size: cover;
   }
+
+  .element__heart:hover {
+    opacity: 0.5;
+  }
+

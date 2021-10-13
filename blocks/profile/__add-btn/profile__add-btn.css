@@ -1,7 +1,7 @@
 .profile__add-btn {
     position: absolute;/**/
-    top: 52px;/**/
-    right: 5px;/**/
+    top: 38px;/**/
+    right: 0;/**/
     width: 150px;
     height: 50px;
     background: url('../../../images/add_knob.png') no-repeat;
@@ -15,15 +15,20 @@
     cursor: pointer;
 }
 
+.profile__add-btn:hover {
+    opacity: 0.6;
+  }
+  
+
 @media screen and (max-width: 750px) {
     .profile__add-btn {
-        position: absolute;/**/
-        top: 270px;/**/
-        right: 0;
+        /*position: absolute;/**/
+        top: 260px;/*127+96+36*/
+        /*right: 0;*/
         /*align-self: flex-end;*/
         width: 282px;
-        height: 50px;
+        height: 50px;/**/
         background: url('../../../images/add_long_knob.png') no-repeat;
-        background-size: cover;
+        background-size: cover;/**/
     }
   }
