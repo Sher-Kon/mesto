@@ -10,6 +10,11 @@ function showClickEdit() {
   console.log(name.textContent);
   console.log(subname.textContent);
 
+  let memname = document.querySelector('.popup__text-name');
+  let membrif = document.querySelector('.popup__text-brif');
+  memname.value = name.textContent;
+  membrif.value = subname.textContent;
+
     popupElement.classList.add('popup_opened');//открыть окно
     console.log('Мы кликнули по элементу EDIT');
 }
