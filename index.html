@@ -56,20 +56,33 @@
                     <img src="./images/hard_waite.png" class="element__heart" alt="гора Эльбрус">
                 </div>
             </section>
+
+            <div id="popup">
+                <div id="popup__container">
+                    <h2 class="popup__title">Редактировать профиль</h2>
+    
+                    <div class="input">
+                        <input type="text" placeholder="Название" class="input__text input__text_type_song">
+                        <input type="text" placeholder="Исполнитель" class="input__text input__text_type_artist">
+                        <button class="form__submit-btn-mem">
+                          Сохранить
+                        </button>
+                      </div>
+    
+                    <a href="#" class="close">Закрыть окно</a>
+                </div>
+            </div>
+    
         </main>
         <section class="footer">
             <p class="footer__copyright">© 2020 Mesto Russia</p>
         </section>
 
-        <div id="zatemnenie">
-            <div id="okno">
-              Всплывающее окошко!<br>
-              <a href="#" class="close">Закрыть окно</a>
-            </div>
-          </div>
-           
-          <a href="#zatemnenie">Вызвать всплывающее окно</a>
 
+        <a href="#popup">Вызвать всплывающее окно</a>
+
+    </div>
+    <script src="script.js"></script>
 </body>
 
 </html>
