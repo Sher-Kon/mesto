@@ -28,7 +28,12 @@ function showClickMem() {
     let membrif = document.querySelector('.popup__text-brif');
     console.log(memname.value);
     console.log(membrif.value);
-  
+
+    let name = document.querySelector('.profile__info-title');
+    let subname = document.querySelector('.profile__info-subtitle');
+    name.textContent = memname.value;
+    subname.textContent = membrif.value;
+        
     popupElement.classList.remove('popup_opened');//закрыть окно
     console.log('Мы кликнули по элементу MEM');
 }
