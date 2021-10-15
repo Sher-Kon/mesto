@@ -1,10 +1,11 @@
 let content = document.querySelector('.content');
 let editButton = content.querySelector('.profile__info-edit-btn');
 let addButton = content.querySelector('.profile__add-btn');
-let memButton = content.querySelector('.popup__btn-mem');
+let saveButton = content.querySelector('.popup__btn-save');
+let closeButton = content.querySelector('.popup__btn-close');
 let popupElement = content.querySelector('.popup');
 
-function showClickEdit() {
+function ClickEdit() {
   let name = document.querySelector('.profile__info-title');
   let subname = document.querySelector('.profile__info-subtitle');
   console.log(name.textContent);
@@ -19,11 +20,11 @@ function showClickEdit() {
     console.log('Мы кликнули по элементу EDIT');
 }
 
-function showClickAdd() {
+function ClickAdd() {
     console.log('Мы кликнули по элементу ADD');
 }
 
-function showClickMem() {
+function ClickSave() {
     let memname = document.querySelector('.popup__text-name');
     let membrif = document.querySelector('.popup__text-brif');
     console.log(memname.value);
@@ -35,10 +36,17 @@ function showClickMem() {
     subname.textContent = membrif.value;
         
     popupElement.classList.remove('popup_opened');//закрыть окно
-    console.log('Мы кликнули по элементу MEM');
+    console.log('Мы кликнули по элементу SAVE');
 }
 
-  editButton.addEventListener('click', showClickEdit);
-  addButton.addEventListener('click', showClickAdd);
-  memButton.addEventListener('click', showClickMem);
+function ClickClose() {
+  popupElement.classList.remove('popup_opened');//закрыть окно
+  console.log('Мы кликнули по элементу CLOSE');
+}
+
+
+  editButton.addEventListener('click', ClickEdit);
+  addButton.addEventListener('click', ClickAdd);
+  saveButton.addEventListener('click', ClickSave);
+  closeButton.addEventListener('click', ClickClose);
   

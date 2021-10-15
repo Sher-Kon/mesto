@@ -1,4 +1,4 @@
-.popup__btn-mem {
+.popup__btn-save {
     margin-top: 40px;
     font-size: 18px;
     line-height: 22px;
@@ -13,3 +13,13 @@
     cursor: pointer;
   }
   
+  .popup__btn-save:hover {
+    opacity: 0.8;
+  }
+  
+  @media screen and (max-width: 750px) {
+    .popup__btn-save {
+      width: 238px;
+      height: 46px;
+    }
+  }

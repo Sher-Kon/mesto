@@ -9,3 +9,15 @@
     margin-left: 36px;
     color: black;
   }
+
+  @media screen and (max-width: 750px) {
+    .popup__title {
+      width: 238px;
+      /*height: 46px;/**/
+      font-size: 18px;
+      line-height: 22px;
+      margin-top: 25px; /* отступ */
+      margin-left: 22px;
+      margin-bottom: 40px;
+      }
+}
