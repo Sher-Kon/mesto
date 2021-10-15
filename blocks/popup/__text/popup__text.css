@@ -5,16 +5,16 @@
   font-size: 14px;
   line-height: 17px;
   font-weight: 400;
-  font-style:normal;
+  font-style: normal;
   border: none;
-  border-bottom: 1px solid #cdcdcd;/*#f1f1f1;*/
+  border-bottom: 1px solid #cdcdcd; /*#f1f1f1;*/
   padding: 0 13px;
   box-sizing: border-box;
 }
 
 @media screen and (max-width: 750px) {
-    .popup__text {
+  .popup__text {
       width: 238px;
       /*height: 46px;/**/
-    }
+  }
 }

@@ -6,7 +6,7 @@
     font-size: 42px;
     line-height: 48px;
     font-weight: 500;
-    font-style:normal;
+    font-style: normal;
     text-align: start;
     margin-top: 0; /*без отступов */
     margin-bottom: 0;
@@ -16,9 +16,9 @@
 
 @media screen and (max-width: 750px) {
     .profile__info-title {
-      font-size: 27px;
-      line-height: 33px;
-      margin-top: 22px; /* отступ */
-      align-self: center;
-      }
-  }
+        font-size: 27px;
+        line-height: 33px;
+        margin-top: 22px; /* отступ */
+        align-self: center;
+    }
+}

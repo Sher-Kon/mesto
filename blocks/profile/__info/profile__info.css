@@ -3,8 +3,8 @@
     height: 92px;
     position: relative;
     display: flex;
-    flex-direction:column; /* столбец */
-    align-items: flex-start;/* располагаем блоки */
+    flex-direction: column; /* столбец */
+    align-items: flex-start; /* располагаем блоки */
     margin-left: 16px;
     /*border:2px solid blue; /* красный рамка */
 }
@@ -14,4 +14,4 @@
         width: 282px;
         margin-left: 0;
     }
-  }
+}

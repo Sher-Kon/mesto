@@ -1,7 +1,7 @@
 .header__logo {
-  width: 144px;/*142*/
+  width: 144px; /*142*/
   height: 33px;
-  background: url('../../../images/logo.png') no-repeat;   
+  background: url("../../../images/logo.png") no-repeat;
   background-size: cover;
 }
 

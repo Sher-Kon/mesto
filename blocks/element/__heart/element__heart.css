@@ -1,15 +1,14 @@
 .element__heart {
-    /*display: flex;*/
-    width: 22px;/*282*/
-    height: 19px;/*361*/
-    position: absolute;
-    right: 20px;
-    bottom: 25px;
-    /*background: url('./images/hard_waite.png') no-repeat;/**/
-    background-size: cover;
-  }
+  /*display: flex;*/
+  width: 22px; /*282*/
+  height: 19px; /*361*/
+  position: absolute;
+  right: 20px;
+  bottom: 25px;
+  /*background: url('./images/hard_waite.png') no-repeat;/**/
+  background-size: cover;
+}
 
-  .element__heart:hover {
-    opacity: 0.5;
-  }
-
+.element__heart:hover {
+  opacity: 0.5;
+}
