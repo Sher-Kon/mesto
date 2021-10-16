@@ -1,8 +1,5 @@
-.profile__info-title {
-    /*font-family: "Istok Web";/*"Inter"*/
-    position: relative;
-    display: flex;
-    /*width: 720px;*/
+.profile__info-name {
+    width: 294px;
     font-size: 42px;
     line-height: 48px;
     font-weight: 500;
@@ -10,12 +7,13 @@
     text-align: start;
     margin-top: 0; /*без отступов */
     margin-bottom: 0;
-    z-index: 1; /* накрывает для всех кто меньше */
+    /*z-index: 1; /* накрывает для всех кто меньше */
     /*border:2px solid #d81435; /* красная рамка */
 }
 
 @media screen and (max-width: 750px) {
-    .profile__info-title {
+    .profile__info-name {
+        width: 189px;
         font-size: 27px;
         line-height: 33px;
         margin-top: 22px; /* отступ */

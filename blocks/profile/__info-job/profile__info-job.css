@@ -1,5 +1,5 @@
-.profile__info-subtitle {
-  /*width: 640px;*/
+.profile__info-job {
+  width: 336px;
   /*height: 75px;/*75px текст отступает от верха блока*/
   font-size: 18px;
   line-height: 22px;
@@ -13,7 +13,7 @@
 }
 
 @media screen and (max-width: 750px) {
-  .profile__info-subtitle {
+  .profile__info-job {
       width: 280px;
       font-size: 14px;
       line-height: 17px;
