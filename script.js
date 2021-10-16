@@ -39,9 +39,10 @@ function ClickSave() {
     //console.log("Мы кликнули по элементу SAVE");
 }
 
+// Обработчик закрытия формы
 function ClickClose() {
     popupElement.classList.remove("popup_opened"); //закрыть окно
-    //console.log("Мы кликнули по элементу CLOSE");
+    //console.log("Мы кликнули по кнопке CLOSE");
 }
 
 editButton.addEventListener("click", ClickEdit);
@@ -52,19 +53,13 @@ closeButton.addEventListener("click", ClickClose);
 // Находим форму в DOM
 let formElement = document.querySelector(".form");
 
-// Обработчик закрытия формы
-function formClose() {
-    console.log('Мы кликнули по кнопке FORM CLOSE');
-    popupElement.classList.remove("popup_opened");
-}
-
 // Обработчик «отправки» формы, хотя пока
 // она никуда отправляться не будет
 function formSubmitHandler (evt) {
     evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
                                                 // Так мы можем определить свою логику отправки.
                                                 // О том, как это делать, расскажем позже.
-    console.log('Обработчик отправки формы');
+    //console.log('Обработчик отправки формы');
 
     // Получите значение полей jobInput и nameInput
     let nameInput = document.querySelector(".popup__text-name");
@@ -84,5 +79,3 @@ function formSubmitHandler (evt) {
 // Прикрепляем обработчик к форме:
 // он будет следить за событием “submit” - «отправка»
 formElement.addEventListener('submit', formSubmitHandler);
-
-formElement.addEventListener('button', formClose);
