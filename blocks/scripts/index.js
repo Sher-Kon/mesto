@@ -1,9 +1,9 @@
-const content = document.querySelector(".content");//.content
-const editButton = content.querySelector(".profile__info-edit-btn");
-const addButton = content.querySelector(".profile__add-btn");
+const contentElement = document.querySelector(".content");//.content
+const editButtonElement = contentElement.querySelector(".profile__info-edit-btn");
+const addButtonElement = contentElement.querySelector(".profile__add-btn");
 const popupElement = document.querySelector(".popup");
-const saveButton = popupElement.querySelector(".popup__btn-save");
-const closeButton = popupElement.querySelector(".popup__btn-close");
+const saveButtonElement = popupElement.querySelector(".popup__btn-save");
+const closeButtonElement = popupElement.querySelector(".popup__btn-close");
 
 function ClickEdit() {
     const name = document.querySelector(".profile__info-name");
@@ -21,7 +21,7 @@ function ClickEdit() {
 }
 
 function ClickAdd() {
-    //console.log("Мы кликнули по элементу ADD");
+    console.log("Мы кликнули по элементу ADD");//отладка
 }
 
 function ClickSave() {
@@ -45,10 +45,10 @@ function ClickClose() {
     //console.log("Мы кликнули по кнопке CLOSE");
 }
 
-editButton.addEventListener("click", ClickEdit);
-addButton.addEventListener("click", ClickAdd);
-closeButton.addEventListener("click", ClickClose);
-//saveButton.addEventListener("click", ClickSave);//для div - контейнера
+editButtonElement.addEventListener("click", ClickEdit);
+closeButtonElement.addEventListener("click", ClickClose);
+//addButtonElement.addEventListener("click", ClickAdd);//отладка
+//saveButtonElement.addEventListener("click", ClickSave);//для div - контейнера
 
 // Находим форму в DOM
 const formElement = document.querySelector(".form");
