@@ -21,7 +21,7 @@ function ClickEdit() {
 }
 
 function ClickAdd() {
-    //console.log("Мы кликнули по элементу ADD");
+    console.log("Мы кликнули по элементу ADD");
 }
 
 function ClickSave() {
