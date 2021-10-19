@@ -1,4 +1,5 @@
 let content = document.querySelector(".content");
+let likeButton = content.querySelector(".element__like-btn");//только первая кнопка
 let editButton = content.querySelector(".profile__info-edit-btn");
 let addButton = content.querySelector(".profile__add-btn");
 let saveButton = content.querySelector(".popup__btn-save");
@@ -24,6 +25,10 @@ function ClickAdd() {
     console.log("Мы кликнули по элементу ADD");
 }
 
+function ClickLike() {
+    console.log("Мы кликнули по элементу LIKE");
+}
+
 function ClickSave() {
     let nameInput = document.querySelector(".popup__text-name");
     let jobInput = document.querySelector(".popup__text-job");
@@ -45,6 +50,7 @@ function ClickClose() {
     //console.log("Мы кликнули по кнопке CLOSE");
 }
 
+likeButton.addEventListener("click", ClickLike);
 editButton.addEventListener("click", ClickEdit);
 addButton.addEventListener("click", ClickAdd);
 closeButton.addEventListener("click", ClickClose);

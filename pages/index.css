@@ -19,7 +19,7 @@
 @import url(../blocks/element/element.css);
 @import url(../blocks/element/__img/element__img.css);
 @import url(../blocks/element/__txt/element__txt.css);
-@import url(../blocks/element/__heart/element__heart.css);
+@import url(../blocks/element/__like-btn/element__like-btn.css);
 
 @import url(../blocks/popup/popup.css);
 @import url(../blocks/popup/__btn-save/popup__btn-save.css);

@@ -1,0 +1,16 @@
+.element__like-btn {
+  /*display: flex;*/
+  position: absolute;
+  right: 20px;
+  bottom: 25px;
+  width: 22px; /*282*/
+  height: 19px; /*361*/
+  background: url("../../../images/hard_waite.png") no-repeat;
+  background-size: cover;
+  border: none; /**/
+  cursor: pointer;
+}
+
+.element__like-btn:hover {
+  opacity: 0.5;
+}
