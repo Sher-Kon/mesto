@@ -8,7 +8,8 @@
   height: 50px;
   background-color: black; /* #ffdb4d;*/
   color: white;
-  border: none;
+  /*border: 2px;/**/
+  /*border-color: black;/**/
   border-radius: 2px; /* 2px */
   cursor: pointer;
 }

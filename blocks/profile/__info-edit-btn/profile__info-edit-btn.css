@@ -1,15 +1,18 @@
 .profile__info-edit-btn {
+  display: flex;
+  align-items: center;
   position: absolute;
   padding: 0;
   top: 16px;
   right: 10px;
   width: 24px;
   height: 24px;
-  background: url("../../../images/edit_knob.png") no-repeat;
-  background-size: cover;
-  border: black;
-  /*font-size: 0.8em;*/
-  /*background-color: #ffdb4d;/**/
+  background: url("../../../images/Rectangle.svg") no-repeat;/**/
+  background-size: cover;/**/
+  /*border: none;/**/
+  /*background-size: 10px 10px;/*cover;/**/
+  background-color: black;/**/
+  border: 2px white;/**/
   /*border-radius: 2px;/**/
   cursor: pointer;
 }
@@ -22,6 +25,6 @@
   .profile__info-edit-btn {
         width: 18px;
         height: 18px;
-        top: 26px;
+        top: 30px;
   }
 }
