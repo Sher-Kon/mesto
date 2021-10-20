@@ -1,10 +1,13 @@
 .profile__add-btn {
+  display: flex;
+  align-items: center;/* по высоте */
+  justify-content: center;/*по ширине*/
   position: absolute; /**/
   top: 38px; /**/
   right: 0; /**/
   width: 150px;
   height: 50px;
-  background: url("../../../images/add_knob.png") no-repeat;
+  background: url("../../../images/Rectangle-short.svg") no-repeat;
   background-size: cover;
   padding: 0;
   border: white;
@@ -27,7 +30,7 @@
       /*align-self: flex-end;*/
       width: 282px;
       height: 50px; /**/
-      background: url("../../../images/add_long_knob.png") no-repeat;
+      background: url("../../../images/Rectangle-long.svg") no-repeat;
       background-size: cover; /**/
   }
 }

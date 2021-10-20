@@ -7,12 +7,13 @@
   right: 10px;
   width: 24px;
   height: 24px;
-  background: url("../../../images/Rectangle.svg") no-repeat;/**/
+  background-color: black;/**/
+  background: url("../../../images/Rectangle-edit.svg") no-repeat;/**/
   background-size: cover;/**/
   /*border: none;/**/
   /*background-size: 10px 10px;/*cover;/**/
-  background-color: black;/**/
-  border: 2px white;/**/
+  border: white;/**/
+  border: 2px;
   /*border-radius: 2px;/**/
   cursor: pointer;
 }
