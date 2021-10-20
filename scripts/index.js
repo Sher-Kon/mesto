@@ -4,10 +4,10 @@ let content = document.querySelector(".content");
 let editButton = content.querySelector(".profile__info-edit-btn");//кн.открытия формы
 let nameInfo = content.querySelector(".profile__info-name");
 let jobInfo = content.querySelector(".profile__info-job");
-let popupElement = content.querySelector(".popup");
-let nameInput = popupElement.querySelector(".popup__text-name");
-let jobInput = popupElement.querySelector(".popup__text-job");
-let closeButton = popupElement.querySelector(".popup__btn-close");//кн.закрытия формы
+let popupElement = document.querySelector(".popup");
+let nameInput = document.querySelector(".popup__text-name");
+let jobInput = document.querySelector(".popup__text-job");
+let closeButton = document.querySelector(".popup__btn-close");//кн.закрытия формы
 
 let formElement = document.querySelector(".form");// Находим форму в DOM
 
