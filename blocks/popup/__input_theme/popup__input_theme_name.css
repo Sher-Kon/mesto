@@ -1,4 +1,4 @@
-.popup__text {
+.popup__input_theme_name {
   width: 330px;
   height: 50px;
   margin-top: 10px;
@@ -13,7 +13,7 @@
 }
 
 @media screen and (max-width: 750px) {
-  .popup__text {
+  .popup__input_theme_name {
       width: 238px;
       /*height: 46px;/**/
   }

@@ -5,8 +5,8 @@ let editButton = content.querySelector(".profile__info-edit-btn");//кн.отк�
 let nameInfo = content.querySelector(".profile__info-name");
 let jobInfo = content.querySelector(".profile__info-job");
 let popupElement = document.querySelector(".popup");
-let nameInput = document.querySelector(".popup__text-name");
-let jobInput = document.querySelector(".popup__text-job");
+let nameInput = document.querySelector(".popup__input_theme_name");
+let jobInput = document.querySelector(".popup__input_theme_job");
 let closeButton = document.querySelector(".popup__btn-close");//кн.закрытия формы
 
 let formElement = document.querySelector(".form");// Находим форму в DOM
