@@ -1,12 +1,12 @@
 .header {
     width: 880px;
-    height: 74px;
+    /*min-height: 74px;/**/
     margin-top: 45px;
     display: flex;
     flex-direction: row; /* строка */
     justify-content: space-between; /* расположить равномерно */
     background-color: black;
-    border-bottom: 2px solid #545454; /*серая полоса*/
+    border-bottom: 1px solid rgba(84, 84, 84, 0.7);/*#545454 серая полоса*/
     /*border:2px solid #d81435; /* красная рамка */
 }
 
@@ -18,6 +18,7 @@
 
 @media screen and (max-width: 750px) {
     .header {
-        width: 288px;
+        width: 320px;
+        margin-top: 28px;
     }
 }

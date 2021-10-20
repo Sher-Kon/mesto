@@ -1,6 +1,7 @@
 .header__logo {
   width: 144px; /*142*/
   height: 33px;
+  margin-bottom: 41px;
   background: url("../../../images/logo.png") no-repeat;
   background-size: cover;
 }
@@ -9,5 +10,7 @@
   .header__logo {
       width: 104px;
       height: 24px;
+      margin-left: 27px;
+      margin-bottom: 31px;
   }
 }

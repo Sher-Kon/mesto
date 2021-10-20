@@ -1,6 +1,6 @@
 .profile__info {
     width: 336px;
-    height: 92px;
+    /*height: 92px;/**/
     position: relative;
     display: flex;
     flex-direction: column; /* столбец */
