@@ -11,4 +11,7 @@
   margin-bottom: 0;
   color: black;
   /*border:2px solid #d81435; /* красная рамка */
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
