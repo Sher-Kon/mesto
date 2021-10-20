@@ -1,26 +1,25 @@
 let content = document.querySelector(".content");
-let likeButton = content.querySelector(".element__like-btn");//только первая кнопка
-let editButton = content.querySelector(".profile__info-edit-btn");
-let addButton = content.querySelector(".profile__add-btn");
-let saveButton = content.querySelector(".popup__btn-save");
-let closeButton = content.querySelector(".popup__btn-close");
+//let addButton = content.querySelector(".profile__add-btn");
+//let likeButton = content.querySelector(".element__like-btn");//только первая кнопка
+let editButton = content.querySelector(".profile__info-edit-btn");//кн.открытия формы
 let nameInfo = content.querySelector(".profile__info-name");
 let jobInfo = content.querySelector(".profile__info-job");
 let popupElement = content.querySelector(".popup");
 let nameInput = popupElement.querySelector(".popup__text-name");
 let jobInput = popupElement.querySelector(".popup__text-job");
+let closeButton = popupElement.querySelector(".popup__btn-close");//кн.закрытия формы
 
 let formElement = document.querySelector(".form");// Находим форму в DOM
 
 // Обработчик открытия формы
-function ClickEdit() {
+function clickEdit() {
     nameInput.value = nameInfo.textContent;
     jobInput.value = jobInfo.textContent;
     popupElement.classList.add("popup_opened"); //открыть окно
 }
 
 // Обработчик закрытия формы
-function ClickClose() {
+function clickClose() {
     popupElement.classList.remove("popup_opened"); //закрыть окно
 }
 
@@ -37,11 +36,11 @@ function formSubmitHandler(evt) {
     jobInfo.textContent = jobInput.value;
 
     // Закроем форму
-    popupElement.classList.remove("popup_opened"); //закрыть окно
+    clickClose();//закрыть окно
 }
 // Прикрепляем обработчик к форме:
 // он будет следить за событием “submit” - «отправка»
 formElement.addEventListener('submit', formSubmitHandler);
 
-editButton.addEventListener("click", ClickEdit);
-closeButton.addEventListener("click", ClickClose);
+editButton.addEventListener("click", clickEdit);//открыть окно
+closeButton.addEventListener("click", clickClose);//закрыть окно
