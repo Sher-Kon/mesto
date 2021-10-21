@@ -2,7 +2,7 @@
   width: 144px; /*142*/
   height: 33px;
   margin-bottom: 41px;
-  background: url("../../../images/logo.png") no-repeat;
+  background: url("../../../images/logo.svg") no-repeat;
   background-size: cover;
 }
 
