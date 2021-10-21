@@ -1,12 +1,12 @@
 .popup__title {
-  width: 330px;
+  width: 358px;
   font-size: 24px;
   line-height: 29px;
   font-weight: 900;
   font-style: normal;
   text-align: start;
   margin-top: 34px; /* отступ */
-  margin-left: 36px;
+  /*margin-left: 36px;/**/
   color: black;
 }
 
@@ -16,7 +16,7 @@
       font-size: 18px;
       line-height: 22px;
       margin-top: 25px; /* отступ */
-      margin-left: 22px;
+      /*margin-left: 22px;/**/
       margin-bottom: 40px;
   }
 }
