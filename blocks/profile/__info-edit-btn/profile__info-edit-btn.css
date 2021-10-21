@@ -1,20 +1,19 @@
 .profile__info-edit-btn {
   display: flex;
-  align-items: center;
-  position: absolute;
+  align-items: center;/**/
   padding: 0;
-  top: 16px;
-  right: 10px;
+  margin-left: 18px;
+  margin-top: 15px;
+  /*position: absolute;/**/
+  /*top: 16px;/**/
+  /*right: 10px;/**/
   width: 24px;
   height: 24px;
   background-color: black;/**/
   background: url("../../../images/Rectangle-edit.svg") no-repeat;/**/
   background-size: cover;/**/
-  /*border: none;/**/
-  /*background-size: 10px 10px;/*cover;/**/
   border: white;/**/
-  border: 2px;
-  /*border-radius: 2px;/**/
+  border: 1px;
   cursor: pointer;
 }
 
@@ -26,6 +25,9 @@
   .profile__info-edit-btn {
         width: 18px;
         height: 18px;
-        top: 30px;
+        margin: 0;
+        position: absolute;
+        top: 30px;/**/
+        right: 10px;/**/
   }
 }

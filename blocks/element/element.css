@@ -1,8 +1,8 @@
 .element {
-  /*display: flex;*/
+  display: flex;/**/
+  flex-direction: column; /* столбец */
   position: relative;
   width: 282px; /*282*/
-  height: 361px; /*361*/
   margin-bottom: 20px;
   border-radius: 10px;
   z-index: 1; /* накрывает для всех кто меньше */

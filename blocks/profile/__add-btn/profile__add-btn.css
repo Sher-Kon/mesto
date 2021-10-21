@@ -1,10 +1,12 @@
 .profile__add-btn {
-  display: flex;
+  display: flex;/* для плюса */
   align-items: center;/* по высоте */
   justify-content: center;/*по ширине*/
-  position: absolute; /**/
-  top: 38px; /**/
-  right: 0; /**/
+  /*position: absolute; /**/
+  /*top: 38px; /**/
+  /*right: 0; /**/
+  align-self:center;/**/
+  margin-left: 246px;
   width: 150px;
   height: 50px;
   background: url("../../../images/Rectangle-short.svg") no-repeat;
@@ -12,8 +14,6 @@
   padding: 0;
   border: white;
   border: 3px;
-  /*font-size: 0.8em;*/
-  /*background-color: #ffdb4d;/**/
   border-radius: 2px; /**/
   cursor: pointer;
 }
@@ -22,12 +22,20 @@
   opacity: 0.6;
 }
 
+@media screen and (max-width: 960px) {
+  .profile__add-btn {
+      margin-left: 60px;
+  }
+}
+
 @media screen and (max-width: 750px) {
   .profile__add-btn {
       /*position: absolute;/**/
-      top: 260px; /*127+96+36*/
+      /*top: 260px; /*127+96+36*/
       /*right: 0;*/
       /*align-self: flex-end;*/
+      margin-top: 50px;
+      margin-left: 0;
       width: 282px;
       height: 50px; /**/
       background: url("../../../images/Rectangle-long.svg") no-repeat;
