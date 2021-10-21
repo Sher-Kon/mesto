@@ -4,7 +4,7 @@
   align-items: center; /*  */
   width: 430px;
   border-radius: 10px;
-  position: relative;
+  position: relative;/* для кн. close */
   top: 0;
   right: 0;
   bottom: 0;

@@ -1,20 +1,19 @@
 .popup__input_theme_job {
-    width: 358px;
-    margin-top: 27px;
-    font-size: 14px;
-    line-height: 17px;
-    font-weight: 400;
-    font-style: normal;
-    text-align: start;
-    border: none;
-    border-bottom: 1px solid rgba(0,0,0,0.2);
-    padding-bottom: 13px;
-    box-sizing: border-box;
+  width: 358px;
+  margin-top: 27px;
+  font-size: 14px;
+  line-height: 17px;
+  font-weight: 400;
+  font-style: normal;
+  text-align: start;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  padding-bottom: 13px;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 750px) {
+  .popup__input_theme_job {
+      width: 238px;
   }
-  
-  @media screen and (max-width: 750px) {
-    .popup__input_theme_job {
-        width: 238px;
-    }
-  }
-  
+}

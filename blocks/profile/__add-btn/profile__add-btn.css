@@ -1,11 +1,8 @@
 .profile__add-btn {
-  display: flex;/* для плюса */
-  align-items: center;/* по высоте */
-  justify-content: center;/*по ширине*/
-  /*position: absolute; /**/
-  /*top: 38px; /**/
-  /*right: 0; /**/
-  align-self:center;/**/
+  display: flex; /* для плюса */
+  align-items: center; /* по высоте */
+  justify-content: center; /*по ширине*/
+  align-self: center; /**/
   margin-left: 246px;
   width: 150px;
   height: 50px;
@@ -30,15 +27,11 @@
 
 @media screen and (max-width: 750px) {
   .profile__add-btn {
-      /*position: absolute;/**/
-      /*top: 260px; /*127+96+36*/
-      /*right: 0;*/
       /*align-self: flex-end;*/
-      margin-top: 50px;
+      margin-top: 36px;
       margin-left: 0;
       width: 282px;
       height: 50px; /**/
       background: url("../../../images/Rectangle-long.svg") no-repeat;
-      background-size: cover; /**/
   }
 }
