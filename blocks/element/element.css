@@ -1,7 +1,6 @@
 .element {
   display: flex;/**/
-  flex-direction: column; /* столбец */
-  position: relative;
+  flex-wrap: wrap;
   width: 282px; /*282*/
   margin-bottom: 20px;
   border-radius: 10px;

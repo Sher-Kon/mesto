@@ -6,11 +6,6 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  /*justify-content:space-evenly; /*от краев равномерно */
-  /*display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  gap: 16px; /* calc((100% - 1180px) / 3);/*16px;*/
   /*border:2px solid #d81435; /* красная рамка */
 }
 
