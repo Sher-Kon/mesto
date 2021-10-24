@@ -5,10 +5,6 @@
   width: 430px;
   border-radius: 10px;
   position: relative;/* для кн. close */
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
   margin: auto;
   background: #fff;
   z-index: 4; /* накрывает для всех кто меньше */
