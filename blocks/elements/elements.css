@@ -1,23 +1,21 @@
 .elements {
-  width: 880px;
+  width: 897px;/*880*/
   margin-left: 0;
   margin-bottom: 47px; /*67= 47 +20*/
   padding: 0;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  /*border:2px solid #d81435; /* красная рамка */
 }
 
 @media screen and (max-width: 960px) {
   .elements {
-      width: 640px;
+      width: 598px;/*640*/
   }
 }
 
 @media screen and (max-width: 750px) {
   .elements {
-      width: 282px;
+      width: 299px;/*282*/
       flex-direction: column; /* столбец */
       margin-bottom: 28px; /*48= 28 +20*/
   }
