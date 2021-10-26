@@ -1,12 +1,12 @@
-let content = document.querySelector(".content");
-//let addButton = content.querySelector(".profile__add-btn");
-let editButton = content.querySelector(".profile__info-edit-btn");//кн.открытия формы
-let nameInfo = content.querySelector(".profile__info-name");
-let jobInfo = content.querySelector(".profile__info-job");
-let popupElement = document.querySelector(".popup");
-let nameInput = document.querySelector(".popup__text_input_name");
-let jobInput = document.querySelector(".popup__text_input_job");
-let closeButton = document.querySelector(".popup__btn-close");//кн.закрытия формы
+const content = document.querySelector(".content");
+const addButton = content.querySelector(".profile__add-btn");
+const editButton = content.querySelector(".profile__info-edit-btn");//кн.открытия формы
+const nameInfo = content.querySelector(".profile__info-name");
+const jobInfo = content.querySelector(".profile__info-job");
+const popupElement = document.querySelector(".popup");
+const nameInput = document.querySelector(".popup__text_input_name");
+const jobInput = document.querySelector(".popup__text_input_job");
+const closeButton = document.querySelector(".popup__btn-close");//кн.закрытия формы
 
 let formElement = document.querySelector(".form");// Находим форму в DOM
 
@@ -47,14 +47,6 @@ function clickEdit() {
 // Обработчик закрытия формы
 function clickClose() {
     popupElement.classList.remove("popup_opened"); //закрыть окно
-}
-
-// Обработчик лайка
-function clickLike() {
-   //likeButton.style.backgroundImage =  "url("./images/like_black.svg")";//like_black.svg
-   console.log("лайкнули");
-   console.log(likeButton);
-   likeButton.classList.toggle("element__like-btn_active");
 }
 
 // Обработчик «отправки» формы, хотя пока
@@ -150,3 +142,8 @@ deleteButtonF.addEventListener('click', function () {
   const listItem = deleteButtonF.closest('.element');
   listItem.remove();
 }); 
+
+// добавим обработчик кнопки +
+addButton.addEventListener("click", function() {
+  console.log("кликнули по кнопке +");
+});
