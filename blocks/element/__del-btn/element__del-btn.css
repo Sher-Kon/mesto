@@ -9,6 +9,7 @@
     background-size: cover;
     border: none;
     cursor: pointer;
+    transition: 0.3s;/*плавность*/
   }
   
   .element__del-btn:hover {

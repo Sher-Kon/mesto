@@ -1,6 +1,6 @@
 let content = document.querySelector(".content");
 //let addButton = content.querySelector(".profile__add-btn");
-//let likeButton = content.querySelector(".element__like-btn");//только первая кнопка
+let likeButton = content.querySelector(".element__like-btn");//только первая кнопка
 let editButton = content.querySelector(".profile__info-edit-btn");//кн.открытия формы
 let nameInfo = content.querySelector(".profile__info-name");
 let jobInfo = content.querySelector(".profile__info-job");
@@ -50,6 +50,13 @@ function clickClose() {
     popupElement.classList.remove("popup_opened"); //закрыть окно
 }
 
+// Обработчик лайка
+function clickLike() {
+   //likeButton.background =  url("../images/like_black.svg") no-repeat;
+   console.log("лайкнули");
+   console.log(likeButton);
+}
+
 // Обработчик «отправки» формы, хотя пока
 // она никуда отправляться не будет
 function formSubmitHandler(evt) {
@@ -71,3 +78,5 @@ formElement.addEventListener('submit', formSubmitHandler);
 
 editButton.addEventListener("click", clickEdit);//открыть окно
 closeButton.addEventListener("click", clickClose);//закрыть окно
+
+likeButton.addEventListener("click", clickLike);//лайкнуть
