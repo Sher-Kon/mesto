@@ -52,9 +52,10 @@ function clickClose() {
 
 // Обработчик лайка
 function clickLike() {
-   //likeButton.background =  url("../images/like_black.svg") no-repeat;
+   //likeButton.style.backgroundImage =  "url("./images/like_black.svg")";//like_black.svg
    console.log("лайкнули");
    console.log(likeButton);
+   likeButton.classList.toggle("element__like-btn_active");
 }
 
 // Обработчик «отправки» формы, хотя пока
