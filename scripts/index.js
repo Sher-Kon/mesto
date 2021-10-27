@@ -36,6 +36,22 @@ const initialCards = [
       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
     }
   ];
+  const iniCardsURL = [
+    'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg',
+    'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg',
+    'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg',
+    'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg',
+    'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg',
+    'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+  ];
+  const iniCardsTXT = [
+    'Архыз',
+    'Челябинская область',
+    'Иваново',
+    'Камчатка',
+    'Холмогорский район',
+    'Байкал',
+  ];
 
 // Обработчик открытия формы
 function clickEdit() {
@@ -143,7 +159,34 @@ deleteButtonF.addEventListener('click', function () {
   listItem.remove();
 }); 
 
+
+let index=0;
 // добавим обработчик кнопки +
 addButton.addEventListener("click", function() {
+
+  // получим элемент 
+  const elementTemplate = document.querySelector('#element').content;//клон
+  const elementsOnline = document.querySelector('.elements');//куда вставить
+  // клонируем содержимое тега template
+  const userElement = elementTemplate.querySelector('.element').cloneNode(true);
+  // наполняем содержимым
+  userElement.querySelector('.element__img').src = iniCardsURL[index];
+  userElement.querySelector('.element__txt').textContent = iniCardsTXT[index];//'Клон карты';
+  // выберем кнопку лайка
+  userElement.querySelector('.element__like-btn').addEventListener('click', function (evt) {
+    evt.target.classList.toggle('element__like-btn_active');
+});
+  // отображаем на странице
+  elementsOnline.append(userElement);//добавить в конец  
   console.log("кликнули по кнопке +");
+
+  const strIni = iniCardsURL[index];
+  //const urlIni = strIni.split(': ');
+  //strIni.slice(7)
+  if (index===5) {
+    index=0;
+  } else {
+    index += 1;
+  } 
+  console.log(index);
 });
