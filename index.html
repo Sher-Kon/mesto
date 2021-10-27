@@ -35,7 +35,9 @@
         </footer>
         <template id="element">
             <div class="element">
-                <img src="./images/karachaevsk.png" class="element__img" alt="собор в горах">
+                <button class="element__img-btn" type="button">
+                    <img src="./images/karachaevsk.png" class="element__img" alt="собор в горах">
+                </button>
                 <h2 class="element__txt">Карачаевск</h2>
                 <button class="element__like-btn" type="button"></button>
                 <button class="element__del-btn" type="button"></button>
@@ -60,7 +62,7 @@
         <!-- bildCard -->
         <div class="bildCard">
             <div class="bildCard__container">
-                <form class="form" name="editProfile">
+                <form class="form" name="editCard">
                     <h3 class="bildCard__title">Новое место</h3>
                     <div class="bildCard__input">
                         <input type="text" placeholder="Название" class="bildCard__text bildCard__text_input_place"
@@ -71,6 +73,22 @@
                     </div>
                 </form>
                 <button class="bildCard__btn-close" type="button"></button>
+            </div>
+        </div>
+        <!-- lookImg -->
+        <div class="lookImg">
+            <div class="lookImg__container">
+                <form class="form" name="lookImg">
+                    <h3 class="lookImg__title">Просмотр изображения</h3>
+                    <div class="lookImg__input">
+                        <input type="text" placeholder="Название" class="lookImg__text lookImg__text_input_place"
+                            name="placeInput">
+                        <input type="text" placeholder="Ссылка на картинку"
+                            class="lookImg__text lookImg__text_input_url" name="urlInput">
+                        <button class="lookImg__btn-save" type="submit">Создать</button>
+                    </div>
+                </form>
+                <button class="lookImg__btn-close" type="button"></button>
             </div>
         </div>
     </div>

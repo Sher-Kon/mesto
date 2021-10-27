@@ -8,14 +8,19 @@ const popupElement = document.querySelector(".popup");
 const nameInput = document.querySelector(".popup__text_input_name");
 const jobInput = document.querySelector(".popup__text_input_job");
 const closeButton = document.querySelector(".popup__btn-close");//кн.закрытия формы
+const formElement = popupElement.querySelector(".form");// Находим форму в DOM
 // bildCard
 const bildCardElement = document.querySelector(".bildCard");
 const placeInput = document.querySelector(".bildCard__text_input_place");
 const urlInput = document.querySelector(".bildCard__text_input_url");
 const closeBttn = document.querySelector(".bildCard__btn-close");//кн.закрытия формы bildCard
-
-const formElement = popupElement.querySelector(".form");// Находим форму в DOM
 const formbildCard = bildCardElement.querySelector(".form");// Находим форму в DOM in bildCardElement
+// lookImg
+const lookImgElement = document.querySelector(".lookImg");
+const txtImg = document.querySelector(".lookImg__text_input_place");
+const urlImg = document.querySelector(".lookImg__text_input_url");
+const closelookImg = document.querySelector(".lookImg__btn-close");//кн.закрытия формы lookImg
+const formlookImg = lookImgElement.querySelector(".form");// Находим форму в DOM in lookImgElement
 
 const initialCards = [
     {
@@ -60,6 +65,21 @@ const initialCards = [
     'Байкал',
   ];
 
+// Обработчик открытия формы lookImg
+let lookImgUrl = "";
+let lookImgTxt = "";
+function openlookImg() {
+  txtImg.value = lookImgTxt;//nameInfo.textContent;
+  urlImg.value = lookImgUrl;//jobInfo.textContent;
+  lookImgElement.classList.add("lookImg_opened"); //открыть lookImg
+}
+// Обработчик закрытия формы lookImg
+function CloselookImg() {
+  lookImgElement.classList.remove("lookImg_opened"); //закрыть lookImg
+}
+closelookImg.addEventListener("click", CloselookImg);//закрыть lookImg
+
+  
 
 // Обработчик открытия формы bildCard
 function openbildCard() {
@@ -72,6 +92,7 @@ function ClosebildCard() {
   bildCardElement.classList.remove("bildCard_opened"); //закрыть bildCard
 }
 closeBttn.addEventListener("click", ClosebildCard);//закрыть bildCard
+
 // Обработчик «отправки» формы bildCard, хотя пока
 // она никуда отправляться не будет
 function bildCardSubmitHandler(evt) {
@@ -88,8 +109,6 @@ function bildCardSubmitHandler(evt) {
     //debugADD();
     addElement(url, place);//клонируем карточку
   }
-  
-
   // Закроем форму bildCard()
   ClosebildCard();//закрыть окно bildCard()
 }
@@ -143,6 +162,16 @@ function addElement (url, txt) {
   // наполняем содержимым
   userElement.querySelector(".element__img").src = url;
   userElement.querySelector(".element__txt").textContent = txt;//'Клон карты';
+  // выберем кнопку увеличить картинку
+  userElement.querySelector(".element__img-btn").addEventListener("click", function (evt) {
+    //lookImgUrl = evt.target.closest(".element__img").src;
+    lookImgUrl = evt.target.closest(".element__img").src;
+    lookImgTxt = evt.target.closest(".element").textContent;
+    console.log("Кн. Увеличить картинку");
+    console.log(lookImgUrl);
+    //lookImgUrl=url_img;
+    openlookImg();//открыть окно просмотра картинки
+  });
   // выберем кнопку лайка
   userElement.querySelector(".element__like-btn").addEventListener("click", function (evt) {
     evt.target.classList.toggle("element__like-btn_active");
