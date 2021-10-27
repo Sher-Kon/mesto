@@ -80,10 +80,15 @@ function bildCardSubmitHandler(evt) {
   // О том, как это делать, расскажем позже.
   //console.log('Обработчик отправки формы');
 
-  // Вставьте новые значения с помощью textContent
-  //nameInfo.textContent = nameInput.value;
-  //jobInfo.textContent = jobInput.value;
-  debugADD();
+  // Вставьте новые значения в новую карточку
+  const place = placeInput.value;
+  const url = urlInput.value;
+  //console.log(url);//debug
+  if (url!=='') {
+    //debugADD();
+    addElement(url, place);//клонируем карточку
+  }
+  
 
   // Закроем форму bildCard()
   ClosebildCard();//закрыть окно bildCard()
@@ -174,9 +179,9 @@ function debugADD(){
 
 // добавим обработчик кнопки +
 addButton.addEventListener("click", function() {
+  //console.log("кликнули по кнопке +");//отладка
   //debugADD();
   openbildCard();
-  console.log("кликнули по кнопке +");
 });
 
 
