@@ -175,18 +175,21 @@ addButton.addEventListener("click", function() {
   // выберем кнопку лайка
   userElement.querySelector('.element__like-btn').addEventListener('click', function (evt) {
     evt.target.classList.toggle('element__like-btn_active');
-});
+  });
+  // выберем кнопку удаления
+  userElement.querySelector('.element__del-btn').addEventListener('click', function (evt) {
+    //console.log("Кн. УДАЛИТЬ");
+    const listItem = evt.target.closest('.element');
+    listItem.remove();
+  });
   // отображаем на странице
   elementsOnline.append(userElement);//добавить в конец  
-  console.log("кликнули по кнопке +");
 
-  const strIni = iniCardsURL[index];
-  //const urlIni = strIni.split(': ');
-  //strIni.slice(7)
   if (index===5) {
     index=0;
   } else {
     index += 1;
   } 
-  console.log(index);
+  //console.log(index);
+  console.log("кликнули по кнопке +");
 });
