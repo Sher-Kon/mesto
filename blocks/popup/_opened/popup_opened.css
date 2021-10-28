@@ -1,4 +1,7 @@
 .popup_opened {
-    display: flex;/*block;*/
-  }
+  /*display: flex;/*block;*/
+  /* медленное исчезновение */
+  visibility: visible;/**/
+  opacity: 1;/**/
+}
   

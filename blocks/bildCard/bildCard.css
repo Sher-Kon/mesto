@@ -5,6 +5,12 @@
   position: fixed;
   top: 0;
   left: 0;
-  display: none;
   z-index: 3; /* накрывает для всех кто меньше */
+  /*display: none;/* нет изображения исх*/
+  /* медленное исчезновение */
+  display: flex;/**/
+  visibility: hidden;/**/
+  opacity: 0;
+  /*transition: visibility 0s linear 0.5s, opacity 0.5s linear;/**/
+  transition: visibility 0.5s, opacity 0.5s;/**/
 }
