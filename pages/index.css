@@ -45,7 +45,7 @@
 
 @import url(../blocks/lookImg/lookImg.css);
 @import url(../blocks/lookImg/_opened/lookImg_opened.css);
-@import url(../blocks/lookImg/__btn-save/lookImg__btn-save.css);
+@import url(../blocks/lookImg/__img/lookImg__img.css);
 @import url(../blocks/lookImg/__btn-close/lookImg__btn-close.css);
 @import url(../blocks/lookImg/__container/lookImg__container.css);
 @import url(../blocks/lookImg/__input/lookImg__input.css);

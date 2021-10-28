@@ -17,8 +17,8 @@ const closeBttn = document.querySelector(".bildCard__btn-close");//кн.закр
 const formbildCard = bildCardElement.querySelector(".form");// Находим форму в DOM in bildCardElement
 // lookImg
 const lookImgElement = document.querySelector(".lookImg");
-const txtImg = document.querySelector(".lookImg__text_input_place");
-const urlImg = document.querySelector(".lookImg__text_input_url");
+const txtImg = document.querySelector(".lookImg__title");
+const srcImg = document.querySelector(".lookImg__img");
 const closelookImg = document.querySelector(".lookImg__btn-close");//кн.закрытия формы lookImg
 const formlookImg = lookImgElement.querySelector(".form");// Находим форму в DOM in lookImgElement
 
@@ -69,8 +69,9 @@ const initialCards = [
 let lookImgUrl = "";
 let lookImgTxt = "";
 function openlookImg() {
-  txtImg.value = lookImgTxt;//nameInfo.textContent;
-  urlImg.value = lookImgUrl;//jobInfo.textContent;
+//  txtImg.value = lookImgTxt;//nameInfo.textContent;
+  txtImg.textContent = lookImgTxt;
+  srcImg.src = lookImgUrl;
   lookImgElement.classList.add("lookImg_opened"); //открыть lookImg
 }
 // Обработчик закрытия формы lookImg
