@@ -15,10 +15,6 @@
 
 @media screen and (max-width: 750px) {
   .lookImg__title {
-      width: 238px;
-      font-size: 18px;
-      line-height: 22px;
-      margin-top: 25px; /* отступ */
-      margin-bottom: 48px;/*75=48+13+14*/
+      width: 240px;
   }
 }

@@ -17,9 +17,9 @@ const closeBttn = document.querySelector(".bildCard__btn-close");//кн.закр
 const formbildCard = bildCardElement.querySelector(".form");// Находим форму в DOM in bildCardElement
 // lookImg
 const lookImgElement = document.querySelector(".lookImg");
-const txtImg = document.querySelector(".lookImg__title");
-const srcImg = document.querySelector(".lookImg__img");
-const closelookImg = document.querySelector(".lookImg__btn-close");//кн.закрытия формы lookImg
+const txtImg = lookImgElement.querySelector(".lookImg__title");
+const srcImg = lookImgElement.querySelector(".lookImg__img");
+const closelookImg = lookImgElement.querySelector(".lookImg__btn-close");//кн.закрытия формы lookImg
 const formlookImg = lookImgElement.querySelector(".form");// Находим форму в DOM in lookImgElement
 
 const initialCards = [

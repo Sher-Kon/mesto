@@ -13,6 +13,14 @@
 
 @media screen and (max-width: 960px) {
   .lookImg__container {
-      width: 282px;
-  }
+    width: 433px;
+    height: 540px;
+    }
+}
+
+@media screen and (max-width: 750px) {
+  .lookImg__container {
+    width: 240px;
+    height: 299px;
+    }
 }
