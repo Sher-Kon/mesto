@@ -5,15 +5,15 @@ const nameInfo = content.querySelector(".profile__info-name");
 const jobInfo = content.querySelector(".profile__info-job");
 // popup
 const popupElement = document.querySelector(".popup");
-const nameInput = document.querySelector(".popup__text_input_name");
-const jobInput = document.querySelector(".popup__text_input_job");
-const closeButton = document.querySelector(".popup__btn-close");//кн.закрытия формы
+const nameInput = popupElement.querySelector(".popup__text_input_name");
+const jobInput = popupElement.querySelector(".popup__text_input_job");
+const closeButton = popupElement.querySelector(".popup__btn-close");//кн.закрытия формы
 const formElement = popupElement.querySelector(".form");// Находим форму в DOM
 // bildCard
 const bildCardElement = document.querySelector(".bildCard");
-const placeInput = document.querySelector(".bildCard__text_input_place");
-const urlInput = document.querySelector(".bildCard__text_input_url");
-const closeBttn = document.querySelector(".bildCard__btn-close");//кн.закрытия формы bildCard
+const placeInput = bildCardElement.querySelector(".bildCard__text_input_place");
+const urlInput = bildCardElement.querySelector(".bildCard__text_input_url");
+const closeBttn = bildCardElement.querySelector(".bildCard__btn-close");//кн.закрытия формы bildCard
 const formbildCard = bildCardElement.querySelector(".form");// Находим форму в DOM in bildCardElement
 // lookImg
 const lookImgElement = document.querySelector(".lookImg");
@@ -66,12 +66,7 @@ const initialCards = [
   ];
 
 // Обработчик открытия формы lookImg
-let lookImgUrl = "";
-let lookImgTxt = "";
 function openlookImg() {
-//  txtImg.value = lookImgTxt;//nameInfo.textContent;
-  txtImg.textContent = lookImgTxt;
-  srcImg.src = lookImgUrl;
   lookImgElement.classList.add("lookImg_opened"); //открыть lookImg
 }
 // Обработчик закрытия формы lookImg
@@ -165,12 +160,9 @@ function addElement (url, txt) {
   userElement.querySelector(".element__txt").textContent = txt;//'Клон карты';
   // выберем кнопку увеличить картинку
   userElement.querySelector(".element__img-btn").addEventListener("click", function (evt) {
-    //lookImgUrl = evt.target.closest(".element__img").src;
-    lookImgUrl = evt.target.closest(".element__img").src;
-    lookImgTxt = evt.target.closest(".element").textContent;
-    console.log("Кн. Увеличить картинку");
-    console.log(lookImgUrl);
-    //lookImgUrl=url_img;
+    txtImg.textContent = evt.target.closest(".element").textContent;
+    srcImg.src = evt.target.closest(".element__img").src;
+      //console.log("Кн. Увеличить картинку");
     openlookImg();//открыть окно просмотра картинки
   });
   // выберем кнопку лайка
