@@ -21,6 +21,9 @@ const txtImg = lookImgElement.querySelector(".lookImg__title");
 const srcImg = lookImgElement.querySelector(".lookImg__img");
 const closelookImg = lookImgElement.querySelector(".lookImg__btn-close");//кн.закрытия формы lookImg
 const formlookImg = lookImgElement.querySelector(".form");// Находим форму в DOM in lookImgElement
+// получим элементы "template" DOM определим глобально
+const elementTemplate = document.querySelector("#element").content;//клон
+const elementsOnline = document.querySelector(".elements");//куда вставить
 
 const iniCardsURL = [
   'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg',
@@ -88,11 +91,11 @@ function clickEdit() {
     jobInput.value = jobInfo.textContent;
     popupElement.classList.add("popup_opened"); //открыть окно
 }
-// Обработчик закрытия формы popup
+// Обработчик закрытия формы popup «Редактировать профиль»
 function clickClose() {
     popupElement.classList.remove("popup_opened"); //закрыть окно
 }
-// Обработчик «отправки» формы, хотя пока
+// Обработчик «отправки» формы «Редактировать профиль», хотя пока
 // она никуда отправляться не будет
 function formSubmitHandler(evt) {
     evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
@@ -108,21 +111,18 @@ function formSubmitHandler(evt) {
 // Прикрепляем обработчик к форме «Редактировать профиль»:
 // он будет следить за событием “submit” - «отправка»
 formElement.addEventListener("submit", formSubmitHandler);
-// Кнопки попапа
+// Кнопки попапа «Редактировать профиль»
 editButton.addEventListener("click", clickEdit);//открыть попап
 closeButton.addEventListener("click", clickClose);//закрыть попап
 
 // Клонируем карточку
 function addElement (url, txt, direction) {
-  // получим элементы DOM 
-  const elementTemplate = document.querySelector("#element").content;//клон
-  const elementsOnline = document.querySelector(".elements");//куда вставить
   // клонируем содержимое тега template
   const userElement = elementTemplate.querySelector(".element").cloneNode(true);
   // наполняем содержимым
   userElement.querySelector(".element__img").src = url;
   userElement.querySelector(".element__txt").textContent = txt;//'Клон карты';
-  // выберем кнопку увеличить картинку "lookImg"
+  // выберем кнопку просмотра картинки "lookImg"
   userElement.querySelector(".element__img-btn").addEventListener("click", function (evt) {
     txtImg.textContent = evt.target.closest(".element").textContent;
     srcImg.src = evt.target.closest(".element__img").src;
@@ -135,7 +135,7 @@ function addElement (url, txt, direction) {
   });
   // выберем кнопку удаления
   userElement.querySelector(".element__del-btn").addEventListener("click", function (evt) {
-    //console.log("Кн. УДАЛИТЬ");
+    //console.log("Кн. УДАЛИТЬ");//отладка
     const listItem = evt.target.closest(".element");
     listItem.remove();
   });
