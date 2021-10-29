@@ -4,8 +4,10 @@
   align-items: center; /*  */
   width: 816px;
   height: 540px;
-  position: relative;/* для кн. close */
+  /*width: 75vw;/*75vw*/
+  /*height: 75vh;/*75vh*/
   margin: auto;
+  position: relative;/* для кн. close */
   background: #fff;
   z-index: 4; /* накрывает для всех кто меньше */
 }

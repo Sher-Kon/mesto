@@ -21,7 +21,7 @@ const txtImg = lookImgElement.querySelector(".lookImg__title");
 const srcImg = lookImgElement.querySelector(".lookImg__img");
 const closelookImg = lookImgElement.querySelector(".lookImg__btn-close");//кн.закрытия формы lookImg
 const formlookImg = lookImgElement.querySelector(".form");// Находим форму в DOM in lookImgElement
-// получим элементы "template" DOM определим глобально
+// элементы "template" DOM определим глобально
 const elementTemplate = document.querySelector("#element").content;//клон
 const elementsOnline = document.querySelector(".elements");//куда вставить
 
