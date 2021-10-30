@@ -1,4 +1,4 @@
-.bildCard__btn-close {
+.look-img__btn-close {
   /*background: rgba(0, 0, 0, 0);/**/
   position: absolute;
   padding: 0;
@@ -13,12 +13,12 @@
   cursor: pointer;
 }
 
-.bildCard__btn-close:hover {
+.look-img__btn-close:hover {
   opacity: 0.6;
 }
 
 @media screen and (max-width: 750px) {
-  .bildCard__btn-close {
+  .look-img__btn-close {
       width: 20px;
       height: 20px;
       right: 0px; /**/

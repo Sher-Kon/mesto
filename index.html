@@ -43,8 +43,8 @@
                 <button class="element__del-btn" type="button"></button>
             </div>
         </template>
-        <!-- Редактировать профиль -->
-        <div class="popup">
+        <!-- edit-profile -->
+        <div class="popup edit-profile">
             <div class="popup__container">
                 <form class="form" name="editProfile">
                     <h3 class="popup__title">Редактировать профиль</h3>
@@ -59,30 +59,30 @@
                 <button class="popup__btn-close" type="button"></button>
             </div>
         </div>
-        <!-- bildCard -->
-        <div class="bildCard">
-            <div class="bildCard__container">
+        <!-- bild-card -->
+        <div class="popup bild-card">
+            <div class="bild-card__container">
                 <form class="form" name="editCard">
-                    <h3 class="bildCard__title">Новое место</h3>
-                    <div class="bildCard__input">
-                        <input type="text" placeholder="Название" class="bildCard__text bildCard__text_input_place"
+                    <h3 class="bild-card__title">Новое место</h3>
+                    <div class="bild-card__input">
+                        <input type="text" placeholder="Название" class="bild-card__text bild-card__text_input_place"
                             name="placeInput">
                         <input type="text" placeholder="Ссылка на картинку"
-                            class="bildCard__text bildCard__text_input_url" name="urlInput">
-                        <button class="bildCard__btn-save" type="submit">Создать</button>
+                            class="bild-card__text bild-card__text_input_url" name="urlInput">
+                        <button class="bild-card__btn-save" type="submit">Создать</button>
                     </div>
                 </form>
-                <button class="bildCard__btn-close" type="button"></button>
+                <button class="popup__btn-close bild-card__btn-close" type="button"></button>
             </div>
         </div>
-        <!-- lookImg -->
-        <div class="lookImg">
-            <div class="lookImg__container">
+        <!-- look-img -->
+        <div class="popup look-img">
+            <div class="look-img__container">
                 <form class="form" name="lookImg">
-                    <h3 class="lookImg__title">Название</h3>
-                    <img src="./images/dombay.png" class="lookImg__img" alt="пейзаж">
+                    <h3 class="look-img__title">Название</h3>
+                    <img src="./images/dombay.png" class="look-img__img" alt="пейзаж">
                 </form>
-                <button class="lookImg__btn-close" type="button"></button>
+                <button class="popup__btn-close look-img__btn-close" type="button"></button>
             </div>
         </div>
     </div>

@@ -10,16 +10,16 @@ const jobInput = popupElement.querySelector(".popup__text_input_job");
 const closeButton = popupElement.querySelector(".popup__btn-close");//кн.закрытия формы
 const formElement = popupElement.querySelector(".form");// Находим форму в DOM
 // bildCard
-const bildCardElement = document.querySelector(".bildCard");
-const placeInput = bildCardElement.querySelector(".bildCard__text_input_place");
-const urlInput = bildCardElement.querySelector(".bildCard__text_input_url");
-const closeBttn = bildCardElement.querySelector(".bildCard__btn-close");//кн.закрытия формы bildCard
+const bildCardElement = document.querySelector(".bild-card");
+const placeInput = bildCardElement.querySelector(".bild-card__text_input_place");
+const urlInput = bildCardElement.querySelector(".bild-card__text_input_url");
+const closeBttn = bildCardElement.querySelector(".bild-card__btn-close");//кн.закрытия формы bild-card
 const formbildCard = bildCardElement.querySelector(".form");// Находим форму в DOM in bildCardElement
 // lookImg
-const lookImgElement = document.querySelector(".lookImg");
-const txtImg = lookImgElement.querySelector(".lookImg__title");
-const srcImg = lookImgElement.querySelector(".lookImg__img");
-const closelookImg = lookImgElement.querySelector(".lookImg__btn-close");//кн.закрытия формы lookImg
+const lookImgElement = document.querySelector(".look-img");
+const txtImg = lookImgElement.querySelector(".look-img__title");
+const srcImg = lookImgElement.querySelector(".look-img__img");
+const closelookImg = lookImgElement.querySelector(".look-img__btn-close");//кн.закрытия формы lookImg
 const formlookImg = lookImgElement.querySelector(".form");// Находим форму в DOM in lookImgElement
 // элементы "template" DOM определим глобально
 const elementTemplate = document.querySelector("#element").content;//клон
@@ -43,25 +43,25 @@ const iniCardsTXT = [
 ];
 
 // Обработчик открытия формы lookImg
-function openlookImg() {
-  lookImgElement.classList.add("lookImg_opened"); //открыть lookImg
+function openLookImg() {
+  lookImgElement.classList.add("look-img_opened"); //открыть lookImg
 }
 // Обработчик закрытия формы lookImg
-function CloselookImg() {
-  lookImgElement.classList.remove("lookImg_opened"); //закрыть lookImg
+function closeLookImg() {
+  lookImgElement.classList.remove("look-img_opened"); //закрыть lookImg
 }
 // Кнопка - Х -закрыть "lookImg"
-closelookImg.addEventListener("click", CloselookImg);//закрыть lookImg
+closelookImg.addEventListener("click", closeLookImg);//закрыть lookImg
 
-// Обработчик открытия формы bildCard
-function openbildCard() {
-  bildCardElement.classList.add("bildCard_opened"); //открыть bildCard
+// Обработчик открытия формы bild-card
+function openBildCard() {
+  bildCardElement.classList.add("bild-card_opened"); //открыть bildCard
 }
-// Обработчик закрытия формы bildCard
-function ClosebildCard() {
-  bildCardElement.classList.remove("bildCard_opened"); //закрыть bildCard
+// Обработчик закрытия формы bild-card
+function closeBildCard() {
+  bildCardElement.classList.remove("bild-card_opened"); //закрыть bildCard
 }
-// Обработчик «отправки» формы bildCard
+// Обработчик «отправки» формы bild-card
 function bildCardSubmitHandler(evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
   // Вставьте новые значения в новую карточку
@@ -72,17 +72,17 @@ function bildCardSubmitHandler(evt) {
     addElement(url, place, "up");//клонируем карточку в начало
   }
   // Закроем форму bildCard()
-  ClosebildCard();//закрыть окно bildCard()
+  closeBildCard();//закрыть окно bild-card()
 }
-// форма bildCard:
+// форма bild-card:
 // Кнопка - «создать»
 formbildCard.addEventListener("submit", bildCardSubmitHandler);
 // Кнопка - Х -закрыть
-closeBttn.addEventListener("click", ClosebildCard);//закрыть bildCard
+closeBttn.addEventListener("click", closeBildCard);//закрыть bildCard
 // Кнопка « + » (открыть окно "Новое место")
 addButton.addEventListener("click", function() {
   //console.log("кликнули по кнопке +");//отладка
-  openbildCard();
+  openBildCard();
 });
 
 // Обработчик открытия формы popup «Редактировать профиль»
@@ -127,7 +127,7 @@ function addElement (url, txt, direction) {
     txtImg.textContent = evt.target.closest(".element").textContent;
     srcImg.src = evt.target.closest(".element__img").src;
       //console.log("Кликнули по картинке");//отладка
-    openlookImg();//открыть окно просмотра картинки "lookImg"
+    openLookImg();//открыть окно просмотра картинки "lookImg"
   });
   // выберем кнопку лайка
   userElement.querySelector(".element__like-btn").addEventListener("click", function (evt) {
@@ -141,10 +141,13 @@ function addElement (url, txt, direction) {
   });
   // отображаем на странице
   if (direction==="dn") {
-    elementsOnline.append(userElement);//добавить в конец 
+    elementsOnline.append(userElement);//добавить в конец - ini
   }
   if (direction==="up") {
     elementsOnline.prepend(userElement);//добавить в начало  
+    // Очистить инпуты для новой карточки
+    placeInput.value = "";
+    urlInput.value = "";
   }
 }
 
