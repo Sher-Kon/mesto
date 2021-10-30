@@ -41,25 +41,36 @@ const iniCardsTXT = [
   'Холмогорский район',
   'Байкал',
 ];
+// Универсальные функции
+function openPopup(element) {
+  element.classList.add("popup_opened");
+}
+function closePopup(element) {
+  element.classList.remove("popup_opened");
+}
 
-// Обработчик открытия формы lookImg
+// Обработчик открытия формы look-img
 function openLookImg() {
-  lookImgElement.classList.add("look-img_opened"); //открыть lookImg
+  //lookImgElement.classList.add("look-img_opened"); //открыть lookImg
+  openPopup(lookImgElement); //открыть lookImg
 }
-// Обработчик закрытия формы lookImg
+// Обработчик закрытия формы look-img
 function closeLookImg() {
-  lookImgElement.classList.remove("look-img_opened"); //закрыть lookImg
+  //lookImgElement.classList.remove("popup_opened"); //закрыть lookImg
+  closePopup(lookImgElement);//закрыть lookImg
 }
-// Кнопка - Х -закрыть "lookImg"
+// Кнопка - Х -закрыть "look-img"
 closelookImg.addEventListener("click", closeLookImg);//закрыть lookImg
 
 // Обработчик открытия формы bild-card
 function openBildCard() {
-  bildCardElement.classList.add("bild-card_opened"); //открыть bildCard
+  //bildCardElement.classList.add("bild-card_opened"); //открыть bildCard
+  openPopup(bildCardElement); //открыть bildCard
 }
 // Обработчик закрытия формы bild-card
 function closeBildCard() {
-  bildCardElement.classList.remove("bild-card_opened"); //закрыть bildCard
+  //bildCardElement.classList.remove("popup_opened"); //закрыть bildCard
+  closePopup(bildCardElement);//закрыть bildCard
 }
 // Обработчик «отправки» формы bild-card
 function bildCardSubmitHandler(evt) {
@@ -89,11 +100,13 @@ addButton.addEventListener("click", function() {
 function clickEdit() {
     nameInput.value = nameInfo.textContent;
     jobInput.value = jobInfo.textContent;
-    popupElement.classList.add("popup_opened"); //открыть окно
+    //popupElement.classList.add("popup_opened"); //открыть окно
+    openPopup(popupElement);//открыть popup «Редактировать профиль»
 }
 // Обработчик закрытия формы popup «Редактировать профиль»
 function clickClose() {
-    popupElement.classList.remove("popup_opened"); //закрыть окно
+    //popupElement.classList.remove("popup_opened"); //закрыть окно
+    closePopup(popupElement);//закрыть popup «Редактировать профиль»
 }
 // Обработчик «отправки» формы «Редактировать профиль», хотя пока
 // она никуда отправляться не будет
