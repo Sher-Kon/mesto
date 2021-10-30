@@ -4,11 +4,11 @@ const editButton = content.querySelector(".profile__info-edit-btn");//кн.от�
 const nameInfo = content.querySelector(".profile__info-name");
 const jobInfo = content.querySelector(".profile__info-job");
 // popup
-const popupElement = document.querySelector(".popup");
-const nameInput = popupElement.querySelector(".popup__text_input_name");
-const jobInput = popupElement.querySelector(".popup__text_input_job");
-const closeButton = popupElement.querySelector(".popup__btn-close");//кн.закрытия формы
-const formElement = popupElement.querySelector(".form");// Находим форму в DOM
+const editProfileElement = document.querySelector(".edit-profile");//popup
+const nameInput = editProfileElement.querySelector(".popup__text_input_name");
+const jobInput = editProfileElement.querySelector(".popup__text_input_job");
+const closeButton = editProfileElement.querySelector(".popup__btn-close");//кн.закрытия формы
+const formElement = editProfileElement.querySelector(".form");// Находим форму в DOM
 // bildCard
 const bildCardElement = document.querySelector(".bild-card");
 const placeInput = bildCardElement.querySelector(".bild-card__text_input_place");
@@ -97,16 +97,16 @@ addButton.addEventListener("click", function() {
 });
 
 // Обработчик открытия формы popup «Редактировать профиль»
-function clickEdit() {
+function openEditProfile() {
     nameInput.value = nameInfo.textContent;
     jobInput.value = jobInfo.textContent;
     //popupElement.classList.add("popup_opened"); //открыть окно
-    openPopup(popupElement);//открыть popup «Редактировать профиль»
+    openPopup(editProfileElement);//открыть popup «Редактировать профиль»
 }
 // Обработчик закрытия формы popup «Редактировать профиль»
-function clickClose() {
+function closeEditProfile() {
     //popupElement.classList.remove("popup_opened"); //закрыть окно
-    closePopup(popupElement);//закрыть popup «Редактировать профиль»
+    closePopup(editProfileElement);//закрыть popup «Редактировать профиль»
 }
 // Обработчик «отправки» формы «Редактировать профиль», хотя пока
 // она никуда отправляться не будет
@@ -119,14 +119,14 @@ function formSubmitHandler(evt) {
     nameInfo.textContent = nameInput.value;
     jobInfo.textContent = jobInput.value;    
     // Закроем форму
-    clickClose();//закрыть окно
+    closeEditProfile();//закрыть окно «Редактировать профиль»
 }
 // Прикрепляем обработчик к форме «Редактировать профиль»:
 // он будет следить за событием “submit” - «отправка»
 formElement.addEventListener("submit", formSubmitHandler);
 // Кнопки попапа «Редактировать профиль»
-editButton.addEventListener("click", clickEdit);//открыть попап
-closeButton.addEventListener("click", clickClose);//закрыть попап
+editButton.addEventListener("click", openEditProfile);//открыть попап
+closeButton.addEventListener("click", closeEditProfile);//закрыть попап
 
 // Клонируем карточку
 function addElement (url, txt, direction) {
