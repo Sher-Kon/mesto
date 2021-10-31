@@ -134,6 +134,7 @@ function addElement (url, txt, direction) {
   const userElement = elementTemplate.querySelector(".element").cloneNode(true);
   // наполняем содержимым
   userElement.querySelector(".element__img").src = url;
+  userElement.querySelector(".element__img").alt = "На фотографии " + txt;
   userElement.querySelector(".element__txt").textContent = txt;//'Клон карты';
   // выберем кнопку просмотра картинки "lookImg"
   userElement.querySelector(".element__img-btn").addEventListener("click", function (evt) {

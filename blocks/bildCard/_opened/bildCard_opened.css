@@ -1,8 +1,0 @@
-.bildCard_opened {
-  /*display: flex;/*изображение вкл*/  
-  /* медленное исчезновение */
-  visibility: visible;/**/
-  opacity: 1;/**/
-  transition-delay:0s;
-}
-  
