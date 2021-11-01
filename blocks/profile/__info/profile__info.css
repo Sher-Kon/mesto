@@ -1,12 +1,9 @@
 .profile__info {
     width: 340px;/*336*/
-    /*height: 92px;/**/
     position: relative;
     display: flex;
     flex-wrap: wrap;
-    /*align-items: flex-start; /* располагаем блоки */
     margin-left: 16px;
-    /*border:2px solid blue; /* красный рамка */
 }
 
 @media screen and (max-width: 750px) {

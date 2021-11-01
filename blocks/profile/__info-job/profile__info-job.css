@@ -1,6 +1,5 @@
 .profile__info-job {
   width: 336px;
-  /*height: 75px;/*75px текст отступает от верха блока*/
   font-size: 18px;
   line-height: 22px;
   font-weight: 500;
@@ -9,7 +8,6 @@
   z-index: 1; /* накрывает для всех кто меньше */
   margin-top: 16px; /* отступ */
   margin-bottom: 0;
-  /*border:2px solid #d81435; /* красная рамка */
 }
 
 @media screen and (max-width: 750px) {

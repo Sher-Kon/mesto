@@ -51,12 +51,10 @@ function closePopup(element) {
 
 // Обработчик открытия формы look-img
 function openLookImg() {
-  //lookImgElement.classList.add("look-img_opened"); //открыть lookImg
   openPopup(lookImgElement); //открыть lookImg
 }
 // Обработчик закрытия формы look-img
 function closeLookImg() {
-  //lookImgElement.classList.remove("popup_opened"); //закрыть lookImg
   closePopup(lookImgElement);//закрыть lookImg
 }
 // Кнопка - Х -закрыть "look-img"
@@ -64,12 +62,10 @@ closelookImg.addEventListener("click", closeLookImg);//закрыть lookImg
 
 // Обработчик открытия формы bild-card
 function openBildCard() {
-  //bildCardElement.classList.add("bild-card_opened"); //открыть bildCard
   openPopup(bildCardElement); //открыть bildCard
 }
 // Обработчик закрытия формы bild-card
 function closeBildCard() {
-  //bildCardElement.classList.remove("popup_opened"); //закрыть bildCard
   closePopup(bildCardElement);//закрыть bildCard
 }
 // Обработчик «отправки» формы bild-card
@@ -78,10 +74,12 @@ function bildCardSubmitHandler(evt) {
   // Вставьте новые значения в новую карточку
   const place = placeInput.value;
   const url = urlInput.value;
-  //console.log(url);//debug
   if (url!=='') {
     addElement(url, place, "up");//клонируем карточку в начало
   }
+  // Очистить инпуты для новой карточки
+  placeInput.value = "";
+  urlInput.value = "";
   // Закроем форму bildCard()
   closeBildCard();//закрыть окно bild-card()
 }
@@ -92,7 +90,6 @@ formbildCard.addEventListener("submit", bildCardSubmitHandler);
 closeBttn.addEventListener("click", closeBildCard);//закрыть bildCard
 // Кнопка « + » (открыть окно "Новое место")
 addButton.addEventListener("click", function() {
-  //console.log("кликнули по кнопке +");//отладка
   openBildCard();
 });
 
@@ -100,12 +97,10 @@ addButton.addEventListener("click", function() {
 function openEditProfile() {
     nameInput.value = nameInfo.textContent;
     jobInput.value = jobInfo.textContent;
-    //popupElement.classList.add("popup_opened"); //открыть окно
     openPopup(editProfileElement);//открыть popup «Редактировать профиль»
 }
 // Обработчик закрытия формы popup «Редактировать профиль»
 function closeEditProfile() {
-    //popupElement.classList.remove("popup_opened"); //закрыть окно
     closePopup(editProfileElement);//закрыть popup «Редактировать профиль»
 }
 // Обработчик «отправки» формы «Редактировать профиль», хотя пока
@@ -140,7 +135,6 @@ function addElement (url, txt, direction) {
   userElement.querySelector(".element__img-btn").addEventListener("click", function (evt) {
     txtImg.textContent = evt.target.closest(".element").textContent;
     srcImg.src = evt.target.closest(".element__img").src;
-      //console.log("Кликнули по картинке");//отладка
     openLookImg();//открыть окно просмотра картинки "lookImg"
   });
   // выберем кнопку лайка
@@ -149,7 +143,6 @@ function addElement (url, txt, direction) {
   });
   // выберем кнопку удаления
   userElement.querySelector(".element__del-btn").addEventListener("click", function (evt) {
-    //console.log("Кн. УДАЛИТЬ");//отладка
     const listItem = evt.target.closest(".element");
     listItem.remove();
   });
@@ -159,9 +152,6 @@ function addElement (url, txt, direction) {
   }
   if (direction==="up") {
     elementsOnline.prepend(userElement);//добавить в начало  
-    // Очистить инпуты для новой карточки
-    placeInput.value = "";
-    urlInput.value = "";
   }
 }
 

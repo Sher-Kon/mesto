@@ -1,6 +1,5 @@
 .page {
   min-width: 320px; /*320px 768px 1024px 1280px*/
-  /*max-width: 1280px;/* 1280px */
   margin: auto;
   display: flex;
   flex-direction: column; /* столбец */
@@ -14,5 +13,4 @@
   text-rendering: optimizeLegibility;
   background-color: black; /*#2a2c2f;*/
   color: #ffffff;
-  /*border:3px solid #d81435; /* красный рамка */
 }
