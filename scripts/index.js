@@ -103,13 +103,9 @@ function openEditProfile() {
 function closeEditProfile() {
     closePopup(editProfileElement);//закрыть popup «Редактировать профиль»
 }
-// Обработчик «отправки» формы «Редактировать профиль», хотя пока
-// она никуда отправляться не будет
+// Обработчик «отправки» формы «Редактировать профиль»
 function formSubmitHandler(evt) {
     evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
-    // Так мы можем определить свою логику отправки.
-    // О том, как это делать, расскажем позже.
-
     // Вставьте новые значения с помощью textContent
     nameInfo.textContent = nameInput.value;
     jobInfo.textContent = jobInput.value;    
