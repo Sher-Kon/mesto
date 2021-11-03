@@ -1,6 +1,5 @@
 // элементы DOM на странице
 const content = document.querySelector(".content");
-const addButton = content.querySelector(".profile__add-btn");
 const editButton = content.querySelector(".profile__info-edit-btn");//кн.открытия формы
 const nameInfo = content.querySelector(".profile__info-name");
 const jobInfo = content.querySelector(".profile__info-job");
@@ -44,3 +43,11 @@ formElement.addEventListener("submit", formSubmitHandler);
 // Кнопки попапа «Редактировать профиль»
 editButton.addEventListener("click", openEditProfile);//открыть попап
 closeButton.addEventListener("click", closeEditProfile);//закрыть попап
+
+//Начальная загрузка страницы - 6 карточек
+function iniElements () {
+  for (let index = 0; index < 6; index++) {
+    addElement (iniCardsURL[index],iniCardsTXT[index],"dn");
+  }
+}
+iniElements();

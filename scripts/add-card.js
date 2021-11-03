@@ -1,3 +1,5 @@
+// элементы DOM на странице
+const addButton = document.querySelector(".profile__add-btn");
 // bildCard
 const bildCardElement = document.querySelector(".bild-card");
 const placeInput = bildCardElement.querySelector(".bild-card__text_input_place");
