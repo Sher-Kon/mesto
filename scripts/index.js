@@ -10,12 +10,6 @@ const nameInput = editProfileElement.querySelector(".popup__text_input_name");
 const jobInput = editProfileElement.querySelector(".popup__text_input_job");
 const closeButton = editProfileElement.querySelector(".popup__btn-close");//кн.закрытия формы
 const formElement = editProfileElement.querySelector(".form");// Находим форму в DOM
-// bildCard
-const bildCardElement = document.querySelector(".bild-card");
-const placeInput = bildCardElement.querySelector(".bild-card__text_input_place");
-const urlInput = bildCardElement.querySelector(".bild-card__text_input_url");
-const closeBttn = bildCardElement.querySelector(".bild-card__btn-close");//кн.закрытия формы bild-card
-const formbildCard = bildCardElement.querySelector(".form");// Находим форму в DOM in bildCardElement
 // элементы "template" DOM определим глобально
 const elementTemplate = document.querySelector("#element").content;//клон
 const elementsOnline = document.querySelector(".elements");//куда вставить
@@ -28,38 +22,6 @@ function closePopup(element) {
   element.classList.remove("popup_opened");
 }
 
-// Обработчик открытия формы bild-card
-function openBildCard() {
-  openPopup(bildCardElement); //открыть bildCard
-}
-// Обработчик закрытия формы bild-card
-function closeBildCard() {
-  closePopup(bildCardElement);//закрыть bildCard
-}
-// Обработчик «отправки» формы bild-card
-function bildCardSubmitHandler(evt) {
-  evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
-  // Вставьте новые значения в новую карточку
-  const place = placeInput.value;
-  const url = urlInput.value;
-  if (url!=='') {
-    addElement(url, place, "up");//клонируем карточку в начало
-  }
-  // Очистить инпуты для новой карточки
-  placeInput.value = "";
-  urlInput.value = "";
-  // Закроем форму bildCard()
-  closeBildCard();//закрыть окно bild-card()
-}
-// форма bild-card:
-// Кнопка - «создать»
-formbildCard.addEventListener("submit", bildCardSubmitHandler);
-// Кнопка - Х -закрыть
-closeBttn.addEventListener("click", closeBildCard);//закрыть bildCard
-// Кнопка « + » (открыть окно "Новое место")
-addButton.addEventListener("click", function() {
-  openBildCard();
-});
 
 // Обработчик открытия формы popup «Редактировать профиль»
 function openEditProfile() {
