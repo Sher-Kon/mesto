@@ -1,3 +1,4 @@
+// элементы DOM на странице
 const content = document.querySelector(".content");
 const addButton = content.querySelector(".profile__add-btn");
 const editButton = content.querySelector(".profile__info-edit-btn");//кн.открытия формы
@@ -15,12 +16,6 @@ const placeInput = bildCardElement.querySelector(".bild-card__text_input_place")
 const urlInput = bildCardElement.querySelector(".bild-card__text_input_url");
 const closeBttn = bildCardElement.querySelector(".bild-card__btn-close");//кн.закрытия формы bild-card
 const formbildCard = bildCardElement.querySelector(".form");// Находим форму в DOM in bildCardElement
-// lookImg
-const lookImgElement = document.querySelector(".look-img");
-const txtImg = lookImgElement.querySelector(".look-img__title");
-const srcImg = lookImgElement.querySelector(".look-img__img");
-const closelookImg = lookImgElement.querySelector(".look-img__btn-close");//кн.закрытия формы lookImg
-const formlookImg = lookImgElement.querySelector(".form");// Находим форму в DOM in lookImgElement
 // элементы "template" DOM определим глобально
 const elementTemplate = document.querySelector("#element").content;//клон
 const elementsOnline = document.querySelector(".elements");//куда вставить
@@ -32,17 +27,6 @@ function openPopup(element) {
 function closePopup(element) {
   element.classList.remove("popup_opened");
 }
-
-// Обработчик открытия формы look-img
-function openLookImg() {
-  openPopup(lookImgElement); //открыть lookImg
-}
-// Обработчик закрытия формы look-img
-function closeLookImg() {
-  closePopup(lookImgElement);//закрыть lookImg
-}
-// Кнопка - Х -закрыть "look-img"
-closelookImg.addEventListener("click", closeLookImg);//закрыть lookImg
 
 // Обработчик открытия формы bild-card
 function openBildCard() {
