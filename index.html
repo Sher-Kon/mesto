@@ -50,9 +50,9 @@
                     <h3 class="popup__title">Редактировать профиль</h3>
                     <div class="popup__input">
                         <input type="text" placeholder="Имя" class="popup__text popup__text_input_name"
-                            name="nameInput">
+                            name="nameInput" minlength="2" maxlength="40" required>
                         <input type="text" placeholder="О себе" class="popup__text popup__text_input_job"
-                            name="jobInput">
+                            name="jobInput" minlength="2" maxlength="200" required>
                         <button class="popup__btn-save" type="submit">Сохранить</button>
                     </div>
                 </form>
@@ -66,9 +66,9 @@
                     <h3 class="bild-card__title">Новое место</h3>
                     <div class="bild-card__input">
                         <input type="text" placeholder="Название" class="bild-card__text bild-card__text_input_place"
-                            name="placeInput">
-                        <input type="text" placeholder="Ссылка на картинку"
-                            class="bild-card__text bild-card__text_input_url" name="urlInput">
+                            name="placeInput" minlength="2" maxlength="30" required>
+                        <input type="url" placeholder="Ссылка на картинку"
+                            class="bild-card__text bild-card__text_input_url" name="urlInput" required>
                         <button class="bild-card__btn-save" type="submit">Создать</button>
                     </div>
                 </form>
