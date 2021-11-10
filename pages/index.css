@@ -41,6 +41,7 @@
 @import url(../blocks/bild-card/__input/bild-card__input.css);
 @import url(../blocks/bild-card/__text/bild-card__text.css);
 @import url(../blocks/bild-card/__title/bild-card__title.css);
+@import url(../blocks/bild-card/__text/_type_error/bild-card__text_type_error.css);
 
 @import url(../blocks/look-img/look-img.css);
 @import url(../blocks/look-img/__img/look-img__img.css);
