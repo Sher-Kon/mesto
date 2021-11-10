@@ -46,13 +46,15 @@
         <!-- edit-profile -->
         <div class="popup edit-profile">
             <div class="popup__container">
-                <form class="form" name="editProfile">
+                <form class="form" name="editProfile" novalidate>
                     <h3 class="popup__title">Редактировать профиль</h3>
                     <div class="popup__input">
-                        <input type="text" placeholder="Имя" class="popup__text popup__text_input_name"
-                            name="nameInput" minlength="2" maxlength="40" required>
+                        <input type="text" placeholder="Имя" class="popup__text popup__text_input_name" name="nameInput"
+                            minlength="2" maxlength="40" required>
+                            <span class="popup__input-error input-error-name"></span>
                         <input type="text" placeholder="О себе" class="popup__text popup__text_input_job"
                             name="jobInput" minlength="2" maxlength="200" required>
+                            <span class="popup__input-error input-error-job"></span>
                         <button class="popup__btn-save" type="submit">Сохранить</button>
                     </div>
                 </form>
@@ -62,7 +64,7 @@
         <!-- bild-card -->
         <div class="popup bild-card">
             <div class="bild-card__container">
-                <form class="form" name="editCard">
+                <form class="form" name="bildCard" novalidate>
                     <h3 class="bild-card__title">Новое место</h3>
                     <div class="bild-card__input">
                         <input type="text" placeholder="Название" class="bild-card__text bild-card__text_input_place"
@@ -89,9 +91,10 @@
     <!-- Подключаем скрипт -->
     <script src="./scripts/ini-cards.js"></script>
     <script src="./scripts/look-img.js"></script>
-    <script src="./scripts/add-card.js"></script>
+    <script src="./scripts/bild-card.js"></script>
     <script src="./scripts/clone-card.js"></script>
     <script src="./scripts/index.js"></script>
+    <script src="./scripts/validate.js"></script>
 </body>
 
 </html>

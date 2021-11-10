@@ -18,3 +18,11 @@
         width: 238px;
     }
   }
+
+  .bild-card__text:invalid {
+    border-bottom: 1px solid red;
+  }
+
+  .bild-card__text:valid {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  }
