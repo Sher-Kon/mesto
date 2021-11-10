@@ -18,6 +18,13 @@ const showNameError = (element, errorMessage) => {
   // 3. Добавьте nameError класс form__input-error_active.
   nameError.classList.add("form__input-error_active");
 };
+// Функция, которая удаляет класс с ошибкой Name
+const hideNameError = (element) => {
+  element.classList.remove("popup__text_type_error");
+  nameError.classList.remove("form__input-error_active");
+  nameError.textContent = "";
+};
+
 // Функция, которая добавляет класс с ошибкой Job
 const showJobError = (element, errorMessage) => {
     element.classList.add("popup__text_type_error");
@@ -26,10 +33,12 @@ const showJobError = (element, errorMessage) => {
     // 3. Добавьте jobError класс form__input-error_active.
     jobError.classList.add("form__input-error_active");
   };
-    // Функция, которая удаляет класс с ошибкой popup
-    const hideInputError = (element) => {
-      element.classList.remove("popup__text_type_error");
-    };
+// Функция, которая удаляет класс с ошибкой Job
+const hideJobError = (element) => {
+  element.classList.remove("popup__text_type_error");
+  jobError.classList.add("form__input-error_active");
+  jobError.textContent = "";
+};
     
 // Функция, которая добавляет класс с ошибкой Place
 const showPlaceError = (element, errorMessage) => {
@@ -39,17 +48,26 @@ const showPlaceError = (element, errorMessage) => {
     // 3. Добавьте placeError класс form__input-error_active.
     placeError.classList.add("form__input-error_active");
   };
-  // Функция, которая добавляет класс с ошибкой Url
-  const showUrlError = (element, errorMessage) => {
-      element.classList.add("bild-card__text_type_error");
-      // 2. Установите errorMessage в качестве значения textContent для urlError.  
-      urlError.textContent = errorMessage;
-      // 3. Добавьте urlError класс form__input-error_active.
-      urlError.classList.add("form__input-error_active");
-    };
-    // Функция, которая удаляет класс с ошибкой bild-card
-const hideBildCardError = (element) => {
+// Функция, которая удаляет класс с ошибкой 
+const hidePlaceError = (element) => {
   element.classList.remove("bild-card__text_type_error");
+  placeError.classList.remove("form__input-error_active");
+  placeError.textContent = "";
+};
+
+    // Функция, которая добавляет класс с ошибкой Url
+const showUrlError = (element, errorMessage) => {
+    element.classList.add("bild-card__text_type_error");
+    // 2. Установите errorMessage в качестве значения textContent для urlError.  
+    urlError.textContent = errorMessage;
+    // 3. Добавьте urlError класс form__input-error_active.
+    urlError.classList.add("form__input-error_active");
+  };
+    // Функция, которая удаляет класс с ошибкой 
+const hideUrlError = (element) => {
+  element.classList.remove("bild-card__text_type_error");
+  urlError.classList.add("form__input-error_active");
+  urlError.textContent = "";
 };
 
 // Функция, которая проверяет валидность поля "nameInfo"
@@ -59,8 +77,7 @@ const isValidName = () => {
     showNameError(nameInput, nameInput.validationMessage);
   } else {
     // Если проходит, скроем
-    hideInputError(nameInput);
-    nameError.textContent = "";
+    hideNameError(nameInput);
   }
 };
 // Функция, которая проверяет валидность поля "jobInfo"
@@ -70,8 +87,7 @@ const isValidJob = () => {
     showJobError(jobInput, jobInput.validationMessage);
   } else {
     // Если проходит, скроем
-    hideInputError(jobInput);
-    jobError.textContent = "";
+    hideJobError(jobInput);
   }
 };
  
@@ -83,8 +99,7 @@ const isValidPlace = () => {
       showPlaceError(placeInput, placeInput.validationMessage);
     } else {
       // Если проходит, скроем
-      hideBildCardError(placeInput);
-      placeError.textContent = "";
+      hidePlaceError(placeInput);
     }
   };
   // Функция, которая проверяет валидность поля "urlInfo"
@@ -94,8 +109,7 @@ const isValidPlace = () => {
       showUrlError(urlInput, urlInput.validationMessage);
     } else {
       // Если проходит, скроем
-      hideBildCardError(urlInput);
-      urlError.textContent = "";
+      hideUrlError(urlInput);
     }
   };
   
