@@ -15,38 +15,41 @@ const showNameError = (element, errorMessage) => {
   element.classList.add("popup__text_type_error");
   // 2. Установите errorMessage в качестве значения textContent для nameError.  
   nameError.textContent = errorMessage;
-  // 3. Добавьте formError класс form__input-error_active.
+  // 3. Добавьте nameError класс form__input-error_active.
   nameError.classList.add("form__input-error_active");
 };
 // Функция, которая добавляет класс с ошибкой Job
 const showJobError = (element, errorMessage) => {
     element.classList.add("popup__text_type_error");
-    // 2. Установите errorMessage в качестве значения textContent для nameError.  
+    // 2. Установите errorMessage в качестве значения textContent для jobError.  
     jobError.textContent = errorMessage;
-    // 3. Добавьте formError класс form__input-error_active.
+    // 3. Добавьте jobError класс form__input-error_active.
     jobError.classList.add("form__input-error_active");
   };
-
+    // Функция, которая удаляет класс с ошибкой popup
+    const hideInputError = (element) => {
+      element.classList.remove("popup__text_type_error");
+    };
+    
 // Функция, которая добавляет класс с ошибкой Place
 const showPlaceError = (element, errorMessage) => {
-    element.classList.add("popup__text_type_error");
-    // 2. Установите errorMessage в качестве значения textContent для nameError.  
+    element.classList.add("bild-card__text_type_error");
+    // 2. Установите errorMessage в качестве значения textContent для placeError.  
     placeError.textContent = errorMessage;
-    // 3. Добавьте formError класс form__input-error_active.
+    // 3. Добавьте placeError класс form__input-error_active.
     placeError.classList.add("form__input-error_active");
   };
   // Функция, которая добавляет класс с ошибкой Url
   const showUrlError = (element, errorMessage) => {
-      element.classList.add("popup__text_type_error");
-      // 2. Установите errorMessage в качестве значения textContent для nameError.  
+      element.classList.add("bild-card__text_type_error");
+      // 2. Установите errorMessage в качестве значения textContent для urlError.  
       urlError.textContent = errorMessage;
-      // 3. Добавьте formError класс form__input-error_active.
+      // 3. Добавьте urlError класс form__input-error_active.
       urlError.classList.add("form__input-error_active");
     };
-
-    // Функция, которая удаляет класс с ошибкой
-const hideInputError = (element) => {
-  element.classList.remove("popup__text_type_error");
+    // Функция, которая удаляет класс с ошибкой bild-card
+const hideBildCardError = (element) => {
+  element.classList.remove("bild-card__text_type_error");
 };
 
 // Функция, которая проверяет валидность поля "nameInfo"
@@ -74,13 +77,13 @@ const isValidJob = () => {
  
 // Функция, которая проверяет валидность поля "placeInfo"
 const isValidPlace = () => {
-    console.log(placeInput.validationMessage);//отладка
+    //console.log(placeInput.validationMessage);//отладка
     if (!placeInput.validity.valid) {
       // Если поле не проходит валидацию, покажем ошибку
       showPlaceError(placeInput, placeInput.validationMessage);
     } else {
       // Если проходит, скроем
-      hideInputError(placeInput);
+      hideBildCardError(placeInput);
       placeError.textContent = "";
     }
   };
@@ -91,14 +94,15 @@ const isValidPlace = () => {
       showUrlError(urlInput, urlInput.validationMessage);
     } else {
       // Если проходит, скроем
-      hideInputError(urlInput);
+      hideBildCardError(urlInput);
       urlError.textContent = "";
     }
   };
   
-// Вызовем функцию isValid на каждый ввод символа
+// Вызовем функцию isValid на каждый ввод символа popup
 nameInput.addEventListener('input', isValidName); 
 jobInput.addEventListener('input', isValidJob); 
-//console.log(nameInput);//отладка
+// Вызовем функцию isValid на каждый ввод символа bild-card
 placeInput.addEventListener('input', isValidPlace); 
 urlInput.addEventListener('input', isValidUrl); 
+//console.log(nameInput);//отладка
