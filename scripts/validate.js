@@ -64,7 +64,7 @@ function isValidEditProfile () {
 };
  
 // Функция, которая проверяет валидность попапа "BildCard"
-const isValidBildCard = () => {
+function isValidBildCard () {
   let placeValid = false;
   let urlValid = false;
   // проверяет валидность поля "placeInput"
@@ -102,8 +102,17 @@ const isValidBildCard = () => {
   };
   
 // Вызовем функцию isValidPopup на каждый ввод символа EditProfile
-nameInput.addEventListener('input', isValidEditProfile); 
-jobInput.addEventListener('input', isValidEditProfile); 
+nameInput.addEventListener("input", isValidEditProfile); 
+jobInput.addEventListener("input", isValidEditProfile); 
 // Вызовем функцию isValidBildCard на каждый ввод символа BildCard
-placeInput.addEventListener('input', isValidBildCard); 
-urlInput.addEventListener('input', isValidBildCard); 
+placeInput.addEventListener("input", isValidBildCard); 
+urlInput.addEventListener("input", isValidBildCard); 
+
+// Обработчик Esc
+document.addEventListener("keydown", function (evt) {
+  if (evt.key === "Escape") {
+    //console.log("Нажали — ESC");// для отладки
+    closeEditProfile();//закрыть окно «Редактировать профиль»
+    closeBildCard();//закрыть окно bild-card()
+  }
+}); 
