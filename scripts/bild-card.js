@@ -30,6 +30,7 @@ function bildCardSubmitHandler(evt) {
     urlInput.value = "";
     // Серая кнопка ввода
     bildBttn.classList.add("bild-card__btn-save_no-active");
+    bildBttn.classList.remove("bild-card__btn-save_active");
     // Закроем форму bildCard()
     closeBildCard();//закрыть окно bild-card()
 }

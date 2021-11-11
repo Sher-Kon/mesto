@@ -91,11 +91,13 @@ function isValidBildCard () {
   if (placeValid && urlValid) {
     //console.log("кнопка активна");//отладка
     bildBttn.classList.remove("bild-card__btn-save_no-active");
+    bildBttn.classList.add("bild-card__btn-save_active");
     // запустить обработчик
     formbildCard.addEventListener("submit", bildCardSubmitHandler);
   } else {
     //console.log("кнопка неактивна");//отладка
     bildBttn.classList.add("bild-card__btn-save_no-active");
+    bildBttn.classList.remove("bild-card__btn-save_active");
     // отменить обработчик
     formbildCard.removeEventListener("submit", bildCardSubmitHandler);
   }
