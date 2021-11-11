@@ -25,8 +25,8 @@ const hideError = (element, errElement, modifier) => {
   errElement.textContent = "";
 };
 
-// Функция, которая проверяет валидность поля "Input"
-function isValidPopup () {
+// Функция, которая проверяет валидность попапа EditProfile
+function isValidEditProfile () {
   let nameValid = false;
   let jobValid = false;
   //проверяет валидность поля "nameInput"
@@ -53,9 +53,13 @@ function isValidPopup () {
   if (nameValid && jobValid) {
     //console.log("кнопка активна");//отладка
     saveButton.classList.remove("popup__btn-save_no-active");
+    // запустить обработчик
+    formEditProfile.addEventListener("submit", formSubmitHandler);
   } else {
     //console.log("кнопка неактивна");//отладка
     saveButton.classList.add("popup__btn-save_no-active");
+    // отменить обработчик
+    formEditProfile.removeEventListener("submit", formSubmitHandler);
   }
 };
  
@@ -87,15 +91,19 @@ const isValidBildCard = () => {
   if (placeValid && urlValid) {
     //console.log("кнопка активна");//отладка
     bildBttn.classList.remove("bild-card__btn-save_no-active");
+    // запустить обработчик
+    formbildCard.addEventListener("submit", bildCardSubmitHandler);
   } else {
     //console.log("кнопка неактивна");//отладка
     bildBttn.classList.add("bild-card__btn-save_no-active");
+    // отменить обработчик
+    formbildCard.removeEventListener("submit", bildCardSubmitHandler);
   }
   };
   
-// Вызовем функцию isValidPopup на каждый ввод символа popup
-nameInput.addEventListener('input', isValidPopup); 
-jobInput.addEventListener('input', isValidPopup); 
-// Вызовем функцию isValidBildCard на каждый ввод символа bild-card
+// Вызовем функцию isValidPopup на каждый ввод символа EditProfile
+nameInput.addEventListener('input', isValidEditProfile); 
+jobInput.addEventListener('input', isValidEditProfile); 
+// Вызовем функцию isValidBildCard на каждый ввод символа BildCard
 placeInput.addEventListener('input', isValidBildCard); 
 urlInput.addEventListener('input', isValidBildCard); 

@@ -9,7 +9,7 @@ const nameInput = editProfileElement.querySelector(".popup__text_input_name");
 const jobInput = editProfileElement.querySelector(".popup__text_input_job");
 const closeButton = editProfileElement.querySelector(".popup__btn-close");//кн.закрытия формы
 const saveButton = editProfileElement.querySelector(".popup__btn-save");//кн. SAVE
-const formElement = editProfileElement.querySelector(".form");// Находим форму в DOM
+const formEditProfile = editProfileElement.querySelector(".form");// Находим форму в DOM
 
 // Универсальные функции
 function openPopup(element) {
@@ -40,7 +40,7 @@ function formSubmitHandler(evt) {
 }
 // Прикрепляем обработчик к форме «Редактировать профиль»:
 // он будет следить за событием “submit” - «отправка»
-formElement.addEventListener("submit", formSubmitHandler);
+formEditProfile.addEventListener("submit", formSubmitHandler);
 // Кнопки попапа «Редактировать профиль»
 editButton.addEventListener("click", openEditProfile);//открыть попап
 closeButton.addEventListener("click", closeEditProfile);//закрыть попап

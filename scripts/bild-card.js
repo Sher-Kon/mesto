@@ -28,6 +28,8 @@ function bildCardSubmitHandler(evt) {
     // Очистить инпуты для новой карточки
     placeInput.value = "";
     urlInput.value = "";
+    // Серая кнопка ввода
+    bildBttn.classList.add("bild-card__btn-save_no-active");
     // Закроем форму bildCard()
     closeBildCard();//закрыть окно bild-card()
 }
