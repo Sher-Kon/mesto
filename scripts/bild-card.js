@@ -5,6 +5,7 @@ const bildCardElement = document.querySelector(".bild-card");
 const placeInput = bildCardElement.querySelector(".bild-card__text_input_place");
 const urlInput = bildCardElement.querySelector(".bild-card__text_input_url");
 const closeBttn = bildCardElement.querySelector(".bild-card__btn-close");//кн.закрытия формы bild-card
+const bildBttn = bildCardElement.querySelector(".bild-card__btn-save");//кн.закрытия формы bild-card
 const formbildCard = bildCardElement.querySelector(".form");// Находим форму в DOM in bildCardElement
 
 // Обработчик открытия формы bild-card

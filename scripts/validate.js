@@ -1,122 +1,101 @@
 // поля ввода профиля из index.js
-//const nameInput = editProfileElement.querySelector(".popup__text_input_name");
-//const jobInput = editProfileElement.querySelector(".popup__text_input_job");
+// const saveButton = editProfileElement.querySelector(".popup__btn-save");//кн. SAVE
+// const nameInput = editProfileElement.querySelector(".popup__text_input_name");
+// const jobInput = editProfileElement.querySelector(".popup__text_input_job");
 const nameError = editProfileElement.querySelector(".input-error-name");
 const jobError = editProfileElement.querySelector(".input-error-job");
+
 // поля ввода карточки из bild-cards.js
-//const placeInput = bildCardElement.querySelector(".bild-card__text_input_place");
-//const urlInput = bildCardElement.querySelector(".bild-card__text_input_url");
+// const bildBttn = bildCardElement.querySelector(".bild-card__btn-save");//кн. bild-card
+// const placeInput = bildCardElement.querySelector(".bild-card__text_input_place");
+// const urlInput = bildCardElement.querySelector(".bild-card__text_input_url");
 const placeError = bildCardElement.querySelector(".input-error-place");
 const urlError = bildCardElement.querySelector(".input-error-url");
 
-
-// Функция, которая добавляет класс с ошибкой Name
-const showNameError = (element, errorMessage) => {
-  element.classList.add("popup__text_type_error");
-  // 2. Установите errorMessage в качестве значения textContent для nameError.  
-  nameError.textContent = errorMessage;
-  // 3. Добавьте nameError класс form__input-error_active.
-  nameError.classList.add("form__input-error_active");
+// Функция, которая добавляет класс с ошибкой
+const showError = (element, errElement, errorMessage, modifier) => {
+  element.classList.add(modifier);
+  errElement.textContent = errorMessage;
+  errElement.classList.add("form__input-error_active");
 };
-// Функция, которая удаляет класс с ошибкой Name
-const hideNameError = (element) => {
-  element.classList.remove("popup__text_type_error");
-  nameError.classList.remove("form__input-error_active");
-  nameError.textContent = "";
-};
-
-// Функция, которая добавляет класс с ошибкой Job
-const showJobError = (element, errorMessage) => {
-    element.classList.add("popup__text_type_error");
-    // 2. Установите errorMessage в качестве значения textContent для jobError.  
-    jobError.textContent = errorMessage;
-    // 3. Добавьте jobError класс form__input-error_active.
-    jobError.classList.add("form__input-error_active");
-  };
-// Функция, которая удаляет класс с ошибкой Job
-const hideJobError = (element) => {
-  element.classList.remove("popup__text_type_error");
-  jobError.classList.add("form__input-error_active");
-  jobError.textContent = "";
-};
-    
-// Функция, которая добавляет класс с ошибкой Place
-const showPlaceError = (element, errorMessage) => {
-    element.classList.add("bild-card__text_type_error");
-    // 2. Установите errorMessage в качестве значения textContent для placeError.  
-    placeError.textContent = errorMessage;
-    // 3. Добавьте placeError класс form__input-error_active.
-    placeError.classList.add("form__input-error_active");
-  };
 // Функция, которая удаляет класс с ошибкой 
-const hidePlaceError = (element) => {
-  element.classList.remove("bild-card__text_type_error");
-  placeError.classList.remove("form__input-error_active");
-  placeError.textContent = "";
+const hideError = (element, errElement, modifier) => {
+  element.classList.remove(modifier);
+  errElement.classList.remove("form__input-error_active");
+  errElement.textContent = "";
 };
 
-    // Функция, которая добавляет класс с ошибкой Url
-const showUrlError = (element, errorMessage) => {
-    element.classList.add("bild-card__text_type_error");
-    // 2. Установите errorMessage в качестве значения textContent для urlError.  
-    urlError.textContent = errorMessage;
-    // 3. Добавьте urlError класс form__input-error_active.
-    urlError.classList.add("form__input-error_active");
-  };
-    // Функция, которая удаляет класс с ошибкой 
-const hideUrlError = (element) => {
-  element.classList.remove("bild-card__text_type_error");
-  urlError.classList.add("form__input-error_active");
-  urlError.textContent = "";
-};
-
-// Функция, которая проверяет валидность поля "nameInfo"
-const isValidName = () => {
+// Функция, которая проверяет валидность поля "Input"
+function isValidPopup () {
+  let nameValid = false;
+  let jobValid = false;
+  //проверяет валидность поля "nameInput"
   if (!nameInput.validity.valid) {
     // Если поле не проходит валидацию, покажем ошибку
-    showNameError(nameInput, nameInput.validationMessage);
+    showError(nameInput, nameError, nameInput.validationMessage, "popup__text_type_error");
+    nameValid = false;
   } else {
     // Если проходит, скроем
-    hideNameError(nameInput);
+    hideError(nameInput, nameError, "popup__text_type_error");
+    nameValid = true;
   }
-};
-// Функция, которая проверяет валидность поля "jobInfo"
-const isValidJob = () => {
+  //проверяет валидность поля "jobInput"
   if (!jobInput.validity.valid) {
     // Если поле не проходит валидацию, покажем ошибку
-    showJobError(jobInput, jobInput.validationMessage);
+    showError(jobInput, jobError, jobInput.validationMessage, "popup__text_type_error");
+    jobValid = false;
   } else {
     // Если проходит, скроем
-    hideJobError(jobInput);
+    hideError(jobInput, jobError, "popup__text_type_error");
+    jobValid = true;
+  }
+  // проверяем активность кнопки
+  if (nameValid && jobValid) {
+    //console.log("кнопка активна");//отладка
+    saveButton.classList.remove("popup__btn-save_no-active");
+  } else {
+    //console.log("кнопка неактивна");//отладка
+    saveButton.classList.add("popup__btn-save_no-active");
   }
 };
  
-// Функция, которая проверяет валидность поля "placeInfo"
-const isValidPlace = () => {
-    //console.log(placeInput.validationMessage);//отладка
-    if (!placeInput.validity.valid) {
-      // Если поле не проходит валидацию, покажем ошибку
-      showPlaceError(placeInput, placeInput.validationMessage);
-    } else {
-      // Если проходит, скроем
-      hidePlaceError(placeInput);
-    }
-  };
-  // Функция, которая проверяет валидность поля "urlInfo"
-  const isValidUrl = () => {
-    if (!urlInput.validity.valid) {
-      // Если поле не проходит валидацию, покажем ошибку
-      showUrlError(urlInput, urlInput.validationMessage);
-    } else {
-      // Если проходит, скроем
-      hideUrlError(urlInput);
-    }
+// Функция, которая проверяет валидность попапа "BildCard"
+const isValidBildCard = () => {
+  let placeValid = false;
+  let urlValid = false;
+  // проверяет валидность поля "placeInput"
+  if (!placeInput.validity.valid) {
+    // Если поле не проходит валидацию, покажем ошибку
+    showError(placeInput, placeError, placeInput.validationMessage, "bild-card__text_type_error");
+    placeValid = false;
+  } else {
+    // Если проходит, скроем
+    hideError(placeInput, placeError, "bild-card__text_type_error");
+    placeValid = true;
+  }
+  // проверяет валидность поля "urlInput"
+  if (!urlInput.validity.valid) {
+    // Если поле не проходит валидацию, покажем ошибку
+    showError(urlInput, urlError, urlInput.validationMessage, "bild-card__text_type_error");
+    urlValid = false;
+  } else {
+    // Если проходит, скроем
+    hideError(urlInput, urlError, "bild-card__text_type_error");
+    urlValid = true;
+  }
+  // проверяем активность кнопки
+  if (placeValid && urlValid) {
+    //console.log("кнопка активна");//отладка
+    bildBttn.classList.remove("bild-card__btn-save_no-active");
+  } else {
+    //console.log("кнопка неактивна");//отладка
+    bildBttn.classList.add("bild-card__btn-save_no-active");
+  }
   };
   
-// Вызовем функцию isValid на каждый ввод символа popup
-nameInput.addEventListener('input', isValidName); 
-jobInput.addEventListener('input', isValidJob); 
-// Вызовем функцию isValid на каждый ввод символа bild-card
-placeInput.addEventListener('input', isValidPlace); 
-urlInput.addEventListener('input', isValidUrl); 
-//console.log(nameInput);//отладка
+// Вызовем функцию isValidPopup на каждый ввод символа popup
+nameInput.addEventListener('input', isValidPopup); 
+jobInput.addEventListener('input', isValidPopup); 
+// Вызовем функцию isValidBildCard на каждый ввод символа bild-card
+placeInput.addEventListener('input', isValidBildCard); 
+urlInput.addEventListener('input', isValidBildCard); 

@@ -8,6 +8,7 @@ const editProfileElement = document.querySelector(".edit-profile");//popup
 const nameInput = editProfileElement.querySelector(".popup__text_input_name");
 const jobInput = editProfileElement.querySelector(".popup__text_input_job");
 const closeButton = editProfileElement.querySelector(".popup__btn-close");//кн.закрытия формы
+const saveButton = editProfileElement.querySelector(".popup__btn-save");//кн. SAVE
 const formElement = editProfileElement.querySelector(".form");// Находим форму в DOM
 
 // Универсальные функции
