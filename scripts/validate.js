@@ -2,15 +2,15 @@
 // const saveButton = editProfileElement.querySelector(".popup__btn-save");//кн. SAVE
 // const nameInput = editProfileElement.querySelector(".popup__text_input_name");
 // const jobInput = editProfileElement.querySelector(".popup__text_input_job");
-const nameError = editProfileElement.querySelector(".input-error-name");
-const jobError = editProfileElement.querySelector(".input-error-job");
+// const nameError = editProfileElement.querySelector(".input-error-name");
+// const jobError = editProfileElement.querySelector(".input-error-job");
 
 // поля ввода карточки из bild-cards.js
 // const bildBttn = bildCardElement.querySelector(".bild-card__btn-save");//кн. bild-card
 // const placeInput = bildCardElement.querySelector(".bild-card__text_input_place");
 // const urlInput = bildCardElement.querySelector(".bild-card__text_input_url");
-const placeError = bildCardElement.querySelector(".input-error-place");
-const urlError = bildCardElement.querySelector(".input-error-url");
+// const placeError = bildCardElement.querySelector(".input-error-place");
+// const urlError = bildCardElement.querySelector(".input-error-url");
 
 // Функция, которая добавляет класс с ошибкой
 const showError = (element, errElement, errorMessage, modifier) => {
@@ -110,7 +110,7 @@ jobInput.addEventListener("input", isValidEditProfile);
 placeInput.addEventListener("input", isValidBildCard); 
 urlInput.addEventListener("input", isValidBildCard); 
 
-// Обработчик Esc
+// Закроем попап кнопкой Esc
 document.addEventListener("keydown", function (evt) {
   if (evt.key === "Escape") {
     //console.log("Нажали — ESC");// для отладки

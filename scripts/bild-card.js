@@ -7,6 +7,9 @@ const urlInput = bildCardElement.querySelector(".bild-card__text_input_url");
 const closeBttn = bildCardElement.querySelector(".bild-card__btn-close");//кн.закрытия формы bild-card
 const bildBttn = bildCardElement.querySelector(".bild-card__btn-save");//кн.закрытия формы bild-card
 const formbildCard = bildCardElement.querySelector(".form");// Находим форму в DOM in bildCardElement
+// для валидатора
+const placeError = bildCardElement.querySelector(".input-error-place");
+const urlError = bildCardElement.querySelector(".input-error-url");
 
 // Обработчик открытия формы bild-card
 function openBildCard() {
@@ -14,7 +17,13 @@ function openBildCard() {
 }
   // Обработчик закрытия формы bild-card
 function closeBildCard() {
-    closePopup(bildCardElement);//закрыть bildCard
+    //очистим сообщения валидатора
+    nameError.textContent = "";
+    jobError.textContent = "";
+    nameError.classList.remove("form__input-error_active");
+    jobError.classList.remove("form__input-error_active");
+    //закрыть bildCard
+    closePopup(bildCardElement);
 }
   // Обработчик «отправки» формы bild-card
 function bildCardSubmitHandler(evt) {
