@@ -1,4 +1,4 @@
-// поля ввода профиля из index.js
+// поля ввода профиля из edit-profile.js
 // const saveButton = editProfileElement.querySelector(".popup__btn-save");//кн. SAVE
 // const nameInput = editProfileElement.querySelector(".popup__text_input_name");
 // const jobInput = editProfileElement.querySelector(".popup__text_input_job");
@@ -26,7 +26,7 @@ const hideError = (element, errElement, modifier) => {
 };
 
 // Функция, которая проверяет валидность попапа EditProfile
-function isValidEditProfile () {
+function isValidEditProfile() {
   let nameValid = false;
   let jobValid = false;
   //проверяет валидность поля "nameInput"
@@ -62,9 +62,9 @@ function isValidEditProfile () {
     formEditProfile.removeEventListener("submit", formSubmitHandler);
   }
 };
- 
+
 // Функция, которая проверяет валидность попапа "BildCard"
-function isValidBildCard () {
+function isValidBildCard() {
   let placeValid = false;
   let urlValid = false;
   // проверяет валидность поля "placeInput"
@@ -101,14 +101,14 @@ function isValidBildCard () {
     // отменить обработчик
     formbildCard.removeEventListener("submit", bildCardSubmitHandler);
   }
-  };
-  
+};
+
 // Вызовем функцию isValidPopup на каждый ввод символа EditProfile
-nameInput.addEventListener("input", isValidEditProfile); 
-jobInput.addEventListener("input", isValidEditProfile); 
+nameInput.addEventListener("input", isValidEditProfile);
+jobInput.addEventListener("input", isValidEditProfile);
 // Вызовем функцию isValidBildCard на каждый ввод символа BildCard
-placeInput.addEventListener("input", isValidBildCard); 
-urlInput.addEventListener("input", isValidBildCard); 
+placeInput.addEventListener("input", isValidBildCard);
+urlInput.addEventListener("input", isValidBildCard);
 
 // Закроем попап кнопкой Esc
 document.addEventListener("keydown", function (evt) {
@@ -117,16 +117,16 @@ document.addEventListener("keydown", function (evt) {
     closeEditProfile();//закрыть окно «Редактировать профиль»
     closeBildCard();//закрыть окно bild-card()
   }
-}); 
+});
 
 // Закроем попап кликом по оверлею
-document.addEventListener("click", function(evt){
-  switch(evt.target.className) {
-    case "popup bild-card popup_opened":  
-    //console.log("клик снаружи элемента bild-card");// для отладки
-    closeBildCard();//закрыть окно bild-card()
+document.addEventListener("click", function (evt) {
+  switch (evt.target.className) {
+    case "popup bild-card popup_opened":
+      //console.log("клик снаружи элемента bild-card");// для отладки
+      closeBildCard();//закрыть окно bild-card()
       break
-    case "popup edit-profile popup_opened":  
+    case "popup edit-profile popup_opened":
       //console.log("клик снаружи элемента edit-profile");// для отладки
       closeEditProfile();//закрыть окно «Редактировать профиль»
       break

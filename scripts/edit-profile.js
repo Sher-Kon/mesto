@@ -19,27 +19,33 @@ function openPopup(element) {
   element.classList.add("popup_opened");
 }
 function closePopup(element) {
+  //очистим сообщения валидатора
+  nameError.textContent = "";
+  jobError.textContent = "";
+  nameError.classList.remove("popup__btn-save_no-active");
+  jobError.classList.remove("popup__btn-save_no-active");
+  //закрыть bild-card
   element.classList.remove("popup_opened");
 }
 
 // Обработчик открытия формы popup «Редактировать профиль»
 function openEditProfile() {
-    nameInput.value = nameInfo.textContent;
-    jobInput.value = jobInfo.textContent;
-    openPopup(editProfileElement);//открыть popup «Редактировать профиль»
+  nameInput.value = nameInfo.textContent;
+  jobInput.value = jobInfo.textContent;
+  openPopup(editProfileElement);//открыть popup «Редактировать профиль»
 }
 // Обработчик закрытия формы popup «Редактировать профиль»
 function closeEditProfile() {
-    closePopup(editProfileElement);//закрыть popup «Редактировать профиль»
+  closePopup(editProfileElement);//закрыть popup «Редактировать профиль»
 }
 // Обработчик «отправки» формы «Редактировать профиль»
 function formSubmitHandler(evt) {
-    evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
-    // Вставьте новые значения с помощью textContent
-    nameInfo.textContent = nameInput.value;
-    jobInfo.textContent = jobInput.value;    
-    // Закроем форму
-    closeEditProfile();//закрыть окно «Редактировать профиль»
+  evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
+  // Вставьте новые значения с помощью textContent
+  nameInfo.textContent = nameInput.value;
+  jobInfo.textContent = jobInput.value;
+  // Закроем форму
+  closeEditProfile();//закрыть окно «Редактировать профиль»
 }
 // Прикрепляем обработчик к форме «Редактировать профиль»:
 // он будет следить за событием “submit” - «отправка»
