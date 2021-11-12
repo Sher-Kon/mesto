@@ -23,8 +23,8 @@ function closeBildCard() {
   //очистим сообщения валидатора
   placeError.textContent = "";
   urlError.textContent = "";
-  placeError.classList.remove("bild-card__text_type_error");
-  urlError.classList.remove("bild-card__text_type_error");
+  hideError(placeInput, placeError, "bild-card__text_type_error");
+  hideError(urlInput, urlError, "bild-card__text_type_error");
   //закрыть bildCard
   closePopup(bildCardElement);
 }

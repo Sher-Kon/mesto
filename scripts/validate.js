@@ -13,13 +13,13 @@
 // const urlError = bildCardElement.querySelector(".input-error-url");
 
 // Функция, которая добавляет класс с ошибкой
-const showError = (element, errElement, errorMessage, modifier) => {
+function  showError(element, errElement, errorMessage, modifier) {
   element.classList.add(modifier);
   errElement.textContent = errorMessage;
   errElement.classList.add("form__input-error_active");
 };
 // Функция, которая удаляет класс с ошибкой 
-const hideError = (element, errElement, modifier) => {
+function  hideError(element, errElement, modifier) {
   element.classList.remove(modifier);
   errElement.classList.remove("form__input-error_active");
   errElement.textContent = "";

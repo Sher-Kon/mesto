@@ -22,8 +22,8 @@ function closePopup(element) {
   //очистим сообщения валидатора
   nameError.textContent = "";
   jobError.textContent = "";
-  nameError.classList.remove("popup__btn-save_no-active");
-  jobError.classList.remove("popup__btn-save_no-active");
+  hideError(nameInput, nameError, "popup__text_type_error");
+  hideError(jobInput, jobError, "popup__text_type_error");
   //закрыть bild-card
   element.classList.remove("popup_opened");
 }
