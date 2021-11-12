@@ -67,12 +67,17 @@
                 <form class="form" name="bildCard" novalidate>
                     <h3 class="bild-card__title">Новое место</h3>
                     <div class="bild-card__input">
-                        <input type="text" placeholder="Название" class="bild-card__text bild-card__text_input_place"
-                            name="placeInput" minlength="2" maxlength="30" required>
-                        <span class="popup__input-error input-error-place"></span>
-                        <input type="url" placeholder="Ссылка на картинку"
-                            class="bild-card__text bild-card__text_input_url" name="urlInput" required>
-                        <span class="popup__input-error input-error-url"></span>
+                        <div class="bild-card__input-cover">
+                            <input type="text" placeholder="Название"
+                                class="bild-card__text bild-card__text_input_place" name="placeInput" minlength="2"
+                                maxlength="30" required>
+                            <span class="popup__input-error input-error-place"></span>
+                        </div>
+                        <div class="bild-card__input-cover">
+                            <input type="url" placeholder="Ссылка на картинку"
+                                class="bild-card__text bild-card__text_input_url" name="urlInput" required>
+                            <span class="popup__input-error input-error-url"></span>
+                        </div>
                         <button class="bild-card__btn-save bild-card__btn-save_no-active" type="submit">Создать</button>
                     </div>
                 </form>

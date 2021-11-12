@@ -6,7 +6,7 @@
   font-style: normal;
   text-align: start;
   margin-top: 34px; /* отступ */
-  margin-bottom: 27px;/*54=27+13+14*/
+  margin-bottom: 41px;/*54=27+13+14 +14*/
   color: black;
 }
 
@@ -15,7 +15,8 @@
       width: 238px;
       font-size: 18px;
       line-height: 22px;
+      padding-left: 60px;
       margin-top: 25px; /* отступ */
-      margin-bottom: 48px;/*75=48+13+14*/
+      margin-bottom: 62px;/*75=48+13+14 +14*/
   }
 }
