@@ -19,25 +19,39 @@ function openPopup(element) {
   element.classList.add("popup_opened");
 }
 function closePopup(element) {
+  //закрыть bild-card
+  element.classList.remove("popup_opened");
+}
+
+// Закроем попап  «Редактировать профиль» по кнопке ESC
+function closeEditProfileOnEsc(evt) {
+  if (evt.key === "Escape") {
+    //console.log("Нажали — ESC");// для отладки
+    closeEditProfile();//закрыть окно «Редактировать профиль»
+  }
+}
+
+// Обработчик открытия формы popup «Редактировать профиль»
+function openEditProfile() {
+  openPopup(editProfileElement);//открыть popup «Редактировать профиль»
+  document.addEventListener("keydown", closeEditProfileOnEsc);
+}
+// Обработчик закрытия формы popup «Редактировать профиль»
+function closeEditProfile() {
+  // Очистить инпуты 
+  nameInput.value = nameInfo.textContent;
+  jobInput.value = jobInfo.textContent;
   //очистим сообщения валидатора
   nameError.textContent = "";
   jobError.textContent = "";
   hideError(nameInput, nameError, "popup__text_type_error");
   hideError(jobInput, jobError, "popup__text_type_error");
-  //закрыть bild-card
-  element.classList.remove("popup_opened");
+  //закрыть popup «Редактировать профиль»
+  closePopup(editProfileElement);
+    // снять слушатель Esc
+  document.removeEventListener("keydown", closeEditProfileOnEsc);
 }
 
-// Обработчик открытия формы popup «Редактировать профиль»
-function openEditProfile() {
-  nameInput.value = nameInfo.textContent;
-  jobInput.value = jobInfo.textContent;
-  openPopup(editProfileElement);//открыть popup «Редактировать профиль»
-}
-// Обработчик закрытия формы popup «Редактировать профиль»
-function closeEditProfile() {
-  closePopup(editProfileElement);//закрыть popup «Редактировать профиль»
-}
 // Обработчик «отправки» формы «Редактировать профиль»
 function formSubmitHandler(evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.

@@ -111,14 +111,14 @@ placeInput.addEventListener("input", isValidBildCard);
 urlInput.addEventListener("input", isValidBildCard);
 
 // Закроем попап кнопкой Esc
-document.addEventListener("keydown", function (evt) {
+/*document.addEventListener("keydown", function (evt) {
   if (evt.key === "Escape") {
     //console.log("Нажали — ESC");// для отладки
     closeEditProfile();//закрыть окно «Редактировать профиль»
     closeBildCard();//закрыть окно bild-card()
   }
 });
-
+*/
 // Закроем попап кликом по оверлею
 document.addEventListener("click", function (evt) {
   switch (evt.target.className) {

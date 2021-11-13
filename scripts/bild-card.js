@@ -11,9 +11,17 @@ const formbildCard = bildCardElement.querySelector(".form");// Находим ф
 const placeError = bildCardElement.querySelector(".input-error-place");
 const urlError = bildCardElement.querySelector(".input-error-url");
 
+// Закроем попап  «BildCard» по кнопке ESC
+function closeBildCardOnEsc(evt) {
+  if (evt.key === "Escape") {
+    //console.log("Нажали — ESC");// для отладки
+    closeBildCard();//закрыть окно «Редактировать профиль»
+  }
+}
 // Обработчик открытия формы bild-card
 function openBildCard() {
   openPopup(bildCardElement); //открыть bildCard
+  document.addEventListener("keydown", closeBildCardOnEsc);
 }
 // Обработчик закрытия формы bild-card
 function closeBildCard() {
@@ -25,8 +33,10 @@ function closeBildCard() {
   urlError.textContent = "";
   hideError(placeInput, placeError, "bild-card__text_type_error");
   hideError(urlInput, urlError, "bild-card__text_type_error");
-  //закрыть bildCard
+  //закрыть попап bildCard
   closePopup(bildCardElement);
+  // снять слушатель Esc
+  document.removeEventListener("keydown", closeBildCardOnEsc);
 }
 // Обработчик «отправки» формы bild-card
 function bildCardSubmitHandler(evt) {
