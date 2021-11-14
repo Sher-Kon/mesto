@@ -11,8 +11,8 @@ const closeButton = editProfileElement.querySelector(".popup__btn-close");//кн
 const saveButton = editProfileElement.querySelector(".popup__btn-save");//кн. SAVE
 const formEditProfile = editProfileElement.querySelector(".form");// Находим форму в DOM
 // для валидатора
-const nameError = editProfileElement.querySelector(".input-error-name");
-const jobError = editProfileElement.querySelector(".input-error-job");
+const nameError = editProfileElement.querySelector(".name-input-error");
+const jobError = editProfileElement.querySelector(".job-input-error");
 
 // Универсальные функции
 function openPopup(element) {
@@ -53,8 +53,8 @@ function closeEditProfile() {
   //очистим сообщения валидатора
   nameError.textContent = "";
   jobError.textContent = "";
-  hideError(nameInput, nameError, "popup__text_type_error");
-  hideError(jobInput, jobError, "popup__text_type_error");
+  hideError(editProfileElement, nameInput, "popup__text_type_error");
+  hideError(editProfileElement, jobInput, "popup__text_type_error");
   //закрыть popup «Редактировать профиль»
   closePopup(editProfileElement);
     // снять слушатель Esc

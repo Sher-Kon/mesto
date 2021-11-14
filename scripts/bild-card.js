@@ -8,8 +8,8 @@ const closeBttn = bildCardElement.querySelector(".bild-card__btn-close");//кн.
 const bildBttn = bildCardElement.querySelector(".bild-card__btn-save");//кн.закрытия формы bild-card
 const formbildCard = bildCardElement.querySelector(".form");// Находим форму в DOM in bildCardElement
 // для валидатора
-const placeError = bildCardElement.querySelector(".input-error-place");
-const urlError = bildCardElement.querySelector(".input-error-url");
+const placeError = bildCardElement.querySelector(".place-input-error");
+const urlError = bildCardElement.querySelector(".url-input-error");
 
 // Закроем попап  «BildCard» по кнопке ESC
 function closeBildCardOnEsc(evt) {
@@ -42,8 +42,8 @@ function closeBildCard() {
   //очистим сообщения валидатора
   placeError.textContent = "";
   urlError.textContent = "";
-  hideError(placeInput, placeError, "bild-card__text_type_error");
-  hideError(urlInput, urlError, "bild-card__text_type_error");
+  hideError(bildCardElement, placeInput, "bild-card__text_type_error");
+  hideError(bildCardElement, urlInput, "bild-card__text_type_error");
   //закрыть попап bildCard
   closePopup(bildCardElement);
   // снять слушатель Esc

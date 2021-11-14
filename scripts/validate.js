@@ -2,27 +2,29 @@
 // const saveButton = editProfileElement.querySelector(".popup__btn-save");//кн. SAVE
 // const nameInput = editProfileElement.querySelector(".popup__text_input_name");
 // const jobInput = editProfileElement.querySelector(".popup__text_input_job");
-// const nameError = editProfileElement.querySelector(".input-error-name");
-// const jobError = editProfileElement.querySelector(".input-error-job");
+// const nameError = editProfileElement.querySelector(".name-input-error");
+// const jobError = editProfileElement.querySelector(".job-input-error");
 
 // поля ввода карточки из bild-cards.js
 // const bildBttn = bildCardElement.querySelector(".bild-card__btn-save");//кн. bild-card
 // const placeInput = bildCardElement.querySelector(".bild-card__text_input_place");
 // const urlInput = bildCardElement.querySelector(".bild-card__text_input_url");
-// const placeError = bildCardElement.querySelector(".input-error-place");
-// const urlError = bildCardElement.querySelector(".input-error-url");
+// const placeError = bildCardElement.querySelector(".place-input-error");
+// const urlError = bildCardElement.querySelector(".url-input-error");
 
 // Функция, которая добавляет класс с ошибкой
-function  showError(element, errElement, errorMessage, modifier) {
-  element.classList.add(modifier);
-  errElement.textContent = errorMessage;
-  errElement.classList.add("form__input-error_active");
+function  showError(formElement, inputElement, errorMessage) {
+  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+  inputElement.classList.add("form__input_type_error");
+  errorElement.classList.add("form__input-error_active");
+  errorElement.textContent = errorMessage;
 };
 // Функция, которая удаляет класс с ошибкой 
-function  hideError(element, errElement, modifier) {
-  element.classList.remove(modifier);
-  errElement.classList.remove("form__input-error_active");
-  errElement.textContent = "";
+function  hideError(formElement, inputElement) {
+  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+  inputElement.classList.remove("form__input_type_error");
+  errorElement.classList.remove("form__input-error_active");
+  errorElement.textContent = "";
 };
 
 // Функция, которая проверяет валидность попапа EditProfile
@@ -32,21 +34,21 @@ function isValidEditProfile() {
   //проверяет валидность поля "nameInput"
   if (!nameInput.validity.valid) {
     // Если поле не проходит валидацию, покажем ошибку
-    showError(nameInput, nameError, nameInput.validationMessage, "popup__text_type_error");
+    showError(editProfileElement, nameInput, nameInput.validationMessage);
     nameValid = false;
   } else {
     // Если проходит, скроем
-    hideError(nameInput, nameError, "popup__text_type_error");
+    hideError(editProfileElement, nameInput);//, "popup__text_type_error"
     nameValid = true;
   }
   //проверяет валидность поля "jobInput"
   if (!jobInput.validity.valid) {
     // Если поле не проходит валидацию, покажем ошибку
-    showError(jobInput, jobError, jobInput.validationMessage, "popup__text_type_error");
+    showError(editProfileElement, jobInput,jobInput.validationMessage);
     jobValid = false;
   } else {
     // Если проходит, скроем
-    hideError(jobInput, jobError, "popup__text_type_error");
+    hideError(editProfileElement, jobInput);
     jobValid = true;
   }
   // проверяем активность кнопки
@@ -70,21 +72,21 @@ function isValidBildCard() {
   // проверяет валидность поля "placeInput"
   if (!placeInput.validity.valid) {
     // Если поле не проходит валидацию, покажем ошибку
-    showError(placeInput, placeError, placeInput.validationMessage, "bild-card__text_type_error");
+    showError(bildCardElement, placeInput, placeInput.validationMessage);
     placeValid = false;
   } else {
     // Если проходит, скроем
-    hideError(placeInput, placeError, "bild-card__text_type_error");
+    hideError(bildCardElement, placeInput);//, "bild-card__text_type_error"
     placeValid = true;
   }
   // проверяет валидность поля "urlInput"
   if (!urlInput.validity.valid) {
     // Если поле не проходит валидацию, покажем ошибку
-    showError(urlInput, urlError, urlInput.validationMessage, "bild-card__text_type_error");
+    showError(bildCardElement, urlInput, urlInput.validationMessage);
     urlValid = false;
   } else {
     // Если проходит, скроем
-    hideError(urlInput, urlError, "bild-card__text_type_error");
+    hideError(bildCardElement, urlInput);
     urlValid = true;
   }
   // проверяем активность кнопки

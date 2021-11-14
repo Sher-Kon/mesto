@@ -32,7 +32,6 @@
 @import url(../blocks/popup/__container/popup__container.css);
 @import url(../blocks/popup/__input/popup__input.css);
 @import url(../blocks/popup/__text/popup__text.css);
-@import url(../blocks/popup/__text/_type_error/popup__text_type_error.css);
 @import url(../blocks/popup/__title/popup__title.css);
 @import url(../blocks/popup/__input-error/popup__input-error.css);
 @import url(../blocks/popup/__btn-save/_no-active/popup__btn-save_no-active.css);
@@ -43,7 +42,6 @@
 @import url(../blocks/bild-card/__input-cover/bild-card__input-cover.css);
 @import url(../blocks/bild-card/__text/bild-card__text.css);
 @import url(../blocks/bild-card/__title/bild-card__title.css);
-@import url(../blocks/bild-card/__text/_type_error/bild-card__text_type_error.css);
 @import url(../blocks/bild-card/__btn-save/_no-active/bild-card__btn-save_no-active.css);
 @import url(../blocks/bild-card/__btn-save/_active/bild-card__btn-save_active.css);
 
@@ -56,3 +54,5 @@
 @import url(../blocks/footer/__copyright/footer__copyright.css);
 
 @import url(../blocks/txt-ovf/txt-ovf.css);
+
+@import url(../blocks/form/__input/_type_error/form__input_type_error.css);
