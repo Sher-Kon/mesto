@@ -27,6 +27,54 @@ function  hideError(formElement, inputElement) {
   errorElement.textContent = "";
 };
 
+// Функция, которая проверяет валидность инпута
+const checkInputValidity = (formElement, inputElement) => {
+  if (!inputElement.validity.valid) {
+    showError(formElement, inputElement, inputElement.validationMessage);
+  } else {
+    hideError(formElement, inputElement);
+  }
+};
+
+const setEventListeners = (formElement) => {
+  const inputList = Array.from(formElement.querySelectorAll('.form__input'));
+  //console.log("inputList : "+inputList);//отладка
+  inputList.forEach((inputElement) => {
+    //console.log("inputElement : "+inputElement);//отладка
+    inputElement.addEventListener('input', function () {
+      //console.log("formElement : "+formElement);//отладка
+      //console.log("inputElement : "+inputElement);//отладка
+      checkInputValidity(formElement, inputElement);
+    });
+  });
+};
+
+const enableValidation = () => {
+  // Найдём все формы с указанным классом в DOM,
+  // сделаем из них массив методом Array.from
+  const formList = Array.from(document.querySelectorAll('.form'));
+  //console.log("formList : "+formList);//отладка
+
+  // Переберём полученную коллекцию
+  formList.forEach((formElement) => {
+    formElement.addEventListener('submit', (evt) => {
+      // У каждой формы отменим стандартное поведение
+      evt.preventDefault();
+    });
+
+    // Для каждой формы вызовем функцию setEventListeners,
+    // передав ей элемент формы
+    setEventListeners(formElement);
+    //console.log("formElement : "+formElement);//отладка
+  });
+};
+
+// Вызовем функцию
+enableValidation();
+
+/*//========================================================
+// жесткая конструкция
+
 // Функция, которая проверяет валидность попапа EditProfile
 function isValidEditProfile() {
   let nameValid = false;
@@ -111,3 +159,4 @@ jobInput.addEventListener("input", isValidEditProfile);
 // Вызовем функцию isValidBildCard на каждый ввод символа BildCard
 placeInput.addEventListener("input", isValidBildCard);
 urlInput.addEventListener("input", isValidBildCard);
+*/
