@@ -23,10 +23,17 @@ function closePopup(element) {
   element.classList.remove("popup_opened");
 }
 
-// Закроем попап  «Редактировать профиль» по кнопке ESC
+// Закроем попап «Редактировать профиль» по кнопке ESC
 function closeEditProfileOnEsc(evt) {
   if (evt.key === "Escape") {
     //console.log("Нажали — ESC");// для отладки
+    closeEditProfile();//закрыть окно «Редактировать профиль»
+  }
+}
+// Закроем попап «Редактировать профиль» кликом по оверлею
+function closeEditProfileOnOverlay(evt) {
+  if (evt.target.className === "popup edit-profile popup_opened") {
+    //console.log("Нажали — OVERLAY EditProfile");// для отладки
     closeEditProfile();//закрыть окно «Редактировать профиль»
   }
 }
@@ -35,6 +42,8 @@ function closeEditProfileOnEsc(evt) {
 function openEditProfile() {
   openPopup(editProfileElement);//открыть popup «Редактировать профиль»
   document.addEventListener("keydown", closeEditProfileOnEsc);
+  // добавить слушатель Overlay
+  document.addEventListener("click", closeEditProfileOnOverlay);
 }
 // Обработчик закрытия формы popup «Редактировать профиль»
 function closeEditProfile() {
@@ -50,6 +59,8 @@ function closeEditProfile() {
   closePopup(editProfileElement);
     // снять слушатель Esc
   document.removeEventListener("keydown", closeEditProfileOnEsc);
+  // снять слушатель Overlay
+  document.removeEventListener("click", closeEditProfileOnOverlay);
 }
 
 // Обработчик «отправки» формы «Редактировать профиль»

@@ -14,14 +14,25 @@ const urlError = bildCardElement.querySelector(".input-error-url");
 // Закроем попап  «BildCard» по кнопке ESC
 function closeBildCardOnEsc(evt) {
   if (evt.key === "Escape") {
-    //console.log("Нажали — ESC");// для отладки
-    closeBildCard();//закрыть окно «Редактировать профиль»
+    //console.log("Нажали — ESC в BildCard");// для отладки
+    closeBildCard();//закрыть окно «BildCard»
   }
 }
+// Закроем попап кликом по оверлею
+function closeBildCardOnOverlay(evt) {
+  if (evt.target.className === "popup bild-card popup_opened") {
+    //console.log("Нажали — OVERLAY в BildCard");// для отладки
+    closeBildCard();//закрыть окно «BildCard»
+  }
+}
+
 // Обработчик открытия формы bild-card
 function openBildCard() {
   openPopup(bildCardElement); //открыть bildCard
+  // добавить слушатель Esc
   document.addEventListener("keydown", closeBildCardOnEsc);
+  // добавить слушатель Overlay
+  document.addEventListener("click", closeBildCardOnOverlay);
 }
 // Обработчик закрытия формы bild-card
 function closeBildCard() {
@@ -37,6 +48,8 @@ function closeBildCard() {
   closePopup(bildCardElement);
   // снять слушатель Esc
   document.removeEventListener("keydown", closeBildCardOnEsc);
+  // снять слушатель Overlay
+  document.removeEventListener("click", closeBildCardOnOverlay);
 }
 // Обработчик «отправки» формы bild-card
 function bildCardSubmitHandler(evt) {
