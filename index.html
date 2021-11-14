@@ -47,16 +47,20 @@
         <div class="popup edit-profile">
             <div class="popup__container">
                 <form class="form" name="editProfile" novalidate>
-                    <h3 class="popup__title">Редактировать профиль</h3>
-                    <div class="popup__input">
-                        <input type="text" placeholder="Имя" id="name-input" class="form__input popup__text popup__text_input_name"
-                            name="nameInput" minlength="2" maxlength="40" required>
-                        <span class="popup__input-error name-input-error"></span>
-                        <input type="text" placeholder="О себе" id="job-input" class="form__input popup__text popup__text_input_job"
-                            name="jobInput" minlength="2" maxlength="200" required>
-                        <span class="popup__input-error job-input-error"></span>
-                        <button class="popup__btn-save" type="submit">Сохранить</button>
-                    </div>
+                    <fieldset class="form__set">
+                        <h3 class="popup__title">Редактировать профиль</h3>
+                        <div class="popup__input">
+                            <input type="text" placeholder="Имя" id="name-input"
+                                class="form__input popup__text popup__text_input_name" name="nameInput" minlength="2"
+                                maxlength="40" required>
+                            <span class="popup__input-error name-input-error"></span>
+                            <input type="text" placeholder="О себе" id="job-input"
+                                class="form__input popup__text popup__text_input_job" name="jobInput" minlength="2"
+                                maxlength="200" required>
+                            <span class="popup__input-error job-input-error"></span>
+                            <button class="form__submit popup__btn-save" type="submit">Сохранить</button>
+                        </div>
+                    </fieldset>
                 </form>
                 <button class="popup__btn-close" type="button"></button>
             </div>
@@ -65,21 +69,24 @@
         <div class="popup bild-card">
             <div class="bild-card__container">
                 <form class="form" name="bildCard" novalidate>
-                    <h3 class="bild-card__title">Новое место</h3>
-                    <div class="bild-card__input">
-                        <div class="bild-card__input-cover">
-                            <input type="text" placeholder="Название" id="place-input"
-                                class="form__input bild-card__text bild-card__text_input_place" name="placeInput" minlength="2"
-                                maxlength="30" required>
-                            <span class="popup__input-error place-input-error"></span>
+                    <fieldset class="form__set">
+                        <h3 class="bild-card__title">Новое место</h3>
+                        <div class="bild-card__input">
+                            <div class="bild-card__input-cover">
+                                <input type="text" placeholder="Название" id="place-input"
+                                    class="form__input bild-card__text bild-card__text_input_place" name="placeInput"
+                                    minlength="2" maxlength="30" required>
+                                <span class="popup__input-error place-input-error"></span>
+                            </div>
+                            <div class="bild-card__input-cover">
+                                <input type="url" placeholder="Ссылка на картинку" id="url-input"
+                                    class="form__input bild-card__text bild-card__text_input_url" name="urlInput"
+                                    required>
+                                <span class="popup__input-error url-input-error"></span>
+                            </div>
+                            <button class="form__submit bild-card__btn-save" type="submit">Создать</button>
                         </div>
-                        <div class="bild-card__input-cover">
-                            <input type="url" placeholder="Ссылка на картинку" id="url-input"
-                                class="form__input bild-card__text bild-card__text_input_url" name="urlInput" required>
-                            <span class="popup__input-error url-input-error"></span>
-                        </div>
-                        <button class="bild-card__btn-save bild-card__btn-save_no-active" type="submit">Создать</button>
-                    </div>
+                    </fieldset>
                 </form>
                 <button class="popup__btn-close bild-card__btn-close" type="button"></button>
             </div>

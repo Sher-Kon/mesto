@@ -56,3 +56,6 @@
 @import url(../blocks/txt-ovf/txt-ovf.css);
 
 @import url(../blocks/form/__input/_type_error/form__input_type_error.css);
+@import url(../blocks/form/__set/form__set.css);
+
+@import url(../blocks/button/_inactive/button_inactive.css);
