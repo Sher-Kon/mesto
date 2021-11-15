@@ -22,14 +22,14 @@ const toggleButtonState = (inputList, buttonElement) => {
 };
 
 // Функция, которая добавляет класс с ошибкой
-function showError(formElement, inputElement, errorMessage) {
+function showInputError(formElement, inputElement, errorMessage) {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   inputElement.classList.add("form__input_type_error");
   errorElement.classList.add("form__input-error_active");
   errorElement.textContent = errorMessage;
 };
 // Функция, которая удаляет класс с ошибкой 
-function hideError(formElement, inputElement) {
+function hideInputError(formElement, inputElement) {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   inputElement.classList.remove("form__input_type_error");
   errorElement.classList.remove("form__input-error_active");
@@ -39,9 +39,9 @@ function hideError(formElement, inputElement) {
 // Функция, которая проверяет валидность инпута
 const checkInputValidity = (formElement, inputElement) => {
   if (!inputElement.validity.valid) {
-    showError(formElement, inputElement, inputElement.validationMessage);
+    showInputError(formElement, inputElement, inputElement.validationMessage);
   } else {
-    hideError(formElement, inputElement);
+    hideInputError(formElement, inputElement);
   }
 };
 

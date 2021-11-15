@@ -1,15 +1,12 @@
 // элементы DOM на странице
 const addButton = document.querySelector(".profile__add-btn");
-// bildCard
+// bildCard popup
 const bildCardElement = document.querySelector(".bild-card");
 const placeInput = bildCardElement.querySelector(".bild-card__text_input_place");
 const urlInput = bildCardElement.querySelector(".bild-card__text_input_url");
 const closeBttn = bildCardElement.querySelector(".bild-card__btn-close");//кн.закрытия формы bild-card
-const bildBttn = bildCardElement.querySelector(".bild-card__btn-save");//кн.закрытия формы bild-card
+const bildCardBttn = bildCardElement.querySelector(".bild-card__btn-save");//кн. создания card
 const formbildCard = bildCardElement.querySelector(".form");// Находим форму в DOM in bildCardElement
-// для валидатора
-const placeError = bildCardElement.querySelector(".place-input-error");
-const urlError = bildCardElement.querySelector(".url-input-error");
 
 // Закроем попап  «BildCard» по кнопке ESC
 function closeBildCardOnEsc(evt) {
@@ -36,14 +33,6 @@ function openBildCard() {
 }
 // Обработчик закрытия формы bild-card
 function closeBildCard() {
-  // Очистить инпуты 
-  placeInput.value = "";
-  urlInput.value = "";
-  //очистим сообщения валидатора
-  placeError.textContent = "";
-  urlError.textContent = "";
-  hideError(bildCardElement, placeInput, "bild-card__text_type_error");
-  hideError(bildCardElement, urlInput, "bild-card__text_type_error");
   //закрыть попап bildCard
   closePopup(bildCardElement);
   // снять слушатель Esc
@@ -63,9 +52,8 @@ function bildCardSubmitHandler(evt) {
   // Очистить инпуты для новой карточки
   placeInput.value = "";
   urlInput.value = "";
-  // Серая кнопка ввода
-  bildBttn.classList.add("bild-card__btn-save_no-active");
-  bildBttn.classList.remove("bild-card__btn-save_active");
+  // Сделаем кнопку неактивной
+  bildCardBttn.classList.add('button_inactive');
   // Закроем форму bildCard()
   closeBildCard();//закрыть окно bild-card()
 }
