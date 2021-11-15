@@ -8,37 +8,13 @@ const closeBttn = bildCardElement.querySelector(".bild-card__btn-close");//кн.
 const bildCardBttn = bildCardElement.querySelector(".bild-card__btn-save");//кн. создания card
 const formbildCard = bildCardElement.querySelector(".form");// Находим форму в DOM in bildCardElement
 
-// Закроем попап  «BildCard» по кнопке ESC
-function closeBildCardOnEsc(evt) {
-  if (evt.key === "Escape") {
-    //console.log("Нажали — ESC в BildCard");// для отладки
-    closeBildCard();//закрыть окно «BildCard»
-  }
-}
-// Закроем попап кликом по оверлею
-function closeBildCardOnOverlay(evt) {
-  if (evt.target.className === "popup bild-card popup_opened") {
-    //console.log("Нажали — OVERLAY в BildCard");// для отладки
-    closeBildCard();//закрыть окно «BildCard»
-  }
-}
-
 // Обработчик открытия формы bild-card
 function openBildCard() {
   openPopup(bildCardElement); //открыть bildCard
-  // добавить слушатель Esc
-  document.addEventListener("keydown", closeBildCardOnEsc);
-  // добавить слушатель Overlay
-  document.addEventListener("click", closeBildCardOnOverlay);
 }
 // Обработчик закрытия формы bild-card
 function closeBildCard() {
-  //закрыть попап bildCard
   closePopup(bildCardElement);
-  // снять слушатель Esc
-  document.removeEventListener("keydown", closeBildCardOnEsc);
-  // снять слушатель Overlay
-  document.removeEventListener("click", closeBildCardOnOverlay);
 }
 // Обработчик «отправки» формы bild-card
 function bildCardSubmitHandler(evt) {
