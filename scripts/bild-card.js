@@ -29,6 +29,7 @@ function bildCardSubmitHandler(evt) {
   placeInput.value = "";
   urlInput.value = "";
   // Сделаем кнопку неактивной
+  bildCardBttn.disabled = true;
   bildCardBttn.classList.add('button_inactive');
   // Закроем форму bildCard()
   closeBildCard();//закрыть окно bild-card()
