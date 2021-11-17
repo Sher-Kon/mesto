@@ -15,6 +15,8 @@ function openEditProfile() {
   // Загрузить инпуты из профиля
   nameInput.value = nameInfo.textContent;
   jobInput.value = jobInfo.textContent;
+  // Проверим валидацию попапа
+  setEventListeners(editProfileElement);
   //открыть popup «Редактировать профиль»
   openPopup(editProfileElement);
 }
