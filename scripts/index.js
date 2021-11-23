@@ -1,3 +1,72 @@
+// Возьмем готовый массив
+const iniCards = [
+  {
+    name: 'Архыз',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+  },
+  {
+    name: 'Челябинская область',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+  },
+  {
+    name: 'Иваново',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+  },
+  {
+    name: 'Камчатка',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+  },
+  {
+    name: 'Холмогорский район',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+  },
+  {
+    name: 'Байкал',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+  }
+]; 
+
+class Card {
+  constructor(title, image) {
+    this._image = image;
+    this._title = title;
+  }
+
+  _getTemplate() {
+    const cardElement = document
+      .querySelector('.element-card')
+      .content
+      .querySelector('.element')
+      .cloneNode(true);
+
+    return cardElement;
+  }
+
+  generateCard() {
+    // Запишем разметку в приватное поле _element. 
+    // Так у других элементов появится доступ к ней.
+    this._element = this._getTemplate();
+
+    // Добавим данные
+    this._element.querySelector('.element__img').src = this._image;
+    this._element.querySelector('.element__txt').textContent = this._title;
+
+    // Вернём элемент наружу
+    return this._element;
+  }   
+}
+
+//Начальная загрузка страницы - 6 карточек
+iniCards.forEach((item) => {
+  // Создадим экземпляр карточки
+  const card = new Card(item.name, item.link);
+  // Создаём карточку и возвращаем наружу
+  const cardElement = card.generateCard();
+
+  // Добавляем в DOM (section class="elements")
+  document.querySelector('.elements').append(cardElement);
+}); 
+
 // Универсальные функции попапа
 function openPopup(element) {
   //открыть попап
@@ -55,4 +124,4 @@ function iniElements() {
     addElement(iniCardsURL[index], iniCardsTXT[index], "dn");
   }
 }
-iniElements();
+//iniElements();
