@@ -1,3 +1,4 @@
+//export class Card {
 class Card {
     constructor(title, image) {
         this._image = image;
