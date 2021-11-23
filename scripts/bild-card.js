@@ -23,7 +23,12 @@ function bildCardSubmitHandler(evt) {
   const place = placeInput.value;
   const url = urlInput.value;
   if (url !== '') {
-    addElement(url, place, "up");//клонируем карточку в начало
+    // Создадим экземпляр карточки
+    const cardADD = new Card(place, url);
+    // Создаём элемент DOM
+    const cardElementADD = cardADD.generateCard();
+    // Добавляем в DOM (section class="elements")
+    document.querySelector('.elements').prepend(cardElementADD);//добавить в начало 
   }
   // Очистить инпуты для новой карточки
   placeInput.value = "";
