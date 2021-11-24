@@ -1,33 +1,20 @@
 //export class Card {
 class Card {
-    constructor(title, image) {
-        this._image = image;
+    constructor(title, image, template) {
         this._title = title;
+        this._image = image;
+        this._template = template;
     }
 
+    // клонировать Template
     _getTemplate() {
         const cardElement = document
-            .querySelector('.element-card')
+            .querySelector('.'+this._template)//template=.element-card
             .content
             .querySelector('.element')
             .cloneNode(true);
 
         return cardElement;
-    }
-
-    generateCard() {
-        // Запишем разметку в приватное поле _element. 
-        // Так у других элементов появится доступ к ней.
-        this._element = this._getTemplate();
-        this._setEventListeners();// добавим обработчики
-
-        // Добавим данные
-        this._element.querySelector('.element__img').src = this._image;
-        this._element.querySelector('.element__img').alt = "На фотографии " + this._title;
-        this._element.querySelector('.element__txt').textContent = this._title;
-
-        // Вернём элемент наружу
-        return this._element;
     }
 
     // список слушателей
@@ -56,5 +43,20 @@ class Card {
         txtImg.textContent = this._element.querySelector('.element__txt').textContent;
         srcImg.src = this._element.querySelector('.element__img').src;
         openLookImg();//открыть окно просмотра картинки "lookImg"
+    }
+
+    generateCard() {
+        // Запишем разметку в приватное поле _element. 
+        // Так у других элементов появится доступ к ней.
+        this._element = this._getTemplate();
+        this._setEventListeners();// добавим обработчики
+
+        // Добавим данные
+        this._element.querySelector('.element__img').src = this._image;
+        this._element.querySelector('.element__img').alt = "На фотографии " + this._title;
+        this._element.querySelector('.element__txt').textContent = this._title;
+
+        // Вернём элемент наружу
+        return this._element;
     }
 }
