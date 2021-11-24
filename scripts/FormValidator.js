@@ -22,7 +22,7 @@ class FormValidator {
   }
 
   // Функция, которая проверяет валидность инпута
-  _checkInputValidity = (formElement, inputElement) => {
+  _checkInputValidity(formElement, inputElement)  {
     if (!inputElement.validity.valid) {
       this._showInputError(formElement, inputElement, inputElement.validationMessage);
     } else {
@@ -66,9 +66,11 @@ class FormValidator {
     this._toggleButtonState(this.inputList, this.buttonElement);
 
     // Обойдём все элементы массива inputList (поля ввода)
-    inputList.forEach((inputElement) => {
+    this.inputList.forEach((inputElement) => {
+      //console.log("input: "+inputElement);
       // каждому полю ввода добавим слушатель события input
       inputElement.addEventListener('input', function () {
+        console.log("in char "+formElement+inputElement);
         // Функция, которая проверяет валидность инпута
         this._checkInputValidity(formElement, inputElement);
         // Изменение стиля кнопки при вводе символа
@@ -78,32 +80,27 @@ class FormValidator {
   };
 
   enableValidation = () => {
-    // Найдём все формы с указанным классом в DOM,
-    // сделаем из них массив методом Array.from
-    const formList = Array.from(document.querySelectorAll('.form'));
+    // Найдём форму с указанным классом в DOM,
+    this._formElement = document.querySelector('.edit-profile');
 
-    // Переберём полученную коллекцию
-    this.formList.forEach((formElement) => {
-      // каждой форме добавим слушатель события submit
-      this.formElement.addEventListener('submit', function (evt) {
-        // У каждой формы отменим стандартное поведение
-        evt.preventDefault();
-      });
-
-      // Для каждой формы вызовем
-      // обработчики отдельных филдсетов
-      fieldsetList = Array.from(formElement.querySelectorAll('.form__set'));
-      // У каждого филдсета каждому полю ввода добавим слушатель события input
-      this.fieldsetList.forEach((fieldSet) => {
-        this._setEventListeners(fieldSet);
-      });
+    // форме добавим слушатель события submit
+    this._formElement.addEventListener('submit', function (evt) {
+      // У формы отменим стандартное поведение
+      evt.preventDefault();
     });
+
+    // Вызовем обработчики отдельных филдсетов
+    //this.fieldsetList = Array.from(this.formElement.querySelectorAll('.form__set'));
+    // У каждого филдсета каждому полю ввода добавим слушатель события input
+    //this.fieldsetList.forEach((fieldSet) => {
+      this._setEventListeners(this._formElement);
+    //});
   };
 
 }
 
-    // Создадим экземпляр 
+// Создадим экземпляр 
 const validator = new FormValidator();
-    // Вызовем функцию
+// Вызовем функцию
 validator.enableValidation();
 

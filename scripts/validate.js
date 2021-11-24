@@ -22,18 +22,17 @@ const checkInputValidity = (formElement, inputElement) => {
     hideInputError(formElement, inputElement);
   }
 };
-
+// Находит хотя бы один невалидный инпут
 const hasInvalidInput = (inputList) => {
   // проходим по этому массиву методом some
   return inputList.some((inputElement) => {
     // Если поле не валидно, колбэк вернёт true
     // Обход массива прекратится и вся фунцкция
     // hasInvalidInput вернёт true
-
     return !inputElement.validity.valid;
   })
 };
-
+// Изменение стиля кнопки
 const toggleButtonState = (inputList, buttonElement) => {
   // Если есть хотя бы один невалидный инпут
   if (hasInvalidInput(inputList)) {
@@ -46,16 +45,22 @@ const toggleButtonState = (inputList, buttonElement) => {
     buttonElement.classList.remove('button_inactive');
   }
 };
-
+// слушатель событий добавится всем полям ввода внутри элемента формы
 const setEventListeners = (formElement) => {
+    // Находим все поля ввода внутри формы,
+    // сделаем из них массив методом Array.from
   const inputList = Array.from(formElement.querySelectorAll('.form__input'));
   const buttonElement = formElement.querySelector('.form__submit');
-
+  // Изменение стиля начальное
   toggleButtonState(inputList, buttonElement);
-
+  // Обойдём все элементы массива inputList (поля ввода)
   inputList.forEach((inputElement) => {
-    inputElement.addEventListener('input', function () {
+      //console.log("input: "+inputElement);
+      // каждому полю ввода добавим слушатель события input
+      inputElement.addEventListener('input', function () {
+      // Функция, которая проверяет валидность инпута
       checkInputValidity(formElement, inputElement);
+      // Изменение стиля кнопки при вводе символа
       toggleButtonState(inputList, buttonElement);
     });
   });
@@ -73,10 +78,9 @@ const enableValidation = (formElement) => {
       evt.preventDefault();
     });
 
-    // Для каждой формы вызовем
-    // обработчики отдельным филдсетам
+    // Для каждой формы вызовем обработчики отдельных филдсетов
     const fieldsetList = Array.from(formElement.querySelectorAll('.form__set'));
-
+    // У каждого филдсета каждому полю ввода добавим слушатель события input
     fieldsetList.forEach((fieldSet) => {
       setEventListeners(fieldSet);
     });
