@@ -74,7 +74,8 @@ function openEditProfile() {
   nameInput.value = nameInfo.textContent;
   jobInput.value = jobInfo.textContent;
   // Проверим валидацию попапа
-  //enableValidation();
+  validator.enableValidation();//для экземпляра класса
+  //enableValidation();//для функции
   //открыть popup «Редактировать профиль»
   openPopup(editProfileElement);
 }
