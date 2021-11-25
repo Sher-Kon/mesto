@@ -47,17 +47,17 @@ const toggleButtonState = (inputList, buttonElement) => {
 };
 // слушатель событий добавится всем полям ввода внутри элемента формы
 const setEventListeners = (formElement) => {
-    // Находим все поля ввода внутри формы,
-    // сделаем из них массив методом Array.from
+  // Находим все поля ввода внутри формы,
+  // сделаем из них массив методом Array.from
   const inputList = Array.from(formElement.querySelectorAll('.form__input'));
   const buttonElement = formElement.querySelector('.form__submit');
   // Изменение стиля начальное
   toggleButtonState(inputList, buttonElement);
   // Обойдём все элементы массива inputList (поля ввода)
   inputList.forEach((inputElement) => {
-      //console.log("input: "+inputElement);
-      // каждому полю ввода добавим слушатель события input
-      inputElement.addEventListener('input', function () {
+    //console.log("input: "+inputElement);
+    // каждому полю ввода добавим слушатель события input
+    inputElement.addEventListener('input', function () {
       // Функция, которая проверяет валидность инпута
       checkInputValidity(formElement, inputElement);
       // Изменение стиля кнопки при вводе символа

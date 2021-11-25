@@ -2,6 +2,60 @@
 //import { FormValidator } from "./FormValidator.js"
 
 //--------------------------------------------------------
+// Универсальные функции валидации
+//--------------------------------------------------------
+// Функция, которая добавляет класс с ошибкой
+function showInputError(formElement, inputElement, errorMessage) {
+  errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+  inputElement.classList.add("form__input_type_error");//input_type_error
+  errorElement.classList.add("form__input-error_active");//input_error_active
+  errorElement.textContent = errorMessage;
+}
+// Функция, которая удаляет класс с ошибкой 
+function hideInputError(formElement, inputElement) {
+  errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+  inputElement.classList.remove("form__input_type_error");
+  errorElement.classList.remove("form__input-error_active");
+  errorElement.textContent = "";
+}
+
+// Функция, которая проверяет валидность инпута
+function checkInputValidity(formElement, inputElement) {
+  if (!inputElement.validity.valid) {
+    showInputError(formElement, inputElement, inputElement.validationMessage);
+    //console.log("input  => NOvalid");
+  } else {
+    hideInputError(formElement, inputElement);
+    //console.log("input  => valid");
+  }
+}
+
+// Находит хотя бы один невалидный инпут
+function hasInvalidInput(inputList) {
+  // проходим по этому массиву методом some
+  return inputList.some((inputElement) => {
+    // Если поле не валидно, колбэк вернёт true
+    // Обход массива прекратится и вся фунцкция
+    // hasInvalidInput вернёт true
+    return !inputElement.validity.valid;
+  })
+}
+
+// Изменение стиля кнопки
+function toggleButtonState(inputList, buttonElement) {
+  // Если есть хотя бы один невалидный инпут
+  if (hasInvalidInput(inputList)) {
+    // сделай кнопку неактивной
+    buttonElement.disabled = true;
+    buttonElement.classList.add('button_inactive');
+  } else {
+    // иначе сделай кнопку активной
+    buttonElement.disabled = false;
+    buttonElement.classList.remove('button_inactive');
+  }
+}
+
+//--------------------------------------------------------
 // Универсальные функции попапа
 //--------------------------------------------------------
 function openPopup(element) {
@@ -74,7 +128,7 @@ function openEditProfile() {
   nameInput.value = nameInfo.textContent;
   jobInput.value = jobInfo.textContent;
   // Проверим валидацию попапа
-  validator.enableValidation();//для экземпляра класса
+  //validator.enableValidation();//для экземпляра класса
   //enableValidation();//для функции
   //открыть popup «Редактировать профиль»
   openPopup(editProfileElement);
@@ -113,6 +167,8 @@ const formbildCard = bildCardElement.querySelector(".form");// Находим ф
 
 // Обработчик открытия формы bild-card
 function openBildCard() {
+  const inputList = Array.from(bildCardElement.querySelectorAll('.form__input'));
+  toggleButtonState(inputList, bildCardBttn);
   openPopup(bildCardElement); //открыть bildCard
 }
 // Обработчик закрытия формы bild-card
