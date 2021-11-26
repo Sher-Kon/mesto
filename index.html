@@ -6,6 +6,10 @@
     <title>Mesto</title>
     <link rel="stylesheet" href="pages/index.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--    <script type="module" src="./scripts/FormValidator.js"></script>
+    <script type="module" src="./scripts/Card.js"></script>
+    <script type="module" src="./scripts/index.js"></script>
+-->
 </head>
 
 <body class="page">
@@ -54,13 +58,13 @@
                                 <input type="text" placeholder="Имя" id="name-input"
                                     class="form__input popup__text popup__text_input_name input_title" name="nameInput"
                                     minlength="2" maxlength="40" required>
-                                <span class="popup__input-error name-input-error"></span>
+                                <span class="popup__input-error name-input-error input_title-error"></span>
                             </div>
                             <div class="popup__input-cover">
                                 <input type="text" placeholder="О себе" id="job-input"
                                     class="form__input popup__text popup__text_input_job input_content" name="jobInput" minlength="2"
                                     maxlength="200" required>
-                                <span class="popup__input-error job-input-error"></span>
+                                <span class="popup__input-error job-input-error input_content-error"></span>
                             </div>
                             <button class="form__submit popup__btn-save" type="submit">Сохранить</button>
                         </div>
@@ -80,13 +84,13 @@
                                 <input type="text" placeholder="Название" id="place-input"
                                     class="form__input bild-card__text bild-card__text_input_place input_title" name="placeInput"
                                     minlength="2" maxlength="30" required>
-                                <span class="popup__input-error place-input-error"></span>
+                                <span class="popup__input-error place-input-error input_title-error"></span>
                             </div>
                             <div class="bild-card__input-cover">
                                 <input type="url" placeholder="Ссылка на картинку" id="url-input"
                                     class="form__input bild-card__text bild-card__text_input_url input_content" name="urlInput"
                                     required>
-                                <span class="popup__input-error url-input-error"></span>
+                                <span class="popup__input-error url-input-error input_content-error"></span>
                             </div>
                             <button class="form__submit bild-card__btn-save" type="submit">Создать</button>
                         </div>
@@ -108,14 +112,11 @@
     </div>
     <!-- Подключаем скрипт -->
     <!--script src="./scripts/validate.js"></script-->
+    
     <script src="./scripts/FormValidator.js"></script>
     <script src="./scripts/Card.js"></script>
     <script src="./scripts/index.js"></script>
-    <!--
-    <script type="module" src="./scripts/FormValidator.js"></script>
-    <script type="module" src="./scripts/Card.js"></script>
-    <script type="module" src="./scripts/index.js"></script>
-    -->
+        
 </body>
 
 </html>

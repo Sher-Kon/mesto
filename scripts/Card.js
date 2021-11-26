@@ -1,5 +1,8 @@
-//export class Card {
+//import {txtImg, srcImg } from "./index.js"
+//export {Card}
+
 class Card {
+//class Card {
     constructor(title, image, template) {
         this._title = title;
         this._image = image;
@@ -40,6 +43,7 @@ class Card {
     }
     // обработчик look
     _lookClick() {
+        //console.log("запустили _lookClick()");
         txtImg.textContent = this._element.querySelector('.element__txt').textContent;
         srcImg.src = this._element.querySelector('.element__img').src;
         openLookImg();//открыть окно просмотра картинки "lookImg"
