@@ -1,4 +1,4 @@
-//export { validatorEditProfile, validatorBildCard }
+export { validatorEditProfile, validatorBildCard };
 
 class FormValidator {
   constructor(formName) {

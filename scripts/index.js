@@ -1,6 +1,5 @@
-//export {txtImg, srcImg }
-//import { Card } from "./Card.js"
-//import { validatorEditProfile, validatorBildCard } from "./FormValidator.js"
+import { Card } from "./Card.js"
+import { validatorEditProfile, validatorBildCard } from "./FormValidator.js";
 //--------------------------------------------------------
 // Вызовем функцию проверки валидации EditProfile
 validatorEditProfile.enableValidation();
@@ -208,7 +207,7 @@ const iniCards = [
 iniCards.forEach((item) => {
   // Создадим экземпляр карточки
   const card = new Card(item.name, item.link, "element-card");
-  // Создаём карточку в наружу
+  // Создаём карточку 
   const cardElement = card.generateCard();
   // Добавляем в DOM (section class="elements")
   document.querySelector('.elements').append(cardElement);

@@ -1,8 +1,5 @@
-//import {txtImg, srcImg } from "./index.js"
-//export {Card}
-
-class Card {
-//class Card {
+//Класс карточки
+export class Card {
     constructor(title, image, template) {
         this._title = title;
         this._image = image;
@@ -12,7 +9,7 @@ class Card {
     // клонировать Template
     _getTemplate() {
         const cardElement = document
-            .querySelector('.'+this._template)//template=.element-card
+            .querySelector('.' + this._template)//template=.element-card
             .content
             .querySelector('.element')
             .cloneNode(true);
@@ -44,6 +41,7 @@ class Card {
     // обработчик look
     _lookClick() {
         //console.log("запустили _lookClick()");
+        //import { txtImg } from './index.js';
         txtImg.textContent = this._element.querySelector('.element__txt').textContent;
         srcImg.src = this._element.querySelector('.element__img').src;
         openLookImg();//открыть окно просмотра картинки "lookImg"
