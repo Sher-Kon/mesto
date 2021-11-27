@@ -1,4 +1,5 @@
 //Класс карточки
+import { txtImg, srcImg, openLookImg } from './index.js';
 export class Card {
     constructor(title, image, template) {
         this._title = title;
@@ -40,11 +41,9 @@ export class Card {
     }
     // обработчик look
     _lookClick() {
-        //console.log("запустили _lookClick()");
-        //import { txtImg } from './index.js';
         txtImg.textContent = this._element.querySelector('.element__txt').textContent;
         srcImg.src = this._element.querySelector('.element__img').src;
-        openLookImg();//открыть окно просмотра картинки "lookImg"
+        openLookImg(this._element);//открыть окно просмотра картинки "lookImg"
     }
 
     generateCard() {

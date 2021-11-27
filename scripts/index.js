@@ -1,8 +1,14 @@
+import { FormValidator } from "./FormValidator.js";
 import { Card } from "./Card.js"
-import { validatorEditProfile, validatorBildCard } from "./FormValidator.js";
+export { validatorEditProfile, validatorBildCard };
+export { txtImg, srcImg, openLookImg };
 //--------------------------------------------------------
+// Создадим экземпляр 
+const validatorEditProfile = new FormValidator('edit-profile');
 // Вызовем функцию проверки валидации EditProfile
 validatorEditProfile.enableValidation();
+// Создадим экземпляр 
+const validatorBildCard = new FormValidator('bild-card');
 // Вызовем функцию проверки валидации BildCard
 validatorBildCard.enableValidation();
 //--------------------------------------------------------

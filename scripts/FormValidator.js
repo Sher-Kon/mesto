@@ -1,6 +1,7 @@
-export { validatorEditProfile, validatorBildCard };
+//export { validatorEditProfile, validatorBildCard };
+import { validatorEditProfile, validatorBildCard } from "./index.js";
 
-class FormValidator {
+export class FormValidator {
   constructor(formName) {
     this._formName = formName;
   }
@@ -136,8 +137,3 @@ class FormValidator {
     //console.log("enableValidation()  вызов");
   };
 }
-
-// Создадим экземпляр 
-const validatorEditProfile = new FormValidator('edit-profile');
-// Создадим экземпляр 
-const validatorBildCard = new FormValidator('bild-card');
