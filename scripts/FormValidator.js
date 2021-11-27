@@ -62,12 +62,12 @@ export class FormValidator {
     if (this._formName === 'edit-profile') {
       // слушатель событий добавится всем полям ввода внутри элемента формы EditProfile
       // полю ввода Title добавим слушатель события input
-      this.inputElementTitle = formElement.querySelector('.input_title');
+      this.inputElementTitle = formElement.querySelector('.input-title');
       this.inputElementTitle.addEventListener('input', function () {
         // Функция, которая проверяет валидность инпута
         const formElement = document.querySelector('.edit-profile');//'.edit-profile'
-        const inputElement = formElement.querySelector('.input_title');//'.popup__text_input_name'
-        const errorElement = formElement.querySelector(".input_title-error");
+        const inputElement = formElement.querySelector('.input-title');//'.popup__text_input_name'
+        const errorElement = formElement.querySelector(".input-title-error");
         validatorEditProfile.checkInputValidity(errorElement, inputElement);
         // Изменение стиля кнопки при вводе символа
         const inputList = Array.from(formElement.querySelectorAll('.form__input'));
@@ -76,12 +76,12 @@ export class FormValidator {
         //console.log("char of title editProfile");//отладка
       });
       // полю ввода Content добавим слушатель события input
-      this.inputElementContent = formElement.querySelector('.input_content');
+      this.inputElementContent = formElement.querySelector('.input-content');
       this.inputElementContent.addEventListener('input', function () {
         // Функция, которая проверяет валидность инпута
         const formElement = document.querySelector('.edit-profile');
-        const inputElement = formElement.querySelector('.input_content');//'.popup__text_input_job'
-        const errorElement = formElement.querySelector(".input_content-error");
+        const inputElement = formElement.querySelector('.input-content');//'.popup__text_input_job'
+        const errorElement = formElement.querySelector(".input-content-error");
         validatorEditProfile.checkInputValidity(errorElement, inputElement);
         // Изменение стиля кнопки при вводе символа
         const inputList = Array.from(formElement.querySelectorAll('.form__input'));
@@ -92,12 +92,12 @@ export class FormValidator {
     } else { // 'bild-card'
       // слушатель событий добавится всем полям ввода внутри элемента формы BildCard
       // полю ввода Title добавим слушатель события input
-      this.inputElementTitle = formElement.querySelector('.input_title');
+      this.inputElementTitle = formElement.querySelector('.input-title');
       this.inputElementTitle.addEventListener('input', function () {
         // Функция, которая проверяет валидность инпута
         const formElement = document.querySelector('.bild-card');//'.edit-profile'
-        const inputElement = formElement.querySelector('.input_title');//'.popup__text_input_name'
-        const errorElement = formElement.querySelector(".input_title-error");
+        const inputElement = formElement.querySelector('.input-title');//'.popup__text_input_name'
+        const errorElement = formElement.querySelector(".input-title-error");
         validatorBildCard.checkInputValidity(errorElement, inputElement);
         // Изменение стиля кнопки при вводе символа
         const inputList = Array.from(formElement.querySelectorAll('.form__input'));
@@ -106,12 +106,12 @@ export class FormValidator {
         //console.log("char of title bildCard");//отладка
       });
       // полю ввода Content добавим слушатель события input
-      this.inputElementContent = formElement.querySelector('.input_content');
+      this.inputElementContent = formElement.querySelector('.input-content');
       this.inputElementContent.addEventListener('input', function () {
         // Функция, которая проверяет валидность инпута
         const formElement = document.querySelector('.bild-card');
-        const inputElement = formElement.querySelector('.input_content');//'.popup__text_input_job'
-        const errorElement = formElement.querySelector(".input_content-error");
+        const inputElement = formElement.querySelector('.input-content');//'.popup__text_input_job'
+        const errorElement = formElement.querySelector(".input-content-error");
         validatorBildCard.checkInputValidity(errorElement, inputElement);
         // Изменение стиля кнопки при вводе символа
         const inputList = Array.from(formElement.querySelectorAll('.form__input'));
