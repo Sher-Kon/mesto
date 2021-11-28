@@ -3,14 +3,28 @@ import { Card } from "./Card.js"
 export { validatorEditProfile, validatorBildCard };
 export { txtImg, srcImg, openLookImg };
 //--------------------------------------------------------
-// Создадим экземпляр 
+// Создадим экземпляр FormValidator
 const validatorEditProfile = new FormValidator('edit-profile');
 // Вызовем функцию проверки валидации EditProfile
 validatorEditProfile.enableValidation();
-// Создадим экземпляр 
+// Создадим экземпляр FormValidator
 const validatorBildCard = new FormValidator('bild-card');
 // Вызовем функцию проверки валидации BildCard
 validatorBildCard.enableValidation();
+//--------------------------------------------------------
+function creationCard(title, image, template, direction) {
+  // Создадим экземпляр карточки
+  const card = new Card(title, image, template);
+  // Создаём карточку 
+  const cardElement = card.generateCard();
+  // Добавляем в DOM (section class="elements")
+  if (direction === "up") {
+    document.querySelector('.elements').prepend(cardElement);//добавить в начало 
+  }
+  if (direction === "dn") {
+    document.querySelector('.elements').append(cardElement);//добавить в конец 
+  }
+}
 //--------------------------------------------------------
 // Универсальные функции попапа
 //--------------------------------------------------------
@@ -136,11 +150,7 @@ function bildCardSubmitHandler(evt) {
   const url = urlInput.value;
   if (url !== '') {
     // Создадим экземпляр карточки
-    const cardADD = new Card(place, url, "element-card");
-    // Создаём элемент DOM
-    const cardElementADD = cardADD.generateCard();
-    // Добавляем в DOM (section class="elements")
-    document.querySelector('.elements').prepend(cardElementADD);//добавить в начало 
+    creationCard(place, url, "element-card", "up");
   }
   // Очистить инпуты для новой карточки
   placeInput.value = "";
@@ -212,9 +222,5 @@ const iniCards = [
 //Начальная загрузка страницы - 6 карточек
 iniCards.forEach((item) => {
   // Создадим экземпляр карточки
-  const card = new Card(item.name, item.link, "element-card");
-  // Создаём карточку 
-  const cardElement = card.generateCard();
-  // Добавляем в DOM (section class="elements")
-  document.querySelector('.elements').append(cardElement);
+  creationCard(item.name, item.link, "element-card", "dn");
 });
