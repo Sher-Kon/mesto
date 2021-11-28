@@ -1,7 +1,8 @@
 import { FormValidator } from "./FormValidator.js";
-import { Card } from "./Card.js"
+import { Card } from "./Card.js";
+import { lookImgElement } from './utils.js';
 export { validatorEditProfile, validatorBildCard };
-export { txtImg, srcImg, openLookImg };
+export { openPopup };
 //--------------------------------------------------------
 // Создадим экземпляр FormValidator
 const validatorEditProfile = new FormValidator('edit-profile');
@@ -152,14 +153,14 @@ function bildCardSubmitHandler(evt) {
     // Создадим экземпляр карточки
     creationCard(place, url, "element-card", "up");
   }
-  // Очистить инпуты для новой карточки
-  placeInput.value = "";
-  urlInput.value = "";
   // Сделаем кнопку неактивной
   bildCardBttn.disabled = true;
   bildCardBttn.classList.add('button_inactive');
   // Закроем форму bildCard()
   closeBildCard();//закрыть окно bild-card()
+  // Очистить инпуты для новой карточки
+  placeInput.value = "";
+  urlInput.value = "";
 }
 
 // форма bild-card:
@@ -173,16 +174,13 @@ addButton.addEventListener("click", openBildCard);
 //--------------------------------------------------------
 // lookImg popup
 //--------------------------------------------------------
-const lookImgElement = document.querySelector(".look-img");
-const txtImg = lookImgElement.querySelector(".look-img__title");
-const srcImg = lookImgElement.querySelector(".look-img__img");
+//const lookImgElement = document.querySelector(".look-img");
+//const txtImg = lookImgElement.querySelector(".look-img__title");
+//const srcImg = lookImgElement.querySelector(".look-img__img");
 const closelookImg = lookImgElement.querySelector(".look-img__btn-close");//кн.закрытия формы lookImg
-const formlookImg = lookImgElement.querySelector(".form");// Находим форму в DOM in lookImgElement
 
-// Обработчик открытия формы look-img
-function openLookImg() {
-  openPopup(lookImgElement); //открыть lookImg
-}
+// Обработчик открытия формы look-img (размещен в utils.js)
+//function openLookImg() { openPopup(lookImgElement);}
 // Обработчик закрытия формы look-img
 function closeLookImg() {
   closePopup(lookImgElement);//закрыть lookImg
