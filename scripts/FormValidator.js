@@ -60,7 +60,7 @@ export class FormValidator {
       // Функция, которая проверяет валидность инпута
       const formElement = document.querySelector('.' + formName);
       const inputElement = formElement.querySelector(inputSelector);
-      const errorElement = formElement.querySelector(inputSelector + "-error");
+      const errorElement = formElement.querySelector(inputSelector + "_error");
       // Изменение стиля кнопки при вводе символа
       const inputList = Array.from(formElement.querySelectorAll('.form__input'));
       const buttonElement = formElement.querySelector('.form__submit');
