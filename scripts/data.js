@@ -34,10 +34,10 @@ const iniCards = [
 //--------------------------------------------------------
 const inputsEditProfile = [
     {
-        inputSelector: '.popup__text_input_name'
+        inputSelector: '.popup-name'//'.popup__text_input_name'
     },
     {
-        inputSelector: '.popup__text_input_job'
+        inputSelector: '.popup-job'//'.popup__text_input_job'
     }
 ];
 
@@ -46,9 +46,9 @@ const inputsEditProfile = [
 //--------------------------------------------------------
 const inputsBildCard = [
     {
-        inputSelector: '.bild-card__text_input_place'
+        inputSelector: '.bild-card-place'//'.bild-card__text_input_place'
     },
     {
-        inputSelector: '.bild-card__text_input_url'
+        inputSelector: '.bild-card-url'//'.bild-card__text_input_url'
     }
 ];
