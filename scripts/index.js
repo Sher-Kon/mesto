@@ -1,16 +1,16 @@
 import { FormValidator } from "./FormValidator.js";
 import { Card } from "./Card.js";
 import { lookImgElement } from './utils.js';
-import { iniCards } from './data.js';
+import { iniCards, inputsEditProfile, inputsBildCard } from './data.js';
 export { validatorEditProfile, validatorBildCard };
 export { openPopup };
 //--------------------------------------------------------
 // Создадим экземпляр FormValidator
-const validatorEditProfile = new FormValidator('edit-profile');
+const validatorEditProfile = new FormValidator('edit-profile', inputsEditProfile);
 // Вызовем функцию проверки валидации EditProfile
 validatorEditProfile.enableValidation();
 // Создадим экземпляр FormValidator
-const validatorBildCard = new FormValidator('bild-card');
+const validatorBildCard = new FormValidator('bild-card', inputsBildCard);
 // Вызовем функцию проверки валидации BildCard
 validatorBildCard.enableValidation();
 //--------------------------------------------------------

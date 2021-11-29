@@ -1,11 +1,9 @@
-//export { validatorEditProfile, validatorBildCard };
 import { validatorEditProfile, validatorBildCard } from "./index.js";
 
 export class FormValidator {
-  constructor(formName) {
+  constructor(formName, inputs) {
     this._formName = formName;
-    this._inputSelector1 = '.input-title';
-    this._inputSelector2 = '.input-content';
+    this._inputs = inputs;
   }
 
   // Находит хотя бы один невалидный инпут
@@ -60,21 +58,21 @@ export class FormValidator {
 
   // полю ввода добавим слушатель события input
   _addedEventListeners = (formName, formElement, inputSelector) => {
-      // слушатель событий добавится всем полям ввода внутри элемента формы EditProfile
-      // полю ввода Title добавим слушатель события input
-      this.inputElementTitle = formElement.querySelector(inputSelector);//'.input-title'
-      this.inputElementTitle.addEventListener('input', function () {
-        // Функция, которая проверяет валидность инпута
-        const formElement = document.querySelector('.' + formName);//'.edit-profile'
-        const inputElement = formElement.querySelector(inputSelector);//'.input-title','.popup__text_input_name'
-        const errorElement = formElement.querySelector(inputSelector+"-error");
-        validatorEditProfile.checkInputValidity(errorElement, inputElement);
-        // Изменение стиля кнопки при вводе символа
-        const inputList = Array.from(formElement.querySelectorAll('.form__input'));
-        const buttonElement = formElement.querySelector('.form__submit');//'.form__submit'
-        validatorEditProfile.toggleButtonState(inputList, buttonElement);
-        //console.log("char of title editProfile");//отладка
-      });
+    // слушатель событий добавится всем полям ввода внутри элемента формы EditProfile
+    // полю ввода Title добавим слушатель события input
+    this.inputElementTitle = formElement.querySelector(inputSelector);//'.input-title'
+    this.inputElementTitle.addEventListener('input', function () {
+      // Функция, которая проверяет валидность инпута
+      const formElement = document.querySelector('.' + formName);//'.edit-profile'
+      const inputElement = formElement.querySelector(inputSelector);//'.input-title','.popup__text_input_name'
+      const errorElement = formElement.querySelector(inputSelector + "-error");
+      validatorEditProfile.checkInputValidity(errorElement, inputElement);
+      // Изменение стиля кнопки при вводе символа
+      const inputList = Array.from(formElement.querySelectorAll('.form__input'));
+      const buttonElement = formElement.querySelector('.form__submit');//'.form__submit'
+      validatorEditProfile.toggleButtonState(inputList, buttonElement);
+      //console.log("char of title editProfile");//отладка
+    });
   };
 
   enableValidation = () => {
@@ -86,10 +84,11 @@ export class FormValidator {
       evt.preventDefault();
       //console.log("нажали  СОХРАНИТЬ");//отладка
     });
-    // Kаждому полю ввода добавим слушатель события input
-    this._addedEventListeners(this._formName, this._formElement, this._inputSelector1);
-    this._addedEventListeners(this._formName, this._formElement, this._inputSelector2);
 
-    //console.log("enableValidation()  вызов");
+    this._inputs.forEach((item) => {
+      // Kаждому полю ввода добавим слушатель события input
+      this._addedEventListeners(this._formName, this._formElement, item.inputSelector);
+    });
+
   };
 }
