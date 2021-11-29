@@ -182,6 +182,7 @@ const closelookImg = lookImgElement.querySelector(".look-img__btn-close");//кн
 
 // Обработчик открытия формы look-img (размещен в utils.js)
 //function openLookImg() { openPopup(lookImgElement);}
+
 // Обработчик закрытия формы look-img
 function closeLookImg() {
   closePopup(lookImgElement);//закрыть lookImg

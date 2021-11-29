@@ -34,17 +34,14 @@ export class FormValidator {
   checkInputValidity(errorElement, inputElement) {
     if (!inputElement.validity.valid) {
       this._showInputError(errorElement, inputElement, inputElement.validationMessage);
-      //console.log("input  => NOvalid");
     } else {
       this._hideInputError(errorElement, inputElement);
-      //console.log("input  => valid");
     }
   }
 
   // Изменение стиля кнопки
   toggleButtonState(inputList, buttonElement) {
     // Если есть хотя бы один невалидный инпут
-    //console.log("char of toggleButtonState");//отладка
     if (this._hasInvalidInput(inputList)) {
       // сделай кнопку неактивной
       buttonElement.disabled = true;
@@ -58,20 +55,31 @@ export class FormValidator {
 
   // полю ввода добавим слушатель события input
   _addedEventListeners = (formName, formElement, inputSelector) => {
-    // слушатель событий добавится всем полям ввода внутри элемента формы EditProfile
-    // полю ввода Title добавим слушатель события input
-    this.inputElementTitle = formElement.querySelector(inputSelector);//'.input-title'
+    this.inputElementTitle = formElement.querySelector(inputSelector);
     this.inputElementTitle.addEventListener('input', function () {
       // Функция, которая проверяет валидность инпута
-      const formElement = document.querySelector('.' + formName);//'.edit-profile'
-      const inputElement = formElement.querySelector(inputSelector);//'.input-title','.popup__text_input_name'
+      const formElement = document.querySelector('.' + formName);
+      const inputElement = formElement.querySelector(inputSelector);
       const errorElement = formElement.querySelector(inputSelector + "-error");
-      validatorEditProfile.checkInputValidity(errorElement, inputElement);
       // Изменение стиля кнопки при вводе символа
       const inputList = Array.from(formElement.querySelectorAll('.form__input'));
-      const buttonElement = formElement.querySelector('.form__submit');//'.form__submit'
-      validatorEditProfile.toggleButtonState(inputList, buttonElement);
-      //console.log("char of title editProfile");//отладка
+      const buttonElement = formElement.querySelector('.form__submit');
+      // У каждой формы свой экземпляр класса
+      switch (formName) {
+        case "edit-profile":
+          // Функция, которая проверяет валидность инпута
+          validatorEditProfile.checkInputValidity(errorElement, inputElement);
+          // Изменение стиля кнопки при вводе символа
+          validatorEditProfile.toggleButtonState(inputList, buttonElement);
+          break
+        case "bild-card":
+          // Функция, которая проверяет валидность инпута
+          validatorBildCard.checkInputValidity(errorElement, inputElement);
+          // Изменение стиля кнопки при вводе символа
+          validatorBildCard.toggleButtonState(inputList, buttonElement);
+          break
+      }
+
     });
   };
 
@@ -82,7 +90,6 @@ export class FormValidator {
     this._formElement.addEventListener('submit', function (evt) {
       // У формы отменим стандартное поведение
       evt.preventDefault();
-      //console.log("нажали  СОХРАНИТЬ");//отладка
     });
 
     this._inputs.forEach((item) => {
