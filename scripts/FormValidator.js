@@ -4,6 +4,8 @@ import { validatorEditProfile, validatorBildCard } from "./index.js";
 export class FormValidator {
   constructor(formName) {
     this._formName = formName;
+    this._inputSelector1 = '.input-title';
+    this._inputSelector2 = '.input-content';
   }
 
   // Находит хотя бы один невалидный инпут
@@ -56,70 +58,23 @@ export class FormValidator {
     }
   }
 
-  // инкапсуляция - каждому полю ввода добавим слушатель события input
-  _addedEventListeners = (formElement) => {
-    // полиморфизм
-    if (this._formName === 'edit-profile') {
+  // полю ввода добавим слушатель события input
+  _addedEventListeners = (formName, formElement, inputSelector) => {
       // слушатель событий добавится всем полям ввода внутри элемента формы EditProfile
       // полю ввода Title добавим слушатель события input
-      this.inputElementTitle = formElement.querySelector('.input-title');
+      this.inputElementTitle = formElement.querySelector(inputSelector);//'.input-title'
       this.inputElementTitle.addEventListener('input', function () {
         // Функция, которая проверяет валидность инпута
-        const formElement = document.querySelector('.edit-profile');//'.edit-profile'
-        const inputElement = formElement.querySelector('.input-title');//'.popup__text_input_name'
-        const errorElement = formElement.querySelector(".input-title-error");
+        const formElement = document.querySelector('.' + formName);//'.edit-profile'
+        const inputElement = formElement.querySelector(inputSelector);//'.input-title','.popup__text_input_name'
+        const errorElement = formElement.querySelector(inputSelector+"-error");
         validatorEditProfile.checkInputValidity(errorElement, inputElement);
         // Изменение стиля кнопки при вводе символа
         const inputList = Array.from(formElement.querySelectorAll('.form__input'));
-        const buttonElement = formElement.querySelector('.popup__btn-save');//'.form__submit'
+        const buttonElement = formElement.querySelector('.form__submit');//'.form__submit'
         validatorEditProfile.toggleButtonState(inputList, buttonElement);
         //console.log("char of title editProfile");//отладка
       });
-      // полю ввода Content добавим слушатель события input
-      this.inputElementContent = formElement.querySelector('.input-content');
-      this.inputElementContent.addEventListener('input', function () {
-        // Функция, которая проверяет валидность инпута
-        const formElement = document.querySelector('.edit-profile');
-        const inputElement = formElement.querySelector('.input-content');//'.popup__text_input_job'
-        const errorElement = formElement.querySelector(".input-content-error");
-        validatorEditProfile.checkInputValidity(errorElement, inputElement);
-        // Изменение стиля кнопки при вводе символа
-        const inputList = Array.from(formElement.querySelectorAll('.form__input'));
-        const buttonElement = formElement.querySelector('.popup__btn-save');//'.popup__btn-save'
-        validatorEditProfile.toggleButtonState(inputList, buttonElement);
-        //console.log("char of content editProfile");//отладка
-      });
-    } else { // 'bild-card'
-      // слушатель событий добавится всем полям ввода внутри элемента формы BildCard
-      // полю ввода Title добавим слушатель события input
-      this.inputElementTitle = formElement.querySelector('.input-title');
-      this.inputElementTitle.addEventListener('input', function () {
-        // Функция, которая проверяет валидность инпута
-        const formElement = document.querySelector('.bild-card');//'.edit-profile'
-        const inputElement = formElement.querySelector('.input-title');//'.popup__text_input_name'
-        const errorElement = formElement.querySelector(".input-title-error");
-        validatorBildCard.checkInputValidity(errorElement, inputElement);
-        // Изменение стиля кнопки при вводе символа
-        const inputList = Array.from(formElement.querySelectorAll('.form__input'));
-        const buttonElement = formElement.querySelector('.bild-card__btn-save');//'.form__submit'
-        validatorBildCard.toggleButtonState(inputList, buttonElement);
-        //console.log("char of title bildCard");//отладка
-      });
-      // полю ввода Content добавим слушатель события input
-      this.inputElementContent = formElement.querySelector('.input-content');
-      this.inputElementContent.addEventListener('input', function () {
-        // Функция, которая проверяет валидность инпута
-        const formElement = document.querySelector('.bild-card');
-        const inputElement = formElement.querySelector('.input-content');//'.popup__text_input_job'
-        const errorElement = formElement.querySelector(".input-content-error");
-        validatorBildCard.checkInputValidity(errorElement, inputElement);
-        // Изменение стиля кнопки при вводе символа
-        const inputList = Array.from(formElement.querySelectorAll('.form__input'));
-        const buttonElement = formElement.querySelector('.bild-card__btn-save');//'.popup__btn-save'
-        validatorBildCard.toggleButtonState(inputList, buttonElement);
-        //console.log("char of content bildCard");//отладка
-      });
-    }
   };
 
   enableValidation = () => {
@@ -132,7 +87,8 @@ export class FormValidator {
       //console.log("нажали  СОХРАНИТЬ");//отладка
     });
     // Kаждому полю ввода добавим слушатель события input
-    this._addedEventListeners(this._formElement);
+    this._addedEventListeners(this._formName, this._formElement, this._inputSelector1);
+    this._addedEventListeners(this._formName, this._formElement, this._inputSelector2);
 
     //console.log("enableValidation()  вызов");
   };
