@@ -107,7 +107,7 @@ function closeEditProfile() {
   closePopup(editProfileElement);
 }
 // Обработчик «отправки» формы «Редактировать профиль»
-function formSubmitHandler(evt) {
+function handleSubmitEditProfile(evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
   // Вставьте новые значения с помощью textContent
   nameInfo.textContent = nameInput.value;
@@ -116,7 +116,7 @@ function formSubmitHandler(evt) {
   closeEditProfile();//закрыть окно «Редактировать профиль»
 }
 // Прикрепляем обработчик к форме «Редактировать профиль»:
-formEditProfile.addEventListener("submit", formSubmitHandler);
+formEditProfile.addEventListener("submit", handleSubmitEditProfile);
 // Кнопки попапа «Редактировать профиль»
 editButton.addEventListener("click", openEditProfile);//открыть попап
 closeButton.addEventListener("click", closeEditProfile);//закрыть попап
@@ -136,8 +136,7 @@ const formbildCard = bildCardElement.querySelector(".form");// Находим ф
 
 // Обработчик открытия формы bild-card
 function openBildCard() {
-  const inputList = Array.from(bildCardElement.querySelectorAll('.form__input'));
-  validatorBildCard.toggleButtonState(inputList, bildCardBttn);
+  validatorBildCard.disableButtonState(bildCardBttn);
   openPopup(bildCardElement); //открыть bildCard
 }
 // Обработчик закрытия формы bild-card
@@ -145,7 +144,7 @@ function closeBildCard() {
   closePopup(bildCardElement);
 }
 // Обработчик «отправки» формы bild-card
-function bildCardSubmitHandler(evt) {
+function handleSubmitBildCard(evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
   // Вставьте новые значения в новую карточку
   const place = placeInput.value;
@@ -166,7 +165,7 @@ function bildCardSubmitHandler(evt) {
 
 // форма bild-card:
 // Кнопка - «создать»
-formbildCard.addEventListener("submit", bildCardSubmitHandler);
+formbildCard.addEventListener("submit", handleSubmitBildCard);
 // Кнопка - Х -закрыть  окно "Новое место"
 closeBttn.addEventListener("click", closeBildCard);
 // Кнопка « + » (открыть окно "Новое место")

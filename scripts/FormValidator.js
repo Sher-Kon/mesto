@@ -1,88 +1,30 @@
-import { validatorEditProfile, validatorBildCard } from "./index.js";
-
+import { toggleButtonState, checkInputValidity } from "./utils.js";
 export class FormValidator {
   constructor(formName, inputs) {
     this._formName = formName;
     this._inputs = inputs;
   }
-
-  // Находит хотя бы один невалидный инпут
-  _hasInvalidInput(inputList) {
-    // проходим по этому массиву методом some
-    return inputList.some((inputElement) => {
-      // Если поле не валидно, колбэк вернёт true
-      // Обход массива прекратится и вся фунцкция
-      // hasInvalidInput вернёт true
-      return !inputElement.validity.valid;
-    })
+  // Функция, которая делает кнопку неактивной
+  disableButtonState(buttonElement) {
+    buttonElement.disabled = true;
+    buttonElement.classList.add('button_inactive');
   }
-
-  // Функция, которая добавляет класс с ошибкой
-  _showInputError(errorElement, inputElement, errorMessage) {
-    inputElement.classList.add("form__input_type_error");//input_type_error
-    errorElement.classList.add("form__input-error_active");//input_error_active
-    errorElement.textContent = errorMessage;
-  }
-  // Функция, которая удаляет класс с ошибкой 
-  _hideInputError(errorElement, inputElement) {
-    inputElement.classList.remove("form__input_type_error");
-    errorElement.classList.remove("form__input-error_active");
-    errorElement.textContent = "";
-  }
-
-  // Функция, которая проверяет валидность инпута
-  checkInputValidity(errorElement, inputElement) {
-    if (!inputElement.validity.valid) {
-      this._showInputError(errorElement, inputElement, inputElement.validationMessage);
-    } else {
-      this._hideInputError(errorElement, inputElement);
-    }
-  }
-
-  // Изменение стиля кнопки
-  toggleButtonState(inputList, buttonElement) {
-    // Если есть хотя бы один невалидный инпут
-    if (this._hasInvalidInput(inputList)) {
-      // сделай кнопку неактивной
-      buttonElement.disabled = true;
-      buttonElement.classList.add('button_inactive');
-    } else {
-      // иначе сделай кнопку активной
-      buttonElement.disabled = false;
-      buttonElement.classList.remove('button_inactive');
-    }
-  }
-
   // полю ввода добавим слушатель события input
-  _addedEventListeners = (formName, formElement, inputSelector) => {
+  _addedEventListeners = (formName, formElement, inputsArr, bttnSubmit, inputSelector) => {
     this.inputElementTitle = formElement.querySelector(inputSelector);
     this.inputElementTitle.addEventListener('input', function () {
       // Функция, которая проверяет валидность инпута
       const formElement = document.querySelector('.' + formName);
       const inputElement = formElement.querySelector(inputSelector);
       const errorElement = formElement.querySelector(inputSelector + "-error");
+      checkInputValidity(errorElement, inputElement);
       // Изменение стиля кнопки при вводе символа
-      const inputList = Array.from(formElement.querySelectorAll('.form__input'));
-      const buttonElement = formElement.querySelector('.form__submit');
-      // У каждой формы свой экземпляр класса
-      switch (formName) {
-        case "edit-profile":
-          // Функция, которая проверяет валидность инпута
-          validatorEditProfile.checkInputValidity(errorElement, inputElement);
-          // Изменение стиля кнопки при вводе символа
-          validatorEditProfile.toggleButtonState(inputList, buttonElement);
-          break
-        case "bild-card":
-          // Функция, которая проверяет валидность инпута
-          validatorBildCard.checkInputValidity(errorElement, inputElement);
-          // Изменение стиля кнопки при вводе символа
-          validatorBildCard.toggleButtonState(inputList, buttonElement);
-          break
-      }
-
+      const inputList = Array.from(formElement.querySelectorAll(inputsArr));
+      const buttonElement = formElement.querySelector(bttnSubmit);
+      toggleButtonState(inputList, buttonElement);
     });
   };
-
+  // Всем элементам формы добавим слушатели
   enableValidation = () => {
     // Найдём форму с указанным классом в DOM,
     this._formElement = document.querySelector('.' + this._formName);// edit-profile / bild-card
@@ -91,11 +33,10 @@ export class FormValidator {
       // У формы отменим стандартное поведение
       evt.preventDefault();
     });
-
     this._inputs.forEach((item) => {
       // Kаждому полю ввода добавим слушатель события input
-      this._addedEventListeners(this._formName, this._formElement, item.inputSelector);
+      this._addedEventListeners(this._formName, this._formElement,
+        item.inputsArraySelector, item.buttnSubmitSelector, item.inputSelector);
     });
-
   };
 }
