@@ -1,3 +1,4 @@
+import { UserInfo } from "./UserInfo.js";
 import { FormValidator } from "./FormValidator.js";
 import { Card } from "./Card.js";
 import { lookImgElement } from './utils.js';
@@ -5,6 +6,8 @@ import { iniCards, inputsEditProfile, inputsBildCard } from './data.js';
 export { validatorEditProfile, validatorBildCard };
 export { openPopup };
 //--------------------------------------------------------
+// Создадим экземпляр UserInfo для EditProfile
+const userInfoEditProfile = new UserInfo('.profile__info-name', '.profile__info-job');
 // Создадим экземпляр FormValidator
 const validatorEditProfile = new FormValidator('edit-profile', inputsEditProfile);
 // Вызовем функцию проверки валидации EditProfile
@@ -97,8 +100,12 @@ const formEditProfile = editProfileElement.querySelector(".form");// Наход�
 // Обработчик открытия формы popup «Редактировать профиль»
 function openEditProfile() {
   // Загрузить инпуты из профиля
-  nameInput.value = nameInfo.textContent;
-  jobInput.value = jobInfo.textContent;
+  const userInfo = userInfoEditProfile.getUserInfo();
+  nameInput.value = userInfo.name;
+  jobInput.value = userInfo.info;
+  //nameInput.value = nameInfo.textContent;
+  //jobInput.value = jobInfo.textContent;
+
   //открыть popup «Редактировать профиль»
   openPopup(editProfileElement);
 }
@@ -110,8 +117,10 @@ function closeEditProfile() {
 function handleSubmitEditProfile(evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
   // Вставьте новые значения с помощью textContent
-  nameInfo.textContent = nameInput.value;
-  jobInfo.textContent = jobInput.value;
+  userInfoEditProfile.setUserInfo(nameInput.value, jobInput.value);
+  //nameInfo.textContent = nameInput.value;
+  //jobInfo.textContent = jobInput.value;
+
   // Закроем форму
   closeEditProfile();//закрыть окно «Редактировать профиль»
 }
