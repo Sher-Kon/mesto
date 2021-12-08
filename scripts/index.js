@@ -1,11 +1,19 @@
-import { UserInfo } from "./UserInfo.js";
-import { FormValidator } from "./FormValidator.js";
-import { Card } from "./Card.js";
-import { lookImgElement } from './utils.js';
+import { Popup } from "../components/Popup.js";
+import { UserInfo } from "../components/UserInfo.js";
+import { FormValidator } from "../components/FormValidator.js";
+import { Card } from "../components/Card.js";
+import { closePopupOnEsc, closePopupOnOverlay } from './utils.js';
 import { iniCards, inputsEditProfile, inputsBildCard } from './data.js';
 export { validatorEditProfile, validatorBildCard };
-export { openPopup };
+export { closeEditProfile, closeBildCard, closeLookImg };
+export { popupLookImg, txtImg, srcImg };
 //--------------------------------------------------------
+// Создадим экземпляр Popup для LookImg
+const popupLookImg = new Popup(".look-img");
+// Создадим экземпляр Popup для EditProfile
+const popupEditProfile = new Popup(".edit-profile");
+// Создадим экземпляр Popup для BildCard
+const popupBildCard = new Popup(".bild-card");
 // Создадим экземпляр UserInfo для EditProfile
 const userInfoEditProfile = new UserInfo('.profile__info-name', '.profile__info-job');
 // Создадим экземпляр FormValidator
@@ -33,6 +41,7 @@ function creationCard(title, image, template, direction) {
 //--------------------------------------------------------
 // Универсальные функции попапа
 //--------------------------------------------------------
+/*
 function openPopup(element) {
   //открыть попап
   element.classList.add("popup_opened");
@@ -50,38 +59,7 @@ function closePopup(element) {
   // снять слушатель Overlay
   document.removeEventListener("click", closePopupOnOverlay);
 }
-
-// Закроем попап по кнопке ESC
-function closePopupOnEsc(evt) {
-  if (evt.key === "Escape") {
-    switch (evt.target.className) {
-      case "profile__info-edit-btn":
-        closeEditProfile();//закрыть окно «Редактировать профиль»
-        break
-      case "profile__add-btn":
-        closeBildCard();//закрыть окно «BildCard»
-        break
-      case "element__img-btn":
-        closeLookImg();//закрыть окно «Смотреть картинку»
-        break
-    }
-  }
-}
-
-// Закроем попап кликом по оверлею
-function closePopupOnOverlay(evt) {
-  switch (evt.target.className) {
-    case "popup edit-profile popup_opened":
-      closeEditProfile();//закрыть окно «Редактировать профиль»
-      break
-    case "popup bild-card popup_opened":
-      closeBildCard();//закрыть окно «BildCard»
-      break
-    case "popup look-img popup_opened":
-      closeLookImg();//закрыть окно «Смотреть картинку»
-      break
-  }
-}
+*/
 //--------------------------------------------------------
 // EditProfile popup
 //--------------------------------------------------------
@@ -107,11 +85,14 @@ function openEditProfile() {
   //jobInput.value = jobInfo.textContent;
 
   //открыть popup «Редактировать профиль»
-  openPopup(editProfileElement);
+  // Метод экземпляр Popup для EditProfile
+  popupEditProfile.open();
+  //openPopup(editProfileElement);
 }
 // Обработчик закрытия формы popup «Редактировать профиль»
 function closeEditProfile() {
-  closePopup(editProfileElement);
+  popupEditProfile.close();
+  //closePopup(editProfileElement);
 }
 // Обработчик «отправки» формы «Редактировать профиль»
 function handleSubmitEditProfile(evt) {
@@ -146,11 +127,13 @@ const formbildCard = bildCardElement.querySelector(".form");// Находим ф
 // Обработчик открытия формы bild-card
 function openBildCard() {
   validatorBildCard.disableButtonState(bildCardBttn);
-  openPopup(bildCardElement); //открыть bildCard
+  popupBildCard.open();//открыть bildCard
+  //openPopup(bildCardElement); //открыть bildCard
 }
 // Обработчик закрытия формы bild-card
 function closeBildCard() {
-  closePopup(bildCardElement);
+  popupBildCard.close();//закрыть bildCard
+  //closePopup(bildCardElement);
 }
 // Обработчик «отправки» формы bild-card
 function handleSubmitBildCard(evt) {
@@ -183,9 +166,9 @@ addButton.addEventListener("click", openBildCard);
 //--------------------------------------------------------
 // lookImg popup
 //--------------------------------------------------------
-//const lookImgElement = document.querySelector(".look-img");
-//const txtImg = lookImgElement.querySelector(".look-img__title");
-//const srcImg = lookImgElement.querySelector(".look-img__img");
+const lookImgElement = document.querySelector(".look-img");
+const txtImg = lookImgElement.querySelector(".look-img__title");
+const srcImg = lookImgElement.querySelector(".look-img__img");
 const closelookImg = lookImgElement.querySelector(".look-img__btn-close");//кн.закрытия формы lookImg
 
 // Обработчик открытия формы look-img (размещен в utils.js)
@@ -193,7 +176,8 @@ const closelookImg = lookImgElement.querySelector(".look-img__btn-close");//кн
 
 // Обработчик закрытия формы look-img
 function closeLookImg() {
-  closePopup(lookImgElement);//закрыть lookImg
+  popupLookImg.close();//закрыть lookImg
+  //closePopup(lookImgElement);//закрыть lookImg
 }
 // Кнопка - Х -закрыть "look-img"
 closelookImg.addEventListener("click", closeLookImg);//закрыть lookImg

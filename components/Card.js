@@ -1,5 +1,7 @@
+import { openLookImg } from '../scripts/utils.js';
+import { txtImg, srcImg } from '../scripts/index.js';
+
 //Класс карточки
-import { txtImg, srcImg, openLookImg } from './utils.js';
 export class Card {
     constructor(title, image, template) {
         this._title = title;
