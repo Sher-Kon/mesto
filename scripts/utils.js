@@ -1,23 +1,11 @@
+import { Card } from "../components/Card.js";
 import { closeEditProfile, closeBildCard, closeLookImg} from './index.js';
-import { popupLookImg } from './index.js';
-export {
-    //lookImgElement, txtImg, srcImg,
-    openLookImg, closePopupOnEsc, closePopupOnOverlay
-}
 
-//-------------------------------------------
-// Функции для класса Card
-//-------------------------------------------
-//const lookImgElement = document.querySelector(".look-img");
-//const txtImg = lookImgElement.querySelector(".look-img__title");
-//const srcImg = lookImgElement.querySelector(".look-img__img");
+export { creationCard, closePopupOnEsc, closePopupOnOverlay };
 
-// Обработчик открытия формы look-img
-function openLookImg() {
-    popupLookImg.open();//открыть lookImg
-    //openPopup(lookImgElement); //открыть lookImg
-}
-
+//--------------------------------------------------------
+// Универсальные функции попапа
+//--------------------------------------------------------
 // Закроем попап по кнопке ESC
 function closePopupOnEsc(evt) {
     if (evt.key === "Escape") {
@@ -49,3 +37,20 @@ function closePopupOnEsc(evt) {
         break
     }
   }
+
+//--------------------------------------------------------
+//      Создадим карточку
+//--------------------------------------------------------
+function creationCard(title, image, template, direction) {
+  // Создадим экземпляр карточки
+  const card = new Card(title, image, template);
+  // Создаём карточку 
+  const cardElement = card.generateCard();
+  // Добавляем в DOM (section class="elements")
+  if (direction === "up") {
+    document.querySelector('.elements').prepend(cardElement);//добавить в начало 
+  }
+  if (direction === "dn") {
+    document.querySelector('.elements').append(cardElement);//добавить в конец 
+  }
+}

@@ -1,5 +1,5 @@
-import { openLookImg } from '../scripts/utils.js';
-import { txtImg, srcImg } from '../scripts/index.js';
+//import { openLookImg } from '../scripts/utils.js';
+import { openLookImg, txtImg, srcImg } from '../scripts/index.js';
 
 //Класс карточки
 export class Card {

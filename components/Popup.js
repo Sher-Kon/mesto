@@ -29,8 +29,9 @@ export class Popup {
 
     }
 
-    // Добавляет слушатель клика иконке закрытия попапа
+    // Добавляет слушатель клика X-иконке закрытия попапа
     setEventListeners() {
-
+        const xButton = this._popupElement.querySelector(".x-btn");//кн.закрытия формы
+        xButton.addEventListener("click", () => { this.close()});//закрыть попап
     }
 }

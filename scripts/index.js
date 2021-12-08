@@ -1,13 +1,15 @@
 import { Popup } from "../components/Popup.js";
+import { PopupWithImage } from "../components/PopupWithImage.js";
 import { UserInfo } from "../components/UserInfo.js";
 import { FormValidator } from "../components/FormValidator.js";
-import { Card } from "../components/Card.js";
-import { closePopupOnEsc, closePopupOnOverlay } from './utils.js';
+import { closePopupOnEsc, closePopupOnOverlay, creationCard } from './utils.js';
 import { iniCards, inputsEditProfile, inputsBildCard } from './data.js';
 export { validatorEditProfile, validatorBildCard };
 export { closeEditProfile, closeBildCard, closeLookImg };
-export { popupLookImg, txtImg, srcImg };
+export { popupLookImg, txtImg, srcImg, openLookImg };
 //--------------------------------------------------------
+// Создадим экземпляр PopupWithImage для LookImg
+const popupWILookImg = new PopupWithImage(".look-img");
 // Создадим экземпляр Popup для LookImg
 const popupLookImg = new Popup(".look-img");
 // Создадим экземпляр Popup для EditProfile
@@ -24,42 +26,7 @@ validatorEditProfile.enableValidation();
 const validatorBildCard = new FormValidator('bild-card', inputsBildCard);
 // Вызовем функцию проверки валидации BildCard
 validatorBildCard.enableValidation();
-//--------------------------------------------------------
-function creationCard(title, image, template, direction) {
-  // Создадим экземпляр карточки
-  const card = new Card(title, image, template);
-  // Создаём карточку 
-  const cardElement = card.generateCard();
-  // Добавляем в DOM (section class="elements")
-  if (direction === "up") {
-    document.querySelector('.elements').prepend(cardElement);//добавить в начало 
-  }
-  if (direction === "dn") {
-    document.querySelector('.elements').append(cardElement);//добавить в конец 
-  }
-}
-//--------------------------------------------------------
-// Универсальные функции попапа
-//--------------------------------------------------------
-/*
-function openPopup(element) {
-  //открыть попап
-  element.classList.add("popup_opened");
-  // добавить слушатель ESC
-  document.addEventListener("keydown", closePopupOnEsc);
-  // добавить слушатель Overlay
-  document.addEventListener("click", closePopupOnOverlay);
-}
 
-function closePopup(element) {
-  //закрыть попап
-  element.classList.remove("popup_opened");
-  // снять слушатель Esc
-  document.removeEventListener("keydown", closePopupOnEsc);
-  // снять слушатель Overlay
-  document.removeEventListener("click", closePopupOnOverlay);
-}
-*/
 //--------------------------------------------------------
 // EditProfile popup
 //--------------------------------------------------------
@@ -85,7 +52,7 @@ function openEditProfile() {
   //jobInput.value = jobInfo.textContent;
 
   //открыть popup «Редактировать профиль»
-  // Метод экземпляр Popup для EditProfile
+  // Метод экземпляра Popup для EditProfile
   popupEditProfile.open();
   //openPopup(editProfileElement);
 }
@@ -97,7 +64,7 @@ function closeEditProfile() {
 // Обработчик «отправки» формы «Редактировать профиль»
 function handleSubmitEditProfile(evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
-  // Вставьте новые значения с помощью textContent
+  // Вставьте новые значения
   userInfoEditProfile.setUserInfo(nameInput.value, jobInput.value);
   //nameInfo.textContent = nameInput.value;
   //jobInfo.textContent = jobInput.value;
@@ -107,9 +74,10 @@ function handleSubmitEditProfile(evt) {
 }
 // Прикрепляем обработчик к форме «Редактировать профиль»:
 formEditProfile.addEventListener("submit", handleSubmitEditProfile);
-// Кнопки попапа «Редактировать профиль»
+// Слушатели на кнопки попапа «Редактировать профиль»
 editButton.addEventListener("click", openEditProfile);//открыть попап
-closeButton.addEventListener("click", closeEditProfile);//закрыть попап
+//closeButton.addEventListener("click", closeEditProfile);//закрыть попап
+popupEditProfile.setEventListeners();
 
 //--------------------------------------------------------
 // bildCard popup
@@ -158,8 +126,9 @@ function handleSubmitBildCard(evt) {
 // форма bild-card:
 // Кнопка - «создать»
 formbildCard.addEventListener("submit", handleSubmitBildCard);
-// Кнопка - Х -закрыть  окно "Новое место"
-closeBttn.addEventListener("click", closeBildCard);
+// Добавляет слушатель кнопке Х -закрыть окно "Новое место"
+popupBildCard.setEventListeners();
+//closeBttn.addEventListener("click", closeBildCard);
 // Кнопка « + » (открыть окно "Новое место")
 addButton.addEventListener("click", openBildCard);
 
@@ -171,16 +140,20 @@ const txtImg = lookImgElement.querySelector(".look-img__title");
 const srcImg = lookImgElement.querySelector(".look-img__img");
 const closelookImg = lookImgElement.querySelector(".look-img__btn-close");//кн.закрытия формы lookImg
 
-// Обработчик открытия формы look-img (размещен в utils.js)
-//function openLookImg() { openPopup(lookImgElement);}
+// Обработчик открытия формы look-img
+function openLookImg() {
+  popupLookImg.open();//открыть lookImg
+  //openPopup(lookImgElement); //открыть lookImg
+}
 
 // Обработчик закрытия формы look-img
 function closeLookImg() {
   popupLookImg.close();//закрыть lookImg
   //closePopup(lookImgElement);//закрыть lookImg
 }
-// Кнопка - Х -закрыть "look-img"
-closelookImg.addEventListener("click", closeLookImg);//закрыть lookImg
+//  Добавляет слушатель кнопке Х (закрыть "look-img")
+popupWILookImg.setEventListeners();
+//closelookImg.addEventListener("click", closeLookImg);//закрыть lookImg
 
 //--------------------------------------------------------
 //Начальная загрузка страницы - 6 карточек
