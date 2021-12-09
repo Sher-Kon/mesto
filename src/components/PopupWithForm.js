@@ -28,7 +28,7 @@ export class PopupWithForm extends Popup {
         // снять слушатель Overlay
         document.removeEventListener("click", this._handleOverlayClose.bind(this));
         // при закрытии, форма должна сбрасываться
-
+        this._popupElement.reset;
     }
 
     // Собирает данные всех полей формы
