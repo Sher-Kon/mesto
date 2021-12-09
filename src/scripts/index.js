@@ -8,7 +8,7 @@ import { iniCards, inputsEditProfile, inputsBildCard } from './data.js';
 export { validatorEditProfile, validatorBildCard };
 //export { closeEditProfile, closeBildCard, closeLookImg };
 export { txtImg, srcImg};
-export {openLookImg };//для Card
+export { openLookImg };//для Card
 //--------------------------------------------------------
 // Создадим экземпляр PopupWithForm для BildCard
 const popupWFBildCard = new PopupWithForm(".bild-card", handleSubmitBildCard);
@@ -88,9 +88,9 @@ const addButton = document.querySelector(".profile__add-btn");
 const bildCardElement = document.querySelector(".bild-card");
 const placeInput = bildCardElement.querySelector(".bild-card__text_input_place");
 const urlInput = bildCardElement.querySelector(".bild-card__text_input_url");
-const closeBttn = bildCardElement.querySelector(".bild-card__btn-close");//кн.закрытия формы bild-card
+//const closeBttn = bildCardElement.querySelector(".bild-card__btn-close");//кн.закрытия формы bild-card
 const bildCardBttn = bildCardElement.querySelector(".bild-card__btn-save");//кн. создания card
-const formbildCard = bildCardElement.querySelector(".form");// Находим форму в DOM in bildCardElement
+//const formbildCard = bildCardElement.querySelector(".form");// Находим форму в DOM in bildCardElement
 
 // Обработчик открытия формы bild-card
 function openBildCard() {
@@ -116,11 +116,12 @@ function handleSubmitBildCard(evt) {
     // Создадим экземпляр карточки
     creationCard(place, url, "element-card", "up");
   }
-  // Сделаем кнопку неактивной
-  bildCardBttn.disabled = true;
-  bildCardBttn.classList.add('button_inactive');
   // Закроем форму bildCard()
   closeBildCard();//закрыть окно bild-card()
+  // Сделаем кнопку неактивной
+  validatorBildCard.disableButtonState(bildCardBttn);
+  //bildCardBttn.disabled = true;
+  //bildCardBttn.classList.add('button_inactive');
   // Очистить инпуты для новой карточки
   placeInput.value = "";
   urlInput.value = "";
@@ -145,23 +146,17 @@ addButton.addEventListener("click", openBildCard);
 const lookImgElement = document.querySelector(".look-img");
 const txtImg = lookImgElement.querySelector(".look-img__title");
 const srcImg = lookImgElement.querySelector(".look-img__img");
-const closelookImg = lookImgElement.querySelector(".look-img__btn-close");//кн.закрытия формы lookImg
-
+//const closelookImg = lookImgElement.querySelector(".look-img__btn-close");//кн.закрытия формы lookImg
 // Обработчик открытия формы look-img
 function openLookImg(cardElement) {
   popupWithImage.open(cardElement);//открыть lookImg
-  //popupLookImg.open();//открыть lookImg
-  //openPopup(lookImgElement); //открыть lookImg
 }
-
 // Обработчик закрытия формы look-img
 function closeLookImg() {
   popupWithImage.close();//закрыть lookImg
-  //closePopup(lookImgElement);//закрыть lookImg
 }
 //  Добавляет слушатель кнопке Х (закрыть "look-img")
 popupWithImage.setEventListeners();
-//closelookImg.addEventListener("click", closeLookImg);//закрыть lookImg
 
 //--------------------------------------------------------
 //Начальная загрузка страницы - 6 карточек

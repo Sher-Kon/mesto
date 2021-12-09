@@ -1,11 +1,11 @@
-import { openLookImg } from '../scripts/index.js';
 
 //Класс карточки
 export class Card {
-    constructor(title, image, template) {
+    constructor(title, image, template, handleCardClick) {
         this._title = title;
         this._image = image;
         this._template = template;
+        this._handleCardClick = handleCardClick;
     }
 
     // клонировать Template
@@ -45,8 +45,8 @@ export class Card {
         //txtImg.textContent = this._element.querySelector('.element__txt').textContent;
         //srcImg.src = this._element.querySelector('.element__img').src;
         //srcImg.alt = "На фотографии " + this._element.querySelector('.element__txt').textContent;
-        openLookImg(this._element);//открыть окно просмотра картинки "lookImg"
-        //openLookImg();//открыть окно просмотра картинки "lookImg"
+        //openLookImg(this._element);//открыть окно просмотра картинки "lookImg"
+        this._handleCardClick(this._element);//openLookImg(this._element)
     }
 
     generateCard() {

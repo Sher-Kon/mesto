@@ -1,4 +1,5 @@
 import { Card } from "../components/Card.js";
+import { openLookImg } from './index.js';
 //import { closeEditProfile, closeBildCard, closeLookImg} from './index.js';
 
 export { creationCard};
@@ -44,7 +45,7 @@ function closePopupOnEsc(evt) {
 //--------------------------------------------------------
 function creationCard(title, image, template, direction) {
   // Создадим экземпляр карточки
-  const card = new Card(title, image, template);
+  const card = new Card(title, image, template, openLookImg);
   // Создаём карточку 
   const cardElement = card.generateCard();
   // Добавляем в DOM (section class="elements")
