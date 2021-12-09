@@ -1,8 +1,9 @@
 import { Card } from "../components/Card.js";
-import { closeEditProfile, closeBildCard, closeLookImg} from './index.js';
+//import { closeEditProfile, closeBildCard, closeLookImg} from './index.js';
 
-export { creationCard, closePopupOnEsc, closePopupOnOverlay };
-
+export { creationCard};
+//export { closePopupOnEsc, closePopupOnOverlay };
+/*
 //--------------------------------------------------------
 // Универсальные функции попапа
 //--------------------------------------------------------
@@ -37,7 +38,7 @@ function closePopupOnEsc(evt) {
         break
     }
   }
-
+*/
 //--------------------------------------------------------
 //      Создадим карточку
 //--------------------------------------------------------

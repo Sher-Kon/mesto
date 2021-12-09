@@ -6,19 +6,16 @@ import { FormValidator } from "../components/FormValidator.js";
 import { creationCard } from './utils.js';
 import { iniCards, inputsEditProfile, inputsBildCard } from './data.js';
 export { validatorEditProfile, validatorBildCard };
-export { closeEditProfile, closeBildCard, closeLookImg };
-export { popupLookImg, txtImg, srcImg, openLookImg };
+//export { closeEditProfile, closeBildCard, closeLookImg };
+export { txtImg, srcImg};
+export {openLookImg };//для Card
 //--------------------------------------------------------
 // Создадим экземпляр PopupWithForm для BildCard
 const popupWFBildCard = new PopupWithForm(".bild-card", handleSubmitBildCard);
 // Создадим экземпляр PopupWithImage для LookImg
 const popupWithImage = new PopupWithImage(".look-img");
-// Создадим экземпляр Popup для LookImg
-const popupLookImg = new Popup(".look-img");
 // Создадим экземпляр Popup для EditProfile
 const popupEditProfile = new Popup(".edit-profile");
-// Создадим экземпляр Popup для BildCard
-//const popupBildCard = new Popup(".bild-card");
 // Создадим экземпляр UserInfo для EditProfile
 const userInfoEditProfile = new UserInfo('.profile__info-name', '.profile__info-job');
 // Создадим экземпляр FormValidator
