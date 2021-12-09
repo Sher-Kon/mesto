@@ -40,7 +40,7 @@ export class PopupWithForm extends Popup {
             // Kаждому полю ввода 
             console.log(item.value);//для отладки
           });*/
-
+        return inputList;  
     }
 
     // Закрытие по Overlay
