@@ -113,8 +113,6 @@ function handleSubmitBildCard(evt) {
   const place = placeInput.value;
   const url = urlInput.value;
 
-  //popupWFBildCard._getInputValues();//для отладки
-
   if (url !== '') {
     // Создадим экземпляр карточки
     creationCard(place, url, "element-card", "up");
