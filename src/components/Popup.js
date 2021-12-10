@@ -21,7 +21,7 @@ export class Popup {
         // снять слушатель Esc
         document.removeEventListener("keydown", this._handleEscClose.bind(this));
         // снять слушатель Overlay
-        document.removeEventListener("click", this._handleOverlayClose.bind(this));//closePopupOnOverlay
+        document.removeEventListener("click", this._handleOverlayClose.bind(this));
     }
 
     // Закрытие попапа клавишей Esc

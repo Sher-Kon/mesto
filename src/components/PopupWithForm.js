@@ -1,9 +1,10 @@
 import { Popup } from "./Popup.js";
 
 export class PopupWithForm extends Popup {
-    constructor(popupSelector, handleSubmitPopup) {
+    constructor(popupSelector, handleSubmitPopup, signOverlay) {
         super(popupSelector);
         this._handleSubmitPopup = handleSubmitPopup;
+        this._signOverlay = signOverlay;
     }
 
     // Открытие попапа
@@ -15,8 +16,6 @@ export class PopupWithForm extends Popup {
         //document.addEventListener("keydown", closePopupOnEsc);
         // добавить слушатель Overlay
         document.addEventListener("click", this._handleOverlayClose.bind(this));
-        // Собирает данные всех полей формы
-        //this._getInputValues();
     }
 
     // при закрытии попапа форма должна сбрасываться
@@ -29,23 +28,26 @@ export class PopupWithForm extends Popup {
         document.removeEventListener("click", this._handleOverlayClose.bind(this));
         // при закрытии, форма должна сбрасываться
         this._popupElement.reset;
+        const inputList = this._getInputValues();
+        inputList.forEach((item) => {
+            // Kаждому полю ввода
+            item.value = "" ;
+            //console.log(item.value);//для отладки
+          });
     }
 
     // Собирает данные всех полей формы
     _getInputValues() {
         const inputsArraySelector = '.form__input';
         const inputList = Array.from(this._popupElement.querySelectorAll(inputsArraySelector));
-        /*console.log(inputList);//для отладки
-        inputList.forEach((item) => {
-            // Kаждому полю ввода 
-            console.log(item.value);//для отладки
-          });*/
+        //console.log(inputList);//для отладки
         return inputList;  
     }
 
-    // Закрытие по Overlay
+    // Закрытие по Overlay this._signOverlay
     _handleOverlayClose(evt) {
-        if (evt.target.className === "popup bild-card popup_opened") {
+        //console.log(this._signOverlay);
+        if (evt.target.className === this._signOverlay) {//"popup bild-card popup_opened"
             this.close();
         }
     }

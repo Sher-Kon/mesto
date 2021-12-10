@@ -10,12 +10,14 @@ export { validatorEditProfile, validatorBildCard };
 export { txtImg, srcImg};
 export { openLookImg };//для Card
 //--------------------------------------------------------
+// Создадим экземпляр PopupWithForm для EditProfile
+const popupEditProfile = new PopupWithForm(".edit-profile", handleSubmitEditProfile, "popup edit-profile popup_opened");
 // Создадим экземпляр PopupWithForm для BildCard
-const popupWFBildCard = new PopupWithForm(".bild-card", handleSubmitBildCard);
+const popupWFBildCard = new PopupWithForm(".bild-card", handleSubmitBildCard, "popup bild-card popup_opened");
 // Создадим экземпляр PopupWithImage для LookImg
 const popupWithImage = new PopupWithImage(".look-img");
 // Создадим экземпляр Popup для EditProfile
-const popupEditProfile = new Popup(".edit-profile");
+//const popupEditProfile = new Popup(".edit-profile");
 // Создадим экземпляр UserInfo для EditProfile
 const userInfoEditProfile = new UserInfo('.profile__info-name', '.profile__info-job');
 // Создадим экземпляр FormValidator
@@ -72,12 +74,13 @@ function handleSubmitEditProfile(evt) {
   // Закроем форму
   closeEditProfile();//закрыть окно «Редактировать профиль»
 }
-// Прикрепляем обработчик к форме «Редактировать профиль»:
-formEditProfile.addEventListener("submit", handleSubmitEditProfile);
-// Слушатели на кнопки попапа «Редактировать профиль»
-editButton.addEventListener("click", openEditProfile);//открыть попап
+// Прикрепляем обработчики к форме «Редактировать профиль»:
+popupEditProfile.setEventListeners();// "submit" и Х-закрыть попап
+//formEditProfile.addEventListener("submit", handleSubmitEditProfile);
 //closeButton.addEventListener("click", closeEditProfile);//закрыть попап
-popupEditProfile.setEventListeners();
+
+// Слушатели на кнопку открытия попапа «Редактировать профиль»
+editButton.addEventListener("click", openEditProfile);//открыть попап
 
 //--------------------------------------------------------
 // bildCard popup
@@ -123,8 +126,8 @@ function handleSubmitBildCard(evt) {
   //bildCardBttn.disabled = true;
   //bildCardBttn.classList.add('button_inactive');
   // Очистить инпуты для новой карточки
-  placeInput.value = "";
-  urlInput.value = "";
+  //placeInput.value = "";
+  //urlInput.value = "";
 }
 
 // форма bild-card:
