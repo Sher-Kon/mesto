@@ -43,9 +43,14 @@ function closePopupOnEsc(evt) {
 //--------------------------------------------------------
 //      Создадим карточку
 //--------------------------------------------------------
-function creationCard(title, image, template, direction) {
+function creationCard(item) {
+  const direction = "up";
+  const template = "element-card";
+  const name = item.name;
+  const link = item.link;
+
   // Создадим экземпляр карточки
-  const card = new Card(title, image, template, openLookImg);
+  const card = new Card(name, link, template, openLookImg);
   // Создаём карточку 
   const cardElement = card.generateCard();
   // Добавляем в DOM (section class="elements")

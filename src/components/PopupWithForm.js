@@ -58,6 +58,7 @@ export class PopupWithForm extends Popup {
         const xButton = this._popupElement.querySelector(".x-btn");//кн.закрытия формы
         xButton.addEventListener("click", () => { this.close()});//закрыть попап
         // Добавляет обработчик сабмита
-        document.addEventListener("submit", this._handleSubmitPopup);
+        const formElement = this._popupElement.querySelector(".form");// Находим форму в DOM
+        formElement.addEventListener("submit", this._handleSubmitPopup);
     }
 }

@@ -5,6 +5,7 @@ import { Popup } from "../components/Popup.js";
 import { PopupWithImage } from "../components/PopupWithImage.js";
 import { PopupWithForm } from "../components/PopupWithForm.js";
 import { UserInfo } from "../components/UserInfo.js";
+import { Section } from "../components/Section.js";
 import { FormValidator } from "../components/FormValidator.js";
 import { creationCard } from './utils.js';
 import { iniCards, inputsEditProfile, inputsBildCard } from './data.js';
@@ -13,6 +14,8 @@ export { validatorEditProfile, validatorBildCard };
 export { txtImg, srcImg };
 export { openLookImg };//для Card
 //--------------------------------------------------------
+// Создадим экземпляр class Section 
+const section = new Section(iniCards, creationCard, '.elements');
 // Создадим экземпляр PopupWithForm для EditProfile
 const popupEditProfile = new PopupWithForm(".edit-profile", handleSubmitEditProfile, "popup edit-profile popup_opened");
 // Создадим экземпляр PopupWithForm для BildCard
@@ -130,13 +133,13 @@ function closeBildCard() {
 function handleSubmitBildCard(evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
   // Вставьте новые значения в новую карточку
-  const place = placeInput.value;
-  const url = urlInput.value;
-
-  if (url !== '') {
+  const infoCard = {name: "", link: ""};
+  infoCard.name = placeInput.value;
+  infoCard.link = urlInput.value;
     // Создадим экземпляр карточки
-    creationCard(place, url, "element-card", "up");
-  }
+    section.renderItem(infoCard);
+    //creationCard(infoCard);
+  
   // Закроем форму bildCard()
   closeBildCard();//закрыть окно bild-card()
   // Сделаем кнопку неактивной
@@ -167,7 +170,7 @@ addButton.addEventListener("click", openBildCard);
 const lookImgElement = document.querySelector(".look-img");
 const txtImg = lookImgElement.querySelector(".look-img__title");
 const srcImg = lookImgElement.querySelector(".look-img__img");
-//const closelookImg = lookImgElement.querySelector(".look-img__btn-close");//кн.закрытия формы lookImg
+//const closelookImgBtn = lookImgElement.querySelector(".look-img__btn-close");//кн.закрытия формы lookImg
 // Обработчик открытия формы look-img
 function openLookImg(cardElement) {
   popupWithImage.open(cardElement);//открыть lookImg
@@ -182,7 +185,7 @@ popupWithImage.setEventListeners();
 //--------------------------------------------------------
 //Начальная загрузка страницы - 6 карточек
 //--------------------------------------------------------
-iniCards.forEach((item) => {
+section.renderItems();
+//iniCards.forEach((item) => {
   // Создадим экземпляр карточки
-  creationCard(item.name, item.link, "element-card", "dn");
-});
+  //creationCard(item);}); 
