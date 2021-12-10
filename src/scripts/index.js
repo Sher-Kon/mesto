@@ -1,3 +1,6 @@
+// добавьте импорт главного файла стилей для ВебПака
+//import './styles/index.css'; 
+
 import { Popup } from "../components/Popup.js";
 import { PopupWithImage } from "../components/PopupWithImage.js";
 import { PopupWithForm } from "../components/PopupWithForm.js";
@@ -7,7 +10,7 @@ import { creationCard } from './utils.js';
 import { iniCards, inputsEditProfile, inputsBildCard } from './data.js';
 export { validatorEditProfile, validatorBildCard };
 //export { closeEditProfile, closeBildCard, closeLookImg };
-export { txtImg, srcImg};
+export { txtImg, srcImg };
 export { openLookImg };//для Card
 //--------------------------------------------------------
 // Создадим экземпляр PopupWithForm для EditProfile
@@ -28,6 +31,23 @@ validatorEditProfile.enableValidation();
 const validatorBildCard = new FormValidator('bild-card', inputsBildCard);
 // Вызовем функцию проверки валидации BildCard
 validatorBildCard.enableValidation();
+
+//--------------------------------------------------------
+// теперь картинки можно импортировать,
+//--------------------------------------------------------
+/*
+// вебпак добавит в переменные правильные пути
+import jordanImage from './images/jordan.jpg';
+import jamesImage from './images/james.jpg';
+import bryantImage from './images/bryant.jpg';
+
+const whoIsTheGoat = [
+  // меняем исходные пути на переменные
+  { name: 'Michael Jordan', image: jordanImage },
+  { name: 'Lebron James', link: jamesImage },
+  { name: 'Kobe Bryant', link: bryantImage },
+];
+*/
 
 //--------------------------------------------------------
 // EditProfile popup
