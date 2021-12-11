@@ -17,7 +17,6 @@ export class PopupWithImage extends Popup {
         this._popupElement.classList.add("popup_opened");
         // добавить слушатель ESC
         document.addEventListener("keydown",  this._handleEscClose.bind(this));
-        //document.addEventListener("keydown", closePopupOnEsc);
         // добавить слушатель Overlay
         document.addEventListener("click", this._handleOverlayClose.bind(this));
     }

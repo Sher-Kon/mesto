@@ -1,9 +1,5 @@
-
 //Класс карточки
 export class Card {
-/*    constructor(title, image, template, handleCardClick) {
-        this._title = title;
-        this._image = image;*/
     constructor(dataCard, template, handleCardClick) {
         this._title = dataCard.name;
         this._image = dataCard.link;
@@ -45,10 +41,6 @@ export class Card {
     }
     // обработчик look
     _lookClick() {
-        //txtImg.textContent = this._element.querySelector('.element__txt').textContent;
-        //srcImg.src = this._element.querySelector('.element__img').src;
-        //srcImg.alt = "На фотографии " + this._element.querySelector('.element__txt').textContent;
-        //openLookImg(this._element);//открыть окно просмотра картинки "lookImg"
         this._handleCardClick(this._element);//openLookImg(this._element)
     }
 

@@ -12,8 +12,7 @@ export class PopupWithForm extends Popup {
         //открыть попап
         this._popupElement.classList.add("popup_opened");
         // добавить слушатель ESC
-        document.addEventListener("keydown",  this._handleEscClose.bind(this));
-        //document.addEventListener("keydown", closePopupOnEsc);
+        document.addEventListener("keydown", this._handleEscClose.bind(this));
         // добавить слушатель Overlay
         document.addEventListener("click", this._handleOverlayClose.bind(this));
     }
@@ -31,23 +30,22 @@ export class PopupWithForm extends Popup {
         const inputList = this._getInputValues();
         inputList.forEach((item) => {
             // Kаждому полю ввода
-            item.value = "" ;
-            //console.log(item.value);//для отладки
-          });
+            item.value = "";
+        });
     }
 
     // Собирает данные всех полей формы
     _getInputValues() {
         const inputsArraySelector = '.form__input';
         const inputList = Array.from(this._popupElement.querySelectorAll(inputsArraySelector));
-        //console.log(inputList);//для отладки
-        return inputList;  
+        return inputList;
     }
 
     // Закрытие по Overlay this._signOverlay
+    // "popup bild-card popup_opened"
+    // "popup edit-profile popup_opened"
     _handleOverlayClose(evt) {
-        //console.log(this._signOverlay);
-        if (evt.target.className === this._signOverlay) {//"popup bild-card popup_opened"
+        if (evt.target.className === this._signOverlay) {
             this.close();
         }
     }
@@ -56,7 +54,7 @@ export class PopupWithForm extends Popup {
     setEventListeners() {
         // Добавляет обработчик клика иконке закрытия
         const xButton = this._popupElement.querySelector(".x-btn");//кн.закрытия формы
-        xButton.addEventListener("click", () => { this.close()});//закрыть попап
+        xButton.addEventListener("click", () => { this.close() });//закрыть попап
         // Добавляет обработчик сабмита
         const formElement = this._popupElement.querySelector(".form");// Находим форму в DOM
         formElement.addEventListener("submit", this._handleSubmitPopup);
