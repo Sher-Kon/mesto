@@ -1,9 +1,12 @@
 
 //Класс карточки
 export class Card {
-    constructor(title, image, template, handleCardClick) {
+/*    constructor(title, image, template, handleCardClick) {
         this._title = title;
-        this._image = image;
+        this._image = image;*/
+    constructor(dataCard, template, handleCardClick) {
+        this._title = dataCard.name;
+        this._image = dataCard.link;
         this._template = template;
         this._handleCardClick = handleCardClick;
     }

@@ -10,7 +10,7 @@ import { FormValidator } from "../components/FormValidator.js";
 import { creationCard } from './utils.js';
 import { iniCards, inputsEditProfile, inputsBildCard } from './data.js';
 export { validatorEditProfile, validatorBildCard };
-//export { closeEditProfile, closeBildCard, closeLookImg };
+export { section };
 export { txtImg, srcImg };
 export { openLookImg };//для Card
 //--------------------------------------------------------

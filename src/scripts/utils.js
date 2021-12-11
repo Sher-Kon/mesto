@@ -1,5 +1,5 @@
 import { Card } from "../components/Card.js";
-import { openLookImg } from './index.js';
+import { openLookImg, section } from './index.js';
 //import { closeEditProfile, closeBildCard, closeLookImg} from './index.js';
 
 export { creationCard};
@@ -43,21 +43,19 @@ function closePopupOnEsc(evt) {
 //--------------------------------------------------------
 //      Создадим карточку
 //--------------------------------------------------------
-function creationCard(item) {
-  const direction = "up";
-  const template = "element-card";
-  const name = item.name;
-  const link = item.link;
+function creationCard(data) {
+  //const direction = "up";
+  //const template = "element-card";
+  //const name = item.name;
+  //const link = item.link;
 
   // Создадим экземпляр карточки
-  const card = new Card(name, link, template, openLookImg);
+  const card = new Card(data, "element-card", openLookImg);
   // Создаём карточку 
   const cardElement = card.generateCard();
-  // Добавляем в DOM (section class="elements")
-  if (direction === "up") {
-    document.querySelector('.elements').prepend(cardElement);//добавить в начало 
-  }
-  if (direction === "dn") {
-    document.querySelector('.elements').append(cardElement);//добавить в конец 
-  }
+  // Добавляем в DOM (in section class="elements")
+  section.addItem(cardElement);
+  //if (direction === "up") {document.querySelector('.elements').prepend(cardElement);}//добавить в начало 
+  //if (direction === "dn") {document.querySelector('.elements').append(cardElement);}//добавить в конец 
+  
 }
