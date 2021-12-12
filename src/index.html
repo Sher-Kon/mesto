@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <title>Mesto</title>
     <!-- уберите ссылку на файл стилей для ВебПака -->
-    <link rel="stylesheet" href="pages/index.css">
+    <!--link rel="stylesheet" href="pages/index.css"-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
@@ -16,16 +16,17 @@
         </header>
         <main class="content">
             <section class="profile">
-                <img src="./images/custo.png" class="profile__avatar" alt="фото Кусто">
+                <img src="<%=require('./images/custo.png')%>" class="profile__avatar" alt="фото Кусто">
                 <div class=profile__info>
                     <h1 class="txt-ovf profile__info-name">Жак-Ив Кусто</h1>
                     <button class="profile__info-edit-btn" type="button">
-                        <img src="./images/pensil.svg" class="profile__edit-btn-img" alt="значек карандаш">
+                        <img src="<%=require('./images/pensil.svg')%>" class="profile__edit-btn-img"
+                            alt="значек карандаш">
                     </button>
                     <p class="txt-ovf profile__info-job">Исследователь океана</p>
                 </div>
                 <button class="profile__add-btn" type="button">
-                    <img src="./images/Plus.svg" class="profile__add-btn-img" alt="плюс">
+                    <img src="<%=require('./images/Plus.svg')%>" class="profile__add-btn-img" alt="плюс">
                 </button>
             </section>
             <section class="elements">
@@ -37,7 +38,7 @@
             <template id="element" class="element-card">
                 <div class="element">
                     <button class="element__img-btn" type="button">
-                        <img src="./images/dombay.png" class="element__img" alt="пейзаж">
+                        <img src="<%=require('./images/dombay.png')%>" class="element__img" alt="пейзаж">
                     </button>
                     <h2 class="element__txt">Карачаевск</h2>
                     <button class="element__like-btn" type="button"></button>
@@ -101,7 +102,7 @@
         <div class="popup look-img">
             <div class="look-img__container">
                 <h3 class="look-img__title">Название</h3>
-                <img src="./images/dombay.png" class="look-img__img" alt="пейзаж">
+                <img src="<%=require('./images/dombay.png')%>" class="look-img__img" alt="пейзаж">
                 <button class="popup__btn-close look-img__btn-close x-btn" type="button"></button>
             </div>
         </div>

@@ -1,5 +1,5 @@
 // добавьте импорт главного файла стилей для ВебПака
-//import './styles/index.css'; 
+import '../pages/index.css'; 
 
 import { PopupWithImage } from "../components/PopupWithImage.js";
 import { PopupWithForm } from "../components/PopupWithForm.js";
