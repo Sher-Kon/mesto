@@ -6,7 +6,7 @@ import { PopupWithForm } from "../components/PopupWithForm.js";
 import { UserInfo } from "../components/UserInfo.js";
 import { Section } from "../components/Section.js";
 import { FormValidator } from "../components/FormValidator.js";
-import { creationCard } from './utils.js';
+import { createCard } from './utils.js';
 import { iniCards, inputsEditProfile, inputsBildCard } from './data.js';
 export { validatorEditProfile, validatorBildCard };
 export { section };
@@ -14,7 +14,7 @@ export { txtImg, srcImg };
 export { openLookImg };//для Card in utils.js
 //--------------------------------------------------------
 // Создадим экземпляр class Section 
-const section = new Section(iniCards, creationCard, '.elements');
+const section = new Section(iniCards, createCard, '.elements');
 // Создадим экземпляр PopupWithForm для EditProfile
 const popupEditProfile = new PopupWithForm(".edit-profile", handleSubmitEditProfile, "popup edit-profile popup_opened");
 // Создадим экземпляр PopupWithForm для BildCard
@@ -107,7 +107,7 @@ function handleSubmitBildCard(evt) {
   // Закроем форму bildCard()
   closeBildCard();//закрыть окно bild-card()
   // Сделаем кнопку неактивной
-  validatorBildCard.disableButtonState(bildCardBttn);
+  validatorBildCard.disableButtonState(bildCardBttn);//bildCardBttn
 }
 // Добавляет обработчик клика по Х-иконке закрытия, и обработчик сабмита
 popupWFBildCard.setEventListeners();

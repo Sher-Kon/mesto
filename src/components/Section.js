@@ -15,12 +15,16 @@ export class Section {
     }
 
     renderItem(item) {
-        this._renderer(item);
+        const cardElement = this._renderer(item);
+        // Добавляем в DOM (in containerSelector)
+        this.addItem(cardElement);
     }
 
     renderItems() {
         this._items.forEach((item) => {
-            this._renderer(item);
+            const cardElement = this._renderer(item);
+            // Добавляем в DOM (in containerSelector)
+            this.addItem(cardElement);
         });
     }
 }
