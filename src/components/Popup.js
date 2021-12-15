@@ -2,6 +2,8 @@
 export class Popup {
     constructor(popupSelector) {
         this._popupElement = document.querySelector(popupSelector);
+        this._handleEscClose = this._handleEscClose.bind(this);
+        this._handleOverlayClose = this._handleOverlayClose.bind(this);
     }
 
     // Открытие попапа
@@ -9,9 +11,9 @@ export class Popup {
         //открыть попап
         this._popupElement.classList.add("popup_opened");
         // добавить слушатель ESC
-        document.addEventListener("keydown",  this._handleEscClose.bind(this));
+        document.addEventListener("keydown", this._handleEscClose);
         // добавить слушатель Overlay
-        document.addEventListener("click", this._handleOverlayClose.bind(this));//closePopupOnOverlay
+        document.addEventListener("click", this._handleOverlayClose);
     }
 
     // Закрытие попапа
@@ -19,9 +21,9 @@ export class Popup {
         //закрыть попап
         this._popupElement.classList.remove("popup_opened");
         // снять слушатель Esc
-        document.removeEventListener("keydown", this._handleEscClose.bind(this));
-        // снять слушатель Overlay
-        document.removeEventListener("click", this._handleOverlayClose.bind(this));
+        document.removeEventListener("keydown", this._handleEscClose);
+        // добавить слушатель Overlay
+        document.addEventListener("click", this._handleOverlayClose);
     }
 
     // Закрытие попапа клавишей Esc
@@ -30,10 +32,10 @@ export class Popup {
             this.close();
         }
     }
-    
+
     // Закрытие по Overlay
     _handleOverlayClose(evt) {
-        if (evt.target.className === "popup edit-profile popup_opened") {
+        if (evt.target.classList.contains('popup_opened')) {
             this.close();
         }
     }

@@ -10,7 +10,6 @@ import { createCard } from './utils.js';
 import { iniCards, inputsEditProfile, inputsBildCard } from './data.js';
 export { validatorEditProfile, validatorBildCard };
 export { section };
-export { txtImg, srcImg };
 export { openLookImg };//для Card in utils.js
 //--------------------------------------------------------
 // Создадим экземпляр class Section 
@@ -20,7 +19,7 @@ const popupEditProfile = new PopupWithForm(".edit-profile", handleSubmitEditProf
 // Создадим экземпляр PopupWithForm для BildCard
 const popupWFBildCard = new PopupWithForm(".bild-card", handleSubmitBildCard, "popup bild-card popup_opened");
 // Создадим экземпляр PopupWithImage для LookImg
-const popupWithImage = new PopupWithImage(".look-img");
+const popupWithImage = new PopupWithImage(".look-img", ".look-img__title", ".look-img__img");
 // Создадим экземпляр UserInfo для EditProfile
 const userInfoEditProfile = new UserInfo('.profile__info-name', '.profile__info-job');
 // Создадим экземпляр FormValidator
@@ -117,10 +116,6 @@ addButton.addEventListener("click", openBildCard);
 //--------------------------------------------------------
 // lookImg popup
 //--------------------------------------------------------
-const lookImgElement = document.querySelector(".look-img");
-const txtImg = lookImgElement.querySelector(".look-img__title");
-const srcImg = lookImgElement.querySelector(".look-img__img");
-
 // Функция открытия формы look-img
 function openLookImg(cardElement) {
   popupWithImage.open(cardElement);//открыть lookImg
