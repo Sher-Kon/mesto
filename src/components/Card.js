@@ -40,7 +40,7 @@ export class Card {
     // список слушателей
     _setEventListeners() {
         this._likeButton.addEventListener('click', () => {
-                this._likeClick();
+            this._likeClick();
         });
         this._delButton.addEventListener('click', () => {
             this._deleteCard();

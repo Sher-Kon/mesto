@@ -9,9 +9,9 @@ export class FormValidator {
   }
 
   // Находит хотя бы один невалидный инпут
-  _hasInvalidInput(inputList) {
+  _hasInvalidInput() {
     // проходим по этому массиву методом some
-    return inputList.some((inputElement) => {
+    return this._inputList.some((inputElement) => {
       // Если поле не валидно, колбэк вернёт true
       // Обход массива прекратится и вся фунцкция
       // hasInvalidInput вернёт true
@@ -39,6 +39,15 @@ export class FormValidator {
     }
   }
 
+  // Cброс ошибок у инпутов
+  resetValidation() {
+    this._inputs.forEach((item) => {
+      const inputElement = this._formElement.querySelector(item.inputSelector);
+      const errorElement = this._formElement.querySelector(item.inputSelector + "-error");
+      this._hideInputError(errorElement, inputElement); //<==очищаем ошибки ==
+    });
+  }
+
   // Функция, которая делает кнопку неактивной
   disableButtonState() {
     this._buttonElement.disabled = true;
@@ -53,7 +62,7 @@ export class FormValidator {
   // Изменение стиля кнопки
   _toggleButtonState() {
     // Если есть хотя бы один невалидный инпут
-    if (this._hasInvalidInput(this._inputList)) {
+    if (this._hasInvalidInput()) {
       // сделай кнопку неактивной
       this.disableButtonState();
     } else {
@@ -80,7 +89,7 @@ export class FormValidator {
     });
   };
 
-  // Kаждому инпуту добавим слушатель
+  // Kаждому инпуту и форме добавим слушатель
   _setEventListeners() {
     // форме добавим слушатель события submit
     this._formElement.addEventListener('submit', function (evt) {
@@ -96,15 +105,5 @@ export class FormValidator {
   enableValidation = () => {
     this._setEventListeners()
   };
-  
-  // Cброс ошибок у инпутов
-  resetValidation() {
-    this._inputs.forEach((item) => {
-      const inputElement = this._formElement.querySelector(item.inputSelector);
-      const errorElement = this._formElement.querySelector(item.inputSelector + "-error");
-      this._hideInputError(errorElement, inputElement); //<==очищаем ошибки ==
-    });
-  }
 
 }
-
