@@ -1,13 +1,13 @@
 // добавьте импорт главного файла стилей для ВебПака
-import '../pages/index.css'; 
+import './index.css';
 
 import { PopupWithImage } from "../components/PopupWithImage.js";
 import { PopupWithForm } from "../components/PopupWithForm.js";
 import { UserInfo } from "../components/UserInfo.js";
 import { Section } from "../components/Section.js";
 import { FormValidator } from "../components/FormValidator.js";
-import { createCard } from './utils.js';
-import { iniCards, inputsEditProfile, inputsBildCard } from './data.js';
+import { createCard } from '../scripts/utils.js';
+import { iniCards, inputsEditProfile, inputsBildCard } from '../scripts/data.js';
 export { validatorEditProfile, validatorBildCard };
 export { section };
 export { openLookImg };//для Card in utils.js
@@ -49,7 +49,7 @@ const formEditProfile = editProfileElement.querySelector(".form");// Наход�
 // Обработчик открытия формы popup «Редактировать профиль»
 function openEditProfile() {
   // Загрузить инпуты из профиля
-  const userInfo = userInfoEditProfile.getUserInfo();
+  const userInfo = userInfoEditProfile.getUserInfo();//profile
   nameInput.value = userInfo.name;
   jobInput.value = userInfo.info;
   //открыть popup «Редактировать профиль»
@@ -63,7 +63,8 @@ function closeEditProfile() {
 function handleSubmitEditProfile(evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
   // Вставьте новые значения
-  userInfoEditProfile.setUserInfo(nameInput.value, jobInput.value);
+  const inputsPopup = popupEditProfile._getInputValues();//popup inputs
+  userInfoEditProfile.setUserInfo(inputsPopup.nameInput, inputsPopup.jobInput);
   // Закроем форму
   closeEditProfile();//закрыть окно «Редактировать профиль»
 }
@@ -79,8 +80,8 @@ editButton.addEventListener("click", openEditProfile);//открыть попа�
 const addButton = document.querySelector(".profile__add-btn");
 // bildCard popup
 const bildCardElement = document.querySelector(".bild-card");
-const placeInput = bildCardElement.querySelector(".bild-card__text_input_place");
-const urlInput = bildCardElement.querySelector(".bild-card__text_input_url");
+//const placeInput = bildCardElement.querySelector(".bild-card__text_input_place");
+//const urlInput = bildCardElement.querySelector(".bild-card__text_input_url");
 //const closeBttn = bildCardElement.querySelector(".bild-card__btn-close");//кн.закрытия формы bild-card
 const bildCardBttn = bildCardElement.querySelector(".bild-card__btn-save");//кн. создания card
 //const formbildCard = bildCardElement.querySelector(".form");// Находим форму в DOM in bildCardElement
@@ -98,9 +99,11 @@ function closeBildCard() {
 function handleSubmitBildCard(evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
   // Вставьте новые значения в новую карточку
+  const inputsCard = popupWFBildCard._getInputValues();
   const infoCard = { name: "", link: "" };
-  infoCard.name = placeInput.value;
-  infoCard.link = urlInput.value;
+  infoCard.name = inputsCard.placeInput;
+  infoCard.link = inputsCard.urlInput;
+
   // Создадим экземпляр карточки
   section.renderItem(infoCard);
   // Закроем форму bildCard()
