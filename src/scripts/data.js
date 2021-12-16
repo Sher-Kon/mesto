@@ -1,4 +1,4 @@
-export { iniCards, inputsEditProfile, inputsBildCard };
+export { iniCards, inputsEditProfile, inputsBildCard, selectorsForValid };
 //--------------------------------------------------------
 // Возьмем готовый массив
 //--------------------------------------------------------
@@ -60,3 +60,13 @@ const inputsBildCard = [
         buttnSubmitSelector: '.form__submit'
     }
 ];
+
+//--------------------------------------------------------
+// массив селекторов
+//--------------------------------------------------------
+const selectorsForValid = 
+    {
+        inputTypeError:     '.form__input_type_error',
+        inputActiveError:   '.form__input-error_active',
+        buttonInactive:     'button_inactive'
+    };

@@ -7,7 +7,7 @@ import { UserInfo } from "../components/UserInfo.js";
 import { Section } from "../components/Section.js";
 import { FormValidator } from "../components/FormValidator.js";
 import { createCard } from '../scripts/utils.js';
-import { iniCards, inputsEditProfile, inputsBildCard } from '../scripts/data.js';
+import { iniCards, inputsEditProfile, inputsBildCard, selectorsForValid } from '../scripts/data.js';
 export { validatorEditProfile, validatorBildCard };
 export { section };
 export { openLookImg };//для Card in utils.js
@@ -15,19 +15,19 @@ export { openLookImg };//для Card in utils.js
 // Создадим экземпляр class Section 
 const section = new Section(iniCards, createCard, '.elements');
 // Создадим экземпляр PopupWithForm для EditProfile
-const popupEditProfile = new PopupWithForm(".edit-profile", handleSubmitEditProfile, "popup edit-profile popup_opened");
+const popupEditProfile = new PopupWithForm(".edit-profile", handleSubmitEditProfile);
 // Создадим экземпляр PopupWithForm для BildCard
-const popupWFBildCard = new PopupWithForm(".bild-card", handleSubmitBildCard, "popup bild-card popup_opened");
+const popupWFBildCard = new PopupWithForm(".bild-card", handleSubmitBildCard);
 // Создадим экземпляр PopupWithImage для LookImg
 const popupWithImage = new PopupWithImage(".look-img", ".look-img__title", ".look-img__img");
-// Создадим экземпляр UserInfo для EditProfile
-const userInfoEditProfile = new UserInfo('.profile__info-name', '.profile__info-job');
+// Создадим экземпляр UserInfo для Profile
+const userInfoProfile = new UserInfo('.profile__info-name', '.profile__info-job');
 // Создадим экземпляр FormValidator
-const validatorEditProfile = new FormValidator('edit-profile', inputsEditProfile);
+const validatorEditProfile = new FormValidator(selectorsForValid, 'edit-profile', inputsEditProfile);
 // Вызовем функцию проверки валидации EditProfile
 validatorEditProfile.enableValidation();
 // Создадим экземпляр FormValidator
-const validatorBildCard = new FormValidator('bild-card', inputsBildCard);
+const validatorBildCard = new FormValidator(selectorsForValid, 'bild-card', inputsBildCard);
 // Вызовем функцию проверки валидации BildCard
 validatorBildCard.enableValidation();
 
@@ -37,21 +37,19 @@ validatorBildCard.enableValidation();
 // элементы DOM на странице
 const content = document.querySelector(".content");
 const editButton = content.querySelector(".profile__info-edit-btn");//кн.открытия формы
-const nameInfo = content.querySelector(".profile__info-name");
-const jobInfo = content.querySelector(".profile__info-job");
 // EditProfile popup «Редактировать профиль»
 const editProfileElement = document.querySelector(".edit-profile");//popup
 const nameInput = editProfileElement.querySelector(".popup__text_input_name");
-const jobInput = editProfileElement.querySelector(".popup__text_input_job");
-const closeButton = editProfileElement.querySelector(".popup__btn-close");//кн.закрытия формы
-const formEditProfile = editProfileElement.querySelector(".form");// Находим форму в DOM
+const infoInput = editProfileElement.querySelector(".popup__text_input_job");
 
 // Обработчик открытия формы popup «Редактировать профиль»
 function openEditProfile() {
-  // Загрузить инпуты из профиля
-  const userInfo = userInfoEditProfile.getUserInfo();//profile
+  validatorEditProfile.resetValidation();
+  validatorEditProfile.enableButtonState();
+  // Загрузить инпуты из профиля в попап
+  const userInfo = userInfoProfile.getUserInfo();//profile
   nameInput.value = userInfo.name;
-  jobInput.value = userInfo.info;
+  infoInput.value = userInfo.info;
   //открыть popup «Редактировать профиль»
   popupEditProfile.open();// Метод экземпляра PopupWithForm для EditProfile
 }
@@ -62,9 +60,9 @@ function closeEditProfile() {
 // Обработчик «отправки» формы «Редактировать профиль»
 function handleSubmitEditProfile(evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
-  // Вставьте новые значения
+  // Вставить новые значения из попапа в профиль
   const inputsPopup = popupEditProfile._getInputValues();//popup inputs
-  userInfoEditProfile.setUserInfo(inputsPopup.nameInput, inputsPopup.jobInput);
+  userInfoProfile.setUserInfo(inputsPopup.nameInput, inputsPopup.jobInput);
   // Закроем форму
   closeEditProfile();//закрыть окно «Редактировать профиль»
 }
@@ -77,19 +75,13 @@ editButton.addEventListener("click", openEditProfile);//открыть попа�
 // bildCard popup
 //--------------------------------------------------------
 // элементы DOM на странице
-const addButton = document.querySelector(".profile__add-btn");
-// bildCard popup
-const bildCardElement = document.querySelector(".bild-card");
-//const placeInput = bildCardElement.querySelector(".bild-card__text_input_place");
-//const urlInput = bildCardElement.querySelector(".bild-card__text_input_url");
-//const closeBttn = bildCardElement.querySelector(".bild-card__btn-close");//кн.закрытия формы bild-card
-const bildCardBttn = bildCardElement.querySelector(".bild-card__btn-save");//кн. создания card
-//const formbildCard = bildCardElement.querySelector(".form");// Находим форму в DOM in bildCardElement
+const addCardButton = document.querySelector(".profile__add-btn");
 
 // Обработчик открытия формы bild-card
 function openBildCard() {
-  validatorBildCard.disableButtonState(bildCardBttn);
-  popupWFBildCard.open();//открыть bildCard
+  validatorBildCard.resetValidation();
+  validatorBildCard.disableButtonState();
+  popupWFBildCard.open();
 }
 // Обработчик закрытия формы bild-card
 function closeBildCard() {
@@ -103,18 +95,17 @@ function handleSubmitBildCard(evt) {
   const infoCard = { name: "", link: "" };
   infoCard.name = inputsCard.placeInput;
   infoCard.link = inputsCard.urlInput;
-
   // Создадим экземпляр карточки
   section.renderItem(infoCard);
   // Закроем форму bildCard()
   closeBildCard();//закрыть окно bild-card()
   // Сделаем кнопку неактивной
-  validatorBildCard.disableButtonState(bildCardBttn);//bildCardBttn
+  validatorBildCard.disableButtonState();//bildCardBttn
 }
 // Добавляет обработчик клика по Х-иконке закрытия, и обработчик сабмита
 popupWFBildCard.setEventListeners();
 // Добавляет слушатель кнопке « + » (открыть окно "Новое место")
-addButton.addEventListener("click", openBildCard);
+addCardButton.addEventListener("click", openBildCard);
 
 //--------------------------------------------------------
 // lookImg popup
