@@ -14,10 +14,15 @@ export { openLookImg };//для Card in utils.js
 //--------------------------------------------------------
 // Создадим экземпляр class Section 
 const section = new Section(iniCards, createCard, '.elements');
+
 // Создадим экземпляр PopupWithForm для EditProfile
+//const popupEditProfile = new PopupWithForm(".edit-profile", (data)  => handleSubmitEditProfile(data));
 const popupEditProfile = new PopupWithForm(".edit-profile", handleSubmitEditProfile);
+
 // Создадим экземпляр PopupWithForm для BildCard
+//const popupWFBildCard = new PopupWithForm(".bild-card", (data) => handleSubmitBildCard(data));
 const popupWFBildCard = new PopupWithForm(".bild-card", handleSubmitBildCard);
+
 // Создадим экземпляр PopupWithImage для LookImg
 const popupWithImage = new PopupWithImage(".look-img", ".look-img__title", ".look-img__img");
 // Создадим экземпляр UserInfo для Profile
@@ -57,15 +62,24 @@ function openEditProfile() {
 function closeEditProfile() {
   popupEditProfile.close();
 }
+
 // Обработчик «отправки» формы «Редактировать профиль»
+/*
+function handleSubmitEditProfile(data) {
+  evt.preventDefault();// Эта строчка отменяет стандартную отправку формы.
+  const inputsPopup = data;// Вставить новые значения из попапа в профиль
+  userInfoProfile.setUserInfo(inputsPopup.nameInput, inputsPopup.jobInput);
+  closeEditProfile();//закрыть попап «Редактировать профиль»
+}
+*/
 function handleSubmitEditProfile(evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
   // Вставить новые значения из попапа в профиль
-  const data = popupEditProfile.retInputValues();//popup inputs
+  const data = popupEditProfile.getInputValues();//popup inputs
   userInfoProfile.setUserInfo(data.nameInput, data.jobInput);
-  // Закроем форму
-  closeEditProfile();//закрыть окно «Редактировать профиль»
+  closeEditProfile();//закрыть попап «Редактировать профиль»
 }
+
 // Прикрепляем обработчики к форме «Редактировать профиль»:
 popupEditProfile.setEventListeners();// "submit" и Х-закрыть попап
 // Слушатели на кнопку открытия попапа «Редактировать профиль»
@@ -87,11 +101,24 @@ function openBildCard() {
 function closeBildCard() {
   popupWFBildCard.close();//закрыть bildCard
 }
+
 // Обработчик «отправки» формы bild-card
+/*
+function handleSubmitBildCard(data) {// объект `data` это данные инпутов которые собирает _getInputValues
+  evt.preventDefault();
+  const infoCard = { name: "", link: "" };
+  infoCard.name = data.placeInput;// новые значения из инпута попапа в карточку
+  infoCard.link = data.urlInput;// новые значения из инпута попапа в карточку
+  section.renderItem(infoCard);// Создадим экземпляр карточки
+  closeBildCard();//закрыть попап BildСard()
+  validatorBildCard.disableButtonState();// Сделаем кнопку неактивной
+}
+*/
+
 function handleSubmitBildCard(evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
   // Вставьте новые значения в новую карточку
-  const data = popupWFBildCard.retInputValues();
+  const data = popupWFBildCard.getInputValues();
   const infoCard = { name: "", link: "" };
   infoCard.name = data.placeInput;
   infoCard.link = data.urlInput;
@@ -102,6 +129,7 @@ function handleSubmitBildCard(evt) {
   // Сделаем кнопку неактивной
   validatorBildCard.disableButtonState();//bildCardBttn
 }
+
 // Добавляет обработчик клика по Х-иконке закрытия, и обработчик сабмита
 popupWFBildCard.setEventListeners();
 // Добавляет слушатель кнопке « + » (открыть окно "Новое место")
