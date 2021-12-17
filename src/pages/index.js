@@ -114,10 +114,6 @@ addCardButton.addEventListener("click", openBildCard);
 function openLookImg(cardElement) {
   popupWithImage.open(cardElement);//открыть lookImg
 }
-// Функция закрытия формы look-img
-function closeLookImg() {
-  popupWithImage.close();//закрыть lookImg
-}
 //  Добавляет слушатель кнопке Х (закрыть "look-img")
 popupWithImage.setEventListeners();
 
