@@ -21,6 +21,11 @@ export class PopupWithForm extends Popup {
         return this._formValues;
     }
 
+    retInputValues() {
+        this._data = this._getInputValues();
+        return this._data;
+    }
+
     // Обработчик клика по Х-иконке закрытия, и добавляет обработчик сабмита
     setEventListeners() {
         super.setEventListeners();

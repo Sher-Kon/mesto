@@ -1,4 +1,4 @@
-export { iniCards, inputsEditProfile, inputsBildCard, selectorsForValid };
+export { iniCards, inputsEditProfile, inputsBildCard, selectorsEditProfile, selectorsBildCard };
 //--------------------------------------------------------
 // Возьмем готовый массив
 //--------------------------------------------------------
@@ -35,13 +35,9 @@ const iniCards = [
 const inputsEditProfile = [
     {
         inputSelector: '.popup-name',
-        inputsArraySelector: '.form__input',
-        buttnSubmitSelector: '.form__submit'
     },
     {
         inputSelector: '.popup-job',
-        inputsArraySelector: '.form__input',
-        buttnSubmitSelector: '.form__submit'
     }
 ];
 
@@ -51,22 +47,34 @@ const inputsEditProfile = [
 const inputsBildCard = [
     {
         inputSelector: '.bild-card-place',
-        inputsArraySelector: '.form__input',
-        buttnSubmitSelector: '.form__submit'
     },
     {
         inputSelector: '.bild-card-url',
-        inputsArraySelector: '.form__input',
-        buttnSubmitSelector: '.form__submit'
     }
 ];
 
 //--------------------------------------------------------
-// массив селекторов
+// массив селекторов EditProfile
 //--------------------------------------------------------
-const selectorsForValid = 
-    {
-        inputTypeError:     '.form__input_type_error',
-        inputActiveError:   '.form__input-error_active',
-        buttonInactive:     'button_inactive'
-    };
+const selectorsEditProfile =
+{
+    formSelector: '.edit-profile',
+    submitButtonSelector: '.form__submit',
+    inputSelector: '.form__input',
+    inputTypeError: '.form__input_type_error',
+    inputActiveError: '.form__input-error_active',
+    buttonInactive: 'button_inactive'
+};
+
+//--------------------------------------------------------
+// массив селекторов BildCard
+//--------------------------------------------------------
+const selectorsBildCard =
+{
+    formSelector: '.bild-card',
+    submitButtonSelector: '.form__submit',
+    inputSelector: '.form__input',
+    inputTypeError: '.form__input_type_error',
+    inputActiveError: '.form__input-error_active',
+    buttonInactive: 'button_inactive'
+};

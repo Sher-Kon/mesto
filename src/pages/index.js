@@ -7,7 +7,7 @@ import { UserInfo } from "../components/UserInfo.js";
 import { Section } from "../components/Section.js";
 import { FormValidator } from "../components/FormValidator.js";
 import { createCard } from '../scripts/utils.js';
-import { iniCards, inputsEditProfile, inputsBildCard, selectorsForValid } from '../scripts/data.js';
+import { iniCards, inputsEditProfile, inputsBildCard, selectorsEditProfile, selectorsBildCard } from '../scripts/data.js';
 export { validatorEditProfile, validatorBildCard };
 export { section };
 export { openLookImg };//для Card in utils.js
@@ -23,11 +23,11 @@ const popupWithImage = new PopupWithImage(".look-img", ".look-img__title", ".loo
 // Создадим экземпляр UserInfo для Profile
 const userInfoProfile = new UserInfo('.profile__info-name', '.profile__info-job');
 // Создадим экземпляр FormValidator
-const validatorEditProfile = new FormValidator(selectorsForValid, 'edit-profile', inputsEditProfile);
+const validatorEditProfile = new FormValidator(selectorsEditProfile, inputsEditProfile);
 // Вызовем функцию проверки валидации EditProfile
 validatorEditProfile.enableValidation();
 // Создадим экземпляр FormValidator
-const validatorBildCard = new FormValidator(selectorsForValid, 'bild-card', inputsBildCard);
+const validatorBildCard = new FormValidator(selectorsBildCard, inputsBildCard);
 // Вызовем функцию проверки валидации BildCard
 validatorBildCard.enableValidation();
 
@@ -61,8 +61,8 @@ function closeEditProfile() {
 function handleSubmitEditProfile(evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
   // Вставить новые значения из попапа в профиль
-  const inputsPopup = popupEditProfile._getInputValues();//popup inputs
-  userInfoProfile.setUserInfo(inputsPopup.nameInput, inputsPopup.jobInput);
+  const data = popupEditProfile.retInputValues();//popup inputs
+  userInfoProfile.setUserInfo(data.nameInput, data.jobInput);
   // Закроем форму
   closeEditProfile();//закрыть окно «Редактировать профиль»
 }
@@ -91,10 +91,10 @@ function closeBildCard() {
 function handleSubmitBildCard(evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
   // Вставьте новые значения в новую карточку
-  const inputsCard = popupWFBildCard._getInputValues();
+  const data = popupWFBildCard.retInputValues();
   const infoCard = { name: "", link: "" };
-  infoCard.name = inputsCard.placeInput;
-  infoCard.link = inputsCard.urlInput;
+  infoCard.name = data.placeInput;
+  infoCard.link = data.urlInput;
   // Создадим экземпляр карточки
   section.renderItem(infoCard);
   // Закроем форму bildCard()

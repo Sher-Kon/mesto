@@ -1,11 +1,10 @@
 export class FormValidator {
-  constructor(settings, formName, inputs) {
+  constructor(settings, inputs) {
     this._settings = settings;
-    this._formName = formName;
     this._inputs = inputs;
-    this._formElement = document.querySelector('.' + this._formName);// edit-profile / bild-card
-    this._inputList = Array.from(this._formElement.querySelectorAll(this._inputs[0].inputsArraySelector));
-    this._buttonElement = this._formElement.querySelector(this._inputs[0].buttnSubmitSelector);
+    this._formElement = document.querySelector(this._settings.formSelector);// edit-profile / bild-card
+    this._inputList = Array.from(this._formElement.querySelectorAll(this._settings.inputSelector));
+    this._submitButton = this._formElement.querySelector(this._settings.submitButtonSelector);
   }
 
   // Находит хотя бы один невалидный инпут
@@ -50,13 +49,13 @@ export class FormValidator {
 
   // Функция, которая делает кнопку неактивной
   disableButtonState() {
-    this._buttonElement.disabled = true;
-    this._buttonElement.classList.add(this._settings.buttonInactive);
+    this._submitButton.disabled = true;
+    this._submitButton.classList.add(this._settings.buttonInactive);
   }
   // Функция, которая делает кнопку активной
   enableButtonState() {
-    this._buttonElement.disabled = false;
-    this._buttonElement.classList.remove(this._settings.buttonInactive);
+    this._submitButton.disabled = false;
+    this._submitButton.classList.remove(this._settings.buttonInactive);
   }
 
   // Изменение стиля кнопки
