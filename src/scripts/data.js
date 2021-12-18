@@ -1,4 +1,4 @@
-export { iniCards, selectorsEditProfile, selectorsBildCard };
+export { iniCards, selectorsElements };
 //--------------------------------------------------------
 // Возьмем готовый массив
 //--------------------------------------------------------
@@ -30,30 +30,15 @@ const iniCards = [
 ];
 
 //--------------------------------------------------------
-// массив селекторов EditProfile
+// массив селекторов 
 //--------------------------------------------------------
-const selectorsEditProfile =
+const selectorsElements =
 {
-    formSelector: '.edit-profile',
-    submitButtonSelector: '.form__submit',
+    formSelector: '.form',
     inputSelector: '.form__input',
+    submitButtonSelector: '.form__submit',
     inputTypeError: '.form__input_type_error',
     inputActiveError: '.form__input-error_active',
     buttonInactive: 'button_inactive'
-
-};
-
-//--------------------------------------------------------
-// массив селекторов BildCard
-//--------------------------------------------------------
-const selectorsBildCard =
-{
-    formSelector: '.bild-card',
-    submitButtonSelector: '.form__submit',
-    inputSelector: '.form__input',
-    inputTypeError: '.form__input_type_error',
-    inputActiveError: '.form__input-error_active',
-    buttonInactive: 'button_inactive'
-
 
 };

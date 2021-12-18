@@ -1,19 +1,16 @@
-// импорт главного файла стилей для ВебПака
-import './index.css';
-
+import './index.css';// импорт главного файла стилей для ВебПака
+//--------------------------------------------------------
 import { PopupWithImage } from "../components/PopupWithImage.js";
 import { PopupWithForm } from "../components/PopupWithForm.js";
 import { UserInfo } from "../components/UserInfo.js";
 import { Section } from "../components/Section.js";
 import { FormValidator } from "../components/FormValidator.js";
-import { createCard } from '../scripts/utils.js';
-import { iniCards, selectorsEditProfile, selectorsBildCard } from '../scripts/data.js';
-export { validatorEditProfile, validatorBildCard };
-export { section };
+import { createCard } from "../scripts/utils.js";
+import { iniCards, selectorsElements } from "../scripts/data.js";
 export { openLookImg };//для Card in utils.js
 //--------------------------------------------------------
 // Создадим экземпляр class Section 
-const section = new Section(iniCards, createCard, '.elements');
+const section = new Section(iniCards, createCard, ".elements");
 
 // Создадим экземпляр PopupWithForm для EditProfile
 //const popupEditProfile = new PopupWithForm(".edit-profile", (data)  => handleSubmitEditProfile(data));
@@ -26,13 +23,13 @@ const popupWFBildCard = new PopupWithForm(".bild-card", handleSubmitBildCard);
 // Создадим экземпляр PopupWithImage для LookImg
 const popupWithImage = new PopupWithImage(".look-img", ".look-img__title", ".look-img__img");
 // Создадим экземпляр UserInfo для Profile
-const userInfoProfile = new UserInfo('.profile__info-name', '.profile__info-job');
-// Создадим экземпляр FormValidator
-const validatorEditProfile = new FormValidator(selectorsEditProfile);
+const userInfoProfile = new UserInfo(".profile__info-name", ".profile__info-job");
+// Создадим экземпляр FormValidator для EditProfile
+const validatorEditProfile = new FormValidator(selectorsElements, ".edit-profile");
 // Вызовем функцию проверки валидации EditProfile
 validatorEditProfile.enableValidation();
-// Создадим экземпляр FormValidator
-const validatorBildCard = new FormValidator(selectorsBildCard);
+// Создадим экземпляр FormValidator для BildCard
+const validatorBildCard = new FormValidator(selectorsElements, ".bild-card");
 // Вызовем функцию проверки валидации BildCard
 validatorBildCard.enableValidation();
 

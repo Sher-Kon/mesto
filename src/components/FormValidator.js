@@ -1,12 +1,12 @@
 export class FormValidator {
-  constructor(settings) {
-    this._settings = settings;
-    this._formElement = document.querySelector(this._settings.formSelector);// edit-profile / bild-card
-    this._inputList = Array.from(this._formElement.querySelectorAll(this._settings.inputSelector));
-    this._submitButton = this._formElement.querySelector(this._settings.submitButtonSelector);
-  }
+  constructor(settings, formElement) {
+  this._settings = settings;
+  this._formElement = document.querySelector(formElement);// edit-profile / bild-card
+  this._inputList = Array.from(this._formElement.querySelectorAll(this._settings.inputSelector));
+  this._submitButton = this._formElement.querySelector(this._settings.submitButtonSelector);
+}
 
-  // Находит хотя бы один невалидный инпут
+// Находит хотя бы один невалидный инпут
   _hasInvalidInput() {
     // проходим по этому массиву методом some
     return this._inputList.some((inputElement) => {

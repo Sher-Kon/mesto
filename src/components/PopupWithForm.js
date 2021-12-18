@@ -22,10 +22,21 @@ export class PopupWithForm extends Popup {
     }
 
     // Обработчик клика по Х-иконке закрытия, и добавляет обработчик сабмита
+    
     setEventListeners() {
         super.setEventListeners();
         // Добавляет обработчик сабмита
         this._formElement.addEventListener("submit", this._handleSubmitPopup);
         //this._formElement.addEventListener("submit", this._handleSubmitPopup(this.getInputValues()));
     }
+    /*
+    setEventListeners() {
+        this._popupElement.addEventListener('submit', () => {
+          this._handleFormSubmit(this._getInputValues());    
+          this.close();
+        });
+    
+        super.setEventListeners();
+      } 
+    */
 }
