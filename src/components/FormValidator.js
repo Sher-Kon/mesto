@@ -1,7 +1,6 @@
 export class FormValidator {
-  constructor(settings, inputs) {
+  constructor(settings) {
     this._settings = settings;
-    this._inputs = inputs;
     this._formElement = document.querySelector(this._settings.formSelector);// edit-profile / bild-card
     this._inputList = Array.from(this._formElement.querySelectorAll(this._settings.inputSelector));
     this._submitButton = this._formElement.querySelector(this._settings.submitButtonSelector);
@@ -40,9 +39,10 @@ export class FormValidator {
 
   // Cброс ошибок у инпутов
   resetValidation() {
-    this._inputs.forEach((item) => {
-      const inputElement = this._formElement.querySelector(item.inputSelector);
-      const errorElement = this._formElement.querySelector(item.inputSelector + "-error");
+    this._inputList.forEach((inputElement) => {
+      // По идентификатору элемента найдем элемент поля эррора
+      const id = inputElement.id;
+      const errorElement = this._formElement.querySelector("." + id + "-error");
       this._hideInputError(errorElement, inputElement); //<==очищаем ошибки ==
     });
   }
@@ -70,21 +70,21 @@ export class FormValidator {
     }
   }
 
-  // обработчик ввода символа в инпут
-  _checkInputEndToggleBtn(inputSelector) {
-    // Функция, которая проверяет валидность инпута
-    const inputElement = this._formElement.querySelector(inputSelector);
-    const errorElement = this._formElement.querySelector(inputSelector + "-error");
+  // обработчик ввода символа в инпут (передаем элемент DOM)
+  _findErrCheckInputAndToggleBtn(inputElement) {
+    // По идентификатору элемента найдем элемент поля эррора
+    const id = inputElement.id;
+    const errorElement = this._formElement.querySelector("." + id + "-error");
+    // Проверим валидность инпута
     this._checkInputValidity(errorElement, inputElement);
     // Изменение стиля кнопки при вводе символа
     this._toggleButtonState();
   }
 
-  // полю ввода добавим слушатель события input
-  _addInputEventListener = (inputSelector) => {
-    this.inputElementTitle = this._formElement.querySelector(inputSelector);
-    this.inputElementTitle.addEventListener('input', () => {
-      this._checkInputEndToggleBtn(inputSelector);
+  // полю ввода добавим слушатель события input 
+  _addInputEventListener = (inputElement) => {
+    inputElement.addEventListener('input', () => {
+      this._findErrCheckInputAndToggleBtn(inputElement);
     });
   };
 
@@ -93,10 +93,10 @@ export class FormValidator {
     // форме добавим слушатель события submit
     this._formElement.addEventListener('submit', function (evt) {
       evt.preventDefault();// У формы отменим стандартное поведение
-    });
+    });    
     // Kаждому полю ввода добавим слушатель события input    
-    this._inputs.forEach((item) => {
-      this._addInputEventListener(item.inputSelector);
+    this._inputList.forEach((inputElementItem) => {
+      this._addInputEventListener(inputElementItem);
     });
   };
 

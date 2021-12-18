@@ -1,4 +1,4 @@
-export { iniCards, inputsEditProfile, inputsBildCard, selectorsEditProfile, selectorsBildCard };
+export { iniCards, selectorsEditProfile, selectorsBildCard };
 //--------------------------------------------------------
 // Возьмем готовый массив
 //--------------------------------------------------------
@@ -30,30 +30,6 @@ const iniCards = [
 ];
 
 //--------------------------------------------------------
-// массив инпутов EditProfile
-//--------------------------------------------------------
-const inputsEditProfile = [
-    {
-        inputSelector: '.popup-name',
-    },
-    {
-        inputSelector: '.popup-job',
-    }
-];
-
-//--------------------------------------------------------
-// массив инпутов BildCard
-//--------------------------------------------------------
-const inputsBildCard = [
-    {
-        inputSelector: '.bild-card-place',
-    },
-    {
-        inputSelector: '.bild-card-url',
-    }
-];
-
-//--------------------------------------------------------
 // массив селекторов EditProfile
 //--------------------------------------------------------
 const selectorsEditProfile =
@@ -64,6 +40,7 @@ const selectorsEditProfile =
     inputTypeError: '.form__input_type_error',
     inputActiveError: '.form__input-error_active',
     buttonInactive: 'button_inactive'
+
 };
 
 //--------------------------------------------------------
@@ -77,4 +54,6 @@ const selectorsBildCard =
     inputTypeError: '.form__input_type_error',
     inputActiveError: '.form__input-error_active',
     buttonInactive: 'button_inactive'
+
+
 };

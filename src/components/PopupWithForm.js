@@ -26,6 +26,6 @@ export class PopupWithForm extends Popup {
         super.setEventListeners();
         // Добавляет обработчик сабмита
         this._formElement.addEventListener("submit", this._handleSubmitPopup);
-        //this._formElement.addEventListener("submit", this._handleSubmitPopup(this._getInputValues()));
+        //this._formElement.addEventListener("submit", this._handleSubmitPopup(this.getInputValues()));
     }
 }
