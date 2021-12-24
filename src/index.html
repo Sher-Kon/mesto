@@ -14,7 +14,10 @@
         </header>
         <main class="content">
             <section class="profile">
-                <img src="<%=require('./images/custo.png')%>" class="profile__avatar" alt="фото Кусто">
+                <button class="profile__avatar-btn" type="button">
+                    <img src="<%=require('./images/custo.png')%>" class="profile__avatar" alt="фото Кусто">
+                    <img src="<%=require('./images/Vector.svg')%>" class="profile__vector" alt="изображение стилуса">
+                </button>
                 <div class=profile__info>
                     <h1 class="txt-ovf profile__info-name">Жак-Ив Кусто</h1>
                     <button class="profile__info-edit-btn" type="button">
@@ -30,7 +33,7 @@
             <section class="elements">
             </section>
             <footer class="footer">
-                <p class="footer__copyright">© 2020 Mesto Russia</p>
+                <p class="footer__copyright">© 2020 Mesto Russia ver 2.49</p>
             </footer>
             <!-- card-template -->
             <template id="element" class="element-card">
@@ -44,12 +47,32 @@
                 </div>
             </template>
         </main>
+        <!-- edit-avatar -->
+        <div class="popup edit-avatar">
+            <div class="edit-avatar__container">
+                <form class="form" name="editAvatar" novalidate>
+                    <fieldset class="form__set">
+                        <h3 class="popup__title">Обновить аватар</h3>
+                        <div class="edit-avatar__input">
+                            <div class="edit-avatar__input-cover">
+                                <input type="url" placeholder="Ссылка на картинку" id="url-avatar"
+                                    class="form__input bild-card__text edit-avatar__url"
+                                    name="urlInput" required>
+                                <span class="popup__input-error bild-card-url-error url-avatar-error"></span>
+                            </div>
+                            <button class="form__submit edit-avatar__btn-save" type="submit">Сохранить аватар</button>
+                        </div>
+                    </fieldset>
+                </form>
+                <button class="popup__btn-close  avatar__btn-close x-btn" type="button"></button>
+            </div>
+        </div>
         <!-- edit-profile -->
         <div class="popup edit-profile">
             <div class="popup__container">
                 <form class="form" name="editProfile" novalidate>
                     <fieldset class="form__set">
-                        <h3 class="popup__title">Редактировать профиль + +</h3>
+                        <h3 class="popup__title">Редактировать профиль</h3>
                         <div class="popup__input">
                             <div class="popup__input-cover">
                                 <input type="text" placeholder="Имя" id="name-input"

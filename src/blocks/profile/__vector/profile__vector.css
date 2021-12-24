@@ -1,0 +1,13 @@
+.profile__vector {
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  width: 26px; 
+  height: 26px;
+  margin-top: 0; /*без отступов */
+  margin-bottom: 0;
+  padding: 0;
+  /*background: rgba(0, 0, 0, 0.2);*/
+  z-index: 3; /* накрывает для всех кто меньше */
+  color: white;
+}

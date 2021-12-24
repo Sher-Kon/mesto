@@ -1,27 +1,47 @@
 import './index.css';// импорт главного файла стилей для ВебПака
 //--------------------------------------------------------
+import { Api } from "../components/Api.js";
 import { PopupWithImage } from "../components/PopupWithImage.js";
 import { PopupWithForm } from "../components/PopupWithForm.js";
 import { UserInfo } from "../components/UserInfo.js";
 import { Section } from "../components/Section.js";
 import { FormValidator } from "../components/FormValidator.js";
 import { createCard } from "../scripts/utils.js";
-import { iniCards, selectorsElements } from "../scripts/data.js";
+import { selectorsElements } from "../scripts/data.js";
 export { openLookImg };//для Card in utils.js
 //--------------------------------------------------------
-// Создадим экземпляр class Section 
-const section = new Section(iniCards, createCard, ".elements");
 
+const rdCards = [
+  {name: "", link: ""},
+  {name: "", link: ""},
+  {name: "", link: ""},
+  {name: "", link: ""},
+  {name: "", link: ""},
+  {name: "", link: ""}
+];
+
+//--------------------------------------------------------
+// Создадим экземпляр class Api 
+const api = new Api({
+  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-33/',
+  headers: {
+    authorization: '51ca28f6-a002-497b-8233-6c80bd0cac76',
+    'Content-Type': 'application/json'
+  }
+});
+
+// Создадим экземпляр class Section создание карточек из iniCards 
+const section = new Section(rdCards, createCard, ".elements");
+
+// Создадим экземпляр PopupWithForm для EditAvatar
+const popupEditAvatar = new PopupWithForm(".edit-avatar", handleSubmitEditAvatar);
 // Создадим экземпляр PopupWithForm для EditProfile
-//const popupEditProfile = new PopupWithForm(".edit-profile", (data)  => handleSubmitEditProfile(data));
 const popupEditProfile = new PopupWithForm(".edit-profile", handleSubmitEditProfile);
-
 // Создадим экземпляр PopupWithForm для BildCard
-//const popupWFBildCard = new PopupWithForm(".bild-card", (data) => handleSubmitBildCard(data));
-const popupWFBildCard = new PopupWithForm(".bild-card", handleSubmitBildCard);
-
+const popupBildCard = new PopupWithForm(".bild-card", handleSubmitBildCard);
 // Создадим экземпляр PopupWithImage для LookImg
-const popupWithImage = new PopupWithImage(".look-img", ".look-img__title", ".look-img__img");
+const popupLookImage = new PopupWithImage(".look-img", ".look-img__title", ".look-img__img");
+
 // Создадим экземпляр UserInfo для Profile
 const userInfoProfile = new UserInfo(".profile__info-name", ".profile__info-job");
 // Создадим экземпляр FormValidator для EditProfile
@@ -32,6 +52,42 @@ validatorEditProfile.enableValidation();
 const validatorBildCard = new FormValidator(selectorsElements, ".bild-card");
 // Вызовем функцию проверки валидации BildCard
 validatorBildCard.enableValidation();
+
+//--------------------------------------------------------
+// EditAvatar popup
+//--------------------------------------------------------
+// элементы DOM на странице
+const avatarButton = document.querySelector(".profile__avatar-btn");//кн.открытия формы
+// EditAvatar popup
+const EditAvatarElement = document.querySelector(".edit-avatar");
+const urlAvatar = document.querySelector(".edit-avatar__url");
+
+// Обработчик открытия формы popup «Редактировать аватар»
+function openEditAvatar() {
+  //открыть popup «Редактировать аватар» не дожидаясь
+  popupEditAvatar.open();// ждите ответа сервера
+}
+
+// Обработчик закрытия формы popup «Редактировать аватар»
+function closeEditAvatar() {
+  popupEditAvatar.close();
+}
+
+function handleSubmitEditAvatar(evt) {
+  evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
+// запишем урл аватара на сервер
+const linkAvatar = popupEditAvatar.getInputValues();
+console.log(linkAvatar);
+
+
+// закрыть попап «Редактировать аватар» не дожидаясь ответа сервера
+closeEditAvatar();
+}
+
+// Слушатели на кнопку открытия попапа «Редактировать аватар»
+avatarButton.addEventListener("click", openEditAvatar);//открыть попап
+// Прикрепляем обработчики к форме «Редактировать аватар»:
+popupEditAvatar.setEventListeners();// "submit" и Х-закрыть попап
 
 //--------------------------------------------------------
 // EditProfile popup
@@ -49,11 +105,23 @@ function openEditProfile() {
   validatorEditProfile.resetValidation();
   validatorEditProfile.enableButtonState();
   // Загрузить инпуты из профиля в попап
-  const userInfo = userInfoProfile.getUserInfo();//profile
-  nameInput.value = userInfo.name;
-  infoInput.value = userInfo.info;
-  //открыть popup «Редактировать профиль»
-  popupEditProfile.open();// Метод экземпляра PopupWithForm для EditProfile
+  //const userInfo = userInfoProfile.getUserInfo();//profile
+  //nameInput.value = userInfo.name;
+  //infoInput.value = userInfo.info;
+  nameInput.value = "";
+  infoInput.value = "";
+
+  // запрос к серверу GET прочитать профиль
+  const tasks = api.readProfile();
+  tasks.then((data) => {
+    //console.log("name: " + data.name + ",  about: " + data.about);
+    // Загрузить инпуты из запроса в попап
+    nameInput.value = data.name;
+    infoInput.value = data.about;
+  //popupEditProfile.open();//дождались
+  });
+  //открыть popup «Редактировать профиль» не дожидаясь
+  popupEditProfile.open();// ждите ответа сервера
 }
 // Обработчик закрытия формы popup «Редактировать профиль»
 function closeEditProfile() {
@@ -61,20 +129,24 @@ function closeEditProfile() {
 }
 
 // Обработчик «отправки» формы «Редактировать профиль»
-/*
-function handleSubmitEditProfile(data) {
-  evt.preventDefault();// Эта строчка отменяет стандартную отправку формы.
-  const inputsPopup = data;// Вставить новые значения из попапа в профиль
-  userInfoProfile.setUserInfo(inputsPopup.nameInput, inputsPopup.jobInput);
-  closeEditProfile();//закрыть попап «Редактировать профиль»
-}
-*/
 function handleSubmitEditProfile(evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
   // Вставить новые значения из попапа в профиль
   const data = popupEditProfile.getInputValues();//popup inputs
   userInfoProfile.setUserInfo(data.nameInput, data.jobInput);
-  closeEditProfile();//закрыть попап «Редактировать профиль»
+  // Подготовить данные для запроса на сервер
+  const dataWr = {name: "", about: ""};
+  dataWr.name = data.nameInput;
+  dataWr.about = data.jobInput;
+  //======================================================
+  //Отредактированные данные профиля должны сохраняться на сервере.
+  const tasks = api.writeProfile(dataWr);
+  tasks.then((dataRet) => {
+    //console.log("Записан на сервере: " + dataRet.name);
+    //closeEditProfile();//дождались
+  });
+// закрыть попап «Редактировать профиль» не дожидаясь ответа сервера
+  closeEditProfile();
 }
 
 // Прикрепляем обработчики к форме «Редактировать профиль»:
@@ -87,35 +159,29 @@ editButton.addEventListener("click", openEditProfile);//открыть попа�
 //--------------------------------------------------------
 // элементы DOM на странице
 const addCardButton = document.querySelector(".profile__add-btn");
+// bildCard popup
+const bildCardElement = document.querySelector(".bild-card");
+const placeInput = bildCardElement.querySelector(".bild-card__text_input_place");
+const urlInput = bildCardElement.querySelector(".bild-card__text_input_url");
 
 // Обработчик открытия формы bild-card
 function openBildCard() {
   validatorBildCard.resetValidation();
   validatorBildCard.disableButtonState();
-  popupWFBildCard.open();
+
+  popupBildCard.open();
 }
+
 // Обработчик закрытия формы bild-card
 function closeBildCard() {
-  popupWFBildCard.close();//закрыть bildCard
+  popupBildCard.close();//закрыть bildCard
 }
 
 // Обработчик «отправки» формы bild-card
-/*
-function handleSubmitBildCard(data) {// объект `data` это данные инпутов которые собирает _getInputValues
-  evt.preventDefault();
-  const infoCard = { name: "", link: "" };
-  infoCard.name = data.placeInput;// новые значения из инпута попапа в карточку
-  infoCard.link = data.urlInput;// новые значения из инпута попапа в карточку
-  section.renderItem(infoCard);// Создадим экземпляр карточки
-  closeBildCard();//закрыть попап BildСard()
-  validatorBildCard.disableButtonState();// Сделаем кнопку неактивной
-}
-*/
-
 function handleSubmitBildCard(evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
   // Вставьте новые значения в новую карточку
-  const data = popupWFBildCard.getInputValues();
+  const data = popupBildCard.getInputValues();
   const infoCard = { name: "", link: "" };
   infoCard.name = data.placeInput;
   infoCard.link = data.urlInput;
@@ -128,7 +194,7 @@ function handleSubmitBildCard(evt) {
 }
 
 // Добавляет обработчик клика по Х-иконке закрытия, и обработчик сабмита
-popupWFBildCard.setEventListeners();
+popupBildCard.setEventListeners();
 // Добавляет слушатель кнопке « + » (открыть окно "Новое место")
 addCardButton.addEventListener("click", openBildCard);
 
@@ -137,12 +203,21 @@ addCardButton.addEventListener("click", openBildCard);
 //--------------------------------------------------------
 // Функция открытия формы look-img
 function openLookImg(cardElement) {
-  popupWithImage.open(cardElement);//открыть lookImg
+  popupLookImage.open(cardElement);//открыть lookImg
 }
 //  Добавляет слушатель кнопке Х (закрыть "look-img")
-popupWithImage.setEventListeners();
+popupLookImage.setEventListeners();
 
 //--------------------------------------------------------
 //  Начальная загрузка страницы - 6 карточек
 //--------------------------------------------------------
-section.renderItems();
+// запрос к серверу GET (6карточек)
+  const tasks = api.getInitialCards();
+  tasks.then((data) => {
+    //console.log(data);
+    for (let i = 0; i < 6; i += 1) {
+      rdCards[i].name = data[i].name;
+      rdCards[i].link = data[i].link;
+    }
+    section.renderItems();//дождемся ответа от сервера
+  });
