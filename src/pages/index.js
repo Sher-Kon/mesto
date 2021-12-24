@@ -33,6 +33,8 @@ const api = new Api({
 // Создадим экземпляр class Section создание карточек из iniCards 
 const section = new Section(rdCards, createCard, ".elements");
 
+// Создадим экземпляр PopupWithForm для Confirm
+const popupConfirm = new PopupWithForm(".confirm", handleSubmitConfirm);
 // Создадим экземпляр PopupWithForm для EditAvatar
 const popupEditAvatar = new PopupWithForm(".edit-avatar", handleSubmitEditAvatar);
 // Создадим экземпляр PopupWithForm для EditProfile
@@ -52,6 +54,33 @@ validatorEditProfile.enableValidation();
 const validatorBildCard = new FormValidator(selectorsElements, ".bild-card");
 // Вызовем функцию проверки валидации BildCard
 validatorBildCard.enableValidation();
+
+//--------------------------------------------------------
+// Confirm popup
+//--------------------------------------------------------
+// Обработчик открытия формы popup «Confirm»
+function openConfirm() {
+  //открыть popup «Confirm» не дожидаясь
+  popupConfirm.open();// ждите ответа сервера
+}
+// Обработчик закрытия формы popup «Confirm»
+function closeConferm() {
+  popupConfirm.close();
+}
+
+function handleSubmitConfirm(evt) {
+  evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
+// удалим карточку на серверe
+const idCard = "id Card fo delete";
+console.log(idCard);
+
+
+// закрыть попап «Confirm» не дожидаясь ответа сервера
+closeConferm();
+}
+
+// Прикрепляем обработчики к форме «Confirm»:
+popupConfirm.setEventListeners();// "submit" и Х-закрыть попап
 
 //--------------------------------------------------------
 // EditAvatar popup
@@ -85,7 +114,8 @@ closeEditAvatar();
 }
 
 // Слушатели на кнопку открытия попапа «Редактировать аватар»
-avatarButton.addEventListener("click", openEditAvatar);//открыть попап
+//avatarButton.addEventListener("click", openEditAvatar);//открыть попап
+avatarButton.addEventListener("click", openConfirm);//открыть Confirm
 // Прикрепляем обработчики к форме «Редактировать аватар»:
 popupEditAvatar.setEventListeners();// "submit" и Х-закрыть попап
 

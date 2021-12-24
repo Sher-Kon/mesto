@@ -22,7 +22,7 @@
                     <h1 class="txt-ovf profile__info-name">Жак-Ив Кусто</h1>
                     <button class="profile__info-edit-btn" type="button">
                         <img src="<%=require('./images/pensil.svg')%>" class="profile__edit-btn-img"
-                            alt="значек карандаш">
+                            alt="значок карандаш">
                     </button>
                     <p class="txt-ovf profile__info-job">Исследователь океана</p>
                 </div>
@@ -33,7 +33,7 @@
             <section class="elements">
             </section>
             <footer class="footer">
-                <p class="footer__copyright">© 2020 Mesto Russia ver 2.49</p>
+                <p class="footer__copyright">© 2020 Mesto Russia ver 2.52</p>
             </footer>
             <!-- card-template -->
             <template id="element" class="element-card">
@@ -47,6 +47,20 @@
                 </div>
             </template>
         </main>
+        <!-- confirm -->
+        <div class="popup confirm">
+            <div class="confirm__container">
+                <form class="form" name="form-confirm" novalidate>
+                    <fieldset class="form__set">
+                        <h3 class="popup__title">Вы уверены?</h3>
+                        <div class="confirm__input">
+                            <button class="form__submit confirm__btn-save" type="submit">Да</button>
+                        </div>
+                    </fieldset>
+                </form>
+                <button class="popup__btn-close  confirm__btn-close x-btn" type="button"></button>
+            </div>
+        </div>
         <!-- edit-avatar -->
         <div class="popup edit-avatar">
             <div class="edit-avatar__container">
@@ -60,7 +74,7 @@
                                     name="urlInput" required>
                                 <span class="popup__input-error bild-card-url-error url-avatar-error"></span>
                             </div>
-                            <button class="form__submit edit-avatar__btn-save" type="submit">Сохранить аватар</button>
+                            <button class="form__submit edit-avatar__btn-save" type="submit">Сохранить</button>
                         </div>
                     </fieldset>
                 </form>
