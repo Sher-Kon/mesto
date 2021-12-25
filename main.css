@@ -23,7 +23,7 @@
 .element__like-btn{background:url(images/like.1ad06e85f169668a1f36.svg) no-repeat;background-size:cover;border:none;cursor:pointer;height:19px;padding:0;transition:.3s;width:22px}.element__like-btn:hover{opacity:.5}
 .element__like-btn_active{background:url(images/like_black.35948469632d0421d697.svg) 50% no-repeat;opacity:1}
 .element__del-btn{background:url(images/musor.ce3b64935accf9b8212e.svg) no-repeat;background-size:cover;border:none;cursor:pointer;height:19px;padding:0;position:absolute;right:20px;top:20px;transition:.3s;width:18px}.element__del-btn:hover{opacity:.6}
-.element__like{align-items:center;display:flex;flex-direction:column;margin-right:22px;width:22px}
+.element__like{align-items:center;display:flex;flex-direction:column;margin-right:2px;width:22px}
 .element__like-num{color:#000;font-size:13px;font-style:normal;font-weight:900;line-height:16px;margin-top:3px;padding:0;text-align:center}
 .confirm__btn-save{background-color:#000;border:none;color:#fff;cursor:pointer;font-size:18px;font-style:normal;font-weight:400;height:50px;line-height:22px;margin-top:32px;width:358px}.confirm__btn-save:hover{opacity:.8}@media screen and (max-width:750px){.confirm__btn-save{font-size:14px;height:46px;line-height:17px;margin-top:29px;width:238px}}
 .confirm__container{align-items:center;background:#fff;border-radius:10px;display:flex;flex-direction:column;margin:auto;position:relative;width:430px;z-index:4}@media screen and (max-width:750px){.confirm__container{width:282px}}
