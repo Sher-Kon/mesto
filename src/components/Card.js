@@ -12,6 +12,7 @@ export class Card {
         // Так у других элементов появится доступ к ней.
         this._element = this._getTemplate();
         this._likeButton = this._element.querySelector('.element__like-btn');
+        this._likeNum =    this._element.querySelector('.element__like-num');
         this._delButton = this._element.querySelector('.element__del-btn');
         this._imgButton = this._element.querySelector('.element__img-btn');
         this._cardImage = this._element.querySelector('.element__img');
@@ -21,6 +22,8 @@ export class Card {
         this._cardImage.src = this._image;
         this._cardImage.alt = "На фотографии " + this._title;
         this._element.querySelector('.element__txt').textContent = this._title;
+
+        this._likeNum.textContent = 12;//Запишем число лайков
 
         // Вернём элемент наружу
         return this._element;

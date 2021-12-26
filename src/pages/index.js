@@ -8,6 +8,7 @@ import { Section } from "../components/Section.js";
 import { FormValidator } from "../components/FormValidator.js";
 import { createCard } from "../scripts/utils.js";
 import { selectorsElements } from "../scripts/data.js";
+import { data } from 'autoprefixer';
 export { openLookImg };//для Card in utils.js
 //--------------------------------------------------------
 
@@ -34,7 +35,7 @@ const api = new Api({
 const section = new Section(rdCards, createCard, ".elements");
 
 // Создадим экземпляр PopupWithForm для Confirm
-const popupConfirm = new PopupWithForm(".confirm", handleSubmitConfirm);
+const popupConfirmDel = new PopupWithForm(".confirm", handleSubmitConfirmDel);
 // Создадим экземпляр PopupWithForm для EditAvatar
 const popupEditAvatar = new PopupWithForm(".edit-avatar", handleSubmitEditAvatar);
 // Создадим экземпляр PopupWithForm для EditProfile
@@ -47,6 +48,10 @@ const popupLookImage = new PopupWithImage(".look-img", ".look-img__title", ".loo
 // Создадим экземпляр UserInfo для Profile
 const userInfoProfile = new UserInfo(".profile__info-name", ".profile__info-job");
 // Создадим экземпляр FormValidator для EditProfile
+const validatorEditAvatar = new FormValidator(selectorsElements, ".edit-avatar");
+// Вызовем функцию проверки валидации EditProfile
+validatorEditAvatar.enableValidation();
+// Создадим экземпляр FormValidator для EditProfile
 const validatorEditProfile = new FormValidator(selectorsElements, ".edit-profile");
 // Вызовем функцию проверки валидации EditProfile
 validatorEditProfile.enableValidation();
@@ -56,19 +61,19 @@ const validatorBildCard = new FormValidator(selectorsElements, ".bild-card");
 validatorBildCard.enableValidation();
 
 //--------------------------------------------------------
-// Confirm popup
+// ConfirmDel popup
 //--------------------------------------------------------
 // Обработчик открытия формы popup «Confirm»
-function openConfirm() {
+function openConfirmDel() {
   //открыть popup «Confirm» не дожидаясь
-  popupConfirm.open();// ждите ответа сервера
+  popupConfirmDel.open();// ждите ответа сервера
 }
 // Обработчик закрытия формы popup «Confirm»
-function closeConferm() {
-  popupConfirm.close();
+function closeConfermDel() {
+  popupConfirmDel.close();
 }
 
-function handleSubmitConfirm(evt) {
+function handleSubmitConfirmDel(evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
 // удалим карточку на серверe
 const idCard = "id Card fo delete";
@@ -76,11 +81,11 @@ console.log(idCard);
 
 
 // закрыть попап «Confirm» не дожидаясь ответа сервера
-closeConferm();
+closeConfermDel();
 }
 
 // Прикрепляем обработчики к форме «Confirm»:
-popupConfirm.setEventListeners();// "submit" и Х-закрыть попап
+popupConfirmDel.setEventListeners();// "submit" и Х-закрыть попап
 
 //--------------------------------------------------------
 // EditAvatar popup
@@ -88,8 +93,8 @@ popupConfirm.setEventListeners();// "submit" и Х-закрыть попап
 // элементы DOM на странице
 const avatarButton = document.querySelector(".profile__avatar-btn");//кн.открытия формы
 // EditAvatar popup
-const EditAvatarElement = document.querySelector(".edit-avatar");
-const urlAvatar = document.querySelector(".edit-avatar__url");
+//const EditAvatarElement = document.querySelector(".edit-avatar");
+//const linkAvatar = document.querySelector(".edit-avatar__url");
 
 // Обработчик открытия формы popup «Редактировать аватар»
 function openEditAvatar() {
@@ -104,18 +109,38 @@ function closeEditAvatar() {
 
 function handleSubmitEditAvatar(evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
-// запишем урл аватара на сервер
-const linkAvatar = popupEditAvatar.getInputValues();
-console.log(linkAvatar);
+//======================================================
+//      Запишем урл аватара на сервер.
+//------------------------------------------------------
+const data = popupEditAvatar.getInputValues();
+const tasks = api.writeAvatar(data.urlAvatar);//data.urlAvatar
+tasks.then((dataRet) => {
+  //дождались
+  console.log("Записан аватар, URL: " + data.urlAvatar);
+});
+//======================================================
 
+/*
+//======================================================
+//      Удаляем карточку на сервере.
+//------------------------------------------------------
+  const cardDel = linkAvatar.value;//передали id
+  const tasks = api.deleteCard(cardDel);
+  tasks.then((dataRet) => {
+    //дождались
+    console.log("Удалили карточку Id: " + cardDel);
+  });
+//======================================================
+*/
 
 // закрыть попап «Редактировать аватар» не дожидаясь ответа сервера
-closeEditAvatar();
+  closeEditAvatar();
 }
 
 // Слушатели на кнопку открытия попапа «Редактировать аватар»
-//avatarButton.addEventListener("click", openEditAvatar);//открыть попап
-avatarButton.addEventListener("click", openConfirm);//открыть Confirm
+avatarButton.addEventListener("click", openEditAvatar);//открыть попап
+// avatarButton.addEventListener("click", openConfirm);//открыть Confirm отладка
+
 // Прикрепляем обработчики к форме «Редактировать аватар»:
 popupEditAvatar.setEventListeners();// "submit" и Х-закрыть попап
 
@@ -215,6 +240,17 @@ function handleSubmitBildCard(evt) {
   const infoCard = { name: "", link: "" };
   infoCard.name = data.placeInput;
   infoCard.link = data.urlInput;
+
+//======================================================
+  //Данные карточки должны сохраняться на сервере.
+  const tasks = api.writeCard(infoCard);
+  tasks.then((dataRet) => {
+    //дождались ответа от сервера:
+    console.log("Card записан на сервере: " + dataRet.owner.id);
+  });
+//======================================================
+  // не дожидаясь: 
+
   // Создадим экземпляр карточки
   section.renderItem(infoCard);
   // Закроем форму bildCard()

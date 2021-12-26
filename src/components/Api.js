@@ -49,4 +49,53 @@ export class Api {
                 console.log('Ошибка. Запрос "Wr profile" не выполнен: ', err);
             });
     }
+    // сохранить карточку
+    writeCard(data) {
+        return fetch(this._baseUrl + "cards", {
+            method: 'POST',
+            headers: this._headers,
+            body: JSON.stringify({
+                name: data.name,
+                link: data.link
+            })
+        })
+            .then(res => res.json())
+            .then((result) => {
+                return result;
+            })
+            .catch((err) => {
+                console.log('Ошибка. Запрос "Wr card" не выполнен: ', err);
+            });
+    }
+    // удалить карточку
+    deleteCard(cardId) {
+        return fetch(this._baseUrl + "cards/"+cardId, {
+            method: 'DELETE',
+            headers: this._headers
+        })
+            .then(res => res.json())
+            .then((result) => {
+                return result;
+            })
+            .catch((err) => {
+                console.log('Ошибка. Запрос "Wr card" не выполнен: ', err);
+            });
+    }
+    // сохранить аватар
+    writeAvatar(linkAvatar) {
+        return fetch(this._baseUrl + "users/me/avatar", {
+            method: 'PATCH',
+            headers: this._headers,
+            body: JSON.stringify({
+                avatar: linkAvatar
+            })
+        })
+            .then(res => res.json())
+            .then((result) => {
+                return result;
+            })
+            .catch((err) => {
+                console.log('Ошибка. Запрос "Wr avatar" не выполнен: ', err);
+            });
+    }
 }

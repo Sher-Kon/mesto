@@ -33,7 +33,7 @@
             <section class="elements">
             </section>
             <footer class="footer">
-                <p class="footer__copyright">© 2020 Mesto Russia ver 2.52</p>
+                <p class="footer__copyright">© 2020 Mesto Russia ver 2.88</p>
             </footer>
             <!-- card-template -->
             <template id="element" class="element-card">
@@ -42,8 +42,11 @@
                         <img src="<%=require('./images/dombay.png')%>" class="element__img" alt="пейзаж">
                     </button>
                     <h2 class="element__txt">Карачаевск</h2>
-                    <button class="element__like-btn" type="button"></button>
                     <button class="element__del-btn" type="button"></button>
+                    <div class="element__like">
+                        <button class="element__like-btn" type="button"></button>
+                        <h3 class="element__like-num">0</h3>
+                    </div>
                 </div>
             </template>
         </main>
@@ -70,8 +73,7 @@
                         <div class="edit-avatar__input">
                             <div class="edit-avatar__input-cover">
                                 <input type="url" placeholder="Ссылка на картинку" id="url-avatar"
-                                    class="form__input bild-card__text edit-avatar__url"
-                                    name="urlInput" required>
+                                    class="form__input bild-card__text edit-avatar__url" name="urlAvatar" required>
                                 <span class="popup__input-error bild-card-url-error url-avatar-error"></span>
                             </div>
                             <button class="form__submit edit-avatar__btn-save" type="submit">Сохранить</button>
