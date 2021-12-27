@@ -3,6 +3,7 @@ export class Card {
     constructor(dataCard, template, handleCardClick) {
         this._title = dataCard.name;
         this._image = dataCard.link;
+        this._likes = dataCard.likes
         this._template = template;
         this._handleCardClick = handleCardClick;
     }
@@ -23,7 +24,7 @@ export class Card {
         this._cardImage.alt = "На фотографии " + this._title;
         this._element.querySelector('.element__txt').textContent = this._title;
 
-        this._likeNum.textContent = 12;//Запишем число лайков
+        this._likeNum.textContent = this._likes;//Запишем число лайков
 
         // Вернём элемент наружу
         return this._element;
