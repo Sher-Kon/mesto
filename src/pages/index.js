@@ -376,7 +376,7 @@ api.getIniData().then(arg => {
     rdCards[i].name = dataCards[i].name;//
     rdCards[i].link = dataCards[i].link;
     rdCards[i].id = dataCards[i]._id;
-    //rdCards[i].likes = dataCards[i].likes.length;//
+    rdCards[i].likes = dataCards[i].likes.length;//
     console.log("Card[" + i + "] :" + rdCards[i].id+ " like : ");//нужны ведерки отрисовывать
   }
   section.renderItems();//отрисуем карточки
