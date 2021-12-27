@@ -366,8 +366,8 @@ api.getIniData().then(arg => {
   console.log("Мой id: " + myId);
   // Загрузить значения из запроса в профиль
   //userInfoEditProfile.setUserInfo(dataProfile.name, dataProfile.about);
-  //nameProfile.textContent = dataProfile.name;
-  //infoProfile.textContent = dataProfile.about;
+  nameProfile.textContent = dataProfile.name;
+  infoProfile.textContent = dataProfile.about;
 
   //--------------------------------------------------------
   //  Начальная загрузка страницы - 6 карточек
