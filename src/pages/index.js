@@ -13,14 +13,14 @@ export { openLookImg };//для Card in utils.js
 //--------------------------------------------------------
 
 const rdCards = [
-  {name: "", link: ""},
-  {name: "", link: ""},
-  {name: "", link: ""},
-  {name: "", link: ""},
-  {name: "", link: ""},
-  {name: "", link: ""}
+  { name: "", link: "", id: "", likes: "" },
+  { name: "", link: "", id: "", likes: "" },
+  { name: "", link: "", id: "", likes: "" },
+  { name: "", link: "", id: "", likes: "" },
+  { name: "", link: "", id: "", likes: "" },
+  { name: "", link: "", id: "", likes: "" }
 ];
-
+//const myId = "";
 //--------------------------------------------------------
 // Создадим экземпляр class Api 
 const api = new Api({
@@ -47,10 +47,11 @@ const popupLookImage = new PopupWithImage(".look-img", ".look-img__title", ".loo
 
 // Создадим экземпляр UserInfo для Profile
 const userInfoProfile = new UserInfo(".profile__info-name", ".profile__info-job");
-// Создадим экземпляр FormValidator для EditProfile
-const validatorEditAvatar = new FormValidator(selectorsElements, ".edit-avatar");
-// Вызовем функцию проверки валидации EditProfile
-validatorEditAvatar.enableValidation();
+
+// Создадим экземпляр FormValidator для EditAvatar
+//const validatorEditAvatar = new FormValidator(selectorsElements, ".edit-avatar");
+// Вызовем функцию проверки валидации EditAvatar
+//validatorEditAvatar.enableValidation();
 // Создадим экземпляр FormValidator для EditProfile
 const validatorEditProfile = new FormValidator(selectorsElements, ".edit-profile");
 // Вызовем функцию проверки валидации EditProfile
@@ -75,13 +76,13 @@ function closeConfermDel() {
 
 function handleSubmitConfirmDel(evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
-// удалим карточку на серверe
-const idCard = "id Card fo delete";
-console.log(idCard);
+  // удалим карточку на серверe
+  const idCard = "id Card fo delete";
+  console.log(idCard);
 
 
-// закрыть попап «Confirm» не дожидаясь ответа сервера
-closeConfermDel();
+  // закрыть попап «Confirm» не дожидаясь ответа сервера
+  closeConfermDel();
 }
 
 // Прикрепляем обработчики к форме «Confirm»:
@@ -92,9 +93,6 @@ popupConfirmDel.setEventListeners();// "submit" и Х-закрыть попап
 //--------------------------------------------------------
 // элементы DOM на странице
 const avatarButton = document.querySelector(".profile__avatar-btn");//кн.открытия формы
-// EditAvatar popup
-//const EditAvatarElement = document.querySelector(".edit-avatar");
-//const linkAvatar = document.querySelector(".edit-avatar__url");
 
 // Обработчик открытия формы popup «Редактировать аватар»
 function openEditAvatar() {
@@ -109,31 +107,60 @@ function closeEditAvatar() {
 
 function handleSubmitEditAvatar(evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
-//======================================================
-//      Запишем урл аватара на сервер.
-//------------------------------------------------------
-const data = popupEditAvatar.getInputValues();
-const tasks = api.writeAvatar(data.urlAvatar);//data.urlAvatar
-tasks.then((dataRet) => {
-  //дождались
-  console.log("Записан аватар, URL: " + data.urlAvatar);
-});
-//======================================================
-
-/*
-//======================================================
-//      Удаляем карточку на сервере.
-//------------------------------------------------------
-  const cardDel = linkAvatar.value;//передали id
-  const tasks = api.deleteCard(cardDel);
-  tasks.then((dataRet) => {
-    //дождались
-    console.log("Удалили карточку Id: " + cardDel);
+  /*
+    //======================================================
+    //      Запишем урл аватара на сервер.
+    //------------------------------------------------------
+    const data = popupEditAvatar.getInputValues();
+    const tasks = api.writeAvatar(data.urlAvatar);//data.urlAvatar
+    tasks.then((dataRet) => {
+      //дождались
+      // загрузим ссылку на изображение аватара
+      avatarImage.src = dataRet.avatar;
+      console.log("Записан аватар, URL: " + data.urlAvatar);
+    });
+    //======================================================
+    */
+  //======================================================
+  //      Добавим лайк на сервере.
+  //------------------------------------------------------
+  const data = popupEditAvatar.getInputValues();
+  const taskSetLike = api.setLike(data.urlAvatar);
+  taskSetLike.then((dataRet) => {
+    //дождались обещанного
+    const idCard = dataRet._id;
+    const likeNum = dataRet.likes.length;
+    console.log("Добавили лайк карточке: " + idCard);
+    console.log("лайков: " + likeNum);
   });
-//======================================================
-*/
+  //======================================================
+  /*
+  //======================================================
+  //      Удалим лайк на сервере.
+  //------------------------------------------------------
+  const data = popupEditAvatar.getInputValues();
+  const taskDelLike = api.delLike(data.urlAvatar);
+  taskDelLike.then((dataRet) => {
+    //дождались
+    console.log("Сняли лайк с карточки Id: " + data.urlAvatar);
+  });
+  //======================================================
+  */
 
-// закрыть попап «Редактировать аватар» не дожидаясь ответа сервера
+  /*
+  //======================================================
+  //      Удаляем карточку на сервере.
+  //------------------------------------------------------
+    const cardDel = linkAvatar.value;//передали id
+    const tasks = api.deleteCard(cardDel);
+    tasks.then((dataRet) => {
+      //дождались
+      console.log("Удалили карточку Id: " + cardDel);
+    });
+  //======================================================
+  */
+
+  // закрыть попап «Редактировать аватар» не дожидаясь ответа сервера
   closeEditAvatar();
 }
 
@@ -150,34 +177,47 @@ popupEditAvatar.setEventListeners();// "submit" и Х-закрыть попап
 // элементы DOM на странице
 const content = document.querySelector(".content");
 const editButton = content.querySelector(".profile__info-edit-btn");//кн.открытия формы
+const nameProfile = content.querySelector(".profile__info-name");
+const infoProfile = content.querySelector(".profile__info-job");
+const avatarImage = document.querySelector(".profile__avatar");
 // EditProfile popup «Редактировать профиль»
 const editProfileElement = document.querySelector(".edit-profile");//popup
 const nameInput = editProfileElement.querySelector(".popup__text_input_name");
 const infoInput = editProfileElement.querySelector(".popup__text_input_job");
+nameInput.value = "";
+infoInput.value = "";
 
 // Обработчик открытия формы popup «Редактировать профиль»
 function openEditProfile() {
   validatorEditProfile.resetValidation();
   validatorEditProfile.enableButtonState();
   // Загрузить инпуты из профиля в попап
-  //const userInfo = userInfoProfile.getUserInfo();//profile
-  //nameInput.value = userInfo.name;
-  //infoInput.value = userInfo.info;
-  nameInput.value = "";
-  infoInput.value = "";
+  const userInfo = userInfoProfile.getUserInfo();//profile
+  nameInput.value = userInfo.name;
+  infoInput.value = userInfo.info;
 
-  // запрос к серверу GET прочитать профиль
+  //======================================================
+  //  запрос к серверу GET прочитать профиль
+  //--------------------------------------------------------
   const tasks = api.readProfile();
   tasks.then((data) => {
+    // загрузим ссылку на изображение аватара
+    avatarImage.src = data.avatar;
+    const myId = data._id;// сохраним мой id
     //console.log("name: " + data.name + ",  about: " + data.about);
+    console.log("Мой id: " + myId);
     // Загрузить инпуты из запроса в попап
     nameInput.value = data.name;
     infoInput.value = data.about;
-  //popupEditProfile.open();//дождались
+    //popupEditProfile.open();//дождались
+    return myId;
   });
+  //======================================================
+
   //открыть popup «Редактировать профиль» не дожидаясь
   popupEditProfile.open();// ждите ответа сервера
 }
+
 // Обработчик закрытия формы popup «Редактировать профиль»
 function closeEditProfile() {
   popupEditProfile.close();
@@ -190,7 +230,7 @@ function handleSubmitEditProfile(evt) {
   const data = popupEditProfile.getInputValues();//popup inputs
   userInfoProfile.setUserInfo(data.nameInput, data.jobInput);
   // Подготовить данные для запроса на сервер
-  const dataWr = {name: "", about: ""};
+  const dataWr = { name: "", about: "" };
   dataWr.name = data.nameInput;
   dataWr.about = data.jobInput;
   //======================================================
@@ -200,7 +240,7 @@ function handleSubmitEditProfile(evt) {
     //console.log("Записан на сервере: " + dataRet.name);
     //closeEditProfile();//дождались
   });
-// закрыть попап «Редактировать профиль» не дожидаясь ответа сервера
+  // закрыть попап «Редактировать профиль» не дожидаясь ответа сервера
   closeEditProfile();
 }
 
@@ -240,17 +280,17 @@ function handleSubmitBildCard(evt) {
   const infoCard = { name: "", link: "" };
   infoCard.name = data.placeInput;
   infoCard.link = data.urlInput;
-
-//======================================================
-  //Данные карточки должны сохраняться на сервере.
-  const tasks = api.writeCard(infoCard);
-  tasks.then((dataRet) => {
-    //дождались ответа от сервера:
-    console.log("Card записан на сервере: " + dataRet.owner.id);
-  });
-//======================================================
-  // не дожидаясь: 
-
+  /*
+  //======================================================
+    //Добавим карточку на сервер.
+    const tasks = api.writeCard(infoCard);
+    tasks.then((dataRet) => {
+      //дождались ответа от сервера:
+      console.log("Card записан на сервере: " + dataRet.owner.id);
+    });
+  //======================================================
+    // не дожидаясь: 
+  */
   // Создадим экземпляр карточки
   section.renderItem(infoCard);
   // Закроем форму bildCard()
@@ -273,17 +313,72 @@ function openLookImg(cardElement) {
 }
 //  Добавляет слушатель кнопке Х (закрыть "look-img")
 popupLookImage.setEventListeners();
+//--------------------------------------------------------
+/*
+//======================================================
+//  запрос к серверу GET прочитать профиль, все карточки
+//------------------------------------------------------
+  nameInput.value = "";
+  infoInput.value = "";
+
+  const profile = api.readProfile();
+  profile.then((data) => {
+    // загрузим ссылку на изображение аватара
+    avatarImage.src = data.avatar;
+    const myId = data._id;// сохраним мой id
+    //console.log("name: " + data.name + ",  about: " + data.about);
+    console.log("Мой id: " + myId);
+    // Загрузить инпуты из запроса в попап
+    nameInput.value = data.name;
+    infoInput.value = data.about;
+    //popupEditProfile.open();//дождались
+    return myId;
+  });
+//======================================================
 
 //--------------------------------------------------------
 //  Начальная загрузка страницы - 6 карточек
 //--------------------------------------------------------
 // запрос к серверу GET (6карточек)
-  const tasks = api.getInitialCards();
-  tasks.then((data) => {
-    //console.log(data);
-    for (let i = 0; i < 6; i += 1) {
-      rdCards[i].name = data[i].name;
-      rdCards[i].link = data[i].link;
-    }
-    section.renderItems();//дождемся ответа от сервера
-  });
+const allCards = api.getInitialCards();
+allCards.then((data) => {
+  //console.log(data);
+  for (let i = 0; i < 6; i += 1) {
+    rdCards[i].name = data[i].name;//
+    rdCards[i].link = data[i].link;
+    rdCards[i].id = data[i]._id;
+    //rdCards[i].likes = data[i].likes;//
+    console.log(rdCards[i].id);//нужны ведерки отрисовывать
+  }
+  section.renderItems();//дождемся ответа от сервера
+});
+*/
+
+api.getIniData().then(arg => {
+  const [dataProfile, dataCards] = arg;
+  //--------------------------------------------------------
+  //  Начальная загрузка профиля
+  //--------------------------------------------------------
+  // загрузим ссылку на изображение аватара
+  avatarImage.src = dataProfile.avatar;
+  const myId = dataProfile._id;// сохраним мой id
+  //console.log("name: " + data.name + ",  about: " + data.about);
+  console.log("Мой id: " + myId);
+  // Загрузить значения из запроса в профиль
+  userInfoEditProfile.setUserInfo(dataProfile.name, dataProfile.about);
+  //nameProfile.textContent = dataProfile.name;
+  //infoProfile.textContent = dataProfile.about;
+
+  //--------------------------------------------------------
+  //  Начальная загрузка страницы - 6 карточек
+  //--------------------------------------------------------
+  for (let i = 0; i < 6; i += 1) {
+    rdCards[i].name = dataCards[i].name;//
+    rdCards[i].link = dataCards[i].link;
+    rdCards[i].id = dataCards[i]._id;
+    //rdCards[i].likes = dataCards[i].likes.length;//
+    console.log("Card[" + i + "] :" + rdCards[i].id);//нужны ведерки отрисовывать
+  }
+  section.renderItems();//отрисуем карточки
+
+});
