@@ -25,8 +25,6 @@ export class Card {
         this._element.querySelector('.element__txt').textContent = this._title;
         this._likeNum.textContent = this._likes;//Запишем число лайков
 
-        //this._element.classList.remove(this._delButton);//удалим ведерко из DOM
-
 
         // Вернём элемент наружу
         return this._element;
