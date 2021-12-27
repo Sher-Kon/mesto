@@ -365,7 +365,7 @@ api.getIniData().then(arg => {
   //console.log("name: " + data.name + ",  about: " + data.about);
   console.log("Мой id: " + myId);
   // Загрузить значения из запроса в профиль
-  userInfoEditProfile.setUserInfo(dataProfile.name, dataProfile.about);
+  //userInfoEditProfile.setUserInfo(dataProfile.name, dataProfile.about);
   //nameProfile.textContent = dataProfile.name;
   //infoProfile.textContent = dataProfile.about;
 
