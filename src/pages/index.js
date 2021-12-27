@@ -314,46 +314,10 @@ function openLookImg(cardElement) {
 //  Добавляет слушатель кнопке Х (закрыть "look-img")
 popupLookImage.setEventListeners();
 //--------------------------------------------------------
-/*
+
 //======================================================
-//  запрос к серверу GET прочитать профиль, все карточки
-//------------------------------------------------------
-  nameInput.value = "";
-  infoInput.value = "";
-
-  const profile = api.readProfile();
-  profile.then((data) => {
-    // загрузим ссылку на изображение аватара
-    avatarImage.src = data.avatar;
-    const myId = data._id;// сохраним мой id
-    //console.log("name: " + data.name + ",  about: " + data.about);
-    console.log("Мой id: " + myId);
-    // Загрузить инпуты из запроса в попап
-    nameInput.value = data.name;
-    infoInput.value = data.about;
-    //popupEditProfile.open();//дождались
-    return myId;
-  });
+//      двойной запрос инициализации
 //======================================================
-
-//--------------------------------------------------------
-//  Начальная загрузка страницы - 6 карточек
-//--------------------------------------------------------
-// запрос к серверу GET (6карточек)
-const allCards = api.getInitialCards();
-allCards.then((data) => {
-  //console.log(data);
-  for (let i = 0; i < 6; i += 1) {
-    rdCards[i].name = data[i].name;//
-    rdCards[i].link = data[i].link;
-    rdCards[i].id = data[i]._id;
-    //rdCards[i].likes = data[i].likes;//
-    console.log(rdCards[i].id);//нужны ведерки отрисовывать
-  }
-  section.renderItems();//дождемся ответа от сервера
-});
-*/
-
 api.getIniData().then(arg => {
   const [dataProfile, dataCards] = arg;
   //--------------------------------------------------------
@@ -368,7 +332,6 @@ api.getIniData().then(arg => {
   //userInfoEditProfile.setUserInfo(dataProfile.name, dataProfile.about);
   nameProfile.textContent = dataProfile.name;
   infoProfile.textContent = dataProfile.about;
-
   //--------------------------------------------------------
   //  Начальная загрузка страницы - 6 карточек
   //--------------------------------------------------------
@@ -377,8 +340,8 @@ api.getIniData().then(arg => {
     rdCards[i].link = dataCards[i].link;
     rdCards[i].id = dataCards[i]._id;
     rdCards[i].likes = dataCards[i].likes.length;//
-    console.log("Card[" + i + "] :" + rdCards[i].id+ " like : "+rdCards[i].likes );//нужны ведерки отрисовывать
+    console.log("Card[" + i + "] :" + rdCards[i].id + " like : " + rdCards[i].likes);//нужны ведерки отрисовывать
   }
   section.renderItems();//отрисуем карточки
-
 });
+//======================================================
