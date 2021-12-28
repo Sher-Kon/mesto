@@ -371,8 +371,8 @@ api.getIniData().then(arg => {
       for (let n = 0; n < dataCards[i].likes.length; n += 1) {
         if (myId === dataCards[i].likes[n]._id) {
           myLike = 1;
-        }
-        console.log("like id:" + dataCards[i].likes[n]._id+", Мой лайк: "+myLike);
+        } else { myLike = 0; };
+        console.log("like id:" + dataCards[i].likes[n]._id + ", Мой лайк: " + myLike);
       }
     }
 
