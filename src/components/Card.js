@@ -29,9 +29,9 @@ export class Card {
         this._element.querySelector('.element__txt').textContent = this._title;
         this._likeNum.textContent = this._likes;//Запишем число лайков
         if (this._myLike) {
-            this._likeButton.classList.add('element__like-btn_active');
+            this._likeButton.classList.add('element__like-btn_active');//отметить
         } else {
-            this._likeButton.classList.remove('element__like-btn_active');
+            this._likeButton.classList.remove('element__like-btn_active');//пустой
         };
 
 
@@ -69,10 +69,15 @@ export class Card {
         if (this._myLike) {
             //console.log( "удалить лайк id: " + this._id);
             this._handleDelLike(this._id);
+            this._likeButton.classList.remove('element__like-btn_active');//пустой
+            this._likes=this._likes-1;//Обновим число лайков
         } else {
             //console.log( "добавить лайк id: " +this._id);
             this._handleSetLike(this._id);
+            this._likeButton.classList.add('element__like-btn_active');//отметить
+            this._likes=this._likes+1;//Обновим число лайков
         }
+        this._likeNum.textContent = this._likes;//Запишем число лайков
     }
     // обработчик delete
     _deleteCard() {

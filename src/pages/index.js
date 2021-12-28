@@ -127,26 +127,6 @@ function handleSubmitEditAvatar(evt) {
     }).catch((err) => alert(err));
     //======================================================
     */
-  //======================================================
-  //      Добавим лайк на сервере.
-  //------------------------------------------------------
-  const data = popupEditAvatar.getInputValues();
-  const taskSetLike = api.setLike(data.urlAvatar);
-  taskSetLike.then((dataRet) => {
-    //дождались обещанного
-    const idCard = dataRet._id;
-    const likeNum = dataRet.likes.length;
-    console.log("Добавили лайк карточке: " + idCard);
-
-    function nodu() {
-      console.log("лайков: " + likeNum);
-    };
-    //renderLoading(".edit-avatar__btn-save", false);//на кнопке "Сохранить"
-    renderBtnSave(".edit-avatar__btn-save", "Сохранить");//на кнопке "Сохранить"
-    // закрыть попап «Редактировать аватар» после ответа сервера
-    closeEditAvatar();
-  }).catch((err) => alert(err));
-  //======================================================
 
   /*
   //======================================================
@@ -334,15 +314,33 @@ function delLike(id){
   //const taskDelLike = api.delLike(data.urlAvatar);
   const taskDelLike = api.delLike(id);
   taskDelLike.then((dataRet) => {
-    //дождались
+    //дождались обещанного
     console.log("Сняли лайк с карточки Id: " + id);
   }).catch((err) => alert(err));
   //======================================================
 }
 
 //--------------------------------------------------------
-function setLike(id){
-  console.log( "добавить лайк id: " +id);
+//      Добавим лайк на сервере.
+//------------------------------------------------------
+  function setLike(id){
+  //console.log( "добавить лайк id: " +id);
+  //======================================================
+  //const data = popupEditAvatar.getInputValues();
+  //const taskSetLike = api.setLike(data.urlAvatar);
+  const taskSetLike = api.setLike(id);
+  taskSetLike.then((dataRet) => {
+    //дождались обещанного
+    const idCard = dataRet._id;
+    const likeNum = dataRet.likes.length;
+    console.log("Добавили лайк карточке: " + idCard);
+
+    //renderLoading(".edit-avatar__btn-save", false);//на кнопке "Сохранить"
+    //renderBtnSave(".edit-avatar__btn-save", "Сохранить");//на кнопке "Сохранить"
+    // закрыть попап «Редактировать аватар» после ответа сервера
+    //closeEditAvatar();
+  }).catch((err) => alert(err));
+  //======================================================
 }
 
 //======================================================
