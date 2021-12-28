@@ -6,7 +6,7 @@ import { PopupWithForm } from "../components/PopupWithForm.js";
 import { UserInfo } from "../components/UserInfo.js";
 import { Section } from "../components/Section.js";
 import { FormValidator } from "../components/FormValidator.js";
-import { createCard } from "../scripts/utils.js";
+import { createCard, renderLoading } from "../scripts/utils.js";
 import { selectorsElements } from "../scripts/data.js";
 import { data } from 'autoprefixer';
 export { openLookImg };//для Card in utils.js
@@ -233,15 +233,21 @@ function handleSubmitEditProfile(evt) {
   const dataWr = { name: "", about: "" };
   dataWr.name = data.nameInput;
   dataWr.about = data.jobInput;
+  renderLoading(edit-profile, false);//на кнопке "Загрузка..."
+  setTimeout(1000);
   //======================================================
   //Отредактированные данные профиля должны сохраняться на сервере.
+  //--------------------------------------------------------
   const tasks = api.writeProfile(dataWr);
   tasks.then((dataRet) => {
+    //дождались ответа сервера
     //console.log("Записан на сервере: " + dataRet.name);
-    //closeEditProfile();//дождались
+    renderLoading(edit-profile, true);//на кнопке "Сохранить"
+    closeEditProfile();
   });
+  //======================================================
   // закрыть попап «Редактировать профиль» не дожидаясь ответа сервера
-  closeEditProfile();
+  //closeEditProfile();
 }
 
 // Прикрепляем обработчики к форме «Редактировать профиль»:
