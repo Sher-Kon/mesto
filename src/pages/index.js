@@ -375,7 +375,7 @@ api.getIniData().then(arg => {
     }
     rdCards[i].myLike = myLike;
     let metka = "";
-    if (myLike) { metka = " Мой лайк"} else { metka = "" };
+    if (myLike) { metka = " Мой лайк"};
     console.log("Card[" + i + "] :" + rdCards[i].id + " всего лайков : " + rdCards[i].likes + metka);//нужны ведерки отрисовывать
   }
   section.renderItems();//отрисуем карточки
