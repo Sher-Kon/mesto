@@ -241,9 +241,9 @@ function handleSubmitEditProfile(evt) {
   tasks.then((dataRet) => {
     //дождались ответа сервера
     //console.log("Записан на сервере: " + dataRet.name);
+    setTimeout(1,1000);//посмотрим на "Загрузка..."
     renderLoading(".popup__btn-save", false);//на кнопке "Сохранить"
-    setTimeout(closeEditProfile,1000);
-    //closeEditProfile();
+    closeEditProfile();
   });
   //======================================================
   // закрыть попап «Редактировать профиль» не дожидаясь ответа сервера
