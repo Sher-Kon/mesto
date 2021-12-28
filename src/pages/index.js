@@ -9,7 +9,7 @@ import { FormValidator } from "../components/FormValidator.js";
 import { createCard, renderLoading, renderBtnSave } from "../scripts/utils.js";
 import { selectorsElements } from "../scripts/data.js";
 import { data } from 'autoprefixer';
-export { openLookImg, popupLookImage };//для Card in utils.js
+export { openLookImg };//для Card in utils.js
 //--------------------------------------------------------
 
 const rdCards = [
