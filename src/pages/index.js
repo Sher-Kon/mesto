@@ -137,7 +137,6 @@ function handleSubmitEditAvatar(evt) {
     function nodu(){
       console.log("лайков: " + likeNum);
     };
-    let timer = setTimeout(nodu, 4000);//посмотрим на "Загрузка..."
     renderLoading(".edit-avatar__btn-save", false);//на кнопке "Сохранить"
     // закрыть попап «Редактировать аватар» после ответа сервера
     closeEditAvatar();
@@ -252,8 +251,7 @@ function handleSubmitEditProfile(evt) {
   taskWrProfile.then((dataRet) => {
     //дождались ответа сервера
     //console.log("Записан на сервере: " + dataRet.name);
-    setTimeout(renderLoading(".popup__btn-save", false), 2000);//посмотрим на "Загрузка..."
-    //renderLoading(".popup__btn-save", false);//на кнопке "Сохранить"
+    renderLoading(".popup__btn-save", false);//на кнопке "Сохранить"
     closeEditProfile();
   });
   //===============================================================
