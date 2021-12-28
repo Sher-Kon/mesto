@@ -108,7 +108,8 @@ function closeEditAvatar() {
 function handleSubmitEditAvatar(evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
 
-  renderLoading(".edit-avatar__btn-save", true);//на кнопке "Загрузка..."
+ // renderLoading(".edit-avatar__btn-save", true);//на кнопке "Загрузка..."
+  renderBtnSave(".edit-avatar__btn-save", "Загрузка...");//на кнопке "Загрузка..."
   /*
     //======================================================
     //      Запишем урл аватара на сервер.
@@ -140,7 +141,8 @@ function handleSubmitEditAvatar(evt) {
     function nodu() {
       console.log("лайков: " + likeNum);
     };
-    renderLoading(".edit-avatar__btn-save", false);//на кнопке "Сохранить"
+    //renderLoading(".edit-avatar__btn-save", false);//на кнопке "Сохранить"
+    renderBtnSave(".edit-avatar__btn-save", "Сохранить");//на кнопке "Сохранить"
     // закрыть попап «Редактировать аватар» после ответа сервера
     closeEditAvatar();
   }).catch((err) => alert(err));

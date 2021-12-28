@@ -7,7 +7,11 @@ export { createCard };
 //--------------------------------------------------------
 function createCard(data) {
   // Создадим экземпляр карточки
-  const card = new Card(data, "element-card", openLookImg);
+  const card = new Card(
+    data,
+    "element-card",
+    openLookImg
+  );
   // Создаём карточку 
   const cardElement = card.generateCard();
   return cardElement;
@@ -20,4 +24,9 @@ export const renderLoading = (popupBtn, isLoading = false) => {
   } else {
     saveButton.textContent = 'Сохранить';
   }
+};
+
+export const renderBtnSave = (popupBtn, txtBtn) => {
+  const saveButton = document.querySelector(popupBtn);
+  saveButton.textContent = txtBtn;
 };
