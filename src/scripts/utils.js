@@ -13,8 +13,9 @@ function createCard(data) {
   return cardElement;
 }
 
-export const renderLoading = (popup, isLoading = false) => {
-  const currentActiveButton = document.querySelector(`.${popup} .popup__button`);
+export const renderLoading = (popupBtn, isLoading = false) => {
+//  const currentActiveButton = document.querySelector(`.${popup}.popup__button`);
+  const currentActiveButton = document.querySelector(`.${popupBtn}`);
   if (isLoading) {
     currentActiveButton.textContent = 'Загрузка...';
   } else {
