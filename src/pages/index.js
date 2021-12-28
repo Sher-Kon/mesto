@@ -365,16 +365,16 @@ api.getIniData().then(arg => {
 
     console.log("Card[" + i + "] :" + rdCards[i].id + " всего лайков : " + rdCards[i].likes);//нужны ведерки отрисовывать
 
-    let myLike = 0;
+    let myLike = false;
     if (dataCards[i].likes.length > 0) {
       for (let n = 0; n < dataCards[i].likes.length; n += 1) {
         if (myId === dataCards[i].likes[n]._id) {
-          myLike = 1;
-        } else { myLike = 0; };
+          myLike = true;
+        } else { myLike = false; };
         console.log("    like id:" + dataCards[i].likes[n]._id + ", Мой лайк: " + myLike);
       }
     }
-
+    rdCards[i].myLike = myLike;
   }
   section.renderItems();//отрисуем карточки
 }).catch((err) => alert(err));
