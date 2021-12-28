@@ -363,9 +363,10 @@ api.getIniData().then(arg => {
     rdCards[i].id = dataCards[i]._id;
     rdCards[i].likes = dataCards[i].likes.length;//
     dataCards[i].likes.forEarch(item =>{
-      console log("like id:" item._id);
+      console.log("like id:" + item._id);
     })
-    console.log("Card[" + i + "] :" + rdCards[i].id + " like : " + rdCards[i].likes);//нужны ведерки отрисовывать
+    console.log("Card[" + i + "] :" + rdCards[i].id +
+               " like : " + rdCards[i].likes);//нужны ведерки отрисовывать
   }
   section.renderItems();//отрисуем карточки
 }).catch((err) => alert(err));
