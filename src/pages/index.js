@@ -138,7 +138,7 @@ function handleSubmitEditAvatar(evt) {
   //======================================================
   */
 
-   
+
   //closeEditAvatar();// закрыть попап «Редактировать аватар»
 }
 
@@ -346,9 +346,9 @@ api.getIniData().then(arg => {
   //--------------------------------------------------------
   // загрузим ссылку на изображение аватара
   avatarImage.src = dataProfile.avatar;
-  const myId = dataProfile._id;// сохраним мой id
+  const myID = dataProfile._id;// сохраним мой id
   //console.log("name: " + data.name + ",  about: " + data.about);
-  console.log("Мой id: " + myId);
+  console.log("Мой id: " + myID);
   // Загрузить значения из запроса в профиль
   //userInfoEditProfile.setUserInfo(dataProfile.name, dataProfile.about);
   nameProfile.textContent = dataProfile.name;
@@ -359,14 +359,14 @@ api.getIniData().then(arg => {
   for (let i = 0; i < 6; i += 1) {
     rdCards[i].name = dataCards[i].name;//
     rdCards[i].link = dataCards[i].link;
-    rdCards[i].myid = myId;
-    rdCards[i].id = dataCards[i]._id;
+    rdCards[i].myID = dataProfile._id;
+    rdCards[i].ownerID = dataCards[i]._id;
     rdCards[i].likes = dataCards[i].likes.length;//
 
     let myLike = false;
     if (dataCards[i].likes.length > 0) {
       for (let n = 0; n < dataCards[i].likes.length; n += 1) {
-        if (myId === dataCards[i].likes[n]._id) {
+        if (myID === dataCards[i].likes[n]._id) {
           myLike = true;
         } else { myLike = false; };
         //console.log("    like id:" + dataCards[i].likes[n]._id + ", Мой лайк: " + myLike);
