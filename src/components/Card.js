@@ -1,6 +1,7 @@
 //Класс карточки
 export class Card {
     constructor(dataCard, template, handleCardClick) {
+        this._id = dataCard.id
         this._title = dataCard.name;
         this._image = dataCard.link;
         this._likes = dataCard.likes
@@ -62,7 +63,12 @@ export class Card {
 
     // обработчик лайка
     _likeClick() {
-        this._likeButton.classList.toggle('element__like-btn_active');
+        //this._likeButton.classList.toggle('element__like-btn_active');
+        if (this._myLike) {
+            console.log( "удалить лайк id: " + this._id);
+        } else {
+            console.log( "добавить лайк id: " +this._id);
+        }
     }
     // обработчик delete
     _deleteCard() {
