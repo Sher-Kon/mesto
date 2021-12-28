@@ -360,6 +360,7 @@ api.getIniData().then(arg => {
   for (let i = 0; i < 6; i += 1) {
     rdCards[i].name = dataCards[i].name;//
     rdCards[i].link = dataCards[i].link;
+    rdCards[i].myid = myId;
     rdCards[i].id = dataCards[i]._id;
     rdCards[i].likes = dataCards[i].likes.length;//
 
