@@ -108,7 +108,7 @@ function closeEditAvatar() {
 function handleSubmitEditAvatar(evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
 
- // renderLoading(".edit-avatar__btn-save", true);//на кнопке "Загрузка..."
+  // renderLoading(".edit-avatar__btn-save", true);//на кнопке "Загрузка..."
   renderBtnSave(".edit-avatar__btn-save", "Загрузка...");//на кнопке "Загрузка..."
   /*
     //======================================================
@@ -362,11 +362,13 @@ api.getIniData().then(arg => {
     rdCards[i].link = dataCards[i].link;
     rdCards[i].id = dataCards[i]._id;
     rdCards[i].likes = dataCards[i].likes.length;//
-    dataCards[i].likes.forEarch(item =>{
-      console.log("like id:" + item._id);
-    })
-    console.log("Card[" + i + "] :" + rdCards[i].id +
-               " like : " + rdCards[i].likes);//нужны ведерки отрисовывать
+    if (dataCards[i].likes.length > 0) {
+      dataCards[i].likes.forEarch(item => {
+        console.log("like id:" + item._id);
+      })
+    }
+
+    console.log("Card[" + i + "] :" + rdCards[i].id + " like : " + rdCards[i].likes);//нужны ведерки отрисовывать
   }
   section.renderItems();//отрисуем карточки
 }).catch((err) => alert(err));
