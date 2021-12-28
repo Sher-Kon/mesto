@@ -246,7 +246,8 @@ function handleSubmitEditProfile(evt) {
   const dataWr = { name: "", about: "" };
   dataWr.name = data.nameInput;
   dataWr.about = data.jobInput;
-  renderLoading(".popup__btn-save", true);//на кнопке "Загрузка..."
+  //renderLoading(".popup__btn-save", true);//на кнопке "Загрузка..."
+  renderBtnSave(".popup__btn-save", "Загрузка...");//на кнопке "Загрузка..."
   //===============================================================
   //  Отредактированные данные профиля сохраняем на сервере.
   //---------------------------------------------------------------
@@ -254,7 +255,8 @@ function handleSubmitEditProfile(evt) {
   taskWrProfile.then((dataRet) => {
     //дождались ответа сервера
     //console.log("Записан на сервере: " + dataRet.name);
-    renderLoading(".popup__btn-save", false);//на кнопке "Сохранить"
+    //renderLoading(".popup__btn-save", false);//на кнопке "Сохранить"
+    renderBtnSave(".popup__btn-save", "Сохранить");//на кнопке "Сохранить"
     closeEditProfile();// закрыть попап «Редактировать профиль»
   }).catch((err) => alert(err));
   //===============================================================
@@ -301,9 +303,11 @@ function handleSubmitBildCard(evt) {
   /*
   //======================================================
     //Добавим карточку на сервер.
+    renderBtnSave(".popup__btn-save", "Загрузка...");//на кнопке "Загрузка..."
     const tasks = api.writeCard(infoCard);
     tasks.then((dataRet) => {
       //дождались ответа от сервера:
+      renderBtnSave(".popup__btn-save", "Создать");//на кнопке "Создать"
       console.log("Card записан на сервере: " + dataRet.owner.id);
     }).catch((err) => alert(err));
   //======================================================
