@@ -134,8 +134,8 @@ function handleSubmitEditAvatar(evt) {
     const likeNum = dataRet.likes.length;
     console.log("Добавили лайк карточке: " + idCard);
     console.log("лайков: " + likeNum);
-
-    setTimeout(1, 2000);//посмотрим на "Загрузка..."
+    function nodu(){};
+    setTimeout(nodu, 2000);//посмотрим на "Загрузка..."
     renderLoading(".edit-avatar__btn-save", false);//на кнопке "Сохранить"
     // закрыть попап «Редактировать аватар» после ответа сервера
     closeEditAvatar();
