@@ -365,10 +365,14 @@ api.getIniData().then(arg => {
 
     console.log("Card[" + i + "] :" + rdCards[i].id + " like : " + rdCards[i].likes);//нужны ведерки отрисовывать
 
+    let myLike = 0;
     if (dataCards[i].likes.length > 0) {
       console.log("число лайков:" + dataCards[i].likes.length);
       for (let n = 0; n < dataCards[i].likes.length; n += 1) {
-        console.log("like id:" + dataCards[i].likes[n]._id);
+        if (myId === dataCards[i].likes[n]._id) {
+          myLike = 1;
+        }
+        console.log("like id:" + dataCards[i].likes[n]._id+", Мой лайк: "+myLike);
       }
     }
 
