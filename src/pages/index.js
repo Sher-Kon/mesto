@@ -108,25 +108,22 @@ function closeEditAvatar() {
 function handleSubmitEditAvatar(evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
 
-  // renderLoading(".edit-avatar__btn-save", true);//на кнопке "Загрузка..."
+  //======================================================
+  //      Запишем урл аватара на сервер.
+  //------------------------------------------------------
   renderBtnSave(".edit-avatar__btn-save", "Загрузка...");//на кнопке "Загрузка..."
-  /*
-    //======================================================
-    //      Запишем урл аватара на сервер.
-    //------------------------------------------------------
-    const data = popupEditAvatar.getInputValues();
-    const tasks = api.writeAvatar(data.urlAvatar);//data.urlAvatar
-    tasks.then((dataRet) => {
-      //дождались
-      // загрузим ссылку на изображение аватара
-      avatarImage.src = dataRet.avatar;
-      console.log("Записан аватар, URL: " + data.urlAvatar);
-      renderLoading(".edit-avatar__btn-save", false);//на кнопке "Сохранить"
-      // закрыть попап «Редактировать аватар» после ответа сервера
-      closeEditAvatar();
-    }).catch((err) => alert(err));
-    //======================================================
-    */
+  const data = popupEditAvatar.getInputValues();
+  const tasks = api.writeAvatar(data.urlAvatar);//data.urlAvatar
+  tasks.then((dataRet) => {
+    //дождались ответа сервера
+    avatarImage.src = dataRet.avatar;// загрузим ссылку на изображение аватара
+    console.log("Записан аватар, URL: " + data.urlAvatar);
+    renderBtnSave(".edit-avatar__btn-save", "Сохранить");//на кнопке "Сохранить"
+    // закрыть попап «Редактировать аватар» после ответа сервера
+    closeEditAvatar();// закрыть попап «Редактировать аватар»
+  }).catch((err) => alert(err));// если что-то пошло не так
+  //======================================================
+
 
   /*
   //======================================================
@@ -141,8 +138,8 @@ function handleSubmitEditAvatar(evt) {
   //======================================================
   */
 
-  // закрыть попап «Редактировать аватар» 
-  //closeEditAvatar();
+   
+  //closeEditAvatar();// закрыть попап «Редактировать аватар»
 }
 
 // Слушатели на кнопку открытия попапа «Редактировать аватар»
@@ -305,13 +302,10 @@ function openLookImg(cardElement) {
 popupLookImage.setEventListeners();
 
 //--------------------------------------------------------
-function delLike(id){
-  //console.log( "удалить лайк id: " + id);
+//      Удалим лайк на сервере.
+//------------------------------------------------------
+function delLike(id) {
   //======================================================
-  //      Удалим лайк на сервере.
-  //------------------------------------------------------
-  //const data = popupEditAvatar.getInputValues();
-  //const taskDelLike = api.delLike(data.urlAvatar);
   const taskDelLike = api.delLike(id);
   taskDelLike.then((dataRet) => {
     //дождались обещанного
@@ -323,8 +317,7 @@ function delLike(id){
 //--------------------------------------------------------
 //      Добавим лайк на сервере.
 //------------------------------------------------------
-  function setLike(id){
-  //console.log( "добавить лайк id: " +id);
+function setLike(id) {
   //======================================================
   //const data = popupEditAvatar.getInputValues();
   //const taskSetLike = api.setLike(data.urlAvatar);
@@ -381,7 +374,7 @@ api.getIniData().then(arg => {
     }
     rdCards[i].myLike = myLike;
     let metka = "";
-    if (myLike) { metka = " Мой лайк"};
+    if (myLike) { metka = "  Есть мой лайк" };
     console.log("Card[" + i + "] :" + rdCards[i].id + " всего лайков : " + rdCards[i].likes + metka);//нужны ведерки отрисовывать
   }
   section.renderItems();//отрисуем карточки
