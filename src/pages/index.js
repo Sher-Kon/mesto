@@ -147,18 +147,6 @@ function handleSubmitEditAvatar(evt) {
     closeEditAvatar();
   }).catch((err) => alert(err));
   //======================================================
-  /*
-  //======================================================
-  //      Удалим лайк на сервере.
-  //------------------------------------------------------
-  const data = popupEditAvatar.getInputValues();
-  const taskDelLike = api.delLike(data.urlAvatar);
-  taskDelLike.then((dataRet) => {
-    //дождались
-    console.log("Сняли лайк с карточки Id: " + data.urlAvatar);
-  }).catch((err) => alert(err));
-  //======================================================
-  */
 
   /*
   //======================================================
@@ -335,14 +323,28 @@ function openLookImg(cardElement) {
 }
 //  Добавляет слушатель кнопке Х (закрыть "look-img")
 popupLookImage.setEventListeners();
+
 //--------------------------------------------------------
 function delLike(id){
-  console.log( "удалить лайк id: " + id);
+  //console.log( "удалить лайк id: " + id);
+  //======================================================
+  //      Удалим лайк на сервере.
+  //------------------------------------------------------
+  //const data = popupEditAvatar.getInputValues();
+  //const taskDelLike = api.delLike(data.urlAvatar);
+  const taskDelLike = api.delLike(id);
+  taskDelLike.then((dataRet) => {
+    //дождались
+    console.log("Сняли лайк с карточки Id: " + id);
+  }).catch((err) => alert(err));
+  //======================================================
 }
+
 //--------------------------------------------------------
 function setLike(id){
   console.log( "добавить лайк id: " +id);
 }
+
 //======================================================
 //      двойной запрос инициализации
 //======================================================
