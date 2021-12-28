@@ -372,10 +372,13 @@ api.getIniData().then(arg => {
         if (myId === dataCards[i].likes[n]._id) {
           myLike = true;
         } else { myLike = false; };
-        console.log("    like id:" + dataCards[i].likes[n]._id + ", Мой лайк: " + myLike);
+        //console.log("    like id:" + dataCards[i].likes[n]._id + ", Мой лайк: " + myLike);
       }
     }
     rdCards[i].myLike = myLike;
+    let metka = "";
+    if (myLike) { metka = " Мой лайк"} else { metka = "" };
+    console.log("Card[" + i + "] :" + rdCards[i].id + " всего лайков : " + rdCards[i].likes + metka);//нужны ведерки отрисовывать
   }
   section.renderItems();//отрисуем карточки
 }).catch((err) => alert(err));
