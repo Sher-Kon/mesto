@@ -14,10 +14,10 @@ function createCard(data) {
 }
 
 export const renderLoading = (popupBtn, isLoading = false) => {
-  const currentActiveButton = document.querySelector(popupBtn);
+  const saveButton = document.querySelector(popupBtn);
   if (isLoading) {
-    currentActiveButton.textContent = 'Загрузка...';
+    saveButton.textContent = 'Загрузка...';
   } else {
-    currentActiveButton.textContent = 'Сохранить';
+    saveButton.textContent = 'Сохранить';
   }
 };

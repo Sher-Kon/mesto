@@ -105,6 +105,7 @@ function closeEditAvatar() {
   popupEditAvatar.close();
 }
 
+renderLoading(".edit-avatar__btn-save", true);//на кнопке "Загрузка..."
 function handleSubmitEditAvatar(evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
   /*
@@ -160,7 +161,8 @@ function handleSubmitEditAvatar(evt) {
   //======================================================
   */
 
-  // закрыть попап «Редактировать аватар» не дожидаясь ответа сервера
+  setTimeout(renderLoading, 2000,".edit-avatar__btn-save");//посмотрим на "Загрузка..."
+  // закрыть попап «Редактировать аватар» после ответа сервера
   closeEditAvatar();
 }
 
