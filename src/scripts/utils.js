@@ -1,5 +1,5 @@
 import { Card } from "../components/Card.js";
-import { openLookImg } from '../pages/index.js';
+import { openLookImg, popupLookImage } from '../pages/index.js';
 
 export { createCard };
 //--------------------------------------------------------
@@ -10,7 +10,7 @@ function createCard(data) {
   const card = new Card(
     data,
     "element-card",
-    openLookImg
+    popupLookImage.open(cardElement)//открыть lookImg openLookImg
   );
   // Создаём карточку 
   const cardElement = card.generateCard();
