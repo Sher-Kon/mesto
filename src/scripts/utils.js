@@ -26,7 +26,7 @@ export const renderLoading = (popupBtn, isLoading = false) => {
   }
 };
 
-export const renderBtnSave = (popupBtn, txtBtn) => {
-  const saveButton = document.querySelector(popupBtn);
+export const renderBtnSave = (selectorBtn, txtBtn) => {
+  const saveButton = document.querySelector(selectorBtn);
   saveButton.textContent = txtBtn;
 };
