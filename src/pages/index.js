@@ -234,7 +234,7 @@ function handleSubmitEditProfile(evt) {
   dataWr.name = data.nameInput;
   dataWr.about = data.jobInput;
   renderLoading(".popup__btn-save", true);//на кнопке "Загрузка..."
-  setTimeout(1000);
+  //setTimeout(,1000);
   //======================================================
   //Отредактированные данные профиля должны сохраняться на сервере.
   //--------------------------------------------------------
