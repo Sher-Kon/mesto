@@ -67,15 +67,17 @@ export class Card {
     _likeClick() {
         //this._likeButton.classList.toggle('element__like-btn_active');
         if (this._myLike) {
-            //console.log( "удалить лайк id: " + this._id);
+            //console.log( "удалили лайк id: " + this._id);
             this._handleDelLike(this._id);
             this._likeButton.classList.remove('element__like-btn_active');//пустой
             this._likes=this._likes-1;//Обновим число лайков
+            this._myLike = false;
         } else {
-            //console.log( "добавить лайк id: " +this._id);
+            //console.log( "добавили лайк id: " +this._id);
             this._handleSetLike(this._id);
             this._likeButton.classList.add('element__like-btn_active');//отметить
             this._likes=this._likes+1;//Обновим число лайков
+            this._myLike = true;
         }
         this._likeNum.textContent = this._likes;//Запишем число лайков
     }
