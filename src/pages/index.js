@@ -9,7 +9,7 @@ import { FormValidator } from "../components/FormValidator.js";
 import { createCard, renderLoading, renderBtnSave } from "../scripts/utils.js";
 import { selectorsElements } from "../scripts/data.js";
 import { data } from 'autoprefixer';
-export { openLookImg };//для Card in utils.js
+export { openLookImg, delLike, setLike };//для Card in utils.js
 //--------------------------------------------------------
 
 const rdCards = [
@@ -336,7 +336,13 @@ function openLookImg(cardElement) {
 //  Добавляет слушатель кнопке Х (закрыть "look-img")
 popupLookImage.setEventListeners();
 //--------------------------------------------------------
-
+function delLike(id){
+  console.log( "удалить лайк id: " + id);
+}
+//--------------------------------------------------------
+function setLike(id){
+  console.log( "добавить лайк id: " +id);
+}
 //======================================================
 //      двойной запрос инициализации
 //======================================================
