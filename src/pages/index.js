@@ -234,7 +234,6 @@ function handleSubmitEditProfile(evt) {
   dataWr.name = data.nameInput;
   dataWr.about = data.jobInput;
   renderLoading(".popup__btn-save", true);//на кнопке "Загрузка..."
-  //setTimeout(,1000);
   //======================================================
   //Отредактированные данные профиля должны сохраняться на сервере.
   //--------------------------------------------------------
@@ -243,7 +242,8 @@ function handleSubmitEditProfile(evt) {
     //дождались ответа сервера
     //console.log("Записан на сервере: " + dataRet.name);
     renderLoading(".popup__btn-save", false);//на кнопке "Сохранить"
-    closeEditProfile();
+    setTimeout(closeEditProfile,1000);
+    //closeEditProfile();
   });
   //======================================================
   // закрыть попап «Редактировать профиль» не дожидаясь ответа сервера
