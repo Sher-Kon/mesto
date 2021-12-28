@@ -237,12 +237,12 @@ function handleSubmitEditProfile(evt) {
   //======================================================
   //Отредактированные данные профиля должны сохраняться на сервере.
   //--------------------------------------------------------
-  const tasks = api.writeProfile(dataWr);
-  tasks.then((dataRet) => {
+  const taskWrProfile = api.writeProfile(dataWr);
+  taskWrProfile.then((dataRet) => {
     //дождались ответа сервера
     //console.log("Записан на сервере: " + dataRet.name);
-    setTimeout(1,1000);//посмотрим на "Загрузка..."
-    renderLoading(".popup__btn-save", false);//на кнопке "Сохранить"
+    setTimeout(renderLoading(".popup__btn-save", false), 1000);//посмотрим на "Загрузка..."
+    //renderLoading(".popup__btn-save", false);//на кнопке "Сохранить"
     closeEditProfile();
   });
   //======================================================
