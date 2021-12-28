@@ -120,7 +120,10 @@ function handleSubmitEditAvatar(evt) {
       // загрузим ссылку на изображение аватара
       avatarImage.src = dataRet.avatar;
       console.log("Записан аватар, URL: " + data.urlAvatar);
-    });
+      renderLoading(".edit-avatar__btn-save", false);//на кнопке "Сохранить"
+      // закрыть попап «Редактировать аватар» после ответа сервера
+      closeEditAvatar();
+    }).catch((err) => alert(err));
     //======================================================
     */
   //======================================================
@@ -133,14 +136,14 @@ function handleSubmitEditAvatar(evt) {
     const idCard = dataRet._id;
     const likeNum = dataRet.likes.length;
     console.log("Добавили лайк карточке: " + idCard);
-    
-    function nodu(){
+
+    function nodu() {
       console.log("лайков: " + likeNum);
     };
     renderLoading(".edit-avatar__btn-save", false);//на кнопке "Сохранить"
     // закрыть попап «Редактировать аватар» после ответа сервера
     closeEditAvatar();
-  });
+  }).catch((err) => alert(err));
   //======================================================
   /*
   //======================================================
@@ -151,7 +154,7 @@ function handleSubmitEditAvatar(evt) {
   taskDelLike.then((dataRet) => {
     //дождались
     console.log("Сняли лайк с карточки Id: " + data.urlAvatar);
-  });
+  }).catch((err) => alert(err));
   //======================================================
   */
 
@@ -164,13 +167,11 @@ function handleSubmitEditAvatar(evt) {
     tasks.then((dataRet) => {
       //дождались
       console.log("Удалили карточку Id: " + cardDel);
-    });
+    }).catch((err) => alert(err));
   //======================================================
   */
 
-  //setTimeout(1, 2000);//посмотрим на "Загрузка..."
-  //renderLoading(".edit-avatar__btn-save", false);//на кнопке "Сохранить"
-  // закрыть попап «Редактировать аватар» после ответа сервера
+  // закрыть попап «Редактировать аватар» 
   //closeEditAvatar();
 }
 
@@ -223,7 +224,7 @@ function openEditProfile() {
       infoInput.value = data.about;
       //popupEditProfile.open();//дождались
       return myId;
-    });
+    }).catch((err) => alert(err));
     //======================================================
   */
 }
@@ -252,8 +253,8 @@ function handleSubmitEditProfile(evt) {
     //дождались ответа сервера
     //console.log("Записан на сервере: " + dataRet.name);
     renderLoading(".popup__btn-save", false);//на кнопке "Сохранить"
-    closeEditProfile();
-  });
+    closeEditProfile();// закрыть попап «Редактировать профиль»
+  }).catch((err) => alert(err));
   //===============================================================
   // закрыть попап «Редактировать профиль» не дожидаясь ответа сервера
   //closeEditProfile();
@@ -302,7 +303,7 @@ function handleSubmitBildCard(evt) {
     tasks.then((dataRet) => {
       //дождались ответа от сервера:
       console.log("Card записан на сервере: " + dataRet.owner.id);
-    });
+    }).catch((err) => alert(err));
   //======================================================
     // не дожидаясь: 
   */
@@ -358,5 +359,5 @@ api.getIniData().then(arg => {
     console.log("Card[" + i + "] :" + rdCards[i].id + " like : " + rdCards[i].likes);//нужны ведерки отрисовывать
   }
   section.renderItems();//отрисуем карточки
-});
+}).catch((err) => alert(err));
 //======================================================
