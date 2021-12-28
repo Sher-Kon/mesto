@@ -105,9 +105,10 @@ function closeEditAvatar() {
   popupEditAvatar.close();
 }
 
-renderLoading(".edit-avatar__btn-save", true);//на кнопке "Загрузка..."
 function handleSubmitEditAvatar(evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
+
+  renderLoading(".edit-avatar__btn-save", true);//на кнопке "Загрузка..."
   /*
     //======================================================
     //      Запишем урл аватара на сервер.
@@ -133,6 +134,11 @@ function handleSubmitEditAvatar(evt) {
     const likeNum = dataRet.likes.length;
     console.log("Добавили лайк карточке: " + idCard);
     console.log("лайков: " + likeNum);
+
+    setTimeout(1, 2000);//посмотрим на "Загрузка..."
+    renderLoading(".edit-avatar__btn-save", false);//на кнопке "Сохранить"
+    // закрыть попап «Редактировать аватар» после ответа сервера
+    closeEditAvatar();
   });
   //======================================================
   /*
@@ -161,9 +167,10 @@ function handleSubmitEditAvatar(evt) {
   //======================================================
   */
 
-  setTimeout(renderLoading, 2000,".edit-avatar__btn-save");//посмотрим на "Загрузка..."
+  //setTimeout(1, 2000);//посмотрим на "Загрузка..."
+  //renderLoading(".edit-avatar__btn-save", false);//на кнопке "Сохранить"
   // закрыть попап «Редактировать аватар» после ответа сервера
-  closeEditAvatar();
+  //closeEditAvatar();
 }
 
 // Слушатели на кнопку открытия попапа «Редактировать аватар»
@@ -199,25 +206,25 @@ function openEditProfile() {
   infoInput.value = userInfo.info;
   //открыть popup «Редактировать профиль»
   popupEditProfile.open();// 
-/*
-  //======================================================
-  //  запрос к серверу GET прочитать профиль
-  //--------------------------------------------------------
-  const tasks = api.readProfile();
-  tasks.then((data) => {
-    // загрузим ссылку на изображение аватара
-    avatarImage.src = data.avatar;
-    const myId = data._id;// сохраним мой id
-    //console.log("name: " + data.name + ",  about: " + data.about);
-    console.log("Мой id: " + myId);
-    // Загрузить инпуты из запроса в попап
-    nameInput.value = data.name;
-    infoInput.value = data.about;
-    //popupEditProfile.open();//дождались
-    return myId;
-  });
-  //======================================================
-*/
+  /*
+    //======================================================
+    //  запрос к серверу GET прочитать профиль
+    //--------------------------------------------------------
+    const tasks = api.readProfile();
+    tasks.then((data) => {
+      // загрузим ссылку на изображение аватара
+      avatarImage.src = data.avatar;
+      const myId = data._id;// сохраним мой id
+      //console.log("name: " + data.name + ",  about: " + data.about);
+      console.log("Мой id: " + myId);
+      // Загрузить инпуты из запроса в попап
+      nameInput.value = data.name;
+      infoInput.value = data.about;
+      //popupEditProfile.open();//дождались
+      return myId;
+    });
+    //======================================================
+  */
 }
 
 // Обработчик закрытия формы popup «Редактировать профиль»
