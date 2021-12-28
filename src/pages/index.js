@@ -362,13 +362,16 @@ api.getIniData().then(arg => {
     rdCards[i].link = dataCards[i].link;
     rdCards[i].id = dataCards[i]._id;
     rdCards[i].likes = dataCards[i].likes.length;//
+
+    console.log("Card[" + i + "] :" + rdCards[i].id + " like : " + rdCards[i].likes);//нужны ведерки отрисовывать
+
     if (dataCards[i].likes.length > 0) {
+      console.log("число лайков:" + dataCards[i].likes.length);
       for (let n = 0; n < dataCards[i].likes.length; n += 1) {
-        console.log("like id:" + dataCards[i].likes._id);
+        console.log("like id:" + dataCards[i].likes[n]._id);
       }
     }
 
-    console.log("Card[" + i + "] :" + rdCards[i].id + " like : " + rdCards[i].likes);//нужны ведерки отрисовывать
   }
   section.renderItems();//отрисуем карточки
 }).catch((err) => alert(err));
