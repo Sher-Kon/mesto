@@ -233,7 +233,7 @@ function handleSubmitEditProfile(evt) {
   const dataWr = { name: "", about: "" };
   dataWr.name = data.nameInput;
   dataWr.about = data.jobInput;
-  renderLoading(edit-profile, false);//на кнопке "Загрузка..."
+  renderLoading("edit-profile", false);//на кнопке "Загрузка..."
   setTimeout(1000);
   //======================================================
   //Отредактированные данные профиля должны сохраняться на сервере.
@@ -242,7 +242,7 @@ function handleSubmitEditProfile(evt) {
   tasks.then((dataRet) => {
     //дождались ответа сервера
     //console.log("Записан на сервере: " + dataRet.name);
-    renderLoading(edit-profile, true);//на кнопке "Сохранить"
+    renderLoading("edit-profile", true);//на кнопке "Сохранить"
     closeEditProfile();
   });
   //======================================================
