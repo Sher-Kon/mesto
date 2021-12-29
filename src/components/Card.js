@@ -34,8 +34,8 @@ export class Card {
         } else {
             this._likeButton.classList.remove('element__like-btn_active');//пустой
         };
-        
-        this._likeButton.classList.remove('element__del-btn');// удалим ведерко
+
+        this._element.classList.remove('element__del-btn');// удалим ведерко
 
         // Вернём элемент наружу
         return this._element;
