@@ -367,12 +367,11 @@ api.getIniData().then(arg => {
     let n_like = "";
     if (rdCards[i].numLikes > 0) {
       for (let n = 0; n < rdCards[i].numLikes; n += 1) {
-        //if (rdCards[i].myID === dataCards[i].likes[n]._id) {
         if (rdCards[i].myID === rdCards[i].likes[n]._id) {
           myLike = true;
           n_like = "ДА";
         } else { n_like = "нет"; };
-        console.log("    like id:" + rdCards[i].likes[n]._id + ", Мой лайк: " + n_like);
+        //console.log("    like id:" + rdCards[i].likes[n]._id + ", Мой лайк: " + n_like);
       }
     }
     rdCards[i].myLike = myLike;
