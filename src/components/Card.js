@@ -27,14 +27,15 @@ export class Card {
         // Добавим данные
         this._cardImage.src = this._image;
         this._cardImage.alt = "На фотографии " + this._title;
-        this._element.querySelector('.element__txt').textContent = this._myID;//this._title;
+        this._element.querySelector('.element__txt').textContent = this._title;
         this._likeNum.textContent = this._numLikes;//Запишем число лайков
         if (this._myLike) {
             this._likeButton.classList.add('element__like-btn_active');//отметить
         } else {
             this._likeButton.classList.remove('element__like-btn_active');//пустой
         };
-
+        
+        this._likeButton.classList.remove('element__del-btn');// удалим ведерко
 
         // Вернём элемент наружу
         return this._element;
