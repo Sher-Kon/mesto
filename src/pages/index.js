@@ -261,28 +261,29 @@ function handleSubmitBildCard(evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
   // Вставьте новые значения в новую карточку
   const data = popupBildCard.getInputValues();
-  const infoCard = { name: "", link: "" };
+  const infoCard = { name: "", link: "", myID: "", ownerID: "", numLikes: "", myLike: "", likes: [] };
   infoCard.name = data.placeInput;
   infoCard.link = data.urlInput;
-  /*
+
   //======================================================
-    //Добавим карточку на сервер.
-    renderBtnSave(".popup__btn-save", "Загрузка...");//на кнопке "Загрузка..."
-    const tasks = api.writeCard(infoCard);
-    tasks.then((dataRet) => {
-      //дождались ответа от сервера:
-      renderBtnSave(".popup__btn-save", "Создать");//на кнопке "Создать"
-      console.log("Card записан на сервере: " + dataRet.owner.id);
-    }).catch((err) => alert(err));
+  //Добавим карточку на сервер.
+  renderBtnSave(".popup__btn-save", "Загрузка...");//на кнопке "Загрузка..."
+  const tasks = api.writeCard(infoCard);
+  tasks.then((dataRet) => {
+    //дождались ответа от сервера:
+    renderBtnSave(".popup__btn-save", "Создать");//на кнопке "Создать"
+    console.log("Card записан на сервере: " + dataRet.owner.id);
+
+    infoCard.ownerID = dataRet.owner.id;
+    // Создадим экземпляр карточки
+    section.renderItem(infoCard);
+    // Закроем форму bildCard()
+    closeBildCard();//закрыть окно bild-card()
+    // Сделаем кнопку неактивной
+    validatorBildCard.disableButtonState();//bildCardBttn
+  }).catch((err) => alert(err));
   //======================================================
-    // не дожидаясь: 
-  */
-  // Создадим экземпляр карточки
-  section.renderItem(infoCard);
-  // Закроем форму bildCard()
-  closeBildCard();//закрыть окно bild-card()
-  // Сделаем кнопку неактивной
-  validatorBildCard.disableButtonState();//bildCardBttn
+  // не дожидаясь: 
 }
 
 // Добавляет обработчик клика по Х-иконке закрытия, и обработчик сабмита
