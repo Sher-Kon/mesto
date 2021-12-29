@@ -264,6 +264,7 @@ function handleSubmitBildCard(evt) {
   const infoCard = { name: "", link: ""};
   infoCard.name = data.placeInput;
   infoCard.link = data.urlInput;
+  infoCard.myCard = true;//нарисуем ведерко
 
   //======================================================
   //Добавим карточку на сервер.
