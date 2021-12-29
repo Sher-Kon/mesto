@@ -8,7 +8,7 @@ import { Section } from "../components/Section.js";
 import { FormValidator } from "../components/FormValidator.js";
 import { createCard, renderBtnSave } from "../scripts/utils.js";
 import { selectorsElements } from "../scripts/data.js";
-export { openLookImg, delLike, setLike };//для Card in utils.js
+export { openLookImg, delLike, setLike, delCard };//для Card in utils.js
 //--------------------------------------------------------
 
 const rdCards = [
@@ -307,6 +307,19 @@ function openLookImg(cardElement) {
 }
 //  Добавляет слушатель кнопке Х (закрыть "look-img")
 popupLookImage.setEventListeners();
+
+//--------------------------------------------------------
+//      Удалим карточку на сервере.
+//------------------------------------------------------
+function delCard(cardID) {
+  //======================================================
+  const tasks = api.deleteCard(cardID);
+  tasks.then((dataRet) => {
+    //дождались ответа сервера
+    console.log("Удалили свою карточку " + dataRet);// отладка
+  }).catch((err) => alert(err));
+  //======================================================
+}
 
 //--------------------------------------------------------
 //      Удалим лайк на сервере.

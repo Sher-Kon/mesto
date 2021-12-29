@@ -1,5 +1,5 @@
 import { Card } from "../components/Card.js";
-import { openLookImg, setLike, delLike } from '../pages/index.js';
+import { openLookImg, setLike, delLike, delCard } from '../pages/index.js';
 
 export { createCard };
 //--------------------------------------------------------
@@ -12,7 +12,8 @@ function createCard(data) {
     "element-card",
     openLookImg,
     setLike,
-    delLike
+    delLike,
+    delCard
   );
   // Создаём карточку 
   const cardElement = card.generateCard();

@@ -1,6 +1,6 @@
 //Класс карточки
 export class Card {
-    constructor(dataCard, template, handleCardClick, handleSetLike, handleDelLike) {
+    constructor(dataCard, template, handleCardClick, handleSetLike, handleDelLike, handleDelCard) {
         this._myCard = dataCard.myCard
         this._myID = dataCard.myID
         this._ownerID = dataCard.ownerID
@@ -13,6 +13,7 @@ export class Card {
         this._handleCardClick = handleCardClick;
         this._handleSetLike = handleSetLike;
         this._handleDelLike = handleDelLike;
+        this._handleDelCard = handleDelCard;
     }
 
     generateCard() {
@@ -93,6 +94,7 @@ export class Card {
     }
     // обработчик delete
     _deleteCard() {
+        this._handleDelCard(this._cardID);//запрос на удаление карточки
         this._element.remove();
     }
     // обработчик lookPicture
