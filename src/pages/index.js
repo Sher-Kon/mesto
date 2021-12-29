@@ -281,7 +281,7 @@ function handleSubmitBildCard(evt) {
     renderBtnSave(".popup__btn-save", "Создать");//на кнопке "Создать"
     console.log("запись cardID: "+ dataRet._id+", ownerID:" + dataRet.owner._id);
 
-    //infoCard.ownerID = dataRet.owner.id;
+    infoCard.cardID = dataRet._id;
     // Создадим экземпляр карточки
     section.renderItem(infoCard);
     // Закроем форму bildCard()
@@ -313,10 +313,10 @@ popupLookImage.setEventListeners();
 //------------------------------------------------------
 function delCard(cardID) {
   //======================================================
-  const tasks = api.deleteCard(cardID);
-  tasks.then((dataRet) => {
+  const taskDelCard = api.deleteCard(cardID);
+  taskDelCard.then((dataRet) => {
     //дождались ответа сервера
-    console.log("Удалили свою карточку " + dataRet.message);// отладка
+    console.log("Удалили свою карточку: " + dataRet.message);// отладка
   }).catch((err) => alert(err));
   //======================================================
 }
@@ -329,7 +329,9 @@ function delLike(id) {
   const taskDelLike = api.delLike(id);
   taskDelLike.then((dataRet) => {
     //дождались обещанного
-    console.log("Сняли лайк с карточки Id: " + dataRet._id);//отладка
+    const idCard = dataRet._id;
+    const likeNum = dataRet.likes.length;
+    console.log("Сняли лайк с ID: "+idCard+"  число лайков: "+likeNum);//отладка
   }).catch((err) => alert(err));
   //======================================================
 }
@@ -344,7 +346,7 @@ function setLike(id) {
     //дождались обещанного
     const idCard = dataRet._id;
     const likeNum = dataRet.likes.length;
-    console.log("Добавили лайк: "+idCard+"  число лайков: "+dataRet.likes.length);
+    console.log("Добавили лайк ID: "+idCard+"  число лайков: "+likeNum);//отладка
   }).catch((err) => alert(err));
   //======================================================
 }
