@@ -19,7 +19,7 @@ const rdCards = [
   { name: "", link: "", myID: "", ownerID: "", numLikes: "", myLike: "", likes: [], myCard: false },
   { name: "", link: "", myID: "", ownerID: "", numLikes: "", myLike: "", likes: [], myCard: false }
 ];
-//const myId = "";
+let myID = "";
 //--------------------------------------------------------
 // Создадим экземпляр class Api 
 const api = new Api({
@@ -266,7 +266,9 @@ function handleSubmitBildCard(evt) {
   const infoCard = { name: "", link: ""};
   infoCard.name = data.placeInput;
   infoCard.link = data.urlInput;
-  infoCard.myCard = true;//нарисуем ведерко
+  //нарисуем ведерко
+  infoCard.myID = myID;
+  infoCard.ownerID = myID;
 
   //======================================================
   //Добавим карточку на сервер.
@@ -349,8 +351,7 @@ api.getIniData().then(arg => {
   //--------------------------------------------------------
   // загрузим ссылку на изображение аватара
   avatarImage.src = dataProfile.avatar;
-  const myID = dataProfile._id;// сохраним мой id
-  //console.log("name: " + data.name + ",  about: " + data.about);
+  myID = dataProfile._id;// сохраним мой id в глобальной переменной
   console.log("Мой id: " + myID);
   // Загрузить значения из запроса в профиль
   //userInfoEditProfile.setUserInfo(dataProfile.name, dataProfile.about);
