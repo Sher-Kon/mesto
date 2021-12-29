@@ -37,7 +37,7 @@ export class Card {
             this._likeButton.classList.remove('element__like-btn_active');//пустой
         };
 
-        if (this._myCard === false) {// чужая карточка
+        if (this._ownerID !== this._myID) {// чужая карточка
             this._delButton.remove();// удалим ведерко
         }
         
@@ -62,7 +62,7 @@ export class Card {
             this._likeClick();
         });
 
-        if (this._myCard) { //своя карточка
+        if (this._ownerID === this._myID) { //своя карточка
             this._delButton.addEventListener('click', () => {
                 this._deleteCard();
             });
@@ -77,13 +77,13 @@ export class Card {
     _likeClick() {
         //this._likeButton.classList.toggle('element__like-btn_active');
         if (this._myLike) {
-            //console.log( "удалили лайк id: " + this._ownerID);
+            //console.log( "удалим лайк id: " + this._cardID);
             this._handleDelLike(this._cardID);
             this._likeButton.classList.remove('element__like-btn_active');//пустой
             this._numLikes = this._numLikes - 1;//Обновим число лайков
             this._myLike = false;
         } else {
-            //console.log( "добавили лайк id: " +this._ownerID);
+            //console.log( "добавим лайк id: " +this._cardID);
             this._handleSetLike(this._cardID);
             this._likeButton.classList.add('element__like-btn_active');//отметить
             this._numLikes = this._numLikes + 1;//Обновим число лайков
@@ -93,7 +93,7 @@ export class Card {
     }
     // обработчик delete
     _deleteCard() {
-        //this._element.remove();
+        this._element.remove();
     }
     // обработчик lookPicture
     _handlePictureClick() {

@@ -383,8 +383,8 @@ api.getIniData().then(arg => {
     let metka = "";
     if (myLike) { metka = "  Есть мой лайк" };
     console.log("Card[" + i + "] :" + rdCards[i].cardID +
-                "owner: " + rdCards[i].ownerID + 
-                " всего лайков : " + rdCards[i].numLikes + metka);//нужны ведерки отрисовывать
+                ", owner: " + rdCards[i].ownerID + 
+                ", всего лайков : " + rdCards[i].numLikes + metka);//нужны ведерки отрисовывать
   }
   section.renderItems();//отрисуем карточки
 }).catch((err) => alert(err));
