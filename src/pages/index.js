@@ -106,7 +106,7 @@ function closeEditAvatar() {
 
 function handleSubmitEditAvatar(evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
-
+/*
   //======================================================
   //      Запишем урл аватара на сервер.
   //------------------------------------------------------
@@ -122,20 +122,20 @@ function handleSubmitEditAvatar(evt) {
     closeEditAvatar();// закрыть попап «Редактировать аватар»
   }).catch((err) => alert(err));// если что-то пошло не так
   //======================================================
+*/
 
-
-  /*
+  
   //======================================================
   //      Удаляем карточку на сервере.
   //------------------------------------------------------
-    const cardDel = linkAvatar.value;//передали id
-    const tasks = api.deleteCard(cardDel);
+    const data = popupEditAvatar.getInputValues();
+    const tasks = api.deleteCard(data.urlAvatar);
     tasks.then((dataRet) => {
       //дождались
       console.log("Удалили карточку Id: " + cardDel);
     }).catch((err) => alert(err));
   //======================================================
-  */
+  
 
 
   //closeEditAvatar();// закрыть попап «Редактировать аватар»
