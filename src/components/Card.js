@@ -4,6 +4,7 @@ export class Card {
         this._myCard = dataCard.myCard
         this._myID = dataCard.myID
         this._ownerID = dataCard.ownerID
+        this._cardID = dataCard.cardID
         this._title = dataCard.name;
         this._image = dataCard.link;
         this._numLikes = dataCard.numLikes
@@ -77,13 +78,13 @@ export class Card {
         //this._likeButton.classList.toggle('element__like-btn_active');
         if (this._myLike) {
             //console.log( "удалили лайк id: " + this._ownerID);
-            this._handleDelLike(this._ownerID);
+            this._handleDelLike(this._cardID);
             this._likeButton.classList.remove('element__like-btn_active');//пустой
             this._numLikes = this._numLikes - 1;//Обновим число лайков
             this._myLike = false;
         } else {
             //console.log( "добавили лайк id: " +this._ownerID);
-            this._handleSetLike(this._ownerID);
+            this._handleSetLike(this._cardID);
             this._likeButton.classList.add('element__like-btn_active');//отметить
             this._numLikes = this._numLikes + 1;//Обновим число лайков
             this._myLike = true;

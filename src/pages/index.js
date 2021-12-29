@@ -275,7 +275,7 @@ function handleSubmitBildCard(evt) {
   tasks.then((dataRet) => {
     //дождались ответа от сервера:
     renderBtnSave(".popup__btn-save", "Создать");//на кнопке "Создать"
-    console.log("Card записан на сервере: " + dataRet.owner.id);
+    console.log("запись cardID: "+ dataRet._id+", ownerID:" + dataRet.owner._id);
 
     //infoCard.ownerID = dataRet.owner.id;
     // Создадим экземпляр карточки
@@ -363,7 +363,8 @@ api.getIniData().then(arg => {
     rdCards[i].name = dataCards[i].name;//
     rdCards[i].link = dataCards[i].link;
     rdCards[i].myID = dataProfile._id;
-    rdCards[i].ownerID = dataCards[i]._id;
+    rdCards[i].ownerID = dataCards[i].owner._id;
+    rdCards[i].cardID = dataCards[i]._id;
     rdCards[i].numLikes = dataCards[i].likes.length;//
     rdCards[i].likes = dataCards[i].likes;//
 
@@ -381,7 +382,9 @@ api.getIniData().then(arg => {
     rdCards[i].myLike = myLike;
     let metka = "";
     if (myLike) { metka = "  Есть мой лайк" };
-    console.log("Card[" + i + "] :" + rdCards[i].ownerID + " всего лайков : " + rdCards[i].numLikes + metka);//нужны ведерки отрисовывать
+    console.log("Card[" + i + "] :" + rdCards[i].cardID +
+                "owner: " + rdCards[i].ownerID + 
+                " всего лайков : " + rdCards[i].numLikes + metka);//нужны ведерки отрисовывать
   }
   section.renderItems();//отрисуем карточки
 }).catch((err) => alert(err));
