@@ -70,16 +70,16 @@ export class Card {
             //console.log( "удалили лайк id: " + this._ownerID);
             this._handleDelLike(this._ownerID);
             this._likeButton.classList.remove('element__like-btn_active');//пустой
-            this._likes = this._likes - 1;//Обновим число лайков
+            this._numLikes = this._numLikes - 1;//Обновим число лайков
             this._myLike = false;
         } else {
             //console.log( "добавили лайк id: " +this._ownerID);
             this._handleSetLike(this._ownerID);
             this._likeButton.classList.add('element__like-btn_active');//отметить
-            this._likes = this._likes + 1;//Обновим число лайков
+            this._numLikes = this._numLikes + 1;//Обновим число лайков
             this._myLike = true;
         }
-        this._likeNum.textContent = this._likes;//Запишем число лайков
+        this._likeNum.textContent = this._numLikes;//Запишем число лайков
     }
     // обработчик delete
     _deleteCard() {

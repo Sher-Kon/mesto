@@ -363,12 +363,14 @@ api.getIniData().then(arg => {
     rdCards[i].numLikes = dataCards[i].likes.length;//
 
     let myLike = false;
+    let n_like ="";
     if (dataCards[i].likes.length > 0) {
       for (let n = 0; n < dataCards[i].likes.length; n += 1) {
         if (myID === dataCards[i].likes[n]._id) {
           myLike = true;
-        } else { myLike = false; };
-        console.log("    like id:" + dataCards[i].likes[n]._id + ", Мой лайк: " + myLike);
+          n_like = "ДА";
+        } else { n_like = "нет"; };
+        console.log("    like id:" + dataCards[i].likes[n]._id + ", Мой лайк: " + n_like);
       }
     }
     rdCards[i].myLike = myLike;
