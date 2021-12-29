@@ -87,7 +87,7 @@ export class Card {
     }
     // обработчик delete
     _deleteCard() {
-        this._element.remove();
+        //this._element.remove();
     }
     // обработчик lookPicture
     _handlePictureClick() {
