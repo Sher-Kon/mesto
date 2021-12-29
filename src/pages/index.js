@@ -12,13 +12,14 @@ export { openLookImg, delLike, setLike };//для Card in utils.js
 //--------------------------------------------------------
 
 const rdCards = [
-  { name: "", link: "", myID: "", ownerID: "", numLikes: "", myLike: "", likes: [], myCard: false },
-  { name: "", link: "", myID: "", ownerID: "", numLikes: "", myLike: "", likes: [], myCard: false },
-  { name: "", link: "", myID: "", ownerID: "", numLikes: "", myLike: "", likes: [], myCard: false },
-  { name: "", link: "", myID: "", ownerID: "", numLikes: "", myLike: "", likes: [], myCard: false },
-  { name: "", link: "", myID: "", ownerID: "", numLikes: "", myLike: "", likes: [], myCard: false },
-  { name: "", link: "", myID: "", ownerID: "", numLikes: "", myLike: "", likes: [], myCard: false }
+  { name: "", link: "", myID: "", ownerID: "", cardID: "", numLikes: 0, likes: [], myLike: false },
+  { name: "", link: "", myID: "", ownerID: "", cardID: "", numLikes: 0, likes: [], myLike: false },
+  { name: "", link: "", myID: "", ownerID: "", cardID: "", numLikes: 0, likes: [], myLike: false },
+  { name: "", link: "", myID: "", ownerID: "", cardID: "", numLikes: 0, likes: [], myLike: false },
+  { name: "", link: "", myID: "", ownerID: "", cardID: "", numLikes: 0, likes: [], myLike: false },
+  { name: "", link: "", myID: "", ownerID: "", cardID: "", numLikes: 0, likes: [], myLike: false }
 ];
+
 let myID = "";
 //--------------------------------------------------------
 // Создадим экземпляр class Api 
@@ -269,7 +270,8 @@ function handleSubmitBildCard(evt) {
   //нарисуем ведерко
   infoCard.myID = myID;
   infoCard.ownerID = myID;
-
+  infoCard.myLike = false;//моего лайка нет
+  infoCard.numLikes = 0;//число лайков
   //======================================================
   //Добавим карточку на сервер.
   renderBtnSave(".popup__btn-save", "Загрузка...");//на кнопке "Загрузка..."
@@ -370,17 +372,19 @@ api.getIniData().then(arg => {
     rdCards[i].likes = dataCards[i].likes;//
 
     let myLike = false;
-    let n_like = "";
+    let strlike = "";
     if (rdCards[i].numLikes > 0) {
+      // перебор всех лайков
       for (let n = 0; n < rdCards[i].numLikes; n += 1) {
-        if (rdCards[i].myID === rdCards[i].likes[n]._id) {
-          myLike = true;
-          n_like = "ДА";
-        } else { n_like = "нет"; };
-        //console.log("    like id:" + rdCards[i].likes[n]._id + ", Мой лайк: " + n_like);
+        if (rdCards[i].myID === rdCards[i].likes[n]._id) {//владелец лайка
+          myLike = true;//есть мой лайк
+          strlike = "ДА";
+        } else { strlike = "нет"; };
+        //console.log("    like id:" + rdCards[i].likes[n]._id + ", Мой лайк: " + strlike);
       }
     }
     rdCards[i].myLike = myLike;
+
     let metka = "";
     if (myLike) { metka = "  Есть мой лайк" };
     console.log("Card[" + i + "] :" + rdCards[i].cardID +
