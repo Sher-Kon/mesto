@@ -35,7 +35,10 @@ export class Card {
             this._likeButton.classList.remove('element__like-btn_active');//пустой
         };
 
-        this._delButton.remove();// удалим ведерко
+        if (this._myID !== this._ownerID) {// чужая карточка
+            this._delButton.remove();// удалим ведерко
+        }
+        
 
         // Вернём элемент наружу
         return this._element;
@@ -57,11 +60,13 @@ export class Card {
         this._likeButton.addEventListener('click', () => {
             this._likeClick();
         });
-        /*
-        this._delButton.addEventListener('click', () => {
-            this._deleteCard();
-        });
-        */
+
+        if (this._myID === this._ownerID) { //своя карточка
+            this._delButton.addEventListener('click', () => {
+                this._deleteCard();
+            });
+        }
+
         this._imgButton.addEventListener('click', () => {
             this._handlePictureClick();
         });
