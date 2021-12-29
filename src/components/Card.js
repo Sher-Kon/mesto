@@ -4,7 +4,7 @@ export class Card {
         this._ownerID = dataCard.ownerID
         this._title = dataCard.name;
         this._image = dataCard.link;
-        this._likes = dataCard.likes
+        this._numLikes = dataCard.numLikes
         this._myLike = dataCard.myLike;
         this._template = template;
         this._handleCardClick = handleCardClick;
@@ -27,7 +27,7 @@ export class Card {
         this._cardImage.src = this._image;
         this._cardImage.alt = "На фотографии " + this._title;
         this._element.querySelector('.element__txt').textContent = this._title;
-        this._likeNum.textContent = this._likes;//Запишем число лайков
+        this._likeNum.textContent = this._numLikes;//Запишем число лайков
         if (this._myLike) {
             this._likeButton.classList.add('element__like-btn_active');//отметить
         } else {

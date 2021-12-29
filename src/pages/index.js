@@ -6,19 +6,18 @@ import { PopupWithForm } from "../components/PopupWithForm.js";
 import { UserInfo } from "../components/UserInfo.js";
 import { Section } from "../components/Section.js";
 import { FormValidator } from "../components/FormValidator.js";
-import { createCard, renderLoading, renderBtnSave } from "../scripts/utils.js";
+import { createCard, renderBtnSave } from "../scripts/utils.js";
 import { selectorsElements } from "../scripts/data.js";
-import { data } from 'autoprefixer';
 export { openLookImg, delLike, setLike };//для Card in utils.js
 //--------------------------------------------------------
 
 const rdCards = [
-  { name: "", link: "", myID: "", ownerID: "", likes: "", myLike: "" },
-  { name: "", link: "", myID: "", ownerID: "", likes: "", myLike: "" },
-  { name: "", link: "", myID: "", ownerID: "", likes: "", myLike: "" },
-  { name: "", link: "", myID: "", ownerID: "", likes: "", myLike: "" },
-  { name: "", link: "", myID: "", ownerID: "", likes: "", myLike: "" },
-  { name: "", link: "", myID: "", ownerID: "", likes: "", myLike: "" }
+  { name: "", link: "", myID: "", ownerID: "", numLikes: "", myLike: "" },
+  { name: "", link: "", myID: "", ownerID: "", numLikes: "", myLike: "" },
+  { name: "", link: "", myID: "", ownerID: "", numLikes: "", myLike: "" },
+  { name: "", link: "", myID: "", ownerID: "", numLikes: "", myLike: "" },
+  { name: "", link: "", myID: "", ownerID: "", numLikes: "", myLike: "" },
+  { name: "", link: "", myID: "", ownerID: "", numLikes: "", myLike: "" }
 ];
 //const myId = "";
 //--------------------------------------------------------
@@ -361,7 +360,7 @@ api.getIniData().then(arg => {
     rdCards[i].link = dataCards[i].link;
     rdCards[i].myID = dataProfile._id;
     rdCards[i].ownerID = dataCards[i]._id;
-    rdCards[i].likes = dataCards[i].likes.length;//
+    rdCards[i].numLikes = dataCards[i].likes.length;//
 
     let myLike = false;
     if (dataCards[i].likes.length > 0) {
@@ -369,13 +368,13 @@ api.getIniData().then(arg => {
         if (myID === dataCards[i].likes[n]._id) {
           myLike = true;
         } else { myLike = false; };
-        //console.log("    like id:" + dataCards[i].likes[n]._id + ", Мой лайк: " + myLike);
+        console.log("    like id:" + dataCards[i].likes[n]._id + ", Мой лайк: " + myLike);
       }
     }
     rdCards[i].myLike = myLike;
     let metka = "";
     if (myLike) { metka = "  Есть мой лайк" };
-    console.log("Card[" + i + "] :" + rdCards[i].id + " всего лайков : " + rdCards[i].likes + metka);//нужны ведерки отрисовывать
+    console.log("Card[" + i + "] :" + rdCards[i].ownerID + " всего лайков : " + rdCards[i].likes + metka);//нужны ведерки отрисовывать
   }
   section.renderItems();//отрисуем карточки
 }).catch((err) => alert(err));
