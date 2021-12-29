@@ -13,12 +13,12 @@ export { openLookImg, delLike, setLike };//для Card in utils.js
 //--------------------------------------------------------
 
 const rdCards = [
-  { name: "", link: "", id: "", likes: "" },
-  { name: "", link: "", id: "", likes: "" },
-  { name: "", link: "", id: "", likes: "" },
-  { name: "", link: "", id: "", likes: "" },
-  { name: "", link: "", id: "", likes: "" },
-  { name: "", link: "", id: "", likes: "" }
+  { name: "", link: "", myID: "", ownerID: "", likes: "", myLike: "" },
+  { name: "", link: "", myID: "", ownerID: "", likes: "", myLike: "" },
+  { name: "", link: "", myID: "", ownerID: "", likes: "", myLike: "" },
+  { name: "", link: "", myID: "", ownerID: "", likes: "", myLike: "" },
+  { name: "", link: "", myID: "", ownerID: "", likes: "", myLike: "" },
+  { name: "", link: "", myID: "", ownerID: "", likes: "", myLike: "" }
 ];
 //const myId = "";
 //--------------------------------------------------------
