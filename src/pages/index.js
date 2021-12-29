@@ -261,7 +261,7 @@ function handleSubmitBildCard(evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
   // Вставьте новые значения в новую карточку
   const data = popupBildCard.getInputValues();
-  const infoCard = { name: "", link: "", myID: "", ownerID: "", numLikes: "", myLike: "", likes: [] };
+  const infoCard = { name: "", link: ""};
   infoCard.name = data.placeInput;
   infoCard.link = data.urlInput;
 
@@ -274,7 +274,7 @@ function handleSubmitBildCard(evt) {
     renderBtnSave(".popup__btn-save", "Создать");//на кнопке "Создать"
     console.log("Card записан на сервере: " + dataRet.owner.id);
 
-    infoCard.ownerID = dataRet.owner.id;
+    //infoCard.ownerID = dataRet.owner.id;
     // Создадим экземпляр карточки
     section.renderItem(infoCard);
     // Закроем форму bildCard()
