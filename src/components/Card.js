@@ -1,6 +1,7 @@
 //Класс карточки
 export class Card {
     constructor(dataCard, template, handleCardClick, handleSetLike, handleDelLike) {
+        this._myCard = dataCard._myCard
         this._myID = dataCard.myID
         this._ownerID = dataCard.ownerID
         this._title = dataCard.name;
@@ -35,11 +36,10 @@ export class Card {
             this._likeButton.classList.remove('element__like-btn_active');//пустой
         };
 
-        if (this._myID !== this._ownerID) {// чужая карточка
+        if (this._myCard === false) {// чужая карточка
             this._delButton.remove();// удалим ведерко
         }
         
-
         // Вернём элемент наружу
         return this._element;
     }
@@ -61,7 +61,7 @@ export class Card {
             this._likeClick();
         });
 
-        if (this._myID === this._ownerID) { //своя карточка
+        if (this._myCard) { //своя карточка
             this._delButton.addEventListener('click', () => {
                 this._deleteCard();
             });

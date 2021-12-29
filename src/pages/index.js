@@ -12,12 +12,12 @@ export { openLookImg, delLike, setLike };//для Card in utils.js
 //--------------------------------------------------------
 
 const rdCards = [
-  { name: "", link: "", myID: "", ownerID: "", numLikes: "", myLike: "", likes: [] },
-  { name: "", link: "", myID: "", ownerID: "", numLikes: "", myLike: "", likes: [] },
-  { name: "", link: "", myID: "", ownerID: "", numLikes: "", myLike: "", likes: [] },
-  { name: "", link: "", myID: "", ownerID: "", numLikes: "", myLike: "", likes: [] },
-  { name: "", link: "", myID: "", ownerID: "", numLikes: "", myLike: "", likes: [] },
-  { name: "", link: "", myID: "", ownerID: "", numLikes: "", myLike: "", likes: [] }
+  { name: "", link: "", myID: "", ownerID: "", numLikes: "", myLike: "", likes: [], myCard: false },
+  { name: "", link: "", myID: "", ownerID: "", numLikes: "", myLike: "", likes: [], myCard: false },
+  { name: "", link: "", myID: "", ownerID: "", numLikes: "", myLike: "", likes: [], myCard: false },
+  { name: "", link: "", myID: "", ownerID: "", numLikes: "", myLike: "", likes: [], myCard: false },
+  { name: "", link: "", myID: "", ownerID: "", numLikes: "", myLike: "", likes: [], myCard: false },
+  { name: "", link: "", myID: "", ownerID: "", numLikes: "", myLike: "", likes: [], myCard: false }
 ];
 //const myId = "";
 //--------------------------------------------------------
