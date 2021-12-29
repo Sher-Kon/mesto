@@ -107,46 +107,29 @@ function closeEditAvatar() {
 
 function handleSubmitEditAvatar(evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
-/*
-  //======================================================
-  //      Запишем урл аватара на сервер.
-  //------------------------------------------------------
-  renderBtnSave(".edit-avatar__btn-save", "Загрузка...");//на кнопке "Загрузка..."
-  const data = popupEditAvatar.getInputValues();
-  const tasks = api.writeAvatar(data.urlAvatar);//data.urlAvatar
-  tasks.then((dataRet) => {
-    //дождались ответа сервера
-    avatarImage.src = dataRet.avatar;// загрузим ссылку на изображение аватара
-    console.log("Записан аватар, URL: " + data.urlAvatar);
-    renderBtnSave(".edit-avatar__btn-save", "Сохранить");//на кнопке "Сохранить"
-    // закрыть попап «Редактировать аватар» после ответа сервера
-    closeEditAvatar();// закрыть попап «Редактировать аватар»
-  }).catch((err) => alert(err));// если что-то пошло не так
-  //======================================================
-*/
-
   
-  //======================================================
-  //      Удаляем карточку на сервере.
-  //------------------------------------------------------
+    //======================================================
+    //      Запишем урл аватара на сервер.
+    //------------------------------------------------------
+    renderBtnSave(".edit-avatar__btn-save", "Загрузка...");//на кнопке "Загрузка..."
     const data = popupEditAvatar.getInputValues();
-    const tasks = api.deleteCard(data.urlAvatar);
+    const tasks = api.writeAvatar(data.urlAvatar);//data.urlAvatar
     tasks.then((dataRet) => {
       //дождались ответа сервера
-      console.log("Удалили карточку Id: " + dataRet._id);// отладка
-
-      closeEditAvatar();// закрыть попап «Редактировать аватар»  
-    }).catch((err) => alert(err));
-  //======================================================
-  
-
+      avatarImage.src = dataRet.avatar;// загрузим ссылку на изображение аватара
+      console.log("Записан аватар, URL: " + data.urlAvatar);
+      renderBtnSave(".edit-avatar__btn-save", "Сохранить");//на кнопке "Сохранить"
+      // закрыть попап «Редактировать аватар» после ответа сервера
+      closeEditAvatar();// закрыть попап «Редактировать аватар»
+    }).catch((err) => alert(err));// если что-то пошло не так
+    //======================================================
 
   //closeEditAvatar();// закрыть попап «Редактировать аватар»
 }
 
 // Слушатели на кнопку открытия попапа «Редактировать аватар»
 avatarButton.addEventListener("click", openEditAvatar);//открыть попап
-// avatarButton.addEventListener("click", openConfirm);//открыть Confirm отладка
+// avatarButton.addEventListener("click", openConfirmDel);//открыть Confirm отладка
 
 // Прикрепляем обработчики к форме «Редактировать аватар»:
 popupEditAvatar.setEventListeners();// "submit" и Х-закрыть попап
@@ -264,14 +247,10 @@ function handleSubmitBildCard(evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
   // Вставьте новые значения в новую карточку
   const data = popupBildCard.getInputValues();
-  const infoCard = { name: "", link: ""};
+  const infoCard = { name: "", link: "" };
   infoCard.name = data.placeInput;
   infoCard.link = data.urlInput;
-  //нарисуем ведерко
-  infoCard.myID = myID;
-  infoCard.ownerID = myID;
-  infoCard.myLike = false;//моего лайка нет
-  infoCard.numLikes = 0;//число лайков
+
   //======================================================
   //Добавим карточку на сервер.
   renderBtnSave(".popup__btn-save", "Загрузка...");//на кнопке "Загрузка..."
@@ -279,9 +258,13 @@ function handleSubmitBildCard(evt) {
   tasks.then((dataRet) => {
     //дождались ответа от сервера:
     renderBtnSave(".popup__btn-save", "Создать");//на кнопке "Создать"
-    console.log("запись cardID: "+ dataRet._id+", ownerID:" + dataRet.owner._id);
+    console.log("запись cardID: " + dataRet._id + ", ownerID:" + dataRet.owner._id);
 
-    infoCard.cardID = dataRet._id;
+    infoCard.myID = myID;//нарисуем ведерко
+    infoCard.ownerID = myID;//нарисуем ведерко
+    infoCard.myLike = false;//моего лайка нет
+    infoCard.numLikes = 0;//число лайков
+    infoCard.cardID = dataRet._id;//возвращает сервер
     // Создадим экземпляр карточки
     section.renderItem(infoCard);
     // Закроем форму bildCard()
@@ -331,7 +314,7 @@ function delLike(id) {
     //дождались обещанного
     const idCard = dataRet._id;
     const likeNum = dataRet.likes.length;
-    console.log("Сняли лайк с ID: "+idCard+"  число лайков: "+likeNum);//отладка
+    console.log("Сняли лайк с ID: " + idCard + "  число лайков: " + likeNum);//отладка
   }).catch((err) => alert(err));
   //======================================================
 }
@@ -346,7 +329,7 @@ function setLike(id) {
     //дождались обещанного
     const idCard = dataRet._id;
     const likeNum = dataRet.likes.length;
-    console.log("Добавили лайк ID: "+idCard+"  число лайков: "+likeNum);//отладка
+    console.log("Добавили лайк ID: " + idCard + "  число лайков: " + likeNum);//отладка
   }).catch((err) => alert(err));
   //======================================================
 }
@@ -396,8 +379,8 @@ api.getIniData().then(arg => {
     let metka = "";
     if (myLike) { metka = "  Есть мой лайк" };
     console.log("Card[" + i + "] :" + rdCards[i].cardID +
-                ", owner: " + rdCards[i].ownerID + 
-                ", всего лайков : " + rdCards[i].numLikes + metka);//нужны ведерки отрисовывать
+      ", owner: " + rdCards[i].ownerID +
+      ", всего лайков : " + rdCards[i].numLikes + metka);//нужны ведерки отрисовывать
   }
   section.renderItems();//отрисуем карточки
 }).catch((err) => alert(err));
