@@ -131,8 +131,10 @@ function handleSubmitEditAvatar(evt) {
     const data = popupEditAvatar.getInputValues();
     const tasks = api.deleteCard(data.urlAvatar);
     tasks.then((dataRet) => {
-      //дождались
-      console.log("Удалили карточку Id: " + cardDel);
+      //дождались ответа сервера
+      console.log("Удалили карточку Id: " + dataRet._id);// отладка
+
+      closeEditAvatar();// закрыть попап «Редактировать аватар»  
     }).catch((err) => alert(err));
   //======================================================
   
