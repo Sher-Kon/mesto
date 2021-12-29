@@ -35,7 +35,7 @@ export class Card {
             this._likeButton.classList.remove('element__like-btn_active');//пустой
         };
 
-        this._element.classList.remove('element__del-btn');// удалим ведерко
+        this._delButton.remove();// удалим ведерко
 
         // Вернём элемент наружу
         return this._element;
@@ -57,9 +57,11 @@ export class Card {
         this._likeButton.addEventListener('click', () => {
             this._likeClick();
         });
+        /*
         this._delButton.addEventListener('click', () => {
             this._deleteCard();
         });
+        */
         this._imgButton.addEventListener('click', () => {
             this._handlePictureClick();
         });
