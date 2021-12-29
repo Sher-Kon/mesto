@@ -316,7 +316,7 @@ function delCard(cardID) {
   const tasks = api.deleteCard(cardID);
   tasks.then((dataRet) => {
     //дождались ответа сервера
-    console.log("Удалили свою карточку " + dataRet);// отладка
+    console.log("Удалили свою карточку " + dataRet.message);// отладка
   }).catch((err) => alert(err));
   //======================================================
 }
@@ -329,7 +329,7 @@ function delLike(id) {
   const taskDelLike = api.delLike(id);
   taskDelLike.then((dataRet) => {
     //дождались обещанного
-    console.log("Сняли лайк с карточки Id: " + id);
+    console.log("Сняли лайк с карточки Id: " + dataRet._id);//отладка
   }).catch((err) => alert(err));
   //======================================================
 }
@@ -339,19 +339,12 @@ function delLike(id) {
 //------------------------------------------------------
 function setLike(id) {
   //======================================================
-  //const data = popupEditAvatar.getInputValues();
-  //const taskSetLike = api.setLike(data.urlAvatar);
   const taskSetLike = api.setLike(id);
   taskSetLike.then((dataRet) => {
     //дождались обещанного
     const idCard = dataRet._id;
     const likeNum = dataRet.likes.length;
-    console.log("Добавили лайк карточке: " + idCard);
-
-    //renderLoading(".edit-avatar__btn-save", false);//на кнопке "Сохранить"
-    //renderBtnSave(".edit-avatar__btn-save", "Сохранить");//на кнопке "Сохранить"
-    // закрыть попап «Редактировать аватар» после ответа сервера
-    //closeEditAvatar();
+    console.log("Добавили лайк: "+idCard+"  число лайков: "+dataRet.likes.length);
   }).catch((err) => alert(err));
   //======================================================
 }
