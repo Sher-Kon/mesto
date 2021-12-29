@@ -1,6 +1,7 @@
 //Класс карточки
 export class Card {
     constructor(dataCard, template, handleCardClick, handleSetLike, handleDelLike) {
+        this._myID = dataCard.myID
         this._ownerID = dataCard.ownerID
         this._title = dataCard.name;
         this._image = dataCard.link;
@@ -26,7 +27,7 @@ export class Card {
         // Добавим данные
         this._cardImage.src = this._image;
         this._cardImage.alt = "На фотографии " + this._title;
-        this._element.querySelector('.element__txt').textContent = this._title;
+        this._element.querySelector('.element__txt').textContent = this._myID;//this._title;
         this._likeNum.textContent = this._numLikes;//Запишем число лайков
         if (this._myLike) {
             this._likeButton.classList.add('element__like-btn_active');//отметить
