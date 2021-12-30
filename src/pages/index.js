@@ -77,6 +77,7 @@ function closeConfermDel() {
 function handleSubmitConfirmDel(evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
   console.log("Удаляем карточку - submit popup");
+  /*
   // удалим карточку 
   const cardID = card._cardID;// достанем id карточки
   const taskDelCard = api.deleteCard(cardID);//запрос на удаление
@@ -85,8 +86,9 @@ function handleSubmitConfirmDel(evt) {
     console.log("Удалили свою карточку: " + dataRet.message);// отладка
     closeConfermDel();// закрыть попап «ConfirmDEL»
   }).catch((err) => alert(err));
-//  console.log("Удаляем карточку - submit popup");
-//  closeConfermDel();// закрыть попап «Confirm»
+  */
+  console.log("Удаляем карточку - submit popup");
+  closeConfermDel();// закрыть попап «Confirm»
 }
 // Прикрепляем обработчики к форме «Confirm»:
 popupConfirmDel.setEventListeners();// "submit" и Х-закрыть попап
@@ -95,9 +97,9 @@ popupConfirmDel.setEventListeners();// "submit" и Х-закрыть попап
 //------------------------------------------------------
 function delCard(card) {//(cardID)
   //======================================================
-  popupConfirmDel.open(card);//
+  //popupConfirmDel.open(card);//
   //openConfirmDel(card);//откроем попап
-  /*
+  
     const cardID = card._cardID;// достанем id карточки
     const taskDelCard = api.deleteCard(cardID);//запрос на удаление
     taskDelCard.then((dataRet) => {
@@ -105,7 +107,7 @@ function delCard(card) {//(cardID)
       console.log("Удалили свою карточку: " + dataRet.message);// отладка
       card._element.remove();//удалим элемент в DOM
     }).catch((err) => alert(err));
-  */
+  
   //======================================================
 }
 
