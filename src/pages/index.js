@@ -296,8 +296,8 @@ popupLookImage.setEventListeners();
 //------------------------------------------------------
 function delCard(card) {//(cardID)
   //======================================================
-  openConfirmDel();//откроем попап
-/*  
+//  openConfirmDel();//откроем попап
+  
     const cardID = card._cardID;// достанем id карточки
     const taskDelCard = api.deleteCard(cardID);//запрос на удаление
     taskDelCard.then((dataRet) => {
@@ -306,7 +306,7 @@ function delCard(card) {//(cardID)
     }).catch((err) => alert(err));
 
     card._element.remove();//удалим элемент в DOM
-*/    
+    
   //======================================================
 }
 
@@ -361,7 +361,7 @@ api.getIniData().then(arg => {
   // загрузим ссылку на изображение аватара
   avatarImage.src = dataProfile.avatar;
   myID = dataProfile._id;// сохраним мой id в глобальной переменной
-  console.log("Мой id: " + myID);
+  //console.log("Мой id: " + myID);//отладка
   //--------------------------------------------------------
   //  Начальная загрузка страницы - 6 карточек
   //--------------------------------------------------------
