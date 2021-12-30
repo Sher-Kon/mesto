@@ -3,6 +3,7 @@ import './index.css';// импорт главного файла стилей д
 import { Api } from "../components/Api.js";
 import { PopupWithImage } from "../components/PopupWithImage.js";
 import { PopupWithForm } from "../components/PopupWithForm.js";
+import { PopupConfirm } from "../components/PopupConfirm.js";
 import { UserInfo } from "../components/UserInfo.js";
 import { Section } from "../components/Section.js";
 import { FormValidator } from "../components/FormValidator.js";
@@ -36,7 +37,7 @@ const api = new Api({
 const section = new Section(rdCards, createCard, ".elements");
 
 // Создадим экземпляр PopupWithForm для Confirm
-const popupConfirmDel = new PopupWithForm(".confirm", handleSubmitConfirmDel);
+const popupConfirmDel = new PopupConfirm(".confirm", handleSubmitConfirmDel);
 // Создадим экземпляр PopupWithForm для EditAvatar
 const popupEditAvatar = new PopupWithForm(".edit-avatar", handleSubmitEditAvatar);
 // Создадим экземпляр PopupWithForm для EditProfile
@@ -73,26 +74,39 @@ function openConfirmDel(card) {
 function closeConfermDel() {
   popupConfirmDel.close();
 }
-
-function handleSubmitConfirmDel(card) {
+function handleSubmitConfirmDel(evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
-
   // удалим карточку 
   const cardID = card._cardID;// достанем id карточки
   const taskDelCard = api.deleteCard(cardID);//запрос на удаление
-  taskDelCard.then((dataRet) => {
-    //дождались ответа сервера
-    card._element.remove();//удалим элемент в DOM
+  taskDelCard.then((dataRet) => {//дождались ответа сервера
+    card.deleteCardElement();//удалим элемент в DOM
     console.log("Удалили свою карточку: " + dataRet.message);// отладка
     closeConfermDel();// закрыть попап «ConfirmDEL»
   }).catch((err) => alert(err));
-
 //  console.log("Удаляем карточку - submit popup");
 //  closeConfermDel();// закрыть попап «Confirm»
 }
-
 // Прикрепляем обработчики к форме «Confirm»:
 popupConfirmDel.setEventListeners();// "submit" и Х-закрыть попап
+//--------------------------------------------------------
+//      Удалим карточку 
+//------------------------------------------------------
+function delCard(card) {//(cardID)
+  //======================================================
+  popupConfirmDel.open(card);//
+  //openConfirmDel(card);//откроем попап
+  /*
+    const cardID = card._cardID;// достанем id карточки
+    const taskDelCard = api.deleteCard(cardID);//запрос на удаление
+    taskDelCard.then((dataRet) => {
+      //дождались ответа сервера
+      console.log("Удалили свою карточку: " + dataRet.message);// отладка
+      card._element.remove();//удалим элемент в DOM
+    }).catch((err) => alert(err));
+  */
+  //======================================================
+}
 
 //--------------------------------------------------------
 // EditAvatar popup
