@@ -85,13 +85,13 @@ export class Card {
         //this._likeButton.classList.toggle('element__like-btn_active');
         if (this._myLike) {
             //console.log( "удалим лайк id: " + this._cardID);
-            this._handleDelLike(this._element);//this._cardID
+            this._handleSetLike(this);//this._handleDelLike(this._cardID);
             this._likeButton.classList.remove('element__like-btn_active');//пустой
             //this._numLikes = this._numLikes - 1;//Обновим число лайков
             this._myLike = false;
         } else {
             //console.log( "добавим лайк id: " +this._cardID);
-            this._handleSetLike(this._element);//this._cardID
+            this._handleSetLike(this);//this._handleSetLike(this._cardID);
             this._likeButton.classList.add('element__like-btn_active');//отметить
             //this._numLikes = this._numLikes + 1;//Обновим число лайков
             this._myLike = true;
