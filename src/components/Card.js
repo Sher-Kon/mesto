@@ -57,8 +57,13 @@ export class Card {
         return cardElement;
     }
 
+    updateLikes(likes) {
+        this._numLikes = likes;//Обновим число лайков
+    }
+
     // список слушателей
     _setEventListeners() {
+        // кнопка лайка
         this._likeButton.addEventListener('click', () => {
             this._likeClick();
         });
@@ -74,22 +79,18 @@ export class Card {
         });
     }
 
-    updateLikes(likes) {
-        this._numLikes = likes;
-    }
-
     // обработчик лайка
     _likeClick() {
         //this._likeButton.classList.toggle('element__like-btn_active');
         if (this._myLike) {
             //console.log( "удалим лайк id: " + this._cardID);
-            this._handleDelLike(this._cardID);
+            this._handleDelLike();//this._cardID
             this._likeButton.classList.remove('element__like-btn_active');//пустой
             this._numLikes = this._numLikes - 1;//Обновим число лайков
             this._myLike = false;
         } else {
             //console.log( "добавим лайк id: " +this._cardID);
-            this._handleSetLike(this._cardID);
+            this._handleSetLike();//this._cardID
             this._likeButton.classList.add('element__like-btn_active');//отметить
             this._numLikes = this._numLikes + 1;//Обновим число лайков
             this._myLike = true;

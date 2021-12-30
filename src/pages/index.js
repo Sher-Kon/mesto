@@ -307,32 +307,36 @@ function delCard(cardID) {
 
 //--------------------------------------------------------
 //      Удалим лайк на сервере.
-//------------------------------------------------------
-function delLike(cardID) {
-  //======================================================
+//--------------------------------------------------------
+function delLike(card) {//cardID
+  //======================================================  
+  const cardID = card._id;// достанем id карточки
+
   const taskDelLike = api.delLike(cardID);
   taskDelLike.then((dataRet) => {
     //дождались обещанного
     const idCard = dataRet._id;
     const numLikes = dataRet.likes.length;
     console.log("Сняли лайк с ID: " + idCard + "  число лайков: " + numLikes);//отладка
-    //card.updateLikes(numLikes);
+    card.updateLikes(numLikes);
   }).catch((err) => alert(err));
   //======================================================
 }
 
 //--------------------------------------------------------
 //      Добавим лайк на сервере.
-//------------------------------------------------------
-function setLike(cardID) {
+//--------------------------------------------------------
+function setLike(card) {//cardID
   //======================================================
+  const cardID = card._id;// достанем id карточки
+
   const taskSetLike = api.setLike(cardID);
   taskSetLike.then((dataRet) => {
     //дождались обещанного
     const idCard = dataRet._id;
     const numLikes = dataRet.likes.length;
-    console.log("Добавили лайк ID: " + idCard + "  число лайков: " + numLikes);//отладка
-    //card.updateLikes(23);
+    console.log("Добавили лайк ID: "+idCard+"  число лайков: "+numLikes);//отладка
+    card.updateLikes(numLikes);
   }).catch((err) => alert(err));
   //======================================================
 }
