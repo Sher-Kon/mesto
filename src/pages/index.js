@@ -21,6 +21,7 @@ const rdCards = [
 ];
 
 let myID = "";
+let nLikes = 0;
 //--------------------------------------------------------
 // Создадим экземпляр class Api 
 const api = new Api({
@@ -313,9 +314,9 @@ function delLike(id) {
   taskDelLike.then((dataRet) => {
     //дождались обещанного
     const idCard = dataRet._id;
-    const likeNum = dataRet.likes.length;
-    console.log("Сняли лайк с ID: " + idCard + "  число лайков: " + likeNum);//отладка
-    return likeNum;
+    nLikes = dataRet.likes.length;
+    console.log("Сняли лайк с ID: " + idCard + "  число лайков: " + nLikes);//отладка
+    return nLikes;
   }).catch((err) => alert(err));
   //======================================================
 }
@@ -330,9 +331,9 @@ function setLike(id) {
     //дождались обещанного
     const idCard = dataRet._id;
     const likeNum = dataRet.likes.length;
-    likeNum = 23;
-    console.log("Добавили лайк ID: " + idCard + "  число лайков: " + likeNum);//отладка
-    return likeNum;
+    nLikes = 23;
+    console.log("Добавили лайк ID: " + idCard + "  число лайков: " + nLikes);//отладка
+    return nLikes;
   }).catch((err) => alert(err));
   //======================================================
 }
