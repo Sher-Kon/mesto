@@ -67,8 +67,8 @@ validatorBildCard.enableValidation();
 // ConfirmDel popup
 //--------------------------------------------------------
 // Обработчик открытия формы popup «Confirm»
-function openConfirmDel(card) {
-  popupConfirmDel.open(card);// 
+function openConfirmDel() {
+  popupConfirmDel.open();// 
 }
 // Обработчик закрытия формы popup «Confirm»
 function closeConfermDel() {
@@ -76,6 +76,7 @@ function closeConfermDel() {
 }
 function handleSubmitConfirmDel(evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
+  console.log("Удаляем карточку - submit popup");
   // удалим карточку 
   const cardID = card._cardID;// достанем id карточки
   const taskDelCard = api.deleteCard(cardID);//запрос на удаление
@@ -310,24 +311,7 @@ function openLookImg(cardElement) {
 }
 //  Добавляет слушатель кнопке Х (закрыть "look-img")
 popupLookImage.setEventListeners();
-
 //--------------------------------------------------------
-//      Удалим карточку 
-//------------------------------------------------------
-function delCard(card) {//(cardID)
-  //======================================================
-  openConfirmDel(card);//откроем попап
-  /*
-    const cardID = card._cardID;// достанем id карточки
-    const taskDelCard = api.deleteCard(cardID);//запрос на удаление
-    taskDelCard.then((dataRet) => {
-      //дождались ответа сервера
-      console.log("Удалили свою карточку: " + dataRet.message);// отладка
-      card._element.remove();//удалим элемент в DOM
-    }).catch((err) => alert(err));
-  */
-  //======================================================
-}
 
 //--------------------------------------------------------
 //      Удалим лайк на сервере.
