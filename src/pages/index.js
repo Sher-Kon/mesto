@@ -310,7 +310,7 @@ function delCard(cardID) {
 //--------------------------------------------------------
 function delLike(card) {//cardID
   //======================================================  
-  const cardID = card._id;// достанем id карточки
+  const cardID = card._cardID;// достанем id карточки
 
   const taskDelLike = api.delLike(cardID);
   taskDelLike.then((dataRet) => {
@@ -328,7 +328,7 @@ function delLike(card) {//cardID
 //--------------------------------------------------------
 function setLike(card) {//cardID
   //======================================================
-  const cardID = card._id;// достанем id карточки
+  const cardID = card._cardID;// достанем id карточки
 
   const taskSetLike = api.setLike(cardID);
   taskSetLike.then((dataRet) => {
