@@ -68,7 +68,7 @@ validatorBildCard.enableValidation();
 // Обработчик открытия формы popup «Confirm»
 function openConfirmDel() {
   //открыть popup «Confirm» не дожидаясь
-  popupConfirmDel.open();// ждите ответа сервера
+  popupConfirmDel.open();// 
 }
 // Обработчик закрытия формы popup «Confirm»
 function closeConfermDel() {
@@ -297,11 +297,14 @@ popupLookImage.setEventListeners();
 //------------------------------------------------------
 function delCard(cardID) {
   //======================================================
+  openConfirmDel();//откроем попап
+/*
   const taskDelCard = api.deleteCard(cardID);
   taskDelCard.then((dataRet) => {
     //дождались ответа сервера
     console.log("Удалили свою карточку: " + dataRet.message);// отладка
   }).catch((err) => alert(err));
+  */
   //======================================================
 }
 
