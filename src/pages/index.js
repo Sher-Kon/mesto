@@ -105,7 +105,8 @@ function delCard(card) {//(cardID)
     taskDelCard.then((dataRet) => {
       //дождались ответа сервера
       console.log("Удалили свою карточку: " + dataRet.message);// отладка
-      card._element.remove();//удалим элемент в DOM
+      //card._element.remove();//удалим элемент в DOM
+      card.deleteCardElement();//удалим элемент в DOM
     }).catch((err) => alert(err));
   
   //======================================================
