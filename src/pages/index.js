@@ -78,10 +78,10 @@ function handleSubmitConfirmDel(evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
   // удалим карточку
   console.log("Удалим карточку из ДОМ");
-  card._element.remove();//удалим элемент в DOM
+  //card._element.remove();//удалим элемент в DOM
 
 
-  // закрыть попап «Confirm» не дожидаясь ответа сервера
+  // закрыть попап «Confirm»
   closeConfermDel();
 }
 
@@ -296,7 +296,7 @@ popupLookImage.setEventListeners();
 //------------------------------------------------------
 function delCard(card) {//(cardID)
   //======================================================
-//  openConfirmDel();//откроем попап
+  openConfirmDel();//откроем попап
   
     const cardID = card._cardID;// достанем id карточки
     const taskDelCard = api.deleteCard(cardID);//запрос на удаление
