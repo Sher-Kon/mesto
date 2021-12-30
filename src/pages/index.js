@@ -315,10 +315,10 @@ function delLike(card) {//cardID
   const taskDelLike = api.delLike(cardID);
   taskDelLike.then((dataRet) => {
     //дождались обещанного
-    const idCard = dataRet._id;
-    const numLikes = dataRet.likes.length;
-    console.log("Сняли лайк с ID: " + idCard + "  число лайков: " + numLikes);//отладка
-    card.updateLikes(numLikes);
+    //const idCard = dataRet._id;
+    //const numLikes = dataRet.likes.length;
+    //console.log("Сняли лайк с ID: " + idCard + "  число лайков: " + numLikes);//отладка
+    card.updateLikes(23);
   }).catch((err) => alert(err));
   //======================================================
 }
@@ -333,10 +333,10 @@ function setLike(card) {//cardID
   const taskSetLike = api.setLike(cardID);
   taskSetLike.then((dataRet) => {
     //дождались обещанного
-    const idCard = dataRet._id;
-    const numLikes = dataRet.likes.length;
-    console.log("Добавили лайк ID: "+idCard+"  число лайков: "+numLikes);//отладка
-    card.updateLikes(numLikes);
+    //const idCard = dataRet._id;
+    //const numLikes = dataRet.likes.length;
+    //console.log("Добавили лайк ID: "+idCard+"  число лайков: "+numLikes);//отладка
+    card.updateLikes(24);
   }).catch((err) => alert(err));
   //======================================================
 }
