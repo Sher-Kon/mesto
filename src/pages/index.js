@@ -50,9 +50,9 @@ const popupLookImage = new PopupWithImage(".look-img", ".look-img__title", ".loo
 const userInfoProfile = new UserInfo(".profile__info-name", ".profile__info-job");
 
 // Создадим экземпляр FormValidator для EditAvatar
-//const validatorEditAvatar = new FormValidator(selectorsElements, ".edit-avatar");
+const validatorEditAvatar = new FormValidator(selectorsElements, ".edit-avatar");
 // Вызовем функцию проверки валидации EditAvatar
-//validatorEditAvatar.enableValidation();
+validatorEditAvatar.enableValidation();
 // Создадим экземпляр FormValidator для EditProfile
 const validatorEditProfile = new FormValidator(selectorsElements, ".edit-profile");
 // Вызовем функцию проверки валидации EditProfile
@@ -108,22 +108,22 @@ function closeEditAvatar() {
 
 function handleSubmitEditAvatar(evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
-  
-    //======================================================
-    //      Запишем урл аватара на сервер.
-    //------------------------------------------------------
-    renderBtnSave(".edit-avatar__btn-save", "Загрузка...");//на кнопке "Загрузка..."
-    const data = popupEditAvatar.getInputValues();
-    const tasks = api.writeAvatar(data.urlAvatar);//data.urlAvatar
-    tasks.then((dataRet) => {
-      //дождались ответа сервера
-      avatarImage.src = dataRet.avatar;// загрузим ссылку на изображение аватара
-      console.log("Записан аватар, URL: " + data.urlAvatar);
-      renderBtnSave(".edit-avatar__btn-save", "Сохранить");//на кнопке "Сохранить"
-      // закрыть попап «Редактировать аватар» после ответа сервера
-      closeEditAvatar();// закрыть попап «Редактировать аватар»
-    }).catch((err) => alert(err));// если что-то пошло не так
-    //======================================================
+
+  //======================================================
+  //      Запишем урл аватара на сервер.
+  //------------------------------------------------------
+  renderBtnSave(".edit-avatar__btn-save", "Загрузка...");//на кнопке "Загрузка..."
+  const data = popupEditAvatar.getInputValues();
+  const tasks = api.writeAvatar(data.urlAvatar);//data.urlAvatar
+  tasks.then((dataRet) => {
+    //дождались ответа сервера
+    avatarImage.src = dataRet.avatar;// загрузим ссылку на изображение аватара
+    console.log("Записан аватар, URL: " + data.urlAvatar);
+    renderBtnSave(".edit-avatar__btn-save", "Сохранить");//на кнопке "Сохранить"
+    // закрыть попап «Редактировать аватар» после ответа сервера
+    closeEditAvatar();// закрыть попап «Редактировать аватар»
+  }).catch((err) => alert(err));// если что-то пошло не так
+  //======================================================
 
   //closeEditAvatar();// закрыть попап «Редактировать аватар»
 }
@@ -298,13 +298,13 @@ popupLookImage.setEventListeners();
 function delCard(cardID) {
   //======================================================
   openConfirmDel();//откроем попап
-/*
-  const taskDelCard = api.deleteCard(cardID);
-  taskDelCard.then((dataRet) => {
-    //дождались ответа сервера
-    console.log("Удалили свою карточку: " + dataRet.message);// отладка
-  }).catch((err) => alert(err));
-  */
+  /*
+    const taskDelCard = api.deleteCard(cardID);
+    taskDelCard.then((dataRet) => {
+      //дождались ответа сервера
+      console.log("Удалили свою карточку: " + dataRet.message);// отладка
+    }).catch((err) => alert(err));
+    */
   //======================================================
 }
 
@@ -338,7 +338,7 @@ function setLike(card) {//(cardID)
     //дождались обещанного
     //const idCard = dataRet._id;
     const numLikes = dataRet.likes.length;
-    console.log("число лайков: "+numLikes);//отладка
+    console.log("число лайков: " + numLikes);//отладка
     card.updateLikes(numLikes);
   }).catch((err) => alert(err));
   //======================================================
@@ -352,14 +352,14 @@ api.getIniData().then(arg => {
   //--------------------------------------------------------
   //  Начальная загрузка профиля
   //--------------------------------------------------------
-  // загрузим ссылку на изображение аватара
-  avatarImage.src = dataProfile.avatar;
-  myID = dataProfile._id;// сохраним мой id в глобальной переменной
-  console.log("Мой id: " + myID);
   // Загрузить значения из запроса в профиль
   //userInfoEditProfile.setUserInfo(dataProfile.name, dataProfile.about);
   nameProfile.textContent = dataProfile.name;
   infoProfile.textContent = dataProfile.about;
+  // загрузим ссылку на изображение аватара
+  avatarImage.src = dataProfile.avatar;
+  myID = dataProfile._id;// сохраним мой id в глобальной переменной
+  console.log("Мой id: " + myID);
   //--------------------------------------------------------
   //  Начальная загрузка страницы - 6 карточек
   //--------------------------------------------------------
@@ -373,14 +373,16 @@ api.getIniData().then(arg => {
     rdCards[i].likes = dataCards[i].likes;//
 
     let myLike = false;
-    let strlike = "";
+    //let strlike = "";
     if (rdCards[i].numLikes > 0) {
       // перебор всех лайков c целью найти свой
       for (let n = 0; n < rdCards[i].numLikes; n += 1) {
         if (rdCards[i].myID === rdCards[i].likes[n]._id) {//владелец лайка
           myLike = true;//есть мой лайк
-          strlike = "ДА";
-        } else { strlike = "нет"; };
+          //strlike = "ДА";
+          //} else { 
+          //strlike = "нет"; 
+        };
         //console.log("    like id:" + rdCards[i].likes[n]._id + ", Мой лайк: " + strlike);
       }
     }
@@ -390,7 +392,9 @@ api.getIniData().then(arg => {
     if (myLike) { metka = "  Есть мой лайк" };
     console.log("Card[" + i + "] :" + rdCards[i].cardID +
       ", owner: " + rdCards[i].ownerID +
-      ", всего лайков : " + rdCards[i].numLikes + metka);//нужны ведерки отрисовывать
+      ", всего лайков : " + rdCards[i].numLikes + metka
+    );
+
   }
   section.renderItems();//отрисуем карточки
 }).catch((err) => alert(err));
