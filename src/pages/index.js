@@ -315,6 +315,7 @@ function delLike(id) {
     const idCard = dataRet._id;
     const likeNum = dataRet.likes.length;
     console.log("Сняли лайк с ID: " + idCard + "  число лайков: " + likeNum);//отладка
+    return likeNum;
   }).catch((err) => alert(err));
   //======================================================
 }
@@ -329,7 +330,9 @@ function setLike(id) {
     //дождались обещанного
     const idCard = dataRet._id;
     const likeNum = dataRet.likes.length;
+    likeNum = 23;
     console.log("Добавили лайк ID: " + idCard + "  число лайков: " + likeNum);//отладка
+    return likeNum;
   }).catch((err) => alert(err));
   //======================================================
 }
