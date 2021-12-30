@@ -77,8 +77,8 @@ function closeConfermDel() {
 function handleSubmitConfirmDel(evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
   // удалим карточку
+  console.log("Удалим карточку из ДОМ");
   card._element.remove();//удалим элемент в DOM
-  console.log("Удалили карточку из ДОМ");
 
 
   // закрыть попап «Confirm» не дожидаясь ответа сервера
