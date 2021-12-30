@@ -88,7 +88,7 @@ function handleSubmitConfirmDel(evt) {
   }).catch((err) => alert(err));
 */
   console.log("Удаляем карточку - submit popup");
-  //closeConfermDel();// закрыть попап «Confirm»
+  closeConfermDel();// закрыть попап «Confirm»
 }
 
 // Прикрепляем обработчики к форме «Confirm»:

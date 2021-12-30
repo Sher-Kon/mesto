@@ -41,7 +41,7 @@ export class Card {
         if (this._ownerID !== this._myID) {// чужая карточка
             this._delButton.remove();// удалим ведерко
         }
-        
+
         // Вернём элемент наружу
         return this._element;
     }
@@ -66,7 +66,7 @@ export class Card {
 
         if (this._ownerID === this._myID) { //своя карточка
             this._delButton.addEventListener('click', () => {
-                _deleteCard();
+                this._deleteCard();
             });
         }
 
@@ -94,7 +94,7 @@ export class Card {
             this._myLike = true;
         }
     }
-    
+
     // обработчик delete
     _deleteCard() {
         this._handleDelCard(this);//(this._cardID)запрос на удаление карточки
