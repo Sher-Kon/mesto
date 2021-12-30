@@ -254,11 +254,11 @@ function handleSubmitBildCard(evt) {
 
   //======================================================
   //Добавим карточку на сервер.
-  renderBtnSave(".popup__btn-save", "Загрузка...");//на кнопке "Загрузка..."
+  renderBtnSave(".bild-card__btn-save", "Загрузка...");//на кнопке "Загрузка..."
   const tasks = api.writeCard(infoCard);
   tasks.then((dataRet) => {
     //дождались ответа от сервера:
-    renderBtnSave(".popup__btn-save", "Создать");//на кнопке "Создать"
+    renderBtnSave(".bild-card__btn-save", "Создать");//на кнопке "Создать"
     console.log("запись cardID: " + dataRet._id + ", ownerID:" + dataRet.owner._id);
 
     infoCard.myID = myID;//нарисуем ведерко
@@ -372,7 +372,7 @@ api.getIniData().then(arg => {
     let myLike = false;
     let strlike = "";
     if (rdCards[i].numLikes > 0) {
-      // перебор всех лайков
+      // перебор всех лайков c целью найти свой
       for (let n = 0; n < rdCards[i].numLikes; n += 1) {
         if (rdCards[i].myID === rdCards[i].likes[n]._id) {//владелец лайка
           myLike = true;//есть мой лайк
