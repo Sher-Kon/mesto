@@ -76,13 +76,19 @@ function closeConfermDel() {
 
 function handleSubmitConfirmDel(evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
-  // удалим карточку
-  console.log("Удалим карточку из ДОМ");
-  //card._element.remove();//удалим элемент в DOM
-
-
-  // закрыть попап «Confirm»
-  closeConfermDel();
+/*
+  // удалим карточку 
+  const cardID = card._cardID;// достанем id карточки
+  const taskDelCard = api.deleteCard(cardID);//запрос на удаление
+  taskDelCard.then((dataRet) => {
+    //дождались ответа сервера
+    card._element.remove();//удалим элемент в DOM
+    console.log("Удалили свою карточку: " + dataRet.message);// отладка
+    closeConfermDel();// закрыть попап «ConfirmDEL»
+  }).catch((err) => alert(err));
+*/
+  console.log("Удаляем карточку - submit popup");
+  //closeConfermDel();// закрыть попап «Confirm»
 }
 
 // Прикрепляем обработчики к форме «Confirm»:
@@ -258,7 +264,7 @@ function handleSubmitBildCard(evt) {
   tasks.then((dataRet) => {
     //дождались ответа от сервера:
     renderBtnSave(".bild-card__btn-save", "Создать");//на кнопке "Создать"
-    console.log("запись cardID: " + dataRet._id + ", ownerID:" + dataRet.owner._id);
+    //console.log("запись cardID: " + dataRet._id + ", ownerID:" + dataRet.owner._id);
 
     infoCard.myID = myID;//нарисуем ведерко
     infoCard.ownerID = myID;//нарисуем ведерко
@@ -306,7 +312,7 @@ function delCard(card) {//(cardID)
     }).catch((err) => alert(err));
 
     card._element.remove();//удалим элемент в DOM
-    
+  
   //======================================================
 }
 
@@ -322,7 +328,7 @@ function delLike(card) {//(cardID)
     //дождались обещанного
     //const idCard = dataRet._id;
     const numLikes = dataRet.likes.length;
-    console.log("число лайков: " + numLikes);//отладка
+    //console.log("число лайков: " + numLikes);//отладка
     card.updateLikes(numLikes);
   }).catch((err) => alert(err));
   //======================================================
@@ -340,7 +346,7 @@ function setLike(card) {//(cardID)
     //дождались обещанного
     //const idCard = dataRet._id;
     const numLikes = dataRet.likes.length;
-    console.log("число лайков: " + numLikes);//отладка
+    //console.log("число лайков: " + numLikes);//отладка
     card.updateLikes(numLikes);
   }).catch((err) => alert(err));
   //======================================================
