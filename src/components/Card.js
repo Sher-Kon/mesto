@@ -1,6 +1,6 @@
 //Класс карточки
 export class Card {
-    constructor(dataCard, template, handleCardClick, handleSetLike, handleDelLike, handleDeleteRequest) {
+    constructor(dataCard, template, handleCardClick, handleSetLike, handleDelLike, handleDelCard) {
         this._myCard = dataCard.myCard
         this._myID = dataCard.myID
         this._ownerID = dataCard.ownerID
@@ -13,7 +13,7 @@ export class Card {
         this._handleCardClick = handleCardClick;
         this._handleSetLike = handleSetLike;
         this._handleDelLike = handleDelLike;
-        this._handleDeleteRequest = handleDeleteRequest;
+        this._handleDelCard = handleDelCard;
     }
 
     generateCard() {
@@ -66,7 +66,7 @@ export class Card {
 
         if (this._ownerID === this._myID) { //своя карточка
             this._delButton.addEventListener('click', () => {
-                this._handleDeleteRequest(this);
+                _deleteCard();
             });
         }
 
