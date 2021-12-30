@@ -77,8 +77,8 @@ function closeConfermDel() {
 function handleSubmitConfirmDel(evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
   // удалим карточку
-  const idCard = "id Card fo delete";
-  console.log(idCard);
+  card._element.remove();//удалим элемент в DOM
+  console.log("Удалили карточку из ДОМ");
 
 
   // закрыть попап «Confirm» не дожидаясь ответа сервера
@@ -292,21 +292,21 @@ function openLookImg(cardElement) {
 popupLookImage.setEventListeners();
 
 //--------------------------------------------------------
-//      Удалим карточку на сервере.
+//      Удалим карточку 
 //------------------------------------------------------
 function delCard(card) {//(cardID)
   //======================================================
-  //openConfirmDel();//откроем попап
-  
+  openConfirmDel();//откроем попап
+/*  
     const cardID = card._cardID;// достанем id карточки
-    const taskDelCard = api.deleteCard(cardID);
+    const taskDelCard = api.deleteCard(cardID);//запрос на удаление
     taskDelCard.then((dataRet) => {
       //дождались ответа сервера
       console.log("Удалили свою карточку: " + dataRet.message);// отладка
     }).catch((err) => alert(err));
 
     card._element.remove();//удалим элемент в DOM
-    
+*/    
   //======================================================
 }
 
