@@ -308,7 +308,7 @@ function delCard(cardID) {
 //--------------------------------------------------------
 //      Удалим лайк на сервере.
 //--------------------------------------------------------
-function delLike(card) {//cardID
+function delLike(card) {//(cardID)
   //======================================================  
   const cardID = card._cardID;// достанем id карточки
 
@@ -316,9 +316,9 @@ function delLike(card) {//cardID
   taskDelLike.then((dataRet) => {
     //дождались обещанного
     //const idCard = dataRet._id;
-    //const numLikes = dataRet.likes.length;
-    //console.log("Сняли лайк с ID: " + idCard + "  число лайков: " + numLikes);//отладка
-    card.updateLikes(23);
+    const numLikes = dataRet.likes.length;
+    console.log("число лайков: " + numLikes);//отладка
+    card.updateLikes(numLikes);
   }).catch((err) => alert(err));
   //======================================================
 }
@@ -326,7 +326,7 @@ function delLike(card) {//cardID
 //--------------------------------------------------------
 //      Добавим лайк на сервере.
 //--------------------------------------------------------
-function setLike(card) {//cardID
+function setLike(card) {//(cardID)
   //======================================================
   const cardID = card._cardID;// достанем id карточки
 
@@ -334,9 +334,9 @@ function setLike(card) {//cardID
   taskSetLike.then((dataRet) => {
     //дождались обещанного
     //const idCard = dataRet._id;
-    //const numLikes = dataRet.likes.length;
-    //console.log("Добавили лайк ID: "+idCard+"  число лайков: "+numLikes);//отладка
-    card.updateLikes(24);
+    const numLikes = dataRet.likes.length;
+    console.log("число лайков: "+numLikes);//отладка
+    card.updateLikes(numLikes);
   }).catch((err) => alert(err));
   //======================================================
 }
