@@ -75,8 +75,8 @@ function closeConfermDel() {
   popupConfirmDel.close();
 }
 function handleDeleteCard() {
-  //evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
-  console.log("Удаляем карточку - submit popup");
+  const cardID = card._cardID;// достанем id карточки
+  console.log("Удаляем карточку :"+cardID);
   /*
   // удалим карточку 
   const cardID = card._cardID;// достанем id карточки
