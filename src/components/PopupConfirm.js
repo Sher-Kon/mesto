@@ -17,6 +17,6 @@ export class PopupConfirm extends Popup {
     setEventListeners() {
         super.setEventListeners();
         // Добавляет обработчик клика кнопки
-        this._btnElement.addEventListener("click", () => { this._handleConfirm(this._card) });
+        this._btnElement.addEventListener("click", () => { this._handleConfirm(this._card.bind(this)) });
     }
 }
