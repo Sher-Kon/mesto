@@ -1,10 +1,10 @@
 import { Popup } from "./Popup.js";
 
 export class PopupConfirm extends Popup {
-    constructor(popupSelector, handleSubmitPopup) {
+    constructor(popupSelector, handleConfirm) {
         super(popupSelector);
-        this._handleSubmitPopup = handleSubmitPopup;
-        this._formElement = this._popupElement.querySelector(".form");// Находим форму в DOM
+        this._handleConfirm = handleConfirm;
+        this._btnElement = this._popupElement.querySelector(".confirm__btn-save");// Находим кнопку в DOM
     }
 
     // Открытие попапа
@@ -16,7 +16,7 @@ export class PopupConfirm extends Popup {
     // Обработчик клика по Х-иконке закрытия, и добавляет обработчик сабмита    
     setEventListeners() {
         super.setEventListeners();
-        // Добавляет обработчик сабмита
-        this._formElement.addEventListener("submit", () => { this._handleSubmitPopup(this._card) });
+        // Добавляет обработчик клика кнопки
+        this._btnElement.addEventListener("click", () => { this._handleConfirm(this._card) });
     }
 }

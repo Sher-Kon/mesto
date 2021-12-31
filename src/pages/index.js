@@ -37,7 +37,7 @@ const api = new Api({
 const section = new Section(rdCards, createCard, ".elements");
 
 // Создадим экземпляр PopupWithForm для Confirm
-const popupConfirmDel = new PopupConfirm(".confirm", handleSubmitConfirmDel);
+const popupConfirmDel = new PopupConfirm(".confirm", handleDeleteCard);
 // Создадим экземпляр PopupWithForm для EditAvatar
 const popupEditAvatar = new PopupWithForm(".edit-avatar", handleSubmitEditAvatar);
 // Создадим экземпляр PopupWithForm для EditProfile
@@ -74,8 +74,8 @@ function openConfirmDel() {
 function closeConfermDel() {
   popupConfirmDel.close();
 }
-function handleSubmitConfirmDel(evt) {
-  evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
+function handleDeleteCard() {
+  //evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
   console.log("Удаляем карточку - submit popup");
   /*
   // удалим карточку 
@@ -87,7 +87,7 @@ function handleSubmitConfirmDel(evt) {
     closeConfermDel();// закрыть попап «ConfirmDEL»
   }).catch((err) => alert(err));
   */
-  console.log("Удаляем карточку - submit popup");
+  //console.log("Удаляем карточку - submit popup");
   closeConfermDel();// закрыть попап «Confirm»
 }
 // Прикрепляем обработчики к форме «Confirm»:
@@ -97,7 +97,7 @@ popupConfirmDel.setEventListeners();// "submit" и Х-закрыть попап
 //------------------------------------------------------
 function delCard(card) {//(cardID)
   //======================================================
-  //popupConfirmDel.open(card);//
+  popupConfirmDel.open(card);//прокинем card в колбэк
   //openConfirmDel(card);//откроем попап
   
     const cardID = card._cardID;// достанем id карточки
@@ -184,25 +184,6 @@ function openEditProfile() {
   infoInput.value = userInfo.info;
   //открыть popup «Редактировать профиль»
   popupEditProfile.open();// 
-  /*
-    //======================================================
-    //  запрос к серверу GET прочитать профиль
-    //--------------------------------------------------------
-    const tasks = api.readProfile();
-    tasks.then((data) => {
-      // загрузим ссылку на изображение аватара
-      avatarImage.src = data.avatar;
-      const myId = data._id;// сохраним мой id
-      //console.log("name: " + data.name + ",  about: " + data.about);
-      console.log("Мой id: " + myId);
-      // Загрузить инпуты из запроса в попап
-      nameInput.value = data.name;
-      infoInput.value = data.about;
-      //popupEditProfile.open();//дождались
-      return myId;
-    }).catch((err) => alert(err));
-    //======================================================
-  */
 }
 
 // Обработчик закрытия формы popup «Редактировать профиль»
@@ -220,7 +201,6 @@ function handleSubmitEditProfile(evt) {
   const dataWr = { name: "", about: "" };
   dataWr.name = data.nameInput;
   dataWr.about = data.jobInput;
-  //renderLoading(".popup__btn-save", true);//на кнопке "Загрузка..."
   renderBtnSave(".popup__btn-save", "Загрузка...");//на кнопке "Загрузка..."
   //===============================================================
   //  Отредактированные данные профиля сохраняем на сервере.
@@ -229,7 +209,6 @@ function handleSubmitEditProfile(evt) {
   taskWrProfile.then((dataRet) => {
     //дождались ответа сервера
     //console.log("Записан на сервере: " + dataRet.name);
-    //renderLoading(".popup__btn-save", false);//на кнопке "Сохранить"
     renderBtnSave(".popup__btn-save", "Сохранить");//на кнопке "Сохранить"
     closeEditProfile();// закрыть попап «Редактировать профиль»
   }).catch((err) => alert(err));
