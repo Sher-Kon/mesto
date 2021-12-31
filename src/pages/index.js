@@ -64,6 +64,25 @@ const validatorBildCard = new FormValidator(selectorsElements, ".bild-card");
 validatorBildCard.enableValidation();
 
 //--------------------------------------------------------
+//      Удалим карточку 
+//------------------------------------------------------
+function delCard(card) {//(cardID)
+  //======================================================
+  popupConfirmDel.open(card);//прокинем card в колбэк
+  //openConfirmDel(card);//откроем попап
+  
+    const cardID = card._cardID;// достанем id карточки
+    const taskDelCard = api.deleteCard(cardID);//запрос на удаление
+    taskDelCard.then((dataRet) => {
+      //дождались ответа сервера
+      console.log("Удалили свою карточку: " + dataRet.message);// отладка
+      //card._element.remove();//удалим элемент в DOM
+      card.deleteCardElement();//удалим элемент в DOM
+    }).catch((err) => alert(err));
+  
+  //======================================================
+}
+//--------------------------------------------------------
 // ConfirmDel popup
 //--------------------------------------------------------
 // Обработчик открытия формы popup «Confirm»
@@ -92,25 +111,6 @@ function handleDeleteCard(card) {
 }
 // Прикрепляем обработчики к форме «Confirm»:
 popupConfirmDel.setEventListeners();// "submit" и Х-закрыть попап
-//--------------------------------------------------------
-//      Удалим карточку 
-//------------------------------------------------------
-function delCard(card) {//(cardID)
-  //======================================================
-  popupConfirmDel.open(card);//прокинем card в колбэк
-  //openConfirmDel(card);//откроем попап
-  
-    const cardID = card._cardID;// достанем id карточки
-    const taskDelCard = api.deleteCard(cardID);//запрос на удаление
-    taskDelCard.then((dataRet) => {
-      //дождались ответа сервера
-      console.log("Удалили свою карточку: " + dataRet.message);// отладка
-      //card._element.remove();//удалим элемент в DOM
-      card.deleteCardElement();//удалим элемент в DOM
-    }).catch((err) => alert(err));
-  
-  //======================================================
-}
 
 //--------------------------------------------------------
 // EditAvatar popup
