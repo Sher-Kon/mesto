@@ -4,7 +4,6 @@ export class PopupConfirm extends Popup {
     constructor(popupSelector, handleConfirm) {
         super(popupSelector);
         this._handleConfirm = handleConfirm;
-        this._btnElement = this._popupElement.querySelector(".confirm__btn");// Находим кнопку в DOM
     }
 
     // Открытие попапа
@@ -18,7 +17,8 @@ export class PopupConfirm extends Popup {
     // Обработчик клика по Х-иконке закрытия, и добавляет обработчик клика кнопки подтверждения    
     setEventListeners() {
         super.setEventListeners();
-        // Добавляет обработчик клика кнопки
-        this._btnElement.addEventListener("click", () =>  { this._handleConfirm(this._card) });
+        const btnConfirm = this._popupElement.querySelector(".confirm__btn");// Находим кнопку в DOM
+        // Добавляем обработчик клика кнопки
+        btnConfirm.addEventListener("click", () =>  { this._handleConfirm(this._card) });
     }
 }
