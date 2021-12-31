@@ -1,4 +1,4 @@
-.confirm__btn-save {
+.confirm__btn {
     margin-top: 32px;/* 48-16 */
     font-size: 18px;
     line-height: 22px;
@@ -12,12 +12,12 @@
     color: white;
   }
     
-  .confirm__btn-save:hover {
+  .confirm__btn:hover {
     opacity: 0.8;
   }
   
   @media screen and (max-width: 750px) {
-    .confirm__btn-save {
+    .confirm__btn {
         margin-top: 29px;/* 45-16 */
         width: 238px;
         height: 46px;
