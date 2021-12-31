@@ -330,6 +330,7 @@ function delLike(card) {//(cardID)
     const numLikes = dataRet.likes.length;
     //console.log("число лайков: " + numLikes);//отладка
     card.updateLikes(numLikes);
+    card.delMyLike();
   }).catch((err) => alert(err));
   //======================================================
 }
@@ -348,6 +349,7 @@ function setLike(card) {//(cardID)
     const numLikes = dataRet.likes.length;
     //console.log("число лайков: " + numLikes);//отладка
     card.updateLikes(numLikes);
+    card.setMyLike();
   }).catch((err) => alert(err));
   //======================================================
 }

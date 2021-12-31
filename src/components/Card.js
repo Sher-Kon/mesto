@@ -79,19 +79,27 @@ export class Card {
         this._numLikes = likes;//Обновим число лайков
         this._likeNum.textContent = this._numLikes;//Отрисуем число лайков
     }
+    setMyLike() {
+        this._myLike = true;//есть мой лайк
+        this._likeButton.classList.add('element__like-btn_active');//темный
+    }
+    delMyLike() {
+        this._myLike = false;//нет моего лайка
+        this._likeButton.classList.remove('element__like-btn_active');//пустой
+    }
 
     // обработчик лайка
     _likeClick() {
         if (this._myLike) {
             //console.log( "удалим лайк id: " + this._cardID);
             this._handleDelLike(this);//this._handleDelLike(this._cardID);
-            this._likeButton.classList.remove('element__like-btn_active');//пустой
-            this._myLike = false;
+            //this._likeButton.classList.remove('element__like-btn_active');//пустой
+            //this._myLike = false;
         } else {
             //console.log( "добавим лайк id: " +this._cardID);
             this._handleSetLike(this);//this._handleSetLike(this._cardID);
-            this._likeButton.classList.add('element__like-btn_active');//отметить
-            this._myLike = true;
+            //this._likeButton.classList.add('element__like-btn_active');//темный
+            //this._myLike = true;
         }
     }
 
