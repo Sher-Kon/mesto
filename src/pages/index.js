@@ -74,7 +74,7 @@ function openConfirmDel() {
 function closeConfermDel() {
   popupConfirmDel.close();
 }
-function handleDeleteCard() {
+function handleDeleteCard(card) {
   const cardID = card._cardID;// достанем id карточки
   console.log("Удаляем карточку :"+cardID);
   /*
