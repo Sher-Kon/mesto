@@ -11,6 +11,8 @@ export class PopupConfirm extends Popup {
     open(card) {
         super.open();
         this._card = card;
+        console.log("открыли попап");
+        console.log("id: "+this._card._cardID);
     }
 
     // Обработчик клика по Х-иконке закрытия, и добавляет обработчик клика кнопки подтверждения    
