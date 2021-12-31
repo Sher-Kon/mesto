@@ -70,7 +70,7 @@ function delCard(card) {//(cardID)
   //======================================================
   popupConfirmDel.open(card);//прокинем card в колбэк
   //openConfirmDel(card);//откроем попап
-  
+  /*
     const cardID = card._cardID;// достанем id карточки
     const taskDelCard = api.deleteCard(cardID);//запрос на удаление
     taskDelCard.then((dataRet) => {
@@ -79,11 +79,11 @@ function delCard(card) {//(cardID)
       //card._element.remove();//удалим элемент в DOM
       card.deleteCardElement();//удалим элемент в DOM
     }).catch((err) => alert(err));
-  
+  */
   //======================================================
 }
 //--------------------------------------------------------
-// ConfirmDel popup
+//              popup ConfirmDel
 //--------------------------------------------------------
 // Обработчик открытия формы popup «Confirm»
 function openConfirmDel() {
@@ -94,24 +94,24 @@ function closeConfermDel() {
   popupConfirmDel.close();
 }
 function handleDeleteCard(card) {
-  console.log("Привет из колбэка");
-  const cardID = card._cardID;// достанем id карточки
-  console.log("Удаляем карточку :"+cardID);
-  /*
+  //console.log("Привет из колбэка");
+  //const cardID = card._cardID;// достанем id карточки
+  //console.log("Удаляем карточку :"+cardID);
+  
   // удалим карточку 
   const cardID = card._cardID;// достанем id карточки
   const taskDelCard = api.deleteCard(cardID);//запрос на удаление
   taskDelCard.then((dataRet) => {//дождались ответа сервера
     card.deleteCardElement();//удалим элемент в DOM
-    console.log("Удалили свою карточку: " + dataRet.message);// отладка
+    console.log("Ответ на запрос: " + dataRet.message);// отладка
     closeConfermDel();// закрыть попап «ConfirmDEL»
   }).catch((err) => alert(err));
-  */
+  
   //console.log("Удаляем карточку - submit popup");
-  closeConfermDel();// закрыть попап «Confirm»
+  //closeConfermDel();// закрыть попап «Confirm»
 }
 // Прикрепляем обработчики к форме «Confirm»:
-popupConfirmDel.setEventListeners();// "submit" и Х-закрыть попап
+popupConfirmDel.setEventListeners();// "Да" и Х-закрыть попап
 
 //--------------------------------------------------------
 // EditAvatar popup
