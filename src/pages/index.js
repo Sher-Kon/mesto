@@ -328,7 +328,7 @@ api.getIniData().then(arg => {
   //--------------------------------------------------------
   //  Начальная загрузка страницы - 6 карточек
   //--------------------------------------------------------
-  const countCard = dataCards.length;//загрузим все
+  let countCard = dataCards.length;//загрузим все
   console.log("Загрузим карточек: " + countCard);//
   countCard = 16;//начальная загрузка
   for (let i = 0; i < countCard; i += 1) {
