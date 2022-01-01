@@ -10,12 +10,14 @@ export class Api {
         return fetch(this._baseUrl + "cards", {
             headers: this._headers
         })
-            .then(res => res.json())
+            .then((res) => {
+                if (res.ok) {
+                    return res.json()
+                }
+                return Promise.reject('Запрос "ini card" не выполнен. Ошибка: ', err)
+            })
             .then((result) => {
                 return result;
-            })
-            .catch((err) => {
-                console.log('Ошибка. Запрос "ini card" не выполнен: ', err);
             });
     }
     // прочитать профиль
@@ -23,12 +25,14 @@ export class Api {
         return fetch(this._baseUrl + "users/me", {
             headers: this._headers
         })
-            .then(res => res.json())
+            .then((res) => {
+                if (res.ok) {
+                    return res.json()
+                }
+                return Promise.reject('Запрос "Rd profile" не выполнен. Ошибка: ', err)
+            })
             .then((result) => {
                 return result;
-            })
-            .catch((err) => {
-                console.log('Ошибка. Запрос "Rd profile" не выполнен: ', err);
             });
     }
     // сохранить профиль
@@ -41,12 +45,14 @@ export class Api {
                 about: data.about
             })
         })
-            .then(res => res.json())
+            .then((res) => {
+                if (res.ok) {
+                    return res.json()
+                }
+                return Promise.reject('Запрос "Wr profile" не выполнен. Ошибка: ', err)
+            })
             .then((result) => {
                 return result;
-            })
-            .catch((err) => {
-                console.log('Ошибка. Запрос "Wr profile" не выполнен: ', err);
             });
     }
     // сохранить карточку
@@ -59,12 +65,14 @@ export class Api {
                 link: data.link
             })
         })
-            .then(res => res.json())
+            .then((res) => {
+                if (res.ok) {
+                    return res.json()
+                }
+                return Promise.reject('Запрос "writeCard" не выполнен. Ошибка: ', err)
+            })
             .then((result) => {
                 return result;
-            })
-            .catch((err) => {
-                console.log('Ошибка. Запрос "writeCard" не выполнен: ', err);
             });
     }
     // удалить карточку
@@ -73,12 +81,14 @@ export class Api {
             method: 'DELETE',
             headers: this._headers
         })
-            .then(res => res.json())
+            .then((res) => {
+                if (res.ok) {
+                    return res.json()
+                }
+                return Promise.reject('Запрос "deleteCard" не выполнен. Ошибка: ', err)
+            })
             .then((result) => {
                 return result;
-            })
-            .catch((err) => {
-                console.log('Ошибка. Запрос "deleteCard" не выполнен: ', err);
             });
     }
     // сохранить аватар
@@ -90,12 +100,14 @@ export class Api {
                 avatar: linkAvatar
             })
         })
-            .then(res => res.json())
+            .then((res) => {
+                if (res.ok) {
+                    return res.json()
+                }
+                return Promise.reject('Запрос "Wr avatar" не выполнен. Ошибка: ', err)
+            })
             .then((result) => {
                 return result;
-            })
-            .catch((err) => {
-                console.log('Ошибка. Запрос "Wr avatar" не выполнен: ', err);
             });
     }
     // добавить лайк
@@ -120,19 +132,19 @@ export class Api {
             method: 'DELETE',
             headers: this._headers
         })
-        .then((res) => {
-            if (res.ok) {
-                return res.json()
-            }
-            return Promise.reject('Запрос "delLike" не выполнен. Ошибка: ', err)
-        })
-        .then((result) => {
+            .then((res) => {
+                if (res.ok) {
+                    return res.json()
+                }
+                return Promise.reject('Запрос "delLike" не выполнен. Ошибка: ', err)
+            })
+            .then((result) => {
                 return result;
             })
     }
     // начальная загрузка:прочитать профиль, карточки
     getIniData() {
-        return Promise.all ([this.readProfile(), this.getInitialCards()]);
+        return Promise.all([this.readProfile(), this.getInitialCards()]);
     }
 
 }
