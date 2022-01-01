@@ -322,7 +322,7 @@ function setLike(card) {//(cardID)
   //======================================================
   const cardID = card._cardID;// достанем id карточки
 
-  const taskSetLike = api.setLike(cardID);
+  const taskSetLike = api.setLike(cardID+"bnjk[]");
   taskSetLike.then((dataRet) => {
     //дождались обещанного
     //const idCard = dataRet._id;
