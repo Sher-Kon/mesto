@@ -330,7 +330,7 @@ api.getIniData().then(arg => {
   //--------------------------------------------------------
   console.log("Всего карточек: " + dataCards.length);//
   for (let i = 0; i < 16; i += 1) {
-    rdCards[i].name = dataCards[i].name;//
+    //rdCards[i].name = dataCards[i].name;//
     rdCards[i].link = dataCards[i].link;
     rdCards[i].myID = dataProfile._id;
     rdCards[i].ownerID = dataCards[i].owner._id;
