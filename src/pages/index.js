@@ -283,7 +283,6 @@ function delLike(card) {//(cardID)
   const taskDelLike = api.delLike(cardID);
   taskDelLike.then((dataRet) => {
     //дождались обещанного
-    //const idCard = dataRet._id;
     const numLikes = dataRet.likes.length;
     //console.log("число лайков: " + numLikes);//отладка
     card.updateLikes(numLikes);
@@ -302,7 +301,6 @@ function setLike(card) {//(cardID)
   const taskSetLike = api.setLike(cardID);
   taskSetLike.then((dataRet) => {
     //дождались обещанного
-    //const idCard = dataRet._id;
     const numLikes = dataRet.likes.length;
     //console.log("число лайков: " + numLikes);//отладка
     card.updateLikes(numLikes);
@@ -320,9 +318,9 @@ api.getIniData().then(arg => {
   //  Начальная загрузка профиля
   //--------------------------------------------------------
   // Загрузить значения из запроса в профиль
-  //userInfoEditProfile.setUserInfo(dataProfile.name, dataProfile.about);
-  nameProfile.textContent = dataProfile.name;
-  infoProfile.textContent = dataProfile.about;
+  userInfoProfile.setUserInfo(dataProfile.name, dataProfile.about);
+  //nameProfile.textContent = dataProfile.name;
+  //infoProfile.textContent = dataProfile.about;
   // загрузим ссылку на изображение аватара
   avatarImage.src = dataProfile.avatar;
   myID = dataProfile._id;// сохраним мой id в глобальной переменной
@@ -330,7 +328,9 @@ api.getIniData().then(arg => {
   //--------------------------------------------------------
   //  Начальная загрузка страницы - 6 карточек
   //--------------------------------------------------------
-  for (let i = 0; i < 6; i += 1) {
+  console.log("Всего карточек: "+dataCards.length);//
+  const countCard = 6;//начальная загрузка
+  for (let i = 0; i < countCard; i += 1) {
     rdCards[i].name = dataCards[i].name;//
     rdCards[i].link = dataCards[i].link;
     rdCards[i].myID = dataProfile._id;
