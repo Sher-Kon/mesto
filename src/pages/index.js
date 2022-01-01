@@ -211,7 +211,7 @@ function handleSubmitEditProfile(evt) {
   const taskWrProfile = api.writeProfile(dataWr);
   taskWrProfile.then((dataRet) => {
     //дождались ответа сервера
-    console.log("Записан на сервере: " + dataRet.name);
+    //console.log("Записан на сервере: " + dataRet.name);
     // Вставить новые значения из ответа сервера в профиль
     //userInfoProfile.setUserInfo(dataRet.name, dataRet.about);
     renderBtnSave(".popup__btn-save", "Сохранить");//на кнопке "Сохранить"
