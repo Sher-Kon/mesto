@@ -213,7 +213,7 @@ function handleSubmitEditProfile(evt) {
     //дождались ответа сервера
     console.log("Записан на сервере: " + dataRet.name + ", " +dataRet.about);
     // Вставить новые значения из ответа сервера в профиль
-    userInfoProfile.setUserInfo(dataRet.name, dataRet.about);
+    //userInfoProfile.setUserInfo(dataRet.name, dataRet.about);
     renderBtnSave(".popup__btn-save", "Сохранить");//на кнопке "Сохранить"
     closeEditProfile();// закрыть попап «Редактировать профиль»
   }).catch((err) => alert(err));
