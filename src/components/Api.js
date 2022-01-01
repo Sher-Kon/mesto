@@ -14,7 +14,7 @@ export class Api {
                 if (res.ok) {
                     return res.json()
                 }
-                return Promise.reject('Запрос "ini card" не выполнен. Ошибка: ', err)
+                return Promise.reject('Ошибка. Запрос "ini card" не выполнен.')
             })
             .then((result) => {
                 return result;
@@ -29,7 +29,7 @@ export class Api {
                 if (res.ok) {
                     return res.json()
                 }
-                return Promise.reject('Запрос "Rd profile" не выполнен. Ошибка: ', err)
+                return Promise.reject('Ошибка. Запрос "Rd profile" не выполнен.')
             })
             .then((result) => {
                 return result;
@@ -49,7 +49,7 @@ export class Api {
                 if (res.ok) {
                     return res.json()
                 }
-                return Promise.reject('Запрос "Wr profile" не выполнен. Ошибка: ', err)
+                return Promise.reject('Ошибка. Запрос "Wr profile" не выполнен.')
             })
             .then((result) => {
                 return result;
@@ -69,7 +69,7 @@ export class Api {
                 if (res.ok) {
                     return res.json()
                 }
-                return Promise.reject('Запрос "writeCard" не выполнен. Ошибка: ', err)
+                return Promise.reject('Ошибка. Запрос "writeCard" не выполнен.')
             })
             .then((result) => {
                 return result;
@@ -85,7 +85,7 @@ export class Api {
                 if (res.ok) {
                     return res.json()
                 }
-                return Promise.reject('Запрос "deleteCard" не выполнен. Ошибка: ', err)
+                return Promise.reject('Ошибка. Запрос "deleteCard" не выполнен.')
             })
             .then((result) => {
                 return result;
@@ -104,7 +104,7 @@ export class Api {
                 if (res.ok) {
                     return res.json()
                 }
-                return Promise.reject('Запрос "Wr avatar" не выполнен. Ошибка: ', err)
+                return Promise.reject('Ошибка. Запрос "Wr avatar" не выполнен.')
             })
             .then((result) => {
                 return result;
@@ -120,7 +120,7 @@ export class Api {
                 if (res.ok) {
                     return res.json()
                 }
-                return Promise.reject('Запрос "setLike" не выполнен. Ошибка: ')
+                return Promise.reject('Ошибка. Запрос "setLike" не выполнен.')
             })
             .then((result) => {
                 return result;
@@ -136,7 +136,7 @@ export class Api {
                 if (res.ok) {
                     return res.json()
                 }
-                return Promise.reject('Запрос "delLike" не выполнен. Ошибка: ', err)
+                return Promise.reject('Ошибка. Запрос "delLike" не выполнен.')
             })
             .then((result) => {
                 return result;
