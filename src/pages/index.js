@@ -66,25 +66,17 @@ validatorBildCard.enableValidation();
 //--------------------------------------------------------
 //      Удалим карточку 
 //------------------------------------------------------
-function delCard(card) {//(cardID)
-  //======================================================
+function delCard(card) {//
   popupConfirmDel.open(card);//откроем попап, прокинем card в колбэк
 }
 //--------------------------------------------------------
 //              popup ConfirmDel
 //--------------------------------------------------------
-// Обработчик открытия формы popup «Confirm»
-//function openConfirmDel() {
-//  popupConfirmDel.open();// 
-//}
-// Обработчик закрытия формы popup «Confirm»
-//function closeConfermDel() {
-//  popupConfirmDel.close();
-//}
-function handleDeleteCard(card) {
+function handleDeleteCard(card) {//обработчик клика кнопки "Да"
   // удалим карточку 
   renderBtnSave(".confirm__btn", "Удаление...");//на кнопке "Удаление..."
   const cardID = card._cardID;// достанем id карточки из card
+  //======================================================
   const taskDelCard = api.deleteCard(cardID);//запрос на удаление
   taskDelCard.then((dataRet) => {//дождались ответа сервера
     //console.log("Ответ на запрос: " + dataRet.message);// отладка
@@ -93,9 +85,10 @@ function handleDeleteCard(card) {
     //closeConfermDel();// закрыть попап «ConfirmDEL»
     popupConfirmDel.close();// закрыть попап «ConfirmDEL»
   }).catch((err) => alert(err));
+  //======================================================
 }
 // Прикрепляем обработчики к форме «Confirm»:
-popupConfirmDel.setEventListeners();// "Да" и Х-закрыть попап
+popupConfirmDel.setEventListeners();// кнопки - "Да", "Х" 
 
 //--------------------------------------------------------
 // EditAvatar popup

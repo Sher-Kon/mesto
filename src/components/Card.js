@@ -1,6 +1,6 @@
 //Класс карточки
 export class Card {
-    constructor(dataCard, template, handleCardClick, handleSetLike, handleDelLike, handleDelCard) {
+    constructor(dataCard, template, handleCardClick, handleSetLikeRequest, handleDelLikeRequest, handleDelCardRequest) {
         this._myCard = dataCard.myCard
         this._myID = dataCard.myID
         this._ownerID = dataCard.ownerID
@@ -11,14 +11,13 @@ export class Card {
         this._myLike = dataCard.myLike;
         this._template = template;
         this._handleCardClick = handleCardClick;
-        this._handleSetLike = handleSetLike;
-        this._handleDelLike = handleDelLike;
-        this._handleDelCard = handleDelCard;
+        this._handleSetLikeRequest = handleSetLikeRequest;
+        this._handleDelLikeRequest = handleDelLikeRequest;
+        this._handleDelCardRequest = handleDelCardRequest;
     }
 
     generateCard() {
         // Запишем разметку в приватное поле _element. 
-        // Так у других элементов появится доступ к ней.
         this._element = this._getTemplate();
         this._likeButton = this._element.querySelector('.element__like-btn');
         this._likeNum = this._element.querySelector('.element__like-num');
@@ -61,12 +60,12 @@ export class Card {
     _setEventListeners() {
         // кнопка лайка
         this._likeButton.addEventListener('click', () => {
-            this._likeClick();
+            this._handleLikeClick();
         });
 
         if (this._ownerID === this._myID) { //своя карточка
             this._delButton.addEventListener('click', () => {
-                this._deleteCard();
+                this._handleDeleteCard();
             });
         }
 
@@ -88,25 +87,25 @@ export class Card {
         this._likeButton.classList.remove('element__like-btn_active');//пустой
     }
 
-    // обработчик лайка
-    _likeClick() {
+    // обработчик лайка card
+    _handleLikeClick() {
         if (this._myLike) {
             //console.log( "удалим лайк id: " + this._cardID);
-            this._handleDelLike(this);//this._handleDelLike(this._cardID);
-            //this._likeButton.classList.remove('element__like-btn_active');//пустой
-            //this._myLike = false;
+            this._handleDelLikeRequest(this);//запрос на снятие лайка
         } else {
             //console.log( "добавим лайк id: " +this._cardID);
-            this._handleSetLike(this);//this._handleSetLike(this._cardID);
-            //this._likeButton.classList.add('element__like-btn_active');//темный
-            //this._myLike = true;
+            this._handleSetLikeRequest(this);//запрос на установку лайка
         }
     }
 
-    // обработчик delete
-    _deleteCard() {
-        this._handleDelCard(this);//(this._cardID)запрос на удаление карточки
-        //this._element.remove();
+    // обработчик delete card
+    _handleDeleteCard() {
+        this._handleDelCardRequest(this);//запрос на удаление карточки
+    }
+
+    // обработчик lookPicture
+    _handlePictureClick() {
+        this._handleCardClick(this._element);//openLookImg(this._element)
     }
 
     // обработчик delete element DOM
@@ -124,11 +123,6 @@ export class Card {
             this._handlePictureClick();
         });
         this._element.remove();//Удалим элемент DOM
-    }
-
-    // обработчик lookPicture
-    _handlePictureClick() {
-        this._handleCardClick(this._element);//openLookImg(this._element)
     }
 
 }
