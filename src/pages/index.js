@@ -68,49 +68,31 @@ validatorBildCard.enableValidation();
 //------------------------------------------------------
 function delCard(card) {//(cardID)
   //======================================================
-  popupConfirmDel.open(card);//прокинем card в колбэк
-  //openConfirmDel(card);//откроем попап
-  /*
-    const cardID = card._cardID;// достанем id карточки
-    const taskDelCard = api.deleteCard(cardID);//запрос на удаление
-    taskDelCard.then((dataRet) => {
-      //дождались ответа сервера
-      console.log("Ответ сервера: " + dataRet.message);// отладка
-      //card._element.remove();//удалим элемент в DOM
-      card.deleteCardElement();//удалим элемент в DOM
-    }).catch((err) => alert(err));
-  */
-  //======================================================
+  popupConfirmDel.open(card);//откроем попап, прокинем card в колбэк
 }
 //--------------------------------------------------------
 //              popup ConfirmDel
 //--------------------------------------------------------
 // Обработчик открытия формы popup «Confirm»
-function openConfirmDel() {
-  popupConfirmDel.open();// 
-}
+//function openConfirmDel() {
+//  popupConfirmDel.open();// 
+//}
 // Обработчик закрытия формы popup «Confirm»
-function closeConfermDel() {
-  popupConfirmDel.close();
-}
+//function closeConfermDel() {
+//  popupConfirmDel.close();
+//}
 function handleDeleteCard(card) {
-  //console.log("Привет из колбэка");
-  //const cardID = card._cardID;// достанем id карточки
-  //console.log("Удаляем карточку :"+cardID);
-  
   // удалим карточку 
   renderBtnSave(".confirm__btn", "Удаление...");//на кнопке "Удаление..."
-  const cardID = card._cardID;// достанем id карточки
+  const cardID = card._cardID;// достанем id карточки из card
   const taskDelCard = api.deleteCard(cardID);//запрос на удаление
   taskDelCard.then((dataRet) => {//дождались ответа сервера
-    console.log("Ответ на запрос: " + dataRet.message);// отладка
+    //console.log("Ответ на запрос: " + dataRet.message);// отладка
     card.deleteCardElement();//удалим элемент в DOM
     renderBtnSave(".confirm__btn", "Да");//на кнопке "Да"
-    closeConfermDel();// закрыть попап «ConfirmDEL»
+    //closeConfermDel();// закрыть попап «ConfirmDEL»
+    popupConfirmDel.close();// закрыть попап «ConfirmDEL»
   }).catch((err) => alert(err));
-  
-  //console.log("Удаляем карточку - submit popup");
-  //closeConfermDel();// закрыть попап «Confirm»
 }
 // Прикрепляем обработчики к форме «Confirm»:
 popupConfirmDel.setEventListeners();// "Да" и Х-закрыть попап
@@ -144,7 +126,7 @@ function handleSubmitEditAvatar(evt) {
   tasks.then((dataRet) => {
     //дождались ответа сервера
     avatarImage.src = dataRet.avatar;// загрузим ссылку на изображение аватара
-    console.log("Записан аватар, URL: " + data.urlAvatar);
+    //console.log("Записан аватар, URL: " + data.urlAvatar);
     renderBtnSave(".edit-avatar__btn-save", "Сохранить");//на кнопке "Сохранить"
     // закрыть попап «Редактировать аватар» после ответа сервера
     closeEditAvatar();// закрыть попап «Редактировать аватар»
@@ -266,8 +248,8 @@ function handleSubmitBildCard(evt) {
     renderBtnSave(".bild-card__btn-save", "Создать");//на кнопке "Создать"
     //console.log("запись cardID: " + dataRet._id + ", ownerID:" + dataRet.owner._id);
 
-    infoCard.myID = myID;//нарисуем ведерко
-    infoCard.ownerID = myID;//нарисуем ведерко
+    infoCard.myID = myID;//
+    infoCard.ownerID = myID;//если (ownerID==myID) нарисуем ведерко
     infoCard.myLike = false;//моего лайка нет
     infoCard.numLikes = 0;//число лайков
     infoCard.cardID = dataRet._id;//возвращает сервер
