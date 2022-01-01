@@ -198,7 +198,7 @@ function closeEditProfile() {
 function handleSubmitEditProfile(evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
   // Вставить новые значения из попапа в профиль
-  //const data = popupEditProfile.getInputValues();//popup inputs
+  const data = popupEditProfile.getInputValues();//popup inputs
   //userInfoProfile.setUserInfo(data.nameInput, data.jobInput);
   // Подготовить данные для запроса на сервер
   const dataWr = { name: "", about: "" };
