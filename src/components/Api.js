@@ -120,7 +120,7 @@ export class Api {
                 if (res.ok) {
                     return res.json()
                 }
-                return Promise.reject('Запрос "setLike" не выполнен. Ошибка: ', err)
+                return Promise.reject('Запрос "setLike" не выполнен. Ошибка: ' + err)
             })
             .then((result) => {
                 return result;
