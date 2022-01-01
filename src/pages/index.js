@@ -197,10 +197,8 @@ function closeEditProfile() {
 // Обработчик «отправки» формы «Редактировать профиль»
 function handleSubmitEditProfile(evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
-  // Вставить новые значения из попапа в профиль
-  const data = popupEditProfile.getInputValues();//popup inputs
-  //userInfoProfile.setUserInfo(data.nameInput, data.jobInput);
   // Подготовить данные для запроса на сервер
+  const data = popupEditProfile.getInputValues();//popup inputs
   const dataWr = { name: "", about: "" };
   dataWr.name = data.nameInput;
   dataWr.about = data.jobInput;
@@ -211,7 +209,7 @@ function handleSubmitEditProfile(evt) {
   const taskWrProfile = api.writeProfile(dataWr);
   taskWrProfile.then((dataRet) => {
     //дождались ответа сервера
-    console.log("Записан на сервере: "+dataRet.name+", "+dataRet.about);
+    //console.log("Записан на сервере: "+dataRet.name+", "+dataRet.about);
     // Вставить новые значения из ответа сервера в профиль
     userInfoProfile.setUserInfo(dataRet.name, dataRet.about);
     renderBtnSave(".popup__btn-save", "Сохранить");//на кнопке "Сохранить"
@@ -326,7 +324,7 @@ function setLike(card) {//(cardID)
   //======================================================
   const cardID = card._cardID;// достанем id карточки
 
-  const taskSetLike = api.setLike(cardID+"bnjk[]");
+  const taskSetLike = api.setLike(cardID);
   taskSetLike.then((dataRet) => {
     //дождались обещанного
     //const idCard = dataRet._id;
