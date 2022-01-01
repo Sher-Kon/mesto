@@ -99,11 +99,13 @@ function handleDeleteCard(card) {
   //console.log("Удаляем карточку :"+cardID);
   
   // удалим карточку 
+  renderBtnSave(".confirm__btn", "Удаление...");//на кнопке "Удаление..."
   const cardID = card._cardID;// достанем id карточки
   const taskDelCard = api.deleteCard(cardID);//запрос на удаление
   taskDelCard.then((dataRet) => {//дождались ответа сервера
-    card.deleteCardElement();//удалим элемент в DOM
     console.log("Ответ на запрос: " + dataRet.message);// отладка
+    card.deleteCardElement();//удалим элемент в DOM
+    renderBtnSave(".confirm__btn", "Да");//на кнопке "Да"
     closeConfermDel();// закрыть попап «ConfirmDEL»
   }).catch((err) => alert(err));
   
