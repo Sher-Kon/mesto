@@ -104,12 +104,14 @@ export class Api {
             method: 'PUT',
             headers: this._headers
         })
-            .then(res => res.json())
+            .then((res) => {
+                if (res.ok) {
+                    return res.json()
+                }
+                return Promise.reject('Запрос "setLike" не выполнен. Ошибка: ', err)
+            })
             .then((result) => {
                 return result;
-            })
-            .catch((err) => {
-                console.log('Ошибка. Запрос "setLike" не выполнен: ', err);
             });
     }
     // удалить лайк
@@ -118,13 +120,15 @@ export class Api {
             method: 'DELETE',
             headers: this._headers
         })
-            .then(res => res.json())
-            .then((result) => {
+        .then((res) => {
+            if (res.ok) {
+                return res.json()
+            }
+            return Promise.reject('Запрос "delLike" не выполнен. Ошибка: ', err)
+        })
+        .then((result) => {
                 return result;
             })
-            .catch((err) => {
-                console.log('Ошибка. Запрос "delLike" не выполнен: ', err);
-            });
     }
     // начальная загрузка:прочитать профиль, карточки
     getIniData() {
