@@ -330,7 +330,7 @@ function setLike(card) {//(cardID)
     //console.log("число лайков: " + numLikes);//отладка
     card.updateLikes(numLikes);
     card.setMyLike();
-  }).catch((err) => alert(err));//
+  }).catch((taskSetLike) => alert(taskSetLike));//(err)
   //======================================================
 }
 
