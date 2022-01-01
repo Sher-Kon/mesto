@@ -11,9 +11,7 @@ import { createCard, renderBtnSave } from "../scripts/utils.js";
 import { rdCards, selectorsElements } from "../scripts/data.js";
 export { openLookImg, delLike, setLike, delCard };//для Card in utils.js
 //--------------------------------------------------------
-
 let myID = "";
-let nLikes = 0;
 //--------------------------------------------------------
 // Создадим экземпляр class Api 
 const api = new Api({
@@ -133,8 +131,8 @@ popupEditAvatar.setEventListeners();// "submit" и Х-закрыть попап
 // элементы DOM на странице
 const content = document.querySelector(".content");
 const editButton = content.querySelector(".profile__info-edit-btn");//кн.открытия формы
-const nameProfile = content.querySelector(".profile__info-name");
-const infoProfile = content.querySelector(".profile__info-job");
+//const nameProfile = content.querySelector(".profile__info-name");
+//const infoProfile = content.querySelector(".profile__info-job");
 const avatarImage = document.querySelector(".profile__avatar");
 // EditProfile popup «Редактировать профиль»
 const editProfileElement = document.querySelector(".edit-profile");//popup
@@ -197,15 +195,14 @@ editButton.addEventListener("click", openEditProfile);//открыть попа�
 // элементы DOM на странице
 const addCardButton = document.querySelector(".profile__add-btn");
 // bildCard popup
-const bildCardElement = document.querySelector(".bild-card");
-const placeInput = bildCardElement.querySelector(".bild-card__text_input_place");
-const urlInput = bildCardElement.querySelector(".bild-card__text_input_url");
+//const bildCardElement = document.querySelector(".bild-card");
+//const placeInput = bildCardElement.querySelector(".bild-card__text_input_place");
+//const urlInput = bildCardElement.querySelector(".bild-card__text_input_url");
 
 // Обработчик открытия формы bild-card
 function openBildCard() {
   validatorBildCard.resetValidation();
   validatorBildCard.disableButtonState();
-
   popupBildCard.open();
 }
 
@@ -217,12 +214,11 @@ function closeBildCard() {
 // Обработчик «отправки» формы bild-card
 function handleSubmitBildCard(evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
-  // Вставьте новые значения в новую карточку
+  // Подготовим данные для запроса
   const data = popupBildCard.getInputValues();
   const infoCard = { name: "", link: "" };
   infoCard.name = data.placeInput;
   infoCard.link = data.urlInput;
-
   //======================================================
   //Добавим карточку на сервер.
   renderBtnSave(".bild-card__btn-save", "Загрузка...");//на кнопке "Загрузка..."
@@ -231,7 +227,7 @@ function handleSubmitBildCard(evt) {
     //дождались ответа от сервера:
     renderBtnSave(".bild-card__btn-save", "Создать");//на кнопке "Создать"
     //console.log("запись cardID: " + dataRet._id + ", ownerID:" + dataRet.owner._id);
-
+    // Вставьте новые значения в новую карточку
     infoCard.myID = myID;//
     infoCard.ownerID = myID;//если (ownerID==myID) нарисуем ведерко
     infoCard.myLike = false;//моего лайка нет
@@ -239,13 +235,12 @@ function handleSubmitBildCard(evt) {
     infoCard.cardID = dataRet._id;//возвращает сервер
     // Создадим экземпляр карточки
     section.renderItem(infoCard);
-    // Закроем форму bildCard()
-    closeBildCard();//закрыть окно bild-card()
     // Сделаем кнопку неактивной
     validatorBildCard.disableButtonState();//bildCardBttn
+    // Закроем форму bildCard()
+    closeBildCard();//закрыть окно bild-card()
   }).catch((err) => alert(err));
   //======================================================
-  // не дожидаясь: 
 }
 
 // Добавляет обработчик клика по Х-иконке закрытия, и обработчик сабмита
@@ -310,14 +305,12 @@ api.getIniData().then(arg => {
   //--------------------------------------------------------
   // Загрузить значения из запроса в профиль
   userInfoProfile.setUserInfo(dataProfile.name, dataProfile.about);
-  //nameProfile.textContent = dataProfile.name;
-  //infoProfile.textContent = dataProfile.about;
   // загрузим ссылку на изображение аватара
   avatarImage.src = dataProfile.avatar;
   myID = dataProfile._id;// сохраним мой id в глобальной переменной
   //console.log("Мой id: " + myID);//отладка
   //--------------------------------------------------------
-  //  Начальная загрузка страницы - 6 карточек
+  //  Начальная загрузка страницы - 6 карточек (rdCards.length)
   //--------------------------------------------------------
   //console.log("Всего карточек: " + dataCards.length);//
   const countIni = rdCards.length;//размер массива rdCards в data.js
