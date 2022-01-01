@@ -198,20 +198,22 @@ function closeEditProfile() {
 function handleSubmitEditProfile(evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
   // Вставить новые значения из попапа в профиль
-  const data = popupEditProfile.getInputValues();//popup inputs
-  userInfoProfile.setUserInfo(data.nameInput, data.jobInput);
+  //const data = popupEditProfile.getInputValues();//popup inputs
+  //userInfoProfile.setUserInfo(data.nameInput, data.jobInput);
   // Подготовить данные для запроса на сервер
   const dataWr = { name: "", about: "" };
   dataWr.name = data.nameInput;
   dataWr.about = data.jobInput;
-  renderBtnSave(".popup__btn-save", "Загрузка...");//на кнопке "Загрузка..."
   //===============================================================
   //  Отредактированные данные профиля сохраняем на сервере.
   //---------------------------------------------------------------
+  renderBtnSave(".popup__btn-save", "Загрузка...");//на кнопке "Загрузка..."
   const taskWrProfile = api.writeProfile(dataWr);
   taskWrProfile.then((dataRet) => {
     //дождались ответа сервера
-    //console.log("Записан на сервере: " + dataRet.name);
+    console.log("Записан на сервере: " + dataRet.name + ", " +dataRet.about);
+    // Вставить новые значения из ответа сервера в профиль
+    userInfoProfile.setUserInfo(dataRet.name, dataRet.about);
     renderBtnSave(".popup__btn-save", "Сохранить");//на кнопке "Сохранить"
     closeEditProfile();// закрыть попап «Редактировать профиль»
   }).catch((err) => alert(err));
