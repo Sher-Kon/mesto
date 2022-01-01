@@ -37,7 +37,7 @@ const api = new Api({
 const section = new Section(rdCards, createCard, ".elements");
 
 // Создадим экземпляр PopupWithForm для Confirm
-const popupConfirmDel = new PopupConfirm(".confirm", handleDeleteCard);
+const popupConfirmDel = new PopupConfirm(".confirm", handleConfirmDelCard);
 // Создадим экземпляр PopupWithForm для EditAvatar
 const popupEditAvatar = new PopupWithForm(".edit-avatar", handleSubmitEditAvatar);
 // Создадим экземпляр PopupWithForm для EditProfile
@@ -72,7 +72,7 @@ function delCard(card) {//
 //--------------------------------------------------------
 //              popup ConfirmDel
 //--------------------------------------------------------
-function handleDeleteCard(card) {//обработчик клика кнопки "Да"
+function handleConfirmDelCard(card) {//обработчик клика кнопки "Да"
   // удалим карточку 
   renderBtnSave(".confirm__btn", "Удаление...");//на кнопке "Удаление..."
   const cardID = card._cardID;// достанем id карточки из card
