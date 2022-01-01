@@ -329,8 +329,7 @@ api.getIniData().then(arg => {
   //  Начальная загрузка страницы - 6 карточек
   //--------------------------------------------------------
   console.log("Всего карточек: " + dataCards.length);//
-  const counter = 16;//начальная загрузка
-  for (let i = 0; i < counter; i += 1) {
+  for (let i = 0; i < 16; i += 1) {
     rdCards[i].name = dataCards[i].name;//
     rdCards[i].link = dataCards[i].link;
     rdCards[i].myID = dataProfile._id;
