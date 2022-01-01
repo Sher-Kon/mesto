@@ -120,7 +120,7 @@ export class Api {
                 if (res.ok) {
                     return res.json()
                 }
-                return Promise.reject('Запрос "setLike" не выполнен. Ошибка: ', err)
+                return Promise.reject('Запрос "setLike" не выполнен. Ошибка: ')
             })
             .then((result) => {
                 return result;
@@ -140,7 +140,7 @@ export class Api {
             })
             .then((result) => {
                 return result;
-            })
+            });
     }
     // начальная загрузка:прочитать профиль, карточки
     getIniData() {
