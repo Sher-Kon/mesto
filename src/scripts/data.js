@@ -1,34 +1,25 @@
-export { iniCards, selectorsElements };
+export { rdCards, selectorsElements };
 //--------------------------------------------------------
-// Возьмем готовый массив
+// Возьмем пустой массив
 //--------------------------------------------------------
-const iniCards = [
-    {
-        name: "Архыз",
-        link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg"
-    },
-    {
-        name: "Челябинская область",
-        link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg"
-    },
-    {
-        name: "Иваново",
-        link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg"
-    },
-    {
-        name: "Камчатка",
-        link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg"
-    },
-    {
-        name: "Холмогорский район",
-        link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg"
-    },
-    {
-        name: "Байкал",
-        link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg"
-    }
-];
-
+const rdCards = [
+    { name: "", link: "", myID: "", ownerID: "", cardID: "", numLikes: 0, likes: [], myLike: false },// 1
+    { name: "", link: "", myID: "", ownerID: "", cardID: "", numLikes: 0, likes: [], myLike: false },// 2
+    { name: "", link: "", myID: "", ownerID: "", cardID: "", numLikes: 0, likes: [], myLike: false },// 3
+    { name: "", link: "", myID: "", ownerID: "", cardID: "", numLikes: 0, likes: [], myLike: false },// 4
+    { name: "", link: "", myID: "", ownerID: "", cardID: "", numLikes: 0, likes: [], myLike: false },// 5
+    { name: "", link: "", myID: "", ownerID: "", cardID: "", numLikes: 0, likes: [], myLike: false },// 6
+    { name: "", link: "", myID: "", ownerID: "", cardID: "", numLikes: 0, likes: [], myLike: false },// 7
+    { name: "", link: "", myID: "", ownerID: "", cardID: "", numLikes: 0, likes: [], myLike: false },// 8
+    { name: "", link: "", myID: "", ownerID: "", cardID: "", numLikes: 0, likes: [], myLike: false },// 9
+    { name: "", link: "", myID: "", ownerID: "", cardID: "", numLikes: 0, likes: [], myLike: false },//10
+    { name: "", link: "", myID: "", ownerID: "", cardID: "", numLikes: 0, likes: [], myLike: false },//11
+    { name: "", link: "", myID: "", ownerID: "", cardID: "", numLikes: 0, likes: [], myLike: false },//12
+    { name: "", link: "", myID: "", ownerID: "", cardID: "", numLikes: 0, likes: [], myLike: false },//13
+    { name: "", link: "", myID: "", ownerID: "", cardID: "", numLikes: 0, likes: [], myLike: false },//14
+    { name: "", link: "", myID: "", ownerID: "", cardID: "", numLikes: 0, likes: [], myLike: false } //15
+  ];
+  
 //--------------------------------------------------------
 // массив селекторов 
 //--------------------------------------------------------

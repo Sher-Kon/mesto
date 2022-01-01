@@ -8,28 +8,9 @@ import { UserInfo } from "../components/UserInfo.js";
 import { Section } from "../components/Section.js";
 import { FormValidator } from "../components/FormValidator.js";
 import { createCard, renderBtnSave } from "../scripts/utils.js";
-import { selectorsElements } from "../scripts/data.js";
+import { rdCards, selectorsElements } from "../scripts/data.js";
 export { openLookImg, delLike, setLike, delCard };//для Card in utils.js
 //--------------------------------------------------------
-
-const rdCards = [
-  { name: "", link: "", myID: "", ownerID: "", cardID: "", numLikes: 0, likes: [], myLike: false },
-  { name: "", link: "", myID: "", ownerID: "", cardID: "", numLikes: 0, likes: [], myLike: false },
-  { name: "", link: "", myID: "", ownerID: "", cardID: "", numLikes: 0, likes: [], myLike: false },
-  { name: "", link: "", myID: "", ownerID: "", cardID: "", numLikes: 0, likes: [], myLike: false },
-  { name: "", link: "", myID: "", ownerID: "", cardID: "", numLikes: 0, likes: [], myLike: false },
-  { name: "", link: "", myID: "", ownerID: "", cardID: "", numLikes: 0, likes: [], myLike: false },
-  { name: "", link: "", myID: "", ownerID: "", cardID: "", numLikes: 0, likes: [], myLike: false },
-  { name: "", link: "", myID: "", ownerID: "", cardID: "", numLikes: 0, likes: [], myLike: false },
-  { name: "", link: "", myID: "", ownerID: "", cardID: "", numLikes: 0, likes: [], myLike: false },
-  { name: "", link: "", myID: "", ownerID: "", cardID: "", numLikes: 0, likes: [], myLike: false },
-  { name: "", link: "", myID: "", ownerID: "", cardID: "", numLikes: 0, likes: [], myLike: false },
-  { name: "", link: "", myID: "", ownerID: "", cardID: "", numLikes: 0, likes: [], myLike: false },
-  { name: "", link: "", myID: "", ownerID: "", cardID: "", numLikes: 0, likes: [], myLike: false },
-  { name: "", link: "", myID: "", ownerID: "", cardID: "", numLikes: 0, likes: [], myLike: false },
-  { name: "", link: "", myID: "", ownerID: "", cardID: "", numLikes: 0, likes: [], myLike: false },
-  { name: "", link: "", myID: "", ownerID: "", cardID: "", numLikes: 0, likes: [], myLike: false }
-];
 
 let myID = "";
 let nLikes = 0;
@@ -43,7 +24,7 @@ const api = new Api({
   }
 });
 
-// Создадим экземпляр class Section создание карточек из iniCards 
+// Создадим экземпляр class Section создание карточек из rdCards 
 const section = new Section(rdCards, createCard, ".elements");
 
 // Создадим экземпляр PopupWithForm для Confirm
@@ -339,7 +320,8 @@ api.getIniData().then(arg => {
   //  Начальная загрузка страницы - 6 карточек
   //--------------------------------------------------------
   //console.log("Всего карточек: " + dataCards.length);//
-  for (let i = 0; i < 9; i += 1) {
+  const countIni = rdCards.length;//размер массива rdCards в data.js
+  for (let i = 0; i < countIni; i += 1) {//загружаем массив rdCards
     rdCards[i].name = dataCards[i].name;//
     rdCards[i].link = dataCards[i].link;
     rdCards[i].myID = dataProfile._id;
@@ -372,6 +354,6 @@ api.getIniData().then(arg => {
     );
     */
   }
-  section.renderItems();//отрисуем карточки
+  section.renderItems();//отрисуем карточки из массива rdCards
 }).catch((err) => alert(err));
 //======================================================
