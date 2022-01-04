@@ -88,9 +88,10 @@ popupConfirmDel.setEventListeners();// кнопки - "Да", "Х"
 const avatarButton = document.querySelector(".profile__avatar-btn");//кн.открытия формы
 
 // Обработчик открытия формы popup «Редактировать аватар»
-function openEditAvatar() {
-  //открыть popup «Редактировать аватар» не дожидаясь
-  popupEditAvatar.open();// ждите ответа сервера
+function openEditAvatar() {  
+  validatorEditAvatar.resetValidation();
+  validatorEditAvatar.disableButtonState();
+  popupEditAvatar.open();//открыть popup «Редактировать аватар» 
 }
 
 // Обработчик закрытия формы popup «Редактировать аватар»
