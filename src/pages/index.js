@@ -310,38 +310,11 @@ api.getIniData().then(arg => {
   //console.log("Всего карточек: " + dataCards.length);//
   const countIni = rdCards.length;//размер массива rdCards в data.js
   for (let i = 0; i < countIni; i += 1) {//загружаем массив rdCards
-    rdCards[i].name = dataCards[i].name;//
+    rdCards[i].likes = dataCards[i].likes;//
     rdCards[i].link = dataCards[i].link;
-    //rdCards[i].myID = myID;
+    rdCards[i].name = dataCards[i].name;//
     rdCards[i].owner = dataCards[i].owner;//._id
     rdCards[i]._id = dataCards[i]._id;
-    rdCards[i].likes = dataCards[i].likes;//
-    /*
-    let myLike = false;
-    //let strlike = "";
-    const numLikes = rdCards[i].likes.length;
-    if ( numLikes > 0) {
-      // перебор всех лайков c целью найти свой
-      for (let n = 0; n < numLikes; n += 1) {
-        if (myID === rdCards[i].likes[n]._id) {//владелец лайка
-          myLike = true;//есть мой лайк
-          //strlike = "ДА";
-          //} else { 
-          //strlike = "нет"; 
-        };
-        //console.log("    like id:" + rdCards[i].likes[n]._id + ", Мой лайк: " + strlike);
-      }
-    }
-    */
-    //rdCards[i].myLike = myLike;
-    /*
-    let metka = "";
-    if (myLike) { metka = "  Есть мой лайк" };
-    console.log("Card[" + i + "] :" + rdCards[i].cardID +
-      ", owner: " + rdCards[i].ownerID +
-      ", всего лайков : " + rdCards[i].numLikes + metka
-    );
-    */
   }
   section.renderItems();//отрисуем карточки из массива rdCards
 }).catch((err) => alert(err));
