@@ -1,6 +1,6 @@
 //Класс карточки
 export class Card {
-    constructor(dataCard, template, handleCardClick, handleSetLikeRequest, handleDelLikeRequest, handleDelCardRequest, myID) {
+    constructor(dataCard, template, handleCardClick, handleSetLikeRequest, handleDelLikeRequest, handleDelCardRequest) {
         this._myCard = dataCard.myCard
         this._ownerID = dataCard.ownerID
         this._cardID = dataCard.cardID
@@ -14,7 +14,7 @@ export class Card {
         this._handleSetLikeRequest = handleSetLikeRequest;
         this._handleDelLikeRequest = handleDelLikeRequest;
         this._handleDelCardRequest = handleDelCardRequest;
-        this._myID = myID;
+        this._myID = dataCard.myID;
     }
 
     _myLike() {

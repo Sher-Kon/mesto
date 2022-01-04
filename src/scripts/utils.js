@@ -13,8 +13,7 @@ function createCard(data) {
     openLookImg,
     setLike,
     delLike,
-    delCard,
-    myID
+    delCard
   );
   // Создаём карточку 
   const cardElement = card.generateCard();

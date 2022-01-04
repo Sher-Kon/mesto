@@ -312,7 +312,7 @@ api.getIniData().then(arg => {
   for (let i = 0; i < countIni; i += 1) {//загружаем массив rdCards
     rdCards[i].name = dataCards[i].name;//
     rdCards[i].link = dataCards[i].link;
-    //rdCards[i].myID = dataProfile._id;
+    rdCards[i].myID = myID;
     rdCards[i].ownerID = dataCards[i].owner._id;
     rdCards[i].cardID = dataCards[i]._id;
     //rdCards[i].numLikes = dataCards[i].likes.length;//
