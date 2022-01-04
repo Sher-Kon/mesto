@@ -293,6 +293,8 @@ api.getIniData().then(arg => {
   userInfoProfile.setUserInfo(dataProfile.name, dataProfile.about, dataProfile.avatar, dataProfile._id);
   //--------------------------------------------------------
   //  Начальная загрузка карточек
+  const userInfo = userInfoProfile.getUserInfo();//profile
+  myID = userInfo._id;// сохраним мой id
   section.renderItems(dataCards);//отрисуем карточки из массива dataCards
 }).catch((err) => alert(err));
 //======================================================
