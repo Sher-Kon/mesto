@@ -1,4 +1,5 @@
 import { myID } from '../pages/index.js';
+export { myID }
 
 export class UserInfo {
     constructor( nameSelector, infoSelector, avatarSelector ) {
@@ -9,10 +10,11 @@ export class UserInfo {
 
     // Возвращает объект с данными пользователя
     getUserInfo() {
-        const userInfo = { name: "", info: "" };
+        const userInfo = { name: "", info: "", avatar: "", _id: "" };
         userInfo.name = this._nameElement.textContent;
         userInfo.info = this._infoElement.textContent;
         userInfo.avatar = this._avatarElement.src;
+        userInfo._id = this._id;
         return userInfo;
     }
 
@@ -22,6 +24,7 @@ export class UserInfo {
         this._nameElement.textContent = name;
         this._infoElement.textContent = info;
         this._avatarElement.src = avatar;
+        this._id = _id;// сохраним мой id 
         myID = _id;// сохраним мой id в глобальной переменной
     }
 }

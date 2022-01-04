@@ -4,7 +4,7 @@ import { Api } from "../components/Api.js";
 import { PopupWithImage } from "../components/PopupWithImage.js";
 import { PopupWithForm } from "../components/PopupWithForm.js";
 import { PopupConfirm } from "../components/PopupConfirm.js";
-import { UserInfo } from "../components/UserInfo.js";
+import { UserInfo, myID } from "../components/UserInfo.js";
 import { Section } from "../components/Section.js";
 import { FormValidator } from "../components/FormValidator.js";
 import { createCard, renderBtnSave } from "../scripts/utils.js";

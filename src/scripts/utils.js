@@ -1,5 +1,5 @@
 import { Card } from "../components/Card.js";
-import { openLookImg, setLike, delLike, delCard, myID } from '../pages/index.js';
+import { openLookImg, setLike, delLike, delCard } from '../pages/index.js';
 
 export { createCard };
 //--------------------------------------------------------
