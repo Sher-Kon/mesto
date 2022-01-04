@@ -13,7 +13,6 @@ export class UserInfo {
         userInfo.name = this._nameElement.textContent;
         userInfo.info = this._infoElement.textContent;
         userInfo.avatar = this._avatarElement.src;
-        //userInfo._id = this._id;
         return userInfo;
     }
 
@@ -23,7 +22,6 @@ export class UserInfo {
         this._nameElement.textContent = name;
         this._infoElement.textContent = info;
         this._avatarElement.src = avatar;
-        //this._id = _id;// сохраним мой id 
         myID = _id;// сохраним мой id в глобальной переменной
     }
 }

@@ -44,7 +44,6 @@ export class Card {
         this._cardImage.alt = "На фотографии " + this._title;
         this._element.querySelector('.element__txt').textContent = this._title;
 
-        //this._likeNum.textContent = this._numLikes;//Запишем число лайков
         this._likeNum.textContent = this._likes.length;//Запишем число лайков
 
         if (this._myLike()) {
@@ -91,26 +90,21 @@ export class Card {
     }
 
     updateLikes(likes) {
-        //this._numLikes = likes;//Обновим число лайков
         this._likeNum.textContent = likes.length;//Отрисуем число лайков
         this._likes = likes;// Обновим объект лайков
     }
     setMyLike() {
-        //this._myLike = true;//есть мой лайк
         this._likeButton.classList.add('element__like-btn_active');//темный
     }
     delMyLike() {
-        //this._myLike = false;//нет моего лайка
         this._likeButton.classList.remove('element__like-btn_active');//пустой
     }
 
     // обработчик лайка card
     _handleLikeClick() {
         if (this._myLike()) {
-            //console.log( "удалим лайк id: " + this._cardID);
             this._handleDelLikeRequest(this);//запрос на снятие лайка
         } else {
-            //console.log( "добавим лайк id: " +this._cardID);
             this._handleSetLikeRequest(this);//запрос на установку лайка
         }
     }

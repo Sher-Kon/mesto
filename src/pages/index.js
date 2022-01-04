@@ -121,7 +121,6 @@ function handleSubmitEditAvatar(evt) {
 
 // Слушатели на кнопку открытия попапа «Редактировать аватар»
 avatarButton.addEventListener("click", openEditAvatar);//открыть попап
-// avatarButton.addEventListener("click", openConfirmDel);//открыть Confirm отладка
 
 // Прикрепляем обработчики к форме «Редактировать аватар»:
 popupEditAvatar.setEventListeners();// "submit" и Х-закрыть попап
@@ -132,10 +131,7 @@ popupEditAvatar.setEventListeners();// "submit" и Х-закрыть попап
 // элементы DOM на странице
 const content = document.querySelector(".content");
 const editButton = content.querySelector(".profile__info-edit-btn");//кн.открытия формы
-//const nameProfile = content.querySelector(".profile__info-name");
-//const infoProfile = content.querySelector(".profile__info-job");
-//const avatarImage = document.querySelector(".profile__avatar");
-// EditProfile popup «Редактировать профиль»
+// элементы popup «Редактировать профиль»
 const editProfileElement = document.querySelector(".edit-profile");//popup
 const nameInput = editProfileElement.querySelector(".popup__text_input_name");
 const infoInput = editProfileElement.querySelector(".popup__text_input_job");
