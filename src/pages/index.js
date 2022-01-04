@@ -307,10 +307,7 @@ api.getIniData().then(arg => {
   //--------------------------------------------------------
   // Загрузить значения из запроса в профиль
   userInfoProfile.setUserInfo(dataProfile.name, dataProfile.about, dataProfile.avatar, dataProfile._id);
-  // загрузим ссылку на изображение аватара
-  //avatarImage.src = dataProfile.avatar;
-  //myID = dataProfile._id;// сохраним мой id в глобальной переменной
-  //console.log("Мой id: " + myID);//отладка
+  console.log("Мой id: " + myID);//отладка
   //--------------------------------------------------------
   //  Начальная загрузка страницы - 6 карточек (rdCards.length)
   //--------------------------------------------------------
