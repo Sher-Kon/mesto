@@ -10,6 +10,7 @@ import { FormValidator } from "../components/FormValidator.js";
 import { createCard, renderBtnSave } from "../scripts/utils.js";
 import { rdCards, selectorsElements } from "../scripts/data.js";
 export { openLookImg, delLike, setLike, delCard };//для Card in utils.js
+export { myID };// UserInfo
 //--------------------------------------------------------
 let myID = "";
 //--------------------------------------------------------
@@ -111,7 +112,7 @@ function handleSubmitEditAvatar(evt) {
   tasks.then((dataRet) => {
     //дождались ответа сервера
   // Загрузить значения из запроса в профиль
-    userInfoProfile.setUserInfo(dataRet.name, dataRet.about, dataRet.avatar);
+    userInfoProfile.setUserInfo(dataRet.name, dataRet.about, dataRet.avatar, dataRet._id);
 
     //avatarImage.src = dataRet.avatar;// загрузим ссылку на изображение аватара
     // закрыть попап «Редактировать аватар» после ответа сервера
@@ -178,7 +179,7 @@ function handleSubmitEditProfile(evt) {
     //дождались ответа сервера
     //console.log("Записан на сервере: "+dataRet.name+", "+dataRet.about);
     // Вставить новые значения из ответа сервера в профиль
-    userInfoProfile.setUserInfo(dataRet.name, dataRet.about, dataRet.avatar);
+    userInfoProfile.setUserInfo(dataRet.name, dataRet.about, dataRet.avatar, dataRet._id);
     closeEditProfile();// закрыть попап «Редактировать профиль»
   }).catch((err) => alert(err))
   .finally(function() {
@@ -305,10 +306,10 @@ api.getIniData().then(arg => {
   //  Начальная загрузка профиля
   //--------------------------------------------------------
   // Загрузить значения из запроса в профиль
-  userInfoProfile.setUserInfo(dataProfile.name, dataProfile.about, dataProfile.avatar);
+  userInfoProfile.setUserInfo(dataProfile.name, dataProfile.about, dataProfile.avatar, dataProfile._id);
   // загрузим ссылку на изображение аватара
   //avatarImage.src = dataProfile.avatar;
-  myID = dataProfile._id;// сохраним мой id в глобальной переменной
+  //myID = dataProfile._id;// сохраним мой id в глобальной переменной
   //console.log("Мой id: " + myID);//отладка
   //--------------------------------------------------------
   //  Начальная загрузка страницы - 6 карточек (rdCards.length)
