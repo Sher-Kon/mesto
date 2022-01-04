@@ -27,4 +27,12 @@ export class Section {
             this.addItemDn(cardElement);
         });
     }
+
+    rendersItems(items) {
+        items.forEach((item) => {
+            const cardElement = this._renderer(item);
+            // Добавляем в DOM (in containerSelector)
+            this.addItemDn(cardElement);
+        });
+    }
 }

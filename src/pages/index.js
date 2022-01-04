@@ -314,7 +314,7 @@ api.getIniData().then(arg => {
     rdCards[i].link = dataCards[i].link;
     rdCards[i].myID = myID;
     rdCards[i].ownerID = dataCards[i].owner._id;
-    rdCards[i].cardID = dataCards[i]._id;
+    rdCards[i]._id = dataCards[i]._id;
     //rdCards[i].numLikes = dataCards[i].likes.length;//
     rdCards[i].likes = dataCards[i].likes;//
     /*

@@ -3,7 +3,7 @@ export class Card {
     constructor(dataCard, template, handleCardClick, handleSetLikeRequest, handleDelLikeRequest, handleDelCardRequest) {
         this._myCard = dataCard.myCard
         this._ownerID = dataCard.ownerID
-        this._cardID = dataCard.cardID
+        this._cardID = dataCard._id
         this._title = dataCard.name;
         this._image = dataCard.link;
         this._numLikes = dataCard.numLikes
