@@ -23,7 +23,7 @@ export class Card {
         if (numLikes > 0) {
             // перебор всех лайков c целью найти свой
             for (let n = 0; n < numLikes; n += 1) {
-                if (myID === this._likes[n]._id) {//владелец лайка
+                if (this._myID === this._likes[n]._id) {//владелец лайка
                     myLike = true;//есть мой лайк
                 };
             }
