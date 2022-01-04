@@ -37,7 +37,7 @@ const popupBildCard = new PopupWithForm(".bild-card", handleSubmitBildCard);
 const popupLookImage = new PopupWithImage(".look-img", ".look-img__title", ".look-img__img");
 
 // Создадим экземпляр UserInfo для Profile
-const userInfoProfile = new UserInfo(".profile__info-name", ".profile__info-job");
+const userInfoProfile = new UserInfo(".profile__info-name", ".profile__info-job", ".profile__avatar");
 
 // Создадим экземпляр FormValidator для EditAvatar
 const validatorEditAvatar = new FormValidator(selectorsElements, ".edit-avatar");
@@ -110,7 +110,10 @@ function handleSubmitEditAvatar(evt) {
   const tasks = api.writeAvatar(data.urlAvatar);//data.urlAvatar
   tasks.then((dataRet) => {
     //дождались ответа сервера
-    avatarImage.src = dataRet.avatar;// загрузим ссылку на изображение аватара
+  // Загрузить значения из запроса в профиль
+    userInfoProfile.setUserInfo(dataRet.name, dataRet.about, dataRet.avatar);
+
+    //avatarImage.src = dataRet.avatar;// загрузим ссылку на изображение аватара
     // закрыть попап «Редактировать аватар» после ответа сервера
     closeEditAvatar();// закрыть попап «Редактировать аватар»
   }).catch((err) => alert(err))// если что-то пошло не так
@@ -118,8 +121,6 @@ function handleSubmitEditAvatar(evt) {
     renderBtnSave(".edit-avatar__btn-save", "Сохранить");//на кнопке "Сохранить"
   });
   //======================================================
-
-  //closeEditAvatar();// закрыть попап «Редактировать аватар»
 }
 
 // Слушатели на кнопку открытия попапа «Редактировать аватар»
@@ -196,10 +197,6 @@ editButton.addEventListener("click", openEditProfile);//открыть попа�
 //--------------------------------------------------------
 // элементы DOM на странице
 const addCardButton = document.querySelector(".profile__add-btn");
-// bildCard popup
-//const bildCardElement = document.querySelector(".bild-card");
-//const placeInput = bildCardElement.querySelector(".bild-card__text_input_place");
-//const urlInput = bildCardElement.querySelector(".bild-card__text_input_url");
 
 // Обработчик открытия формы bild-card
 function openBildCard() {
@@ -308,9 +305,9 @@ api.getIniData().then(arg => {
   //  Начальная загрузка профиля
   //--------------------------------------------------------
   // Загрузить значения из запроса в профиль
-  userInfoProfile.setUserInfo(dataProfile.name, dataProfile.about);
+  userInfoProfile.setUserInfo(dataProfile.name, dataProfile.about, dataProfile.avatar);
   // загрузим ссылку на изображение аватара
-  avatarImage.src = dataProfile.avatar;
+  //avatarImage.src = dataProfile.avatar;
   myID = dataProfile._id;// сохраним мой id в глобальной переменной
   //console.log("Мой id: " + myID);//отладка
   //--------------------------------------------------------
