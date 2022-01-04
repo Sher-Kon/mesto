@@ -9,8 +9,7 @@ import { Section } from "../components/Section.js";
 import { FormValidator } from "../components/FormValidator.js";
 import { createCard, renderBtnSave } from "../scripts/utils.js";
 import { rdCards, selectorsElements } from "../scripts/data.js";
-export { openLookImg, delLike, setLike, delCard };//для Card in utils.js
-export { myID };// UserInfo
+export { openLookImg, delLike, setLike, delCard, myID };//для Card in utils.js
 //--------------------------------------------------------
 let myID = "";
 //--------------------------------------------------------
@@ -113,8 +112,6 @@ function handleSubmitEditAvatar(evt) {
     //дождались ответа сервера
   // Загрузить значения из запроса в профиль
     userInfoProfile.setUserInfo(dataRet.name, dataRet.about, dataRet.avatar, dataRet._id);
-
-    //avatarImage.src = dataRet.avatar;// загрузим ссылку на изображение аватара
     // закрыть попап «Редактировать аватар» после ответа сервера
     closeEditAvatar();// закрыть попап «Редактировать аватар»
   }).catch((err) => alert(err))// если что-то пошло не так
@@ -307,7 +304,6 @@ api.getIniData().then(arg => {
   //--------------------------------------------------------
   // Загрузить значения из запроса в профиль
   userInfoProfile.setUserInfo(dataProfile.name, dataProfile.about, dataProfile.avatar, dataProfile._id);
-  console.log("Мой id: " + myID);//отладка
   //--------------------------------------------------------
   //  Начальная загрузка страницы - 6 карточек (rdCards.length)
   //--------------------------------------------------------
@@ -316,7 +312,7 @@ api.getIniData().then(arg => {
   for (let i = 0; i < countIni; i += 1) {//загружаем массив rdCards
     rdCards[i].name = dataCards[i].name;//
     rdCards[i].link = dataCards[i].link;
-    rdCards[i].myID = dataProfile._id;
+    //rdCards[i].myID = dataProfile._id;
     rdCards[i].ownerID = dataCards[i].owner._id;
     rdCards[i].cardID = dataCards[i]._id;
     rdCards[i].numLikes = dataCards[i].likes.length;//
@@ -327,7 +323,7 @@ api.getIniData().then(arg => {
     if (rdCards[i].numLikes > 0) {
       // перебор всех лайков c целью найти свой
       for (let n = 0; n < rdCards[i].numLikes; n += 1) {
-        if (rdCards[i].myID === rdCards[i].likes[n]._id) {//владелец лайка
+        if (myID === rdCards[i].likes[n]._id) {//владелец лайка
           myLike = true;//есть мой лайк
           //strlike = "ДА";
           //} else { 
