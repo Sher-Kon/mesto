@@ -7,7 +7,7 @@ export class Card {
         this._title = dataCard.name;
         this._image = dataCard.link;
         this._numLikes = dataCard.numLikes
-        this._myLike = dataCard.myLike;
+        //this._myLike = dataCard.myLike;
         this._likes = dataCard.likes;
         this._template = template;
         this._handleCardClick = handleCardClick;
@@ -15,6 +15,20 @@ export class Card {
         this._handleDelLikeRequest = handleDelLikeRequest;
         this._handleDelCardRequest = handleDelCardRequest;
         this._myID = myID;
+    }
+
+    _myLike() {
+        let myLike = false;
+        const numLikes = this._likes.length;
+        if (numLikes > 0) {
+            // перебор всех лайков c целью найти свой
+            for (let n = 0; n < numLikes; n += 1) {
+                if (myID === this._likes[n]._id) {//владелец лайка
+                    myLike = true;//есть мой лайк
+                };
+            }
+        }
+        return myLike;
     }
 
     generateCard() {
@@ -35,7 +49,7 @@ export class Card {
         //this._likeNum.textContent = this._numLikes;//Запишем число лайков
         this._likeNum.textContent = this._likes.length;//Запишем число лайков
 
-        if (this._myLike) {
+        if (this._myLike()) {
             this._likeButton.classList.add('element__like-btn_active');//отметить
         } else {
             this._likeButton.classList.remove('element__like-btn_active');//пустой
@@ -83,17 +97,17 @@ export class Card {
         this._likeNum.textContent = likes.length;//Отрисуем число лайков
     }
     setMyLike() {
-        this._myLike = true;//есть мой лайк
+        //this._myLike = true;//есть мой лайк
         this._likeButton.classList.add('element__like-btn_active');//темный
     }
     delMyLike() {
-        this._myLike = false;//нет моего лайка
+        //this._myLike = false;//нет моего лайка
         this._likeButton.classList.remove('element__like-btn_active');//пустой
     }
 
     // обработчик лайка card
     _handleLikeClick() {
-        if (this._myLike) {
+        if (this._myLike()) {
             //console.log( "удалим лайк id: " + this._cardID);
             this._handleDelLikeRequest(this);//запрос на снятие лайка
         } else {

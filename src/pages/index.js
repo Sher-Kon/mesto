@@ -224,11 +224,11 @@ function handleSubmitBildCard(evt) {
     //дождались ответа от сервера:
     //console.log("запись cardID: " + dataRet._id + ", ownerID:" + dataRet.owner._id);
     // Вставьте новые значения в новую карточку
-    infoCard.myID = myID;//
+    infoCard.myID = myID;//мой id
     infoCard.ownerID = dataRet.owner._id;//если (ownerID==myID) нарисуем ведерко
-    infoCard.myLike = false;//моего лайка нет
+    //infoCard.myLike = false;//моего лайка нет
     infoCard.likes = dataRet.likes;//число лайков
-    infoCard.cardID = dataRet._id;//возвращает сервер
+    infoCard.cardID = dataRet._id;//id карточки
     // Создадим экземпляр карточки
     section.renderItem(infoCard);
     // Сделаем кнопку неактивной
@@ -333,7 +333,7 @@ api.getIniData().then(arg => {
         //console.log("    like id:" + rdCards[i].likes[n]._id + ", Мой лайк: " + strlike);
       }
     }
-    rdCards[i].myLike = myLike;
+    //rdCards[i].myLike = myLike;
     /*
     let metka = "";
     if (myLike) { metka = "  Есть мой лайк" };
