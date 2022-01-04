@@ -320,7 +320,7 @@ api.getIniData().then(arg => {
 
     let myLike = false;
     //let strlike = "";
-    if (rdCards[i].numLikes > 0) {
+    if (rdCards[i].likes.length > 0) {
       // перебор всех лайков c целью найти свой
       for (let n = 0; n < rdCards[i].numLikes; n += 1) {
         if (myID === rdCards[i].likes[n]._id) {//владелец лайка
