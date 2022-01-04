@@ -1,5 +1,4 @@
-import { myID } from '../pages/index.js';
-export { myID }
+import { myID } from '../pages/index.js'
 
 export class UserInfo {
     constructor( nameSelector, infoSelector, avatarSelector ) {
