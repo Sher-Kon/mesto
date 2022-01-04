@@ -22,8 +22,8 @@ const api = new Api({
   }
 });
 
-// Создадим экземпляр class Section создание карточек из rdCards 
-const section = new Section(rdCards, createCard, ".elements");
+// Создадим экземпляр class Section создание карточек 
+const section = new Section( createCard, ".elements" );
 
 // Создадим экземпляр PopupWithForm для Confirm
 const popupConfirmDel = new PopupConfirm(".confirm", handleConfirmDelCard);
@@ -305,7 +305,7 @@ api.getIniData().then(arg => {
   // Загрузить значения из запроса в профиль
   userInfoProfile.setUserInfo(dataProfile.name, dataProfile.about, dataProfile.avatar, dataProfile._id);
   //--------------------------------------------------------
-  //  Начальная загрузка страницы - 6 карточек (rdCards.length)
+  //  Начальная загрузка страницы 
   //--------------------------------------------------------
   //console.log("Всего карточек: " + dataCards.length);//
   /*
@@ -319,6 +319,6 @@ api.getIniData().then(arg => {
   }
   section.renderItems();//отрисуем карточки из массива rdCards
   */
-  section.rendersItems(dataCards);//отрисуем карточки из массива dataCards
+  section.renderItems(dataCards);//отрисуем карточки из массива dataCards
 }).catch((err) => alert(err));
 //======================================================
