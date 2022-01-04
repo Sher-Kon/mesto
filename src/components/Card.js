@@ -110,18 +110,6 @@ export class Card {
 
     // обработчик delete element DOM
     deleteCardElement() {
-        // удалим слушателей
-        this._likeButton.removeEventListener('click', () => {
-            this._likeClick();
-        });
-        if (this._ownerID === this._myID) { //своя карточка
-            this._delButton.removeEventListener('click', () => {
-                this._deleteCard();
-            });
-        }
-        this._imgButton.removeEventListener('click', () => {
-            this._handlePictureClick();
-        });
         this._element.remove();//Удалим элемент DOM
     }
 

@@ -70,10 +70,12 @@ function handleConfirmDelCard(card) {//обработчик клика кноп�
   taskDelCard.then((dataRet) => {//дождались ответа сервера
     //console.log("Ответ на запрос: " + dataRet.message);// отладка
     card.deleteCardElement();//удалим элемент в DOM
-    renderBtnSave(".confirm__btn", "Да");//на кнопке "Да"
     //closeConfermDel();// закрыть попап «ConfirmDEL»
     popupConfirmDel.close();// закрыть попап «ConfirmDEL»
-  }).catch((err) => alert(err));
+  }).catch((err) => alert(err))
+  .finally(function() {
+    renderBtnSave(".confirm__btn", "Да");//на кнопке "Да"
+  });
   //======================================================
 }
 // Прикрепляем обработчики к форме «Confirm»:
@@ -108,11 +110,12 @@ function handleSubmitEditAvatar(evt) {
   tasks.then((dataRet) => {
     //дождались ответа сервера
     avatarImage.src = dataRet.avatar;// загрузим ссылку на изображение аватара
-    //console.log("Записан аватар, URL: " + data.urlAvatar);
-    renderBtnSave(".edit-avatar__btn-save", "Сохранить");//на кнопке "Сохранить"
     // закрыть попап «Редактировать аватар» после ответа сервера
     closeEditAvatar();// закрыть попап «Редактировать аватар»
-  }).catch((err) => alert(err));// если что-то пошло не так
+  }).catch((err) => alert(err))// если что-то пошло не так
+  .finally(function() {
+    renderBtnSave(".edit-avatar__btn-save", "Сохранить");//на кнопке "Сохранить"
+  });
   //======================================================
 
   //closeEditAvatar();// закрыть попап «Редактировать аватар»
@@ -138,8 +141,6 @@ const avatarImage = document.querySelector(".profile__avatar");
 const editProfileElement = document.querySelector(".edit-profile");//popup
 const nameInput = editProfileElement.querySelector(".popup__text_input_name");
 const infoInput = editProfileElement.querySelector(".popup__text_input_job");
-nameInput.value = "";
-infoInput.value = "";
 
 // Обработчик открытия формы popup «Редактировать профиль»
 function openEditProfile() {
@@ -182,8 +183,6 @@ function handleSubmitEditProfile(evt) {
     renderBtnSave(".popup__btn-save", "Сохранить");//на кнопке "Сохранить"
   });
   //===============================================================
-  // закрыть попап «Редактировать профиль» не дожидаясь ответа сервера
-  //closeEditProfile();
 }
 
 // Прикрепляем обработчики к форме «Редактировать профиль»:
@@ -227,7 +226,6 @@ function handleSubmitBildCard(evt) {
   const tasks = api.writeCard(infoCard);
   tasks.then((dataRet) => {
     //дождались ответа от сервера:
-    renderBtnSave(".bild-card__btn-save", "Создать");//на кнопке "Создать"
     //console.log("запись cardID: " + dataRet._id + ", ownerID:" + dataRet.owner._id);
     // Вставьте новые значения в новую карточку
     infoCard.myID = myID;//
@@ -241,7 +239,10 @@ function handleSubmitBildCard(evt) {
     validatorBildCard.disableButtonState();//bildCardBttn
     // Закроем форму bildCard()
     closeBildCard();//закрыть окно bild-card()
-  }).catch((err) => alert(err));
+  }).catch((err) => alert(err))
+  .finally(function() {
+    renderBtnSave(".bild-card__btn-save", "Создать");//на кнопке "Создать"
+  });
   //======================================================
 }
 

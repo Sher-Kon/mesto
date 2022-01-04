@@ -5,17 +5,19 @@ export class Api {
         this._headers = config.headers;
     }
 
+    _checkResponse(res) {
+        if (res.ok) {
+            return res.json()
+        }
+        return Promise.reject(`Ошибка ${res.status}`)
+    }
+
     // прочитать карточки
     getInitialCards() {
         return fetch(this._baseUrl + "cards", {
             headers: this._headers
         })
-            .then((res) => {
-                if (res.ok) {
-                    return res.json()
-                }
-                return Promise.reject('Ошибка. Запрос "ini card" не выполнен.')
-            })
+            .then(this._checkResponse)
             .then((result) => {
                 return result;
             });
@@ -25,12 +27,7 @@ export class Api {
         return fetch(this._baseUrl + "users/me", {
             headers: this._headers
         })
-            .then((res) => {
-                if (res.ok) {
-                    return res.json()
-                }
-                return Promise.reject('Ошибка. Запрос "Rd profile" не выполнен.')
-            })
+            .then(this._checkResponse)
             .then((result) => {
                 return result;
             });
@@ -45,12 +42,7 @@ export class Api {
                 about: data.about
             })
         })
-            .then((res) => {
-                if (res.ok) {
-                    return res.json()
-                }
-                return Promise.reject('Ошибка. Запрос "Wr profile" не выполнен.')
-            })
+            .then(this._checkResponse)
             .then((result) => {
                 return result;
             });
@@ -65,12 +57,7 @@ export class Api {
                 link: data.link
             })
         })
-            .then((res) => {
-                if (res.ok) {
-                    return res.json()
-                }
-                return Promise.reject('Ошибка. Запрос "writeCard" не выполнен.')
-            })
+            .then(this._checkResponse)
             .then((result) => {
                 return result;
             });
@@ -81,12 +68,7 @@ export class Api {
             method: 'DELETE',
             headers: this._headers
         })
-            .then((res) => {
-                if (res.ok) {
-                    return res.json()
-                }
-                return Promise.reject('Ошибка. Запрос "deleteCard" не выполнен.')
-            })
+            .then(this._checkResponse)
             .then((result) => {
                 return result;
             });
@@ -100,12 +82,7 @@ export class Api {
                 avatar: linkAvatar
             })
         })
-            .then((res) => {
-                if (res.ok) {
-                    return res.json()
-                }
-                return Promise.reject('Ошибка. Запрос "Wr avatar" не выполнен.')
-            })
+            .then(this._checkResponse)
             .then((result) => {
                 return result;
             });
@@ -116,12 +93,7 @@ export class Api {
             method: 'PUT',
             headers: this._headers
         })
-            .then((res) => {
-                if (res.ok) {
-                    return res.json()
-                }
-                return Promise.reject('Ошибка. Запрос "setLike" не выполнен.')
-            })
+            .then(this._checkResponse)
             .then((result) => {
                 return result;
             });
@@ -132,12 +104,7 @@ export class Api {
             method: 'DELETE',
             headers: this._headers
         })
-            .then((res) => {
-                if (res.ok) {
-                    return res.json()
-                }
-                return Promise.reject('Ошибка. Запрос "delLike" не выполнен.')
-            })
+            .then(this._checkResponse)
             .then((result) => {
                 return result;
             });
