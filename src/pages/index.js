@@ -217,7 +217,7 @@ function handleSubmitBildCard(evt) {
     // Вставьте новые значения в новую карточку
     infoCard.owner = dataRet.owner;//если (ownerID==myID) нарисуем ведерко
     infoCard.likes = dataRet.likes;//число лайков
-    infoCard.cardID = dataRet._id;//id карточки
+    infoCard._id = dataRet._id;//id карточки
     // Создадим экземпляр карточки
     section.renderItem(infoCard);
     // Сделаем кнопку неактивной
