@@ -9,15 +9,6 @@ const rdCards = [
     { name: "", link: "", owner: {}, _id: "", likes: [] },// 4
     { name: "", link: "", owner: {}, _id: "", likes: [] },// 5
     { name: "", link: "", owner: {}, _id: "", likes: [] },// 6
-/*    { name: "", link: "", myID: "", ownerID: "", cardID: "", numLikes: 0, likes: [], myLike: false },// 7
-    { name: "", link: "", myID: "", ownerID: "", cardID: "", numLikes: 0, likes: [], myLike: false },// 8
-    { name: "", link: "", myID: "", ownerID: "", cardID: "", numLikes: 0, likes: [], myLike: false },// 9
-    { name: "", link: "", myID: "", ownerID: "", cardID: "", numLikes: 0, likes: [], myLike: false },//10
-    { name: "", link: "", myID: "", ownerID: "", cardID: "", numLikes: 0, likes: [], myLike: false },//11
-    { name: "", link: "", myID: "", ownerID: "", cardID: "", numLikes: 0, likes: [], myLike: false },//12
-    { name: "", link: "", myID: "", ownerID: "", cardID: "", numLikes: 0, likes: [], myLike: false },//13
-    { name: "", link: "", myID: "", ownerID: "", cardID: "", numLikes: 0, likes: [], myLike: false },//14
-    { name: "", link: "", myID: "", ownerID: "", cardID: "", numLikes: 0, likes: [], myLike: false } //15*/
   ];
   
 //--------------------------------------------------------

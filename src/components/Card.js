@@ -93,6 +93,7 @@ export class Card {
     updateLikes(likes) {
         //this._numLikes = likes;//Обновим число лайков
         this._likeNum.textContent = likes.length;//Отрисуем число лайков
+        this._likes = likes;// Обновим объект лайков
     }
     setMyLike() {
         //this._myLike = true;//есть мой лайк

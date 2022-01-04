@@ -73,9 +73,9 @@ function handleConfirmDelCard(card) {//обработчик клика кноп�
     //closeConfermDel();// закрыть попап «ConfirmDEL»
     popupConfirmDel.close();// закрыть попап «ConfirmDEL»
   }).catch((err) => alert(err))
-  .finally(function() {
-    renderBtnSave(".confirm__btn", "Да");//на кнопке "Да"
-  });
+    .finally(function () {
+      renderBtnSave(".confirm__btn", "Да");//на кнопке "Да"
+    });
   //======================================================
 }
 // Прикрепляем обработчики к форме «Confirm»:
@@ -88,7 +88,7 @@ popupConfirmDel.setEventListeners();// кнопки - "Да", "Х"
 const avatarButton = document.querySelector(".profile__avatar-btn");//кн.открытия формы
 
 // Обработчик открытия формы popup «Редактировать аватар»
-function openEditAvatar() {  
+function openEditAvatar() {
   validatorEditAvatar.resetValidation();
   validatorEditAvatar.disableButtonState();
   popupEditAvatar.open();//открыть popup «Редактировать аватар» 
@@ -110,14 +110,14 @@ function handleSubmitEditAvatar(evt) {
   const tasks = api.writeAvatar(data.urlAvatar);//data.urlAvatar
   tasks.then((dataRet) => {
     //дождались ответа сервера
-  // Загрузить значения из запроса в профиль
+    // Загрузить значения из запроса в профиль
     userInfoProfile.setUserInfo(dataRet.name, dataRet.about, dataRet.avatar, dataRet._id);
     // закрыть попап «Редактировать аватар» после ответа сервера
     closeEditAvatar();// закрыть попап «Редактировать аватар»
   }).catch((err) => alert(err))// если что-то пошло не так
-  .finally(function() {
-    renderBtnSave(".edit-avatar__btn-save", "Сохранить");//на кнопке "Сохранить"
-  });
+    .finally(function () {
+      renderBtnSave(".edit-avatar__btn-save", "Сохранить");//на кнопке "Сохранить"
+    });
   //======================================================
 }
 
@@ -179,9 +179,9 @@ function handleSubmitEditProfile(evt) {
     userInfoProfile.setUserInfo(dataRet.name, dataRet.about, dataRet.avatar, dataRet._id);
     closeEditProfile();// закрыть попап «Редактировать профиль»
   }).catch((err) => alert(err))
-  .finally(function() {
-    renderBtnSave(".popup__btn-save", "Сохранить");//на кнопке "Сохранить"
-  });
+    .finally(function () {
+      renderBtnSave(".popup__btn-save", "Сохранить");//на кнопке "Сохранить"
+    });
   //===============================================================
 }
 
@@ -236,9 +236,9 @@ function handleSubmitBildCard(evt) {
     // Закроем форму bildCard()
     closeBildCard();//закрыть окно bild-card()
   }).catch((err) => alert(err))
-  .finally(function() {
-    renderBtnSave(".bild-card__btn-save", "Создать");//на кнопке "Создать"
-  });
+    .finally(function () {
+      renderBtnSave(".bild-card__btn-save", "Создать");//на кнопке "Создать"
+    });
   //======================================================
 }
 
@@ -308,6 +308,7 @@ api.getIniData().then(arg => {
   //  Начальная загрузка страницы - 6 карточек (rdCards.length)
   //--------------------------------------------------------
   //console.log("Всего карточек: " + dataCards.length);//
+  
   const countIni = rdCards.length;//размер массива rdCards в data.js
   for (let i = 0; i < countIni; i += 1) {//загружаем массив rdCards
     rdCards[i].likes = dataCards[i].likes;//
@@ -317,5 +318,7 @@ api.getIniData().then(arg => {
     rdCards[i]._id = dataCards[i]._id;
   }
   section.renderItems();//отрисуем карточки из массива rdCards
+  
+  //section.rendersItems(dataCards);//отрисуем карточки из массива dataCards
 }).catch((err) => alert(err));
 //======================================================
