@@ -317,7 +317,7 @@ api.getIniData().then(arg => {
     rdCards[i].cardID = dataCards[i]._id;
     //rdCards[i].numLikes = dataCards[i].likes.length;//
     rdCards[i].likes = dataCards[i].likes;//
-
+    /*
     let myLike = false;
     //let strlike = "";
     const numLikes = rdCards[i].likes.length;
@@ -333,6 +333,7 @@ api.getIniData().then(arg => {
         //console.log("    like id:" + rdCards[i].likes[n]._id + ", Мой лайк: " + strlike);
       }
     }
+    */
     //rdCards[i].myLike = myLike;
     /*
     let metka = "";
