@@ -225,9 +225,9 @@ function handleSubmitBildCard(evt) {
     //console.log("запись cardID: " + dataRet._id + ", ownerID:" + dataRet.owner._id);
     // Вставьте новые значения в новую карточку
     infoCard.myID = myID;//
-    infoCard.ownerID = myID;//если (ownerID==myID) нарисуем ведерко
+    infoCard.ownerID = dataRet.owner._id;//если (ownerID==myID) нарисуем ведерко
     infoCard.myLike = false;//моего лайка нет
-    infoCard.numLikes = 0;//число лайков
+    infoCard.likes = dataRet.likes;//число лайков
     infoCard.cardID = dataRet._id;//возвращает сервер
     // Создадим экземпляр карточки
     section.renderItem(infoCard);
@@ -268,9 +268,9 @@ function delLike(card) {//(cardID)
   const taskDelLike = api.delLike(cardID);
   taskDelLike.then((dataRet) => {
     //дождались обещанного
-    const numLikes = dataRet.likes.length;
+    const likes = dataRet.likes;
     //console.log("число лайков: " + numLikes);//отладка
-    card.updateLikes(numLikes);
+    card.updateLikes(likes);
     card.delMyLike();
   }).catch((err) => alert(err));
   //======================================================
@@ -286,9 +286,9 @@ function setLike(card) {//(cardID)
   const taskSetLike = api.setLike(cardID);
   taskSetLike.then((dataRet) => {
     //дождались обещанного
-    const numLikes = dataRet.likes.length;
+    const likes = dataRet.likes;
     //console.log("число лайков: " + numLikes);//отладка
-    card.updateLikes(numLikes);
+    card.updateLikes(likes);
     card.setMyLike();
   }).catch((err) => alert(err));//
   //======================================================
@@ -315,7 +315,7 @@ api.getIniData().then(arg => {
     //rdCards[i].myID = dataProfile._id;
     rdCards[i].ownerID = dataCards[i].owner._id;
     rdCards[i].cardID = dataCards[i]._id;
-    rdCards[i].numLikes = dataCards[i].likes.length;//
+    //rdCards[i].numLikes = dataCards[i].likes.length;//
     rdCards[i].likes = dataCards[i].likes;//
 
     let myLike = false;

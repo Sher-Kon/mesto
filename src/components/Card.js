@@ -8,6 +8,7 @@ export class Card {
         this._image = dataCard.link;
         this._numLikes = dataCard.numLikes
         this._myLike = dataCard.myLike;
+        this._likes = dataCard.likes;
         this._template = template;
         this._handleCardClick = handleCardClick;
         this._handleSetLikeRequest = handleSetLikeRequest;
@@ -30,7 +31,10 @@ export class Card {
         this._cardImage.src = this._image;
         this._cardImage.alt = "На фотографии " + this._title;
         this._element.querySelector('.element__txt').textContent = this._title;
-        this._likeNum.textContent = this._numLikes;//Запишем число лайков
+
+        //this._likeNum.textContent = this._numLikes;//Запишем число лайков
+        this._likeNum.textContent = this._likes.length;//Запишем число лайков
+
         if (this._myLike) {
             this._likeButton.classList.add('element__like-btn_active');//отметить
         } else {
@@ -75,8 +79,8 @@ export class Card {
     }
 
     updateLikes(likes) {
-        this._numLikes = likes;//Обновим число лайков
-        this._likeNum.textContent = this._numLikes;//Отрисуем число лайков
+        //this._numLikes = likes;//Обновим число лайков
+        this._likeNum.textContent = likes.length;//Отрисуем число лайков
     }
     setMyLike() {
         this._myLike = true;//есть мой лайк
