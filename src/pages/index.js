@@ -8,7 +8,7 @@ import { UserInfo } from "../components/UserInfo.js";
 import { Section } from "../components/Section.js";
 import { FormValidator } from "../components/FormValidator.js";
 import { createCard, renderBtnSave } from "../scripts/utils.js";
-import { rdCards, selectorsElements } from "../scripts/data.js";
+import { selectorsElements } from "../scripts/data.js";
 export { openLookImg, delLike, setLike, delCard, myID };//для Card in utils.js
 //--------------------------------------------------------
 let myID = "";
@@ -23,7 +23,7 @@ const api = new Api({
 });
 
 // Создадим экземпляр class Section создание карточек 
-const section = new Section( createCard, ".elements" );
+const section = new Section(createCard, ".elements");
 
 // Создадим экземпляр PopupWithForm для Confirm
 const popupConfirmDel = new PopupConfirm(".confirm", handleConfirmDelCard);
@@ -68,9 +68,7 @@ function handleConfirmDelCard(card) {//обработчик клика кноп�
   //======================================================
   const taskDelCard = api.deleteCard(cardID);//запрос на удаление
   taskDelCard.then((dataRet) => {//дождались ответа сервера
-    //console.log("Ответ на запрос: " + dataRet.message);// отладка
     card.deleteCardElement();//удалим элемент в DOM
-    //closeConfermDel();// закрыть попап «ConfirmDEL»
     popupConfirmDel.close();// закрыть попап «ConfirmDEL»
   }).catch((err) => alert(err))
     .finally(function () {
@@ -136,7 +134,7 @@ const content = document.querySelector(".content");
 const editButton = content.querySelector(".profile__info-edit-btn");//кн.открытия формы
 //const nameProfile = content.querySelector(".profile__info-name");
 //const infoProfile = content.querySelector(".profile__info-job");
-const avatarImage = document.querySelector(".profile__avatar");
+//const avatarImage = document.querySelector(".profile__avatar");
 // EditProfile popup «Редактировать профиль»
 const editProfileElement = document.querySelector(".edit-profile");//popup
 const nameInput = editProfileElement.querySelector(".popup__text_input_name");
@@ -173,8 +171,6 @@ function handleSubmitEditProfile(evt) {
   renderBtnSave(".popup__btn-save", "Загрузка...");//на кнопке "Загрузка..."
   const taskWrProfile = api.writeProfile(dataWr);
   taskWrProfile.then((dataRet) => {
-    //дождались ответа сервера
-    //console.log("Записан на сервере: "+dataRet.name+", "+dataRet.about);
     // Вставить новые значения из ответа сервера в профиль
     userInfoProfile.setUserInfo(dataRet.name, dataRet.about, dataRet.avatar, dataRet._id);
     closeEditProfile();// закрыть попап «Редактировать профиль»
@@ -222,11 +218,8 @@ function handleSubmitBildCard(evt) {
   const tasks = api.writeCard(infoCard);
   tasks.then((dataRet) => {
     //дождались ответа от сервера:
-    //console.log("запись cardID: " + dataRet._id + ", ownerID:" + dataRet.owner._id);
     // Вставьте новые значения в новую карточку
-    //infoCard.myID = myID;//мой id
-    infoCard.owner = dataRet.owner;//(._id) если (ownerID==myID) нарисуем ведерко
-    //infoCard.myLike = false;//моего лайка нет
+    infoCard.owner = dataRet.owner;//если (ownerID==myID) нарисуем ведерко
     infoCard.likes = dataRet.likes;//число лайков
     infoCard.cardID = dataRet._id;//id карточки
     // Создадим экземпляр карточки
@@ -269,7 +262,6 @@ function delLike(card) {//(cardID)
   taskDelLike.then((dataRet) => {
     //дождались обещанного
     const likes = dataRet.likes;
-    //console.log("число лайков: " + numLikes);//отладка
     card.updateLikes(likes);
     card.delMyLike();
   }).catch((err) => alert(err));
@@ -287,7 +279,6 @@ function setLike(card) {//(cardID)
   taskSetLike.then((dataRet) => {
     //дождались обещанного
     const likes = dataRet.likes;
-    //console.log("число лайков: " + numLikes);//отладка
     card.updateLikes(likes);
     card.setMyLike();
   }).catch((err) => alert(err));//
@@ -305,20 +296,7 @@ api.getIniData().then(arg => {
   // Загрузить значения из запроса в профиль
   userInfoProfile.setUserInfo(dataProfile.name, dataProfile.about, dataProfile.avatar, dataProfile._id);
   //--------------------------------------------------------
-  //  Начальная загрузка страницы 
-  //--------------------------------------------------------
-  //console.log("Всего карточек: " + dataCards.length);//
-  /*
-  const countIni = rdCards.length;//размер массива rdCards в data.js
-  for (let i = 0; i < countIni; i += 1) {//загружаем массив rdCards
-    rdCards[i].likes = dataCards[i].likes;//
-    rdCards[i].link = dataCards[i].link;
-    rdCards[i].name = dataCards[i].name;//
-    rdCards[i].owner = dataCards[i].owner;//._id
-    rdCards[i]._id = dataCards[i]._id;
-  }
-  section.renderItems();//отрисуем карточки из массива rdCards
-  */
+  //  Начальная загрузка карточек
   section.renderItems(dataCards);//отрисуем карточки из массива dataCards
 }).catch((err) => alert(err));
 //======================================================
