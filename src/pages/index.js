@@ -308,7 +308,7 @@ api.getIniData().then(arg => {
   //  Начальная загрузка страницы - 6 карточек (rdCards.length)
   //--------------------------------------------------------
   //console.log("Всего карточек: " + dataCards.length);//
-  
+  /*
   const countIni = rdCards.length;//размер массива rdCards в data.js
   for (let i = 0; i < countIni; i += 1) {//загружаем массив rdCards
     rdCards[i].likes = dataCards[i].likes;//
@@ -318,7 +318,7 @@ api.getIniData().then(arg => {
     rdCards[i]._id = dataCards[i]._id;
   }
   section.renderItems();//отрисуем карточки из массива rdCards
-  
-  //section.rendersItems(dataCards);//отрисуем карточки из массива dataCards
+  */
+  section.rendersItems(dataCards);//отрисуем карточки из массива dataCards
 }).catch((err) => alert(err));
 //======================================================
