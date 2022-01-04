@@ -20,15 +20,6 @@ function createCard(data) {
   return cardElement;
 }
 
-export const renderLoading = (popupBtn, isLoading = false) => {
-  const saveButton = document.querySelector(popupBtn);
-  if (isLoading) {
-    saveButton.textContent = 'Загрузка...';
-  } else {
-    saveButton.textContent = 'Сохранить';
-  }
-};
-
 export const renderBtnSave = (selectorBtn, txtBtn) => {
   const saveButton = document.querySelector(selectorBtn);
   saveButton.textContent = txtBtn;
