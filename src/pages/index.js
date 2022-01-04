@@ -224,7 +224,7 @@ function handleSubmitBildCard(evt) {
     //дождались ответа от сервера:
     //console.log("запись cardID: " + dataRet._id + ", ownerID:" + dataRet.owner._id);
     // Вставьте новые значения в новую карточку
-    infoCard.myID = myID;//мой id
+    //infoCard.myID = myID;//мой id
     infoCard.ownerID = dataRet.owner._id;//если (ownerID==myID) нарисуем ведерко
     //infoCard.myLike = false;//моего лайка нет
     infoCard.likes = dataRet.likes;//число лайков
@@ -312,7 +312,7 @@ api.getIniData().then(arg => {
   for (let i = 0; i < countIni; i += 1) {//загружаем массив rdCards
     rdCards[i].name = dataCards[i].name;//
     rdCards[i].link = dataCards[i].link;
-    rdCards[i].myID = myID;
+    //rdCards[i].myID = myID;
     rdCards[i].ownerID = dataCards[i].owner._id;
     rdCards[i]._id = dataCards[i]._id;
     //rdCards[i].numLikes = dataCards[i].likes.length;//
