@@ -2,6 +2,7 @@
   width: 816px;
   height: 540px;
   object-fit: cover;
+  background-size: cover;
   object-position: center center; /*гориз верт*/
 }
 

@@ -1,31 +1,23 @@
-import { Popup } from "./Popup.js";
+import React from 'react';
+// noValidate
 
-export class PopupWithForm extends Popup {
-    constructor(popupSelector, handleSubmitPopup) {
-        super(popupSelector);
-        this._handleSubmitPopup = handleSubmitPopup;
-        this._formElement = this._popupElement.querySelector(".form");// Находим форму в DOM
-        this._inputList = Array.from(this._popupElement.querySelectorAll(".form__input"));
-    }
-
-    // при закрытии попапа форма должна сбрасываться
-    close() {
-        super.close();
-        this._formElement.reset();
-    }
-
-    // Собирает данные всех полей формы
-    getInputValues() {
-        this._formValues = {};
-        this._inputList.forEach(input => this._formValues[input.name] = input.value);
-        return this._formValues;
-    }
-
-    // Обработчик клика по Х-иконке закрытия, и добавляет обработчик сабмита
-    
-    setEventListeners() {
-        super.setEventListeners();
-        // Добавляет обработчик сабмита
-        this._formElement.addEventListener("submit", this._handleSubmitPopup);
-    }
+function PopupWithForm(props) {
+  return (
+    <div className={`popup ${props.name} ${props.isOpen && 'popup_opened'}`}>
+      <div className="popup__container">
+        <form className="form" name={`form-${props.name}`} onSubmit={props.onSubmit}>
+          <fieldset className="form__set">
+            <h3 className="popup__title">{props.title}</h3>
+            <div className="popup__input">
+              {props.children}
+              <button className="form__submit popup__btn-save" type="submit">{props.buttonText}</button>
+            </div>
+          </fieldset>
+        </form>
+        <button onClick={props.onClose} className="popup__btn-close x-btn" type="button"></button>
+      </div>
+    </div>
+  );
 }
+
+export default PopupWithForm;

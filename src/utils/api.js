@@ -1,5 +1,5 @@
 //Класс Api
-export class Api {
+class Api {
     constructor(config) {
         this._baseUrl = config.baseUrl;
         this._headers = config.headers;
@@ -115,3 +115,15 @@ export class Api {
     }
 
 }
+
+//--------------------------------------------------------
+// Создадим экземпляр class Api 
+const api = new Api({
+    baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-33/',
+    headers: {
+        authorization: '51ca28f6-a002-497b-8233-6c80bd0cac76',
+        'Content-Type': 'application/json'
+    }
+});
+
+export default api;
