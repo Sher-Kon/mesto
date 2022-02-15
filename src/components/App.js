@@ -12,6 +12,8 @@ import api from '../utils/api.js';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 import { Route, Switch } from 'react-router-dom';
 
+import SIGN_UP from './SIGN_UP';
+import LOG_IN from './LOG_IN';
 import Dashboard from './Dashboard';
 import NavBar from './NavBar';
 
@@ -123,12 +125,18 @@ function App() {
                   onAddPlace={handleAddPlaceClick}
                   onCardClick={handleCardClick}
                 />
+                <Footer />
               </Route>
               <Route path="/next">
                 <Dashboard />
               </Route>
+              <Route path="/sign-up">
+                <SIGN_UP />
+              </Route>
+              <Route path="/sign-in">
+                <LOG_IN />
+              </Route>
             </Switch>
-            <Footer />
           </div>
 
           <EditProfilePopup
