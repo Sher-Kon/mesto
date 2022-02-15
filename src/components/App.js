@@ -10,6 +10,10 @@ import EditAvatarPopup from './EditAvatarPopup';
 import ConfirmPopup from './ConfirmPopup';
 import api from '../utils/api.js';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
+import { Route, Switch } from 'react-router-dom';
+
+import Dashboard from './Dashboard';
+import NavBar from './NavBar';
 
 function App() {
 
@@ -17,8 +21,8 @@ function App() {
   const [currentUser, setCurrentUser] = React.useState({});
 
   React.useEffect(() => {
-      api.getInitialCards().then((retCards) => {setCards(retCards)}).catch((err) => alert(err));
-      api.readProfile().then((retUser)=>{setCurrentUser(retUser)}).catch((err) => alert(err));
+    api.getInitialCards().then((retCards) => { setCards(retCards) }).catch((err) => alert(err));
+    api.readProfile().then((retUser) => { setCurrentUser(retUser) }).catch((err) => alert(err));
   }, []);
 
   function handleCardLike(card) {
@@ -45,7 +49,7 @@ function App() {
 
   function handleConfirm() {
     api.deleteCard(delCard._id).then(() => {
-      const newCards=cards.filter(card => card._id !== delCard._id);
+      const newCards = cards.filter(card => card._id !== delCard._id);
       setCards(newCards);
       setConfirmPopupOpen(false);
     }).catch((err) => alert(err));
@@ -107,15 +111,23 @@ function App() {
         <div className="page__container">
           <Header />
           <div className="content">
-            <Main
-              cards={cards}
-              onCardLike={handleCardLike}
-              onCardDelete={handleCardDelete}
-              onEditAvatar={handleEditAvatarClick}
-              onEditProfile={handleEditProfileClick}
-              onAddPlace={handleAddPlaceClick}
-              onCardClick={handleCardClick}
-            />
+            <NavBar />
+            <Switch>
+              <Route exact path="/">
+                <Main
+                  cards={cards}
+                  onCardLike={handleCardLike}
+                  onCardDelete={handleCardDelete}
+                  onEditAvatar={handleEditAvatarClick}
+                  onEditProfile={handleEditProfileClick}
+                  onAddPlace={handleAddPlaceClick}
+                  onCardClick={handleCardClick}
+                />
+              </Route>
+              <Route path="/next">
+                <Dashboard />
+              </Route>
+            </Switch>
             <Footer />
           </div>
 
