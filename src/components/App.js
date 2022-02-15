@@ -8,6 +8,7 @@ import EditProfilePopup from './EditProfilePopup';
 import AddPlacePopup from './AddPlacePopup';
 import EditAvatarPopup from './EditAvatarPopup';
 import ConfirmPopup from './ConfirmPopup';
+import InfoTooltip from './InfoTooltip';
 import api from '../utils/api.js';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 import { Route, Switch } from 'react-router-dom';
@@ -38,6 +39,7 @@ function App() {
       }).catch((err) => alert(err));
   }
 
+  const [isInformPopupOpen, setInformPopupOpen] = React.useState(false);
   const [isEditAvatarPopupOpen, setEditAvatarPopupOpen] = React.useState(false);
   const [isEditProfilePopupOpen, setEditProfilePopupOpen] = React.useState(false);
   const [isAddPlacePopupOpen, setAddPlacePopupOpen] = React.useState(false);
@@ -58,7 +60,8 @@ function App() {
   }
 
   function handleEditAvatarClick() {
-    setEditAvatarPopupOpen(true);
+    //setEditAvatarPopupOpen(true);
+    setInformPopupOpen(true);
   }
 
   function handleEditProfileClick() {
@@ -70,6 +73,7 @@ function App() {
   }
 
   function closeAllPopups() {
+    setInformPopupOpen(false);
     setEditAvatarPopupOpen(false);
     setEditProfilePopupOpen(false);
     setAddPlacePopupOpen(false);
@@ -166,6 +170,12 @@ function App() {
           <ImagePopup
             cardIMG={selectedCard}
             onClose={closeAllPopups}
+          />
+
+          <InfoTooltip
+            isOpen={isInformPopupOpen}
+            onClose={closeAllPopups}
+            isOk={false}
           />
 
         </div>
