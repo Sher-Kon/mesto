@@ -19,6 +19,7 @@ import Login from './Login';
 import NavBar from './NavBar';
 
 function App() {
+  const [isEmall, setEmail] = React.useState("");
   const [loggedIn, setLoggedIn] = React.useState(true);
   const [token, setToken] = React.useState("");
 
@@ -124,6 +125,8 @@ function App() {
     //console.log(token);
       api_sign.check_token(token).then((dataRet) => {
         console.log(dataRet);
+        console.log(dataRet.data.email);
+        setEmail(dataRet.data.email);
       }).catch((err) => alert(err));
   }
 
@@ -155,6 +158,7 @@ function App() {
                   onEditProfile={handleEditProfileClick}
                   onAddPlace={handleAddPlaceClick}
                   onCardClick={handleCardClick}
+                  email={isEmall}
                 />
               </Route>
               <Route path="/sign-up">

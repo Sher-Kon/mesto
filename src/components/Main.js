@@ -9,14 +9,15 @@ import Header from './Header';
 import Footer from './Footer';
 
 
-function Main({ cards, onCardLike, onCardDelete, onEditAvatar, onEditProfile, onAddPlace, onCardClick }) {
+function Main({ cards, onCardLike, onCardDelete, onEditAvatar, 
+                onEditProfile, onAddPlace, onCardClick, email }) {
 
     const currentUser = React.useContext(CurrentUserContext);
 
     return (
         
         <main>
-            <Header />
+            <Header email={email} />
             <div className="profile">
                 <button onClick={onEditAvatar} className="profile__avatar-btn" type="button">
                     <img src={currentUser.avatar} className="profile__avatar" alt="картинка-аватарка" />

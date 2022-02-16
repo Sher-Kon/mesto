@@ -1,0 +1,12 @@
+.header__email {
+    display: flex;
+    flex-direction: row; /* строка */
+    flex-wrap: wrap;
+    /*width: 282px;*/
+    color: white;
+    text-decoration: none;
+    font-size: 18px;/*22px*/
+    line-height: 22px;/*30px*/
+    font-weight: 400;
+    margin-right: 15px;
+    }
