@@ -14,7 +14,6 @@ function InfoTooltip({ isOpen, onClose, isOk }) {
                     ?   <img src={imgSuccess} className="infotool__img" alt="иконка успешного выполнения" />
                     :   <img src={imgFail} className="infotool__img" alt="иконка ошибочного выполнения" />
                 }
-
                 <h3 className="infotool__title">{isOk === true
                     ? "Вы успешно зарегистрированы"
                     : "Что-то пошло не так! Попробуйте еще раз."}

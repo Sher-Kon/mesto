@@ -1,8 +1,6 @@
 import React from 'react';
 
-import Header from './Header';
 import Main from './Main';
-import Footer from './Footer';
 import ImagePopup from './ImagePopup';
 import EditProfilePopup from './EditProfilePopup';
 import AddPlacePopup from './AddPlacePopup';
@@ -11,14 +9,16 @@ import ConfirmPopup from './ConfirmPopup';
 import InfoTooltip from './InfoTooltip';
 import api from '../utils/api.js';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 
+import ProtectedRoute from './ProtectedRoute';
 import Register from './Register';
 import Login from './Login';
 //import Dashboard from './Dashboard';
 import NavBar from './NavBar';
 
 function App() {
+  const [loggedIn, setLoggedIn] = React.useState(true);
 
   const [cards, setCards] = React.useState([]);
   const [currentUser, setCurrentUser] = React.useState({});
@@ -129,8 +129,7 @@ function App() {
           <div className="content">
             <NavBar />
             <Switch>
-              <Route exact path="/">
-                <Header />
+              <Route path="/cards">
                 <Main
                   cards={cards}
                   onCardLike={handleCardLike}
@@ -140,7 +139,6 @@ function App() {
                   onAddPlace={handleAddPlaceClick}
                   onCardClick={handleCardClick}
                 />
-                <Footer />
               </Route>
               <Route path="/sign-up">
                 <Register
@@ -151,6 +149,9 @@ function App() {
                 <Login
                   onClick={handleInfoTooltipErr}
                 />
+              </Route>
+              <Route exact path="/">
+                {loggedIn ? <Redirect to="/cards" /> : <Redirect to="/sign-in" />}
               </Route>
             </Switch>
           </div>

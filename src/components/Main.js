@@ -5,6 +5,8 @@ import imgPlus from '../images/Plus.svg';
 import imgPensil from '../images/pensil.svg';
 import Card from './Card';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
+import Header from './Header';
+import Footer from './Footer';
 
 
 function Main({ cards, onCardLike, onCardDelete, onEditAvatar, onEditProfile, onAddPlace, onCardClick }) {
@@ -12,7 +14,9 @@ function Main({ cards, onCardLike, onCardDelete, onEditAvatar, onEditProfile, on
     const currentUser = React.useContext(CurrentUserContext);
 
     return (
+        
         <main>
+            <Header />
             <div className="profile">
                 <button onClick={onEditAvatar} className="profile__avatar-btn" type="button">
                     <img src={currentUser.avatar} className="profile__avatar" alt="картинка-аватарка" />
@@ -38,6 +42,7 @@ function Main({ cards, onCardLike, onCardDelete, onEditAvatar, onEditProfile, on
                     onCardDelete={onCardDelete}
                 />))}
             </div>
+            <Footer />
         </main>
     );
 }

@@ -12,7 +12,7 @@ function Register(props) {
 
             <div className="register-header">
                 <div className="register-logo"> </div>
-                <Link to="/" className="register-link">Войти</Link>                
+                <Link to="/cards" className="register-link">Войти</Link>                
             </div>
 
             <h2>Регистрация</h2>
