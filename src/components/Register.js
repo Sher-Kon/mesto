@@ -1,7 +1,8 @@
 import React from 'react';
 import './Register.css';
-import { Link } from 'react-router-dom'; 
+import { Link } from 'react-router-dom';
 
+// РЕГИСТРАЦИЯ
 
 function Register(props) {
 
@@ -12,21 +13,18 @@ function Register(props) {
 
             <div className="register-header">
                 <div className="register-logo"> </div>
-                <Link to="/cards" className="register-link">Войти</Link>                
+                <Link to="/cards" className="register-link">Войти</Link>
             </div>
 
             <h2>Регистрация</h2>
 
-            <input type="url" placeholder="Email" id="url-input"
-                className="register-text"
-                name="urlInput" required />
-
-            <input type="text" placeholder="Пароль" id="place-input"
-                className="register-text"
-                name="placeInput"
-                required />
-
-            <button className="register-btn" type="submit" onClick={props.onClick}>Зарегистрироваться</button>
+            <form onSubmit={props.onSubmit}  className="register__form">
+                <input type="email" placeholder="Email" value={props.email}
+                    className="register-text" required />
+                <input type="password" placeholder="Пароль" value={props.password}
+                    className="register-text" required />
+                <button className="register-btn" type="submit" >Зарегистрироваться</button>
+            </form>
 
             <p> Уже зарегистрированы? Войти </p>
         </div>

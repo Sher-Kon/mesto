@@ -8,6 +8,7 @@ import EditAvatarPopup from './EditAvatarPopup';
 import ConfirmPopup from './ConfirmPopup';
 import InfoTooltip from './InfoTooltip';
 import api from '../utils/api.js';
+import api_sign from '../utils/api_sign';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 import { Route, Switch, Redirect } from 'react-router-dom';
 
@@ -19,6 +20,7 @@ import NavBar from './NavBar';
 
 function App() {
   const [loggedIn, setLoggedIn] = React.useState(true);
+  const [token, setToken] = React.useState("");
 
   const [cards, setCards] = React.useState([]);
   const [currentUser, setCurrentUser] = React.useState({});
@@ -110,16 +112,31 @@ function App() {
     }).catch((err) => alert(err));
   }
 
-  function handleRegisterOk(e) {
+  function handleSubmitRegister(e) {
+    e.preventDefault();
     // Отладка запустим попап
     setInfoTooltipOpen(true);
     setInfoTooltipOk(true);
+    // Запрс на регистрацию
+    //  api_sign.register_fix().then((dataRet) => {
+    //    console.log(dataRet);
+    //  }).catch((err) => alert(err));
+    //console.log(token);
+      api_sign.check_token(token).then((dataRet) => {
+        console.log(dataRet);
+      }).catch((err) => alert(err));
   }
 
-  function handleInfoTooltipErr(e) {
+  function handleSubmitLogin(e) {
+    e.preventDefault();
     // Отладка запустим попап
     setInfoTooltipOpen(true);
     setInfoTooltipOk(false);
+    // Запрс на авторизацию
+    api_sign.logo_fix().then((dataRet) => {
+      setToken(dataRet.token);
+      //console.log(dataRet.token);
+    }).catch((err) => alert(err));
   }
 
   return (
@@ -142,12 +159,12 @@ function App() {
               </Route>
               <Route path="/sign-up">
                 <Register
-                  onClick={handleRegisterOk}
+                  onSubmit={handleSubmitRegister}
                 />
               </Route>
               <Route path="/sign-in">
                 <Login
-                  onClick={handleInfoTooltipErr}
+                  onSubmit={handleSubmitLogin}
                 />
               </Route>
               <Route exact path="/">

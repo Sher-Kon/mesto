@@ -24,7 +24,12 @@
     max-width: 350px;
   }
 
-
+  .register__form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
   .register-btn {
     margin-top: 216px;/*  */
     font-size: 18px;

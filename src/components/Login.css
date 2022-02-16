@@ -23,6 +23,12 @@
     max-width: 350px;
   }
 
+  .log_in__form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
   .log_in-btn {
     margin-top: 216px;/*  */
     font-size: 18px;
