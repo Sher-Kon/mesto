@@ -1,21 +1,21 @@
 import React from 'react';
-import './SIGN_UP.css';
+import './Register.css';
 
 function SIGN_UP() {
     return (
-        <div className="sign_up">
+        <div className="register">
             <h2>Регистрация</h2>
 
             <input type="url" placeholder="Email" id="url-input"
-                className="sign-up-text"
+                className="register-text"
                 name="urlInput" required />
 
             <input type="text" placeholder="Пароль" id="place-input"
-                className="sign-up-text"
+                className="register-text"
                 name="placeInput"
                 required />
 
-            <button className="sign-up-btn" type="submit">Зарегистрироваться</button>
+            <button className="register-btn" type="submit">Зарегистрироваться</button>
 
             <p>
                 Уже зарегистрированы? Войти

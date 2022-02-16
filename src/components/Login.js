@@ -1,7 +1,7 @@
 import React from 'react';
-import './LOG_IN.css';
+import './Login.css';
 
-function LOG_IN() {
+function Login() {
     return (
         <div className="log_in">
             <h2>Вход</h2>
@@ -21,4 +21,4 @@ function LOG_IN() {
     )
 }
 
-export default LOG_IN; 
+export default Login; 

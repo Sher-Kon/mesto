@@ -1,7 +1,7 @@
 .menu {
     position: absolute;
-    top: 8%;/*50%*/
-    left: 55%;/*50%*/
+    top: 9%;/*50%*/
+    left: 50%;/*50%*/
     transform: translate(-50%, -50%);
 }
 

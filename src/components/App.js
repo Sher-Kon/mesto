@@ -13,8 +13,8 @@ import api from '../utils/api.js';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 import { Route, Switch } from 'react-router-dom';
 
-import SIGN_UP from './SIGN_UP';
-import LOG_IN from './LOG_IN';
+import Register from './Register';
+import Login from './Login';
 import Dashboard from './Dashboard';
 import NavBar from './NavBar';
 
@@ -39,7 +39,8 @@ function App() {
       }).catch((err) => alert(err));
   }
 
-  const [isInformPopupOpen, setInformPopupOpen] = React.useState(false);
+  const [isInfoTooltipOpen, setInfoTooltipOpen] = React.useState(false);
+  const [isInfoTooltipOk, setInfoTooltipOk] = React.useState(false);
   const [isEditAvatarPopupOpen, setEditAvatarPopupOpen] = React.useState(false);
   const [isEditProfilePopupOpen, setEditProfilePopupOpen] = React.useState(false);
   const [isAddPlacePopupOpen, setAddPlacePopupOpen] = React.useState(false);
@@ -61,7 +62,8 @@ function App() {
 
   function handleEditAvatarClick() {
     //setEditAvatarPopupOpen(true);
-    setInformPopupOpen(true);
+    setInfoTooltipOpen(true);
+    setInfoTooltipOk(false);
   }
 
   function handleEditProfileClick() {
@@ -73,7 +75,7 @@ function App() {
   }
 
   function closeAllPopups() {
-    setInformPopupOpen(false);
+    setInfoTooltipOpen(false);
     setEditAvatarPopupOpen(false);
     setEditProfilePopupOpen(false);
     setAddPlacePopupOpen(false);
@@ -135,10 +137,10 @@ function App() {
                 <Dashboard />
               </Route>
               <Route path="/sign-up">
-                <SIGN_UP />
+                <Register />
               </Route>
               <Route path="/sign-in">
-                <LOG_IN />
+                <Login />
               </Route>
             </Switch>
           </div>
@@ -173,9 +175,9 @@ function App() {
           />
 
           <InfoTooltip
-            isOpen={isInformPopupOpen}
+            isOpen={isInfoTooltipOpen}
             onClose={closeAllPopups}
-            isOk={false}
+            isOk={isInfoTooltipOk}
           />
 
         </div>

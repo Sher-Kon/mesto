@@ -1,4 +1,4 @@
-.sign_up {
+.register {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -7,7 +7,7 @@
     justify-content: start;  /*center;*/
   }
   
-  .sign_up h2 {
+  .register h2 {
     text-align: center;
     font-size: 24px;
     line-height: 29px;
@@ -18,14 +18,14 @@
     margin-top: 60px;
   }
   
-  .sign_up p {
+  .register p {
     font-size: 14px;
     line-height: 17px;  
     max-width: 350px;
   }
 
 
-  .sign-up-btn {
+  .register-btn {
     margin-top: 216px;/*  */
     font-size: 18px;
     line-height: 22px;
@@ -40,12 +40,12 @@
     color: black;
   }
   
-  .sign-up-btn:hover {
+  .register-btn:hover {
     opacity: 0.8;
   }
   
   @media screen and (max-width: 750px) {
-    .sign-up-btn {
+    .register-btn {
         margin-top: 45px;/**/
         width: 238px;
         height: 46px;
@@ -54,7 +54,7 @@
     }
   }
   
-  .sign-up-text {
+  .register-text {
     width: 358px;
     margin-top: 17px;/*17+13=30*/
     font-size: 14px;
@@ -72,7 +72,7 @@
   }
   
   @media screen and (max-width: 750px) {
-    .sign-up-text {
+    .register-text {
         width: 238px;
     }
   }  
