@@ -1,17 +1,18 @@
 import React from 'react';
 import './InfoTooltip.css';
+
 import imgSuccess from "../images/success_ico.svg";
 import imgFail from "../images/fail_ico.svg";
 
-// x-btn
+
 function InfoTooltip({ isOpen, onClose, isOk }) {
 
     return (
         <div className={`infotool ${isOpen && 'infotool_opened'}`}>
             <div className="infotool__container">
                 {isOk === true
-                    ? <img src={imgSuccess} className="infotool__img" alt="иконка успешного выполнения" />
-                    : <img src={imgFail} className="infotool__img" alt="иконка ошибочного выполнения" />
+                    ?   <img src={imgSuccess} className="infotool__img" alt="иконка успешного выполнения" />
+                    :   <img src={imgFail} className="infotool__img" alt="иконка ошибочного выполнения" />
                 }
 
                 <h3 className="infotool__title">{isOk === true

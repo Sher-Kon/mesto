@@ -1,9 +1,20 @@
 import React from 'react';
 import './Register.css';
+import { Link } from 'react-router-dom'; 
 
-function SIGN_UP() {
+
+function Register(props) {
+
     return (
+
+
         <div className="register">
+
+            <div className="register-header">
+                <div className="register-logo"> </div>
+                <Link to="/" className="register-link">Войти</Link>                
+            </div>
+
             <h2>Регистрация</h2>
 
             <input type="url" placeholder="Email" id="url-input"
@@ -15,13 +26,11 @@ function SIGN_UP() {
                 name="placeInput"
                 required />
 
-            <button className="register-btn" type="submit">Зарегистрироваться</button>
+            <button className="register-btn" type="submit" onClick={props.onClick}>Зарегистрироваться</button>
 
-            <p>
-                Уже зарегистрированы? Войти
-            </p>
+            <p> Уже зарегистрированы? Войти </p>
         </div>
     )
 }
 
-export default SIGN_UP; 
+export default Register; 

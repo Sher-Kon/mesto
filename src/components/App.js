@@ -15,7 +15,7 @@ import { Route, Switch } from 'react-router-dom';
 
 import Register from './Register';
 import Login from './Login';
-import Dashboard from './Dashboard';
+//import Dashboard from './Dashboard';
 import NavBar from './NavBar';
 
 function App() {
@@ -61,9 +61,7 @@ function App() {
   }
 
   function handleEditAvatarClick() {
-    //setEditAvatarPopupOpen(true);
-    setInfoTooltipOpen(true);
-    setInfoTooltipOk(false);
+    setEditAvatarPopupOpen(true);
   }
 
   function handleEditProfileClick() {
@@ -112,16 +110,27 @@ function App() {
     }).catch((err) => alert(err));
   }
 
+  function handleRegisterOk(e) {
+    // Отладка запустим попап
+    setInfoTooltipOpen(true);
+    setInfoTooltipOk(true);
+  }
+
+  function handleInfoTooltipErr(e) {
+    // Отладка запустим попап
+    setInfoTooltipOpen(true);
+    setInfoTooltipOk(false);
+  }
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
         <div className="page__container">
-          <Header />
           <div className="content">
             <NavBar />
             <Switch>
               <Route exact path="/">
+                <Header />
                 <Main
                   cards={cards}
                   onCardLike={handleCardLike}
@@ -133,14 +142,15 @@ function App() {
                 />
                 <Footer />
               </Route>
-              <Route path="/next">
-                <Dashboard />
-              </Route>
               <Route path="/sign-up">
-                <Register />
+                <Register
+                  onClick={handleRegisterOk}
+                />
               </Route>
               <Route path="/sign-in">
-                <Login />
+                <Login
+                  onClick={handleInfoTooltipErr}
+                />
               </Route>
             </Switch>
           </div>
