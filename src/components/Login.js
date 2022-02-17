@@ -4,7 +4,28 @@ import { Link } from 'react-router-dom';
 
 // АВТОРИЗАЦИЯ
 
-function Login(props) {
+function Login({onLoginUser}) {
+
+    const [isEmail, setEmail] = React.useState("");
+    const [isPassword, setPassword] = React.useState("");
+
+    function handleChangeEmail(e) {
+        setEmail(e.target.value);
+    }
+    function handleChangePassword(e) {
+        setPassword(e.target.value);
+    }
+
+    function handleSubmit(e) {
+        e.preventDefault();
+        onLoginUser({
+            password: isPassword,
+            email: isEmail
+        });
+    }
+
+    //value={initialEmail} value={initialPassword}
+
     return (
         <div className="log_in">
 
@@ -16,10 +37,10 @@ function Login(props) {
 
             <h2>Вход</h2>
 
-            <form onSubmit={props.onSubmit} className="log_in__form">
-                <input type="email" placeholder="Email" value={props.email}
+            <form onSubmit={handleSubmit} className="log_in__form">
+                <input type="email" placeholder="Email" onChange={handleChangeEmail}
                     className="log_in-text" required />
-                <input type="password" placeholder="Пароль" value={props.password}
+                <input type="password" placeholder="Пароль" onChange={handleChangePassword}
                     className="log_in-text" required />
                 <button className="log_in-btn" type="submit" >Войти</button>
             </form >

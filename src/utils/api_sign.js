@@ -12,30 +12,14 @@ class Api_Sign {
         return Promise.reject(`Ошибка ${res.status}`)
     }
 
-
     // РЕГИСТРАЦИЯ
     register(data) {
         return fetch(this._baseUrl + "signup", {
             method: 'POST',
             headers: this._headers,
             body: JSON.stringify({
-                password: data.password,
-                email: data.email
-            })
-        })
-            .then(this._checkResponse)
-            .then((result) => {
-                return result;
-            });
-    }
-
-    register_fix() {
-        return fetch(this._baseUrl + "signup", {
-            method: 'POST',
-            headers: this._headers,
-            body: JSON.stringify({
-                "password": "somepassword",
-                "email": "sher-kon@yandex.ru"
+                "password": data.password,
+                "email": data.email
             })
         })
             .then(this._checkResponse)
@@ -45,13 +29,13 @@ class Api_Sign {
     }
 
     //АВТОРИЗАЦИЯ
-    logo_fix() {
+    logo(data) {
         return fetch(this._baseUrl + "signin", {
             method: 'POST',
             headers: this._headers,
             body: JSON.stringify({
-                "password": "somepassword",
-                "email": "sher-kon@yandex.ru"
+                "password": data.password,
+                "email": data.email
             })
         })
             .then(this._checkResponse)
@@ -76,6 +60,36 @@ class Api_Sign {
             });
     }
 
+    // Отладочные запросы
+    register_fix() {
+        return fetch(this._baseUrl + "signup", {
+            method: 'POST',
+            headers: this._headers,
+            body: JSON.stringify({
+                "password": "somepassword",
+                "email": "sher-kon@yandex.ru"
+            })
+        })
+            .then(this._checkResponse)
+            .then((result) => {
+                return result;
+            });
+    }
+
+    logo_fix() {
+        return fetch(this._baseUrl + "signin", {
+            method: 'POST',
+            headers: this._headers,
+            body: JSON.stringify({
+                "password": "somepassword",
+                "email": "sher-kon@yandex.ru"
+            })
+        })
+            .then(this._checkResponse)
+            .then((result) => {
+                return result;
+            });
+    }
 
 }
 
@@ -84,8 +98,6 @@ class Api_Sign {
 const api_sign = new Api_Sign({
     baseUrl: 'https://auth.nomoreparties.co/',
     headers: {
-        //authorization: '51ca28f6-a002-497b-8233-6c80bd0cac76',
-        //'Content-Type': 'application/json'
         "Content-Type": "application/json"
     }
 });

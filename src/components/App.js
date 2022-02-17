@@ -15,12 +15,10 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import ProtectedRoute from './ProtectedRoute';
 import Register from './Register';
 import Login from './Login';
-//import Dashboard from './Dashboard';
-import NavBar from './NavBar';
 
 function App() {
   const [isEmall, setEmail] = React.useState("");
-  const [loggedIn, setLoggedIn] = React.useState(true);
+  const [loggedIn, setLoggedIn] = React.useState(false);
   const [token, setToken] = React.useState("");
 
   const [cards, setCards] = React.useState([]);
@@ -113,66 +111,96 @@ function App() {
     }).catch((err) => alert(err));
   }
 
-  function handleSubmitRegister(e) {
-    e.preventDefault();
-    // Отладка запустим попап
-    setInfoTooltipOpen(true);
-    setInfoTooltipOk(true);
-    // Запрс на регистрацию
-    //  api_sign.register_fix().then((dataRet) => {
-    //    console.log(dataRet);
-    //  }).catch((err) => alert(err));
-    //console.log(token);
-      api_sign.check_token(token).then((dataRet) => {
-        console.log(dataRet);
-        console.log(dataRet.data.email);
-        setEmail(dataRet.data.email);
-      }).catch((err) => alert(err));
+  function handleRegister({ password, email }) {
+    setLoggedIn(false);
+    // Запрс на регистрацию 
+    const data = { password: '', email: '' };
+    data.password = password;
+    data.email = email;
+    //console.log(data);
+    api_sign.register(data).then((dataRet) => {
+      //console.log(dataRet);
+      // запустим попап OK
+      setInfoTooltipOpen(true);
+      setInfoTooltipOk(true);
+    }).catch((err) => {
+      // запустим попап ERR
+      setInfoTooltipOpen(true);
+      setInfoTooltipOk(false);
+      //alert(err)
+    })
   }
 
-  function handleSubmitLogin(e) {
-    e.preventDefault();
-    // Отладка запустим попап
-    setInfoTooltipOpen(true);
-    setInfoTooltipOk(false);
-    // Запрс на авторизацию
-    api_sign.logo_fix().then((dataRet) => {
+  function handleLogin({ password, email }) {
+    const data = { password: '', email: '' };
+    data.password = password;
+    data.email = email;
+    //console.log(data);
+    // Запрс на авторизацию получение токена
+    api_sign.logo(data).then((dataRet) => {
       setToken(dataRet.token);
+      setLoggedIn(true);
       //console.log(dataRet.token);
-    }).catch((err) => alert(err));
+
+      // Проверка токена
+      //console.log(token);
+      api_sign.check_token(token).then((dataRet) => {
+        console.log(dataRet);
+        //console.log(dataRet.data.email);
+        setEmail(dataRet.data.email);
+        // запустим попап OK
+        setInfoTooltipOpen(true);
+        setInfoTooltipOk(true);//OK
+      }).catch((err) => {
+        // запустим попап ERR
+        setInfoTooltipOpen(true);
+        setInfoTooltipOk(false);
+        //alert(err)
+      });
+
+      // запустим попап OK
+      //setInfoTooltipOpen(true);
+      //setInfoTooltipOk(true);//OK
+    }).catch((err) => {
+      // запустим попап ERR
+      setInfoTooltipOpen(true);
+      setInfoTooltipOk(false);
+      //alert(err)
+    });
   }
+
+  //<Route exact path="/">
+  //{loggedIn ? <Redirect to="/cards" /> : <Redirect to="/sign-in" />}
+  //</Route>
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
         <div className="page__container">
           <div className="content">
-            <NavBar />
             <Switch>
-              <Route path="/cards">
-                <Main
-                  cards={cards}
-                  onCardLike={handleCardLike}
-                  onCardDelete={handleCardDelete}
-                  onEditAvatar={handleEditAvatarClick}
-                  onEditProfile={handleEditProfileClick}
-                  onAddPlace={handleAddPlaceClick}
-                  onCardClick={handleCardClick}
-                  email={isEmall}
-                />
-              </Route>
+              <ProtectedRoute
+                exact path="/"
+                loggedIn={loggedIn}
+                component={Main}
+                cards={cards}
+                onCardLike={handleCardLike}
+                onCardDelete={handleCardDelete}
+                onEditAvatar={handleEditAvatarClick}
+                onEditProfile={handleEditProfileClick}
+                onAddPlace={handleAddPlaceClick}
+                onCardClick={handleCardClick}
+                email={isEmall}
+              />
               <Route path="/sign-up">
                 <Register
-                  onSubmit={handleSubmitRegister}
+                  onRegisterUser={handleRegister}
                 />
               </Route>
               <Route path="/sign-in">
                 <Login
-                  onSubmit={handleSubmitLogin}
+                  onLoginUser={handleLogin}
                 />
-              </Route>
-              <Route exact path="/">
-                {loggedIn ? <Redirect to="/cards" /> : <Redirect to="/sign-in" />}
               </Route>
             </Switch>
           </div>
