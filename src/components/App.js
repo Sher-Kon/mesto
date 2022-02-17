@@ -15,8 +15,12 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import ProtectedRoute from './ProtectedRoute';
 import Register from './Register';
 import Login from './Login';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 function App() {
+
+  const history = useHistory();
+
   const [isEmall, setEmail] = React.useState("");
   const [loggedIn, setLoggedIn] = React.useState(false);
   const [token, setToken] = React.useState("");
@@ -123,6 +127,8 @@ function App() {
       // запустим попап OK
       setInfoTooltipOpen(true);
       setInfoTooltipOk(true);
+      // на авторизацию
+      history.push("/sign-in");
     }).catch((err) => {
       // запустим попап ERR
       setInfoTooltipOpen(true);
@@ -132,35 +138,29 @@ function App() {
   }
 
   function handleLogin({ password, email }) {
+    let JWT = "";
     const data = { password: '', email: '' };
     data.password = password;
     data.email = email;
-    //console.log(data);
     // Запрс на авторизацию получение токена
     api_sign.logo(data).then((dataRet) => {
+      JWT = dataRet.token;
       setToken(dataRet.token);
+      localStorage.setItem("JWT", dataRet.token);
       setLoggedIn(true);
-      //console.log(dataRet.token);
-
-      // Проверка токена
-      //console.log(token);
-      api_sign.check_token(token).then((dataRet) => {
-        console.log(dataRet);
-        //console.log(dataRet.data.email);
-        setEmail(dataRet.data.email);
-        // запустим попап OK
-        setInfoTooltipOpen(true);
-        setInfoTooltipOk(true);//OK
-      }).catch((err) => {
-        // запустим попап ERR
-        setInfoTooltipOpen(true);
-        setInfoTooltipOk(false);
-        //alert(err)
-      });
-
-      // запустим попап OK
-      //setInfoTooltipOpen(true);
-      //setInfoTooltipOk(true);//OK
+      setTimeout(() => {
+        // Проверка токена
+        api_sign.check_token(JWT).then((dataRet) => {
+          setEmail(dataRet.data.email);
+          // откроем cards
+          history.push("/");
+        }).catch((err) => {
+          // запустим попап ERR
+          setInfoTooltipOpen(true);
+          setInfoTooltipOk(false);
+          //alert(err)
+        });
+      }, 500);
     }).catch((err) => {
       // запустим попап ERR
       setInfoTooltipOpen(true);
@@ -169,9 +169,6 @@ function App() {
     });
   }
 
-  //<Route exact path="/">
-  //{loggedIn ? <Redirect to="/cards" /> : <Redirect to="/sign-in" />}
-  //</Route>
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -201,6 +198,9 @@ function App() {
                 <Login
                   onLoginUser={handleLogin}
                 />
+              </Route>
+              <Route path="*">
+                {loggedIn ? <Redirect to="/" /> : <Redirect to="/sign-in" />}
               </Route>
             </Switch>
           </div>
