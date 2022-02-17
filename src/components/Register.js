@@ -42,8 +42,10 @@ function Register({onRegisterUser}) {
                     className="register-text" required />
                 <button className="register-btn" type="submit" >Зарегистрироваться</button>
             </form>
-
-            <p> Уже зарегистрированы? Войти </p>
+            <div className="register-footer">
+            <p> Уже зарегистрированы?</p>
+            <Link to="/" className="register-doplink">Войти</Link>
+            </div>
         </div>
     )
 }
