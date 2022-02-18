@@ -28,25 +28,25 @@ function App() {
   const [currentUser, setCurrentUser] = React.useState({});
 
   React.useEffect(() => {
-    api.readProfile().then((retUser) => { 
-      setCurrentUser(retUser)
-      api.getInitialCards().then((retCards) => { 
-        setCards(retCards)
-        
-        const JWT = localStorage.getItem("JWT");
-        //console.log(JWT);
-        // Проверка токена
-        api_sign.check_token(JWT).then((dataRet) => {
-          setEmail(dataRet.data.email);
-          setLoggedIn(true);
-          // откроем cards
-          history.push("/");
-        }).catch((err) => {
-          //alert(err)
-        });
+    // Проверка токена
+    const JWT = localStorage.getItem("JWT");
+    if(JWT)  {
+      api_sign.check_token(JWT).then((dataRet) => {
+        setEmail(dataRet.data.email);
+        setLoggedIn(true);
+        // откроем cards
+        history.push("/");
+      }).catch((err) => alert(err))
+    }
 
-      }).catch((err) => alert(err));
+    api.readProfile().then((retUser) => {
+      setCurrentUser(retUser)
     }).catch((err) => alert(err));
+
+    api.getInitialCards().then((retCards) => {
+      setCards(retCards)
+    }).catch((err) => alert(err));
+
   }, []);
 
   function handleCardLike(card) {
@@ -130,7 +130,7 @@ function App() {
       setAddPlacePopupOpen(false);
     }).catch((err) => alert(err));
   }
-        // РЕГИСТРАЦИЯ
+  // РЕГИСТРАЦИЯ
   function handleRegister({ password, email }) {
     setLoggedIn(false);
     localStorage.removeItem("JWT");
@@ -151,7 +151,7 @@ function App() {
       //alert(err)
     })
   }
-        // АВТОРИЗАЦИЯ
+  // АВТОРИЗАЦИЯ
   function handleLogin({ password, email }) {
     const data = { password: '', email: '' };
     data.password = password;
@@ -176,7 +176,7 @@ function App() {
     });
   }
 
-  function handleExit () {
+  function handleExit() {
     //console.log("Click EXIT");
     setLoggedIn(false);
     localStorage.removeItem("JWT");
