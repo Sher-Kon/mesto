@@ -10,14 +10,14 @@ import Footer from './Footer';
 
 
 function Main({ cards, onCardLike, onCardDelete, onEditAvatar, 
-                onEditProfile, onAddPlace, onCardClick, email }) {
+                onEditProfile, onAddPlace, onCardClick, email, onExit }) {
 
     const currentUser = React.useContext(CurrentUserContext);
 
     return (
         
         <main>
-            <Header email={email} />
+            <Header email={email} onExit={onExit} />
             <div className="profile">
                 <button onClick={onEditAvatar} className="profile__avatar-btn" type="button">
                     <img src={currentUser.avatar} className="profile__avatar" alt="картинка-аватарка" />

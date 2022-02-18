@@ -23,14 +23,30 @@ function App() {
 
   const [isEmall, setEmail] = React.useState("");
   const [loggedIn, setLoggedIn] = React.useState(false);
-  const [token, setToken] = React.useState("");
 
   const [cards, setCards] = React.useState([]);
   const [currentUser, setCurrentUser] = React.useState({});
 
   React.useEffect(() => {
-    api.getInitialCards().then((retCards) => { setCards(retCards) }).catch((err) => alert(err));
-    api.readProfile().then((retUser) => { setCurrentUser(retUser) }).catch((err) => alert(err));
+    api.readProfile().then((retUser) => { 
+      setCurrentUser(retUser)
+      api.getInitialCards().then((retCards) => { 
+        setCards(retCards)
+        
+        const JWT = localStorage.getItem("JWT");
+        //console.log(JWT);
+        // Проверка токена
+        api_sign.check_token(JWT).then((dataRet) => {
+          setEmail(dataRet.data.email);
+          setLoggedIn(true);
+          // откроем cards
+          history.push("/");
+        }).catch((err) => {
+          //alert(err)
+        });
+
+      }).catch((err) => alert(err));
+    }).catch((err) => alert(err));
   }, []);
 
   function handleCardLike(card) {
@@ -114,16 +130,15 @@ function App() {
       setAddPlacePopupOpen(false);
     }).catch((err) => alert(err));
   }
-
+        // РЕГИСТРАЦИЯ
   function handleRegister({ password, email }) {
     setLoggedIn(false);
+    localStorage.removeItem("JWT");
     // Запрс на регистрацию 
     const data = { password: '', email: '' };
     data.password = password;
     data.email = email;
-    //console.log(data);
-    api_sign.register(data).then((dataRet) => {
-      //console.log(dataRet);
+    api_sign.register(data).then(() => {
       // запустим попап OK
       setInfoTooltipOpen(true);
       setInfoTooltipOk(true);
@@ -136,17 +151,15 @@ function App() {
       //alert(err)
     })
   }
-
+        // АВТОРИЗАЦИЯ
   function handleLogin({ password, email }) {
-    let JWT = "";
     const data = { password: '', email: '' };
     data.password = password;
     data.email = email;
     // Запрс на авторизацию получение токена
     api_sign.logo(data).then((dataRet) => {
-      JWT = dataRet.token;
-      setToken(dataRet.token);
-      localStorage.setItem("JWT", dataRet.token);
+      let JWT = dataRet.token;
+      localStorage.setItem("JWT", JWT);
       setLoggedIn(true);
       setTimeout(() => {
         // Проверка токена
@@ -155,20 +168,20 @@ function App() {
           // откроем cards
           history.push("/");
         }).catch((err) => {
-          // запустим попап ERR
-          setInfoTooltipOpen(true);
-          setInfoTooltipOk(false);
-          //alert(err)
+          alert(err)
         });
       }, 500);
     }).catch((err) => {
-      // запустим попап ERR
-      setInfoTooltipOpen(true);
-      setInfoTooltipOk(false);
-      //alert(err)
+      alert(err)
     });
   }
 
+  function handleExit () {
+    //console.log("Click EXIT");
+    setLoggedIn(false);
+    localStorage.removeItem("JWT");
+    history.push("/sign-in");
+  }
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -188,6 +201,7 @@ function App() {
                 onAddPlace={handleAddPlaceClick}
                 onCardClick={handleCardClick}
                 email={isEmall}
+                onExit={handleExit}
               />
               <Route path="/sign-up">
                 <Register

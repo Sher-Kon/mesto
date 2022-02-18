@@ -37,9 +37,9 @@ function Register({onRegisterUser}) {
 
             <form onSubmit={handleSubmit}  className="register__form">
                 <input type="email" placeholder="Email" onChange={handleChangeEmail}
-                    className="register-text" required />
-                <input type="password" placeholder="Пароль" onChange={handleChangePassword}
-                    className="register-text" required />
+                    className="register-text" username="registerEmail" autocomplete="on" required />
+                <input id="registerPassword" type="password" placeholder="Пароль" onChange={handleChangePassword}
+                    className="register-text" autocomplete="current-password" required />
                 <button className="register-btn" type="submit" >Зарегистрироваться</button>
             </form>
             <div className="register-footer">

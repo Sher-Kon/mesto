@@ -39,9 +39,9 @@ function Login({onLoginUser}) {
 
             <form onSubmit={handleSubmit} className="log_in__form">
                 <input type="email" placeholder="Email" onChange={handleChangeEmail}
-                    className="log_in-text" required />
-                <input type="password" placeholder="Пароль" onChange={handleChangePassword}
-                    className="log_in-text" required />
+                    className="log_in-text" username="loginEmail" autocomplete="on" required />
+                <input id="loginPassword" type="password" placeholder="Пароль" onChange={handleChangePassword}
+                    className="log_in-text" autocomplete="current-password" required />
                 <button className="log_in-btn" type="submit" >Войти</button>
             </form >
 

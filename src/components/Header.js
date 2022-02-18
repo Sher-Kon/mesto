@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom'; 
 
+//            <Link to="/sign-in" className="header__link" >Выйти</Link>
 
 function Header(props) {
     return (
@@ -8,7 +9,7 @@ function Header(props) {
             <div className="header__logo"> </div>
             <div  className="header__email">
             <p>{props.email}</p>
-            <Link to="/sign-in" className="header__link" >Выйти</Link>                
+            <button onClick={props.onExit} className="header__btn" type="button" >Выйти</button>
             </div>
         </div>
     );
