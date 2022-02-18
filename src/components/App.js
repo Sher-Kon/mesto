@@ -29,9 +29,9 @@ function App() {
 
   React.useEffect(() => {
     // Проверка токена
-    const JWT = localStorage.getItem("JWT");
-    if(JWT)  {
-      api_sign.check_token(JWT).then((dataRet) => {
+    const jwt = localStorage.getItem("JWT");
+    if(jwt)  {
+      api_sign.check_token(jwt).then((dataRet) => {
         setEmail(dataRet.data.email);
         setLoggedIn(true);
         // откроем cards
@@ -131,7 +131,7 @@ function App() {
     }).catch((err) => alert(err));
   }
   // РЕГИСТРАЦИЯ
-  function handleRegister({ password, email }) {
+  function onRegister({ password, email }) {
     setLoggedIn(false);
     localStorage.removeItem("JWT");
     // Запрс на регистрацию 
@@ -154,18 +154,18 @@ function App() {
     })
   }
   // АВТОРИЗАЦИЯ
-  function handleLogin({ password, email }) {
+  function onLogin({ password, email }) {
     const data = { password: '', email: '' };
     data.password = password;
     data.email = email;
     // Запрс на авторизацию получение токена
     api_sign.logo(data).then((dataRet) => {
-      let JWT = dataRet.token;
-      localStorage.setItem("JWT", JWT);
+      let jwt = dataRet.token;
+      localStorage.setItem("JWT", jwt);
       setLoggedIn(true);
       setTimeout(() => {
         // Проверка токена
-        api_sign.check_token(JWT).then((dataRet) => {
+        api_sign.check_token(jwt).then((dataRet) => {
           setEmail(dataRet.data.email);
           // откроем cards
           history.push("/");
@@ -178,7 +178,7 @@ function App() {
     });
   }
 
-  function handleExit() {
+  function onSignOut() {
     //console.log("Click EXIT");
     setLoggedIn(false);
     localStorage.removeItem("JWT");
@@ -203,19 +203,19 @@ function App() {
                 onAddPlace={handleAddPlaceClick}
                 onCardClick={handleCardClick}
                 email={isEmall}
-                onExit={handleExit}
+                onExit={onSignOut}
               />
               <Route path="/sign-up">
                 <Register
-                  onRegisterUser={handleRegister}
+                  onRegisterUser={onRegister}
                 />
               </Route>
               <Route path="/sign-in">
                 <Login
-                  onLoginUser={handleLogin}
+                  onLoginUser={onLogin}
                 />
               </Route>
-              <Route path="*">
+              <Route>
                 {loggedIn ? <Redirect to="/" /> : <Redirect to="/sign-in" />}
               </Route>
             </Switch>
