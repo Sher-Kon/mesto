@@ -2,6 +2,7 @@
   width: 144px; /*142*/
   height: 33px;
   margin-bottom: 41px;
+  margin-left: 10px;
   background: url("../../../images/logo.svg") no-repeat;
   background-size: cover;
 }
@@ -10,7 +11,7 @@
   .header__logo {
       width: 104px;
       height: 24px;
-      margin-left: 27px;
+      margin-left: 12px;
       margin-bottom: 31px;
   }
 }

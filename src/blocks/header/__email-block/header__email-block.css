@@ -9,6 +9,7 @@
       .header__email-block {
           flex-direction: column; /* столбец */
           align-items:flex-end; /*  */
+          margin-right: 10px;
           width: 182px;
       }
   }
