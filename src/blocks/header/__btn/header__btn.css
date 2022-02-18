@@ -6,9 +6,17 @@ text-decoration: none;
 font-size: 18px;/*22px*/
 line-height: 22px;/*30px*/
 font-weight: 400;
-margin-left: 15px;
+margin-left: 1px;
 margin-top: 18px;
 /*padding-top: 1px;*/
 background-color: black;
-color: white;
+color: #a9a9a9;
+}
+
+@media screen and (max-width: 750px) {
+    .header__btn {
+        font-size: 14px;/*18px*/
+        line-height: 17px;/*22px*/
+        margin-top: 1px;
+    }
 }

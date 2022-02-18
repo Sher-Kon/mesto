@@ -148,6 +148,8 @@ function App() {
       // запустим попап ERR
       setInfoTooltipOpen(true);
       setInfoTooltipOk(false);
+      // на авторизацию
+      history.push("/sign-in");
       //alert(err)
     })
   }

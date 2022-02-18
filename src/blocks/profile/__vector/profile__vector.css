@@ -11,3 +11,9 @@
   z-index: 3; /* накрывает для всех кто меньше */
   color: white;
 }
+
+@media screen and (max-width: 750px) {
+  .profile__vector {
+    left: 130px;
+  }
+}

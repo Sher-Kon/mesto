@@ -127,8 +127,16 @@
 .log_in-link {
   color: white;
   text-decoration: none;
-  font-size: 18px;/*22px*/
-  line-height: 22px;/*30px*/
+  font-size: 18px;/*18px*/
+  line-height: 22px;/*22px*/
   font-weight: 400;
   margin-right: 15px;
 }
+@media screen and (max-width: 750px) {
+  .log_in-link {
+      font-size: 14px;/*18px*/
+      line-height: 17px;/*22px*/
+      margin-top: 13px;
+  }
+}
+

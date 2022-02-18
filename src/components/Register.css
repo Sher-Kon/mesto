@@ -133,6 +133,13 @@
   font-weight: 400;
   margin-right: 15px;
 }
+@media screen and (max-width: 750px) {
+  .register-link {
+    font-size: 14px;/*18px*/
+    line-height: 17px;/*22px*/
+    margin-top: 13px;
+  }
+}
 
 .register-doplink {
   color: white;
